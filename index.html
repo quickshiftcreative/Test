@@ -1,287 +1,722 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="dark scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Private Admin Dashboard | OG Dask CMS</title>
+  <title id="meta-title">OG Dask | Global Digital Growth & E-Commerce Agency</title>
+  <meta name="description" id="meta-desc" content="Scale your global brand with our complete e-commerce management, quick commerce onboarding, branding, and custom digital solutions." />
+  <meta name="keywords" id="meta-keywords" content="digital agency, ecommerce management, quick commerce onboarding, global branding, web design" />
+
+  <!-- Tailwind CSS & HTML2PDF Engine -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+
   <style>
-    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #09090b; color: #f4f4f5; }
-    .bento-panel { background: #121215; border: 1px solid #27272a; }
-    input, textarea, select { background: #09090b !important; border: 1px solid #27272a !important; color: #fff !important; }
+    :root {
+      --bg-solid: #09090b;
+      --card-charcoal: #121215;
+      --card-charcoal-hover: #18181b;
+      --border-subtle: #27272a;
+      --glass-modal: rgba(18, 18, 21, 0.85);
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-solid);
+      color: #f4f4f5;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, .brand-font {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    /* Solid Matte Dark & Subtle Bento Borders */
+    .bento-card {
+      background-color: var(--card-charcoal);
+      border: 1px solid var(--border-subtle);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .bento-card:hover {
+      border-color: #3f3f46;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5);
+    }
+    /* Liquid-Glass Pop-up Modal */
+    .liquid-glass-modal {
+      background: var(--glass-modal);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }
+    .input-matte {
+      background: #09090b !important;
+      border: 1px solid var(--border-subtle) !important;
+      color: #fff !important;
+    }
+    .input-matte:focus {
+      border-color: #6366f1 !important;
+      outline: none;
+    }
   </style>
 </head>
-<body class="min-h-screen">
+<body class="min-h-screen flex flex-col selection:bg-indigo-600 selection:text-white">
 
-  <!-- LOGIN GATE -->
-  <div id="login-gate" class="fixed inset-0 z-50 bg-[#09090b] flex items-center justify-center p-4">
-    <div class="bento-panel rounded-3xl max-w-sm w-full p-8 text-center shadow-2xl">
-      <div class="w-12 h-12 rounded-2xl bg-indigo-600 mx-auto flex items-center justify-center text-xl font-bold mb-4">🔐</div>
-      <h2 class="text-xl font-bold text-white">Private Admin Control</h2>
-      <p class="text-xs text-zinc-400 mt-1">Default PIN: <code class="text-emerald-400">admin123</code></p>
-      <form onsubmit="handleLogin(event)" class="mt-6 space-y-4">
-        <input type="password" id="admin-pin" required placeholder="Enter Password" class="w-full px-4 py-3 rounded-xl text-sm text-center" />
-        <button type="submit" class="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 font-bold text-sm text-white">
-          Unlock Dashboard →
+  <!-- ================= TOP NAVIGATION BAR ================= -->
+  <header class="sticky top-0 z-40 bg-[#09090b]/90 backdrop-blur-md border-b border-[#27272a] px-4 py-3.5">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+      <!-- Brand Logo & Name Placeholder -->
+      <button onclick="navigatePage('home')" class="flex items-center gap-3 text-left group">
+        <div id="nav-logo-box" class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center font-extrabold text-lg text-white shadow-md overflow-hidden">
+          OG
+        </div>
+        <div>
+          <span id="nav-brand-name" class="brand-font font-bold text-lg tracking-tight text-white group-hover:text-indigo-400 transition">OG Dask</span>
+          <span id="nav-brand-tagline" class="block text-[10px] text-zinc-400">Global Digital Agency</span>
+        </div>
+      </button>
+
+      <!-- Global Navigation Pages -->
+      <div class="hidden lg:flex items-center gap-1 bg-[#121215] p-1 rounded-xl border border-[#27272a]">
+        <button onclick="navigatePage('home')" id="nav-btn-home" class="nav-link px-3 py-1.5 rounded-lg text-xs font-bold bg-indigo-600 text-white transition">Home</button>
+        <button onclick="navigatePage('services')" id="nav-btn-services" class="nav-link px-3 py-1.5 rounded-lg text-xs font-bold text-zinc-400 hover:text-white transition">Services</button>
+        <button onclick="navigatePage('quote')" id="nav-btn-quote" class="nav-link px-3 py-1.5 rounded-lg text-xs font-bold text-zinc-400 hover:text-white transition">Quote Builder</button>
+        <button onclick="navigatePage('tracker')" id="nav-btn-tracker" class="nav-link px-3 py-1.5 rounded-lg text-xs font-bold text-zinc-400 hover:text-white transition">Client Tracker</button>
+        <button onclick="navigatePage('portfolio')" id="nav-btn-portfolio" class="nav-link px-3 py-1.5 rounded-lg text-xs font-bold text-zinc-400 hover:text-white transition">Selected Work</button>
+        <button onclick="navigatePage('about')" id="nav-btn-about" class="nav-link px-3 py-1.5 rounded-lg text-xs font-bold text-zinc-400 hover:text-white transition">About & Team</button>
+        <button onclick="navigatePage('contact')" id="nav-btn-contact" class="nav-link px-3 py-1.5 rounded-lg text-xs font-bold text-zinc-400 hover:text-white transition">Contact Us</button>
+      </div>
+
+      <!-- Right Actions: Currency Switcher & Quote Cart -->
+      <div class="flex items-center gap-2.5">
+        <!-- Currency Switcher -->
+        <select id="currency-switcher" onchange="switchCurrency(this.value)" class="px-2.5 py-2 rounded-xl input-matte text-xs font-bold">
+          <option value="INR">₹ INR (₹)</option>
+          <option value="USD">$ USD ($)</option>
+        </select>
+
+        <button onclick="toggleCartModal()" class="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold flex items-center gap-2 shadow-lg transition">
+          <span>🛒 Cart</span>
+          <span id="cart-badge" class="px-1.5 py-0.2 text-[11px] rounded-full bg-white text-indigo-950 font-extrabold">0</span>
         </button>
-      </form>
+      </div>
     </div>
-  </div>
 
-  <!-- ADMIN CONTROL INTERFACE -->
-  <div class="max-w-7xl mx-auto px-4 py-8 space-y-6">
-    <div class="bento-panel rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4">
+    <!-- Mobile Nav Bar -->
+    <div class="flex lg:hidden overflow-x-auto gap-2 max-w-7xl mx-auto mt-2.5 pb-1">
+      <button onclick="navigatePage('home')" class="px-3 py-1 rounded-lg bento-card text-xs font-bold whitespace-nowrap">Home</button>
+      <button onclick="navigatePage('services')" class="px-3 py-1 rounded-lg bento-card text-xs font-bold whitespace-nowrap">Services</button>
+      <button onclick="navigatePage('quote')" class="px-3 py-1 rounded-lg bento-card text-xs font-bold whitespace-nowrap">Quote Cart</button>
+      <button onclick="navigatePage('tracker')" class="px-3 py-1 rounded-lg bento-card text-xs font-bold whitespace-nowrap">Tracker</button>
+      <button onclick="navigatePage('portfolio')" class="px-3 py-1 rounded-lg bento-card text-xs font-bold whitespace-nowrap">Work</button>
+      <button onclick="navigatePage('about')" class="px-3 py-1 rounded-lg bento-card text-xs font-bold whitespace-nowrap">About</button>
+      <button onclick="navigatePage('contact')" class="px-3 py-1 rounded-lg bento-card text-xs font-bold whitespace-nowrap">Contact</button>
+    </div>
+  </header>
+
+  <!-- ================= MAIN CONTENT VIEWS ================= -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-10 space-y-16">
+
+    <!-- 1. HOME / OVERVIEW VIEW -->
+    <section id="page-home" class="page-view space-y-16">
+      <div class="pt-8 text-center max-w-4xl mx-auto">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bento-card text-xs font-bold text-indigo-400 mb-6">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span id="home-badge">Global E-Commerce & Marketplace Management Agency</span>
+        </div>
+        <h1 id="hero-title" class="text-4xl sm:text-6xl font-bold tracking-tight text-white leading-[1.1]">
+          Scale Your Brand Across Global Marketplaces.
+        </h1>
+        <p id="hero-subtitle" class="mt-5 text-zinc-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+          We engineer high-performance e-commerce growth, quick-commerce onboarding, and brand dominance for ambitious companies worldwide.
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <button onclick="navigatePage('services')" class="px-7 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-sm shadow-lg transition">
+            Explore Services & Quote →
+          </button>
+          <button onclick="navigatePage('tracker')" class="px-7 py-3.5 rounded-xl bento-card text-zinc-200 font-bold text-sm hover:border-zinc-500 transition">
+            Track Live Project Status
+          </button>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bento-card rounded-2xl p-6">
+          <div id="stat-1-num" class="text-3xl font-extrabold text-white">50+</div>
+          <div id="stat-1-txt" class="text-xs text-zinc-400 mt-1">Global Brands Scaled</div>
+        </div>
+        <div class="bento-card rounded-2xl p-6">
+          <div id="stat-2-num" class="text-3xl font-extrabold text-emerald-400">200+</div>
+          <div id="stat-2-txt" class="text-xs text-zinc-400 mt-1">Projects Delivered</div>
+        </div>
+        <div class="bento-card rounded-2xl p-6">
+          <div id="stat-avg-rating" class="text-3xl font-extrabold text-amber-400">5.0 ★</div>
+          <div class="text-xs text-zinc-400 mt-1">Client Satisfaction</div>
+        </div>
+        <div class="bento-card rounded-2xl p-6">
+          <div class="text-3xl font-extrabold text-indigo-400">24/7</div>
+          <div class="text-xs text-zinc-400 mt-1">Real-Time Client Tracker</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. SERVICES & INTERACTIVE MODAL VIEW -->
+    <section id="page-services" class="page-view hidden space-y-8">
       <div>
-        <span class="text-[10px] font-extrabold uppercase text-emerald-400">Secure Backend</span>
-        <h1 class="text-xl font-bold text-white">⚡ OG Dask Admin CMS</h1>
+        <span class="text-xs font-extrabold uppercase tracking-wider text-indigo-400">Core Expertise</span>
+        <h2 class="text-3xl font-bold text-white mt-1">Our Agency Services</h2>
+        <p class="text-sm text-zinc-400 mt-1">Click on any core service card to inspect all sub-services and add them to your quotation.</p>
       </div>
-      <div class="flex gap-2">
-        <button onclick="loadSampleData()" class="px-3 py-2 rounded-xl bg-amber-500/20 text-amber-300 text-xs font-bold">✨ Load Demo Data</button>
-        <a href="index.html" target="_blank" class="px-4 py-2 rounded-xl bg-indigo-600 text-white text-xs font-bold">🌐 View Website ↗</a>
+
+      <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </section>
+
+    <!-- 3. QUOTE BUILDER & CART VIEW -->
+    <section id="page-quote" class="page-view hidden space-y-8 max-w-4xl mx-auto">
+      <div>
+        <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-400">Instant Proposal Generator</span>
+        <h2 class="text-3xl font-bold text-white mt-1">Your Quotation Cart</h2>
+        <p class="text-sm text-zinc-400 mt-1">Review your selected services and download an official international PDF quotation instantly.</p>
       </div>
-    </div>
 
-    <!-- Admin Tabs -->
-    <div class="flex flex-wrap gap-2">
-      <button onclick="switchTab('t-brand')" class="adm-tab px-3.5 py-2 rounded-xl text-xs font-bold bg-indigo-600 text-white">1. Brand & USD Rate</button>
-      <button onclick="switchTab('t-services')" class="adm-tab px-3.5 py-2 rounded-xl text-xs font-bold bento-panel text-zinc-300">2. Services & Sub-Services</button>
-      <button onclick="switchTab('t-tracker')" class="adm-tab px-3.5 py-2 rounded-xl text-xs font-bold bento-panel text-zinc-300">3. Live Tracker (0-100%)</button>
-      <button onclick="switchTab('t-portfolio')" class="adm-tab px-3.5 py-2 rounded-xl text-xs font-bold bento-panel text-zinc-300">4. Portfolio</button>
-      <button onclick="switchTab('t-team')" class="adm-tab px-3.5 py-2 rounded-xl text-xs font-bold bento-panel text-zinc-300">5. About & Team</button>
-    </div>
+      <div class="bento-card rounded-3xl p-6 md:p-8 space-y-6">
+        <div id="cart-page-items" class="space-y-3"></div>
+        <div class="p-4 rounded-2xl bg-[#09090b] border border-[#27272a] flex items-center justify-between">
+          <span class="text-sm text-zinc-300 font-bold">Total Estimate:</span>
+          <span id="cart-page-total" class="text-2xl font-extrabold text-emerald-400">₹0</span>
+        </div>
 
-    <!-- TAB 1: BRAND -->
-    <div id="t-brand" class="adm-pane bento-panel rounded-3xl p-6 space-y-4">
-      <h2 class="text-lg font-bold text-white border-b border-[#27272a] pb-3">Brand & Currency Exchange Rate</h2>
-      <form onsubmit="saveBrand(event)" class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div><label class="text-xs text-zinc-400 block mb-1">Agency Name</label><input type="text" id="b-name" class="w-full px-3 py-2 rounded-xl text-sm" /></div>
-        <div><label class="text-xs text-zinc-400 block mb-1">Tagline</label><input type="text" id="b-tag" class="w-full px-3 py-2 rounded-xl text-sm" /></div>
-        <div><label class="text-xs text-zinc-400 block mb-1">Domain</label><input type="text" id="b-dom" class="w-full px-3 py-2 rounded-xl text-sm" /></div>
-        <div><label class="text-xs text-zinc-400 block mb-1">Phone / WhatsApp</label><input type="text" id="b-phone" class="w-full px-3 py-2 rounded-xl text-sm" /></div>
-        <div><label class="text-xs text-zinc-400 block mb-1">Email</label><input type="text" id="b-email" class="w-full px-3 py-2 rounded-xl text-sm" /></div>
-        <div><label class="text-xs text-zinc-400 block mb-1">USD Exchange Rate ($1 = ₹X)</label><input type="number" id="b-usd" class="w-full px-3 py-2 rounded-xl text-sm" /></div>
-        <button type="submit" class="md:col-span-3 py-3 rounded-xl bg-indigo-600 text-white font-bold text-sm">Save Settings</button>
-      </form>
-    </div>
+        <form onsubmit="generatePDFQuotation(event)" class="space-y-4 pt-2">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input type="text" id="qt-name" required placeholder="Your Full Name *" class="w-full px-4 py-3 rounded-xl input-matte text-sm" />
+            <input type="text" id="qt-brand" required placeholder="Brand / Company Name *" class="w-full px-4 py-3 rounded-xl input-matte text-sm" />
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input type="text" id="qt-phone" required placeholder="WhatsApp / Mobile Number *" class="w-full px-4 py-3 rounded-xl input-matte text-sm" />
+            <input type="text" id="qt-notes" placeholder="Any specific requirements (Optional)" class="w-full px-4 py-3 rounded-xl input-matte text-sm" />
+          </div>
+          <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:opacity-95 text-slate-950 font-extrabold text-sm shadow-xl transition">
+            📥 Download Official PDF Quotation Now
+          </button>
+        </form>
+      </div>
+    </section>
 
-    <!-- TAB 2: SERVICES -->
-    <div id="t-services" class="adm-pane bento-panel rounded-3xl p-6 hidden space-y-6">
-      <h2 class="text-lg font-bold text-white border-b border-[#27272a] pb-3">Add Core Service & Sub-Services</h2>
-      <form onsubmit="addService(event)" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input type="text" id="s-title" required placeholder="Service Title" class="px-3 py-2 rounded-xl text-sm" />
-        <input type="text" id="s-cat" required placeholder="Category (e.g. E-Commerce)" class="px-3 py-2 rounded-xl text-sm" />
-        <input type="number" id="s-inr" required placeholder="Price in ₹ INR" class="px-3 py-2 rounded-xl text-sm" />
-        <input type="number" id="s-usd" required placeholder="Price in $ USD" class="px-3 py-2 rounded-xl text-sm" />
-        <input type="text" id="s-summary" required placeholder="Short summary" class="md:col-span-2 px-3 py-2 rounded-xl text-sm" />
-        <textarea id="s-subs" required rows="2" placeholder="Sub-services (comma separated: A+ Design, PPC, Audit)" class="md:col-span-2 px-3 py-2 rounded-xl text-sm"></textarea>
-        <button type="submit" class="md:col-span-2 py-3 rounded-xl bg-emerald-500 text-slate-950 font-bold text-sm">+ Add Service</button>
-      </form>
-      <div id="adm-services-list" class="space-y-3 pt-4"></div>
-    </div>
+    <!-- 4. LIVE CLIENT TRACKER VIEW -->
+    <section id="page-tracker" class="page-view hidden space-y-8">
+      <div class="bento-card rounded-3xl p-6 md:p-10 space-y-8">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-400">Real-Time Operations</span>
+            <h2 class="text-3xl font-bold text-white mt-1">Live Client Work Status Tracker</h2>
+            <p class="text-sm text-zinc-400 mt-1">Search your brand name or project ID to check real-time completion percentage (0% - 100%).</p>
+          </div>
+          <div class="w-full md:w-80">
+            <input type="text" id="tracker-search" oninput="renderTracker()" placeholder="🔍 Search Brand or ID..." class="w-full px-4 py-3 rounded-xl input-matte text-sm" />
+          </div>
+        </div>
 
-    <!-- TAB 3: TRACKER -->
-    <div id="t-tracker" class="adm-pane bento-panel rounded-3xl p-6 hidden space-y-6">
-      <h2 class="text-lg font-bold text-white border-b border-[#27272a] pb-3">Client Progress Slider (0% - 100%)</h2>
-      <form onsubmit="addProject(event)" class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <input type="text" id="p-client" required placeholder="Client / Brand Name" class="px-3 py-2 rounded-xl text-sm" />
-        <input type="text" id="p-name" required placeholder="Project Name" class="px-3 py-2 rounded-xl text-sm" />
-        <input type="text" id="p-code" placeholder="Project ID (e.g. PRJ-101)" class="px-3 py-2 rounded-xl text-sm" />
-        <select id="p-stage" class="px-3 py-2 rounded-xl text-sm"><option value="Onboarding">Onboarding</option><option value="Execution">Execution</option><option value="Completed">Completed</option></select>
-        <div class="flex items-center gap-2 px-3 py-2 rounded-xl"><span class="text-xs text-zinc-400">Progress:</span><input type="range" id="p-prog" min="0" max="100" value="50" oninput="document.getElementById('p-lbl').innerText=this.value+'%'" class="flex-1" /><span id="p-lbl" class="text-xs font-bold text-emerald-400">50%</span></div>
-        <input type="text" id="p-note" placeholder="Status note..." class="px-3 py-2 rounded-xl text-sm" />
-        <button type="submit" class="md:col-span-3 py-3 rounded-xl bg-indigo-600 text-white font-bold text-sm">+ Add Project</button>
-      </form>
-      <div id="adm-projects-list" class="space-y-3 pt-4"></div>
-    </div>
+        <div id="tracker-grid" class="grid grid-cols-1 md:grid-cols-2 gap-5"></div>
+      </div>
+    </section>
 
-    <!-- TAB 4: PORTFOLIO -->
-    <div id="t-portfolio" class="adm-pane bento-panel rounded-3xl p-6 hidden space-y-4">
-      <h2 class="text-lg font-bold text-white border-b border-[#27272a] pb-3">Upload Portfolio Case Study</h2>
-      <form onsubmit="addPortfolio(event)" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input type="text" id="pf-title" required placeholder="Project Title" class="px-3 py-2 rounded-xl text-sm" />
-        <input type="text" id="pf-client" required placeholder="Client Brand" class="px-3 py-2 rounded-xl text-sm" />
-        <input type="text" id="pf-cat" required placeholder="Category" class="px-3 py-2 rounded-xl text-sm" />
-        <input type="text" id="pf-res" placeholder="Impact Result" class="px-3 py-2 rounded-xl text-sm" />
-        <input type="text" id="pf-img" required placeholder="Image URL" class="md:col-span-2 px-3 py-2 rounded-xl text-sm" />
-        <textarea id="pf-desc" required rows="2" placeholder="Description" class="md:col-span-2 px-3 py-2 rounded-xl text-sm"></textarea>
-        <button type="submit" class="md:col-span-2 py-3 rounded-xl bg-purple-600 text-white font-bold text-sm">Publish Work</button>
-      </form>
-      <div id="adm-portfolio-list" class="space-y-3 pt-4"></div>
-    </div>
+    <!-- 5. SELECTED WORK (PORTFOLIO) VIEW -->
+    <section id="page-portfolio" class="page-view hidden space-y-8">
+      <div>
+        <span class="text-xs font-extrabold uppercase tracking-wider text-purple-400">Case Studies & Results</span>
+        <h2 class="text-3xl font-bold text-white mt-1">Selected Work & Reels</h2>
+        <p class="text-sm text-zinc-400 mt-1">Proven transformations, creative campaigns, and marketplace scaling results.</p>
+      </div>
+      <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </section>
 
-    <!-- TAB 5: ABOUT & TEAM -->
-    <div id="t-team" class="adm-pane bento-panel rounded-3xl p-6 hidden space-y-6">
-      <h2 class="text-lg font-bold text-white border-b border-[#27272a] pb-3">Manage About Story & Team</h2>
-      <form onsubmit="saveAbout(event)" class="space-y-3 border-b border-[#27272a] pb-4">
-        <input type="text" id="ab-title" required placeholder="About Headline" class="w-full px-3 py-2 rounded-xl text-sm" />
-        <textarea id="ab-story" required rows="3" placeholder="Agency Story..." class="w-full px-3 py-2 rounded-xl text-sm"></textarea>
-        <button type="submit" class="px-4 py-2 rounded-xl bg-indigo-600 text-white text-xs font-bold">Save Story</button>
-      </form>
-      <form onsubmit="addTeam(event)" class="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <input type="text" id="tm-name" required placeholder="Full Name" class="px-3 py-2 rounded-xl text-sm" />
-        <input type="text" id="tm-des" required placeholder="Designation" class="px-3 py-2 rounded-xl text-sm" />
-        <select id="tm-grp" class="px-3 py-2 rounded-xl text-sm"><option value="Partner">Partner</option><option value="Staff">Staff</option></select>
-        <input type="text" id="tm-photo" placeholder="Photo URL" class="px-3 py-2 rounded-xl text-sm" />
-        <button type="submit" class="md:col-span-4 py-3 rounded-xl bg-emerald-500 text-slate-950 font-bold text-sm">+ Add Member</button>
-      </form>
-      <div id="adm-team-list" class="space-y-2 pt-4"></div>
+    <!-- 6. ABOUT US & TEAM VIEW -->
+    <section id="page-about" class="page-view hidden space-y-12">
+      <div class="bento-card rounded-3xl p-6 md:p-12 space-y-12">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+          <div class="lg:col-span-2">
+            <span class="text-xs font-extrabold uppercase tracking-wider text-indigo-400">About Our Agency</span>
+            <h2 id="about-title" class="text-3xl font-bold text-white mt-1">Built by Operators, Driven by Measurable Growth.</h2>
+            <p id="about-story" class="text-zinc-300 mt-4 leading-relaxed text-sm md:text-base whitespace-pre-line"></p>
+          </div>
+          <div class="space-y-4">
+            <div class="bento-card rounded-2xl p-5">
+              <div class="text-xs font-extrabold uppercase text-emerald-400">Our Mission</div>
+              <p id="about-mission" class="text-xs text-zinc-300 mt-2 leading-relaxed"></p>
+            </div>
+            <div class="bento-card rounded-2xl p-5">
+              <div class="text-xs font-extrabold uppercase text-purple-400">Our Vision</div>
+              <p id="about-vision" class="text-xs text-zinc-300 mt-2 leading-relaxed"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Founders & Partners -->
+        <div>
+          <h3 class="text-xl font-bold text-white mb-6">Founders & Managing Partners</h3>
+          <div id="partners-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+
+        <!-- Core Team -->
+        <div>
+          <h3 class="text-xl font-bold text-white mb-6">Core Team & Specialists</h3>
+          <div id="staff-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. CONTACT US VIEW -->
+    <section id="page-contact" class="page-view hidden space-y-8 max-w-3xl mx-auto">
+      <div class="bento-card rounded-3xl p-6 md:p-10 space-y-6">
+        <div>
+          <span class="text-xs font-extrabold uppercase tracking-wider text-indigo-400">Get in Touch</span>
+          <h2 class="text-3xl font-bold text-white mt-1">Contact Our Global Desk</h2>
+          <p class="text-sm text-zinc-400 mt-1">Ready to scale? Send us a message and our team will respond within 4 hours.</p>
+        </div>
+
+        <div id="contact-info-box" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-zinc-300"></div>
+
+        <form onsubmit="handleContactSubmit(event)" class="space-y-4 pt-4 border-t border-[#27272a]">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input type="text" required placeholder="Your Name *" class="w-full px-4 py-3 rounded-xl input-matte text-sm" />
+            <input type="email" required placeholder="Email Address *" class="w-full px-4 py-3 rounded-xl input-matte text-sm" />
+          </div>
+          <textarea required rows="4" placeholder="Tell us about your brand and growth goals..." class="w-full px-4 py-3 rounded-xl input-matte text-sm"></textarea>
+          <button type="submit" class="w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-sm shadow-lg transition">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="mt-24 border-t border-[#27272a] py-12 px-4 bg-[#09090b]">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-zinc-400">
+      <div>
+        <strong id="footer-brand" class="text-white font-bold">OG Dask</strong> — <span id="footer-domain">ogdask.com</span>
+        <p class="text-[11px] text-zinc-500 mt-1">Global E-Commerce & Digital Growth Agency.</p>
+      </div>
+      <div id="footer-contacts" class="flex flex-wrap gap-6"></div>
+      <div class="text-zinc-500">© 2026 OG Dask. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- ================= INTERACTIVE LIQUID-GLASS SERVICE MODAL ================= -->
+  <div id="service-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="liquid-glass-modal rounded-3xl max-w-2xl w-full p-6 md:p-8 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4">
+        <div>
+          <span id="modal-category" class="text-xs font-extrabold uppercase text-indigo-400">Category</span>
+          <h3 id="modal-title" class="text-2xl font-bold text-white mt-1">Service Title</h3>
+          <div id="modal-price" class="text-xl font-extrabold text-emerald-400 mt-1">₹0</div>
+        </div>
+        <button onclick="closeServiceModal()" class="w-9 h-9 rounded-xl bento-card text-zinc-300 hover:text-white font-bold flex items-center justify-center">✕</button>
+      </div>
+
+      <div class="py-6 space-y-4">
+        <h4 class="text-xs font-extrabold uppercase text-zinc-400 tracking-wider">Included Sub-Services & Deliverables:</h4>
+        <div id="modal-subservices-list" class="space-y-2.5"></div>
+      </div>
+
+      <div class="pt-4 border-t border-white/10 flex items-center justify-between gap-4">
+        <button onclick="closeServiceModal()" class="px-5 py-3 rounded-xl bento-card text-xs font-bold text-zinc-300">Close</button>
+        <button id="modal-add-btn" onclick="addModalServiceToCart()" class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-sm shadow-lg transition">
+          + Add to Quotation Cart
+        </button>
+      </div>
     </div>
   </div>
 
+  <!-- ================= CART SLIDE / MODAL ================= -->
+  <div id="cart-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="liquid-glass-modal rounded-3xl max-w-lg w-full p-6 max-h-[85vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
+        <h3 class="text-lg font-bold text-white">🛒 Quotation Cart</h3>
+        <button onclick="toggleCartModal()" class="text-zinc-400 hover:text-white font-bold">✕</button>
+      </div>
+      <div id="cart-modal-items" class="space-y-2.5 mb-6"></div>
+      <div class="flex items-center justify-between pt-3 border-t border-white/10">
+        <span class="text-sm font-bold text-zinc-300">Total:</span>
+        <span id="cart-modal-total" class="text-xl font-extrabold text-emerald-400">₹0</span>
+      </div>
+      <button onclick="navigatePage('quote'); toggleCartModal();" class="mt-5 w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs">
+        Proceed to Quotation Download →
+      </button>
+    </div>
+  </div>
+
+  <!-- HIDDEN PRINTABLE PDF SHEET -->
+  <div class="hidden">
+    <div id="pdf-sheet" style="width: 780px; padding: 40px; background: #ffffff; color: #0f172a; font-family: 'Plus Jakarta Sans', sans-serif;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 3px solid #4f46e5; padding-bottom: 18px;">
+        <div>
+          <h1 id="pdf-bname" style="font-size: 28px; font-weight: 800; color: #1e1b4b; margin: 0;">OG Dask</h1>
+          <p id="pdf-btag" style="font-size: 12px; color: #64748b; margin: 4px 0 0 0;"></p>
+          <p id="pdf-bcontact" style="font-size: 11px; color: #475569; margin-top: 6px;"></p>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-size: 20px; font-weight: 800; color: #4f46e5;">INTERNATIONAL PROPOSAL</div>
+          <div id="pdf-qno" style="font-size: 12px; font-weight: 700; color: #334155; margin-top: 4px;"></div>
+          <div id="pdf-date" style="font-size: 11px; color: #64748b;"></div>
+        </div>
+      </div>
+      <div style="margin-top: 22px; padding: 14px 18px; background: #f8fafc; border-radius: 10px; border: 1px solid #e2e8f0;">
+        <div style="font-size: 10px; font-weight: 800; color: #64748b; text-transform: uppercase;">Prepared For:</div>
+        <div id="pdf-client" style="font-size: 15px; font-weight: 800; color: #0f172a; margin-top: 3px;"></div>
+      </div>
+      <table style="width: 100%; border-collapse: collapse; margin-top: 22px; font-size: 12.5px;">
+        <thead>
+          <tr style="background: #1e1b4b; color: #ffffff; text-align: left;">
+            <th style="padding: 11px;">#</th>
+            <th style="padding: 11px;">Service & Sub-Services</th>
+            <th style="padding: 11px;">Billing</th>
+            <th style="padding: 11px; text-align: right;">Amount</th>
+          </tr>
+        </thead>
+        <tbody id="pdf-tbody"></tbody>
+      </table>
+      <div style="margin-top: 20px; display: flex; justify-content: flex-end;">
+        <div style="width: 270px; background: #f1f5f9; padding: 15px; border-radius: 10px;">
+          <div style="display: flex; justify-content: space-between; font-size: 16px; font-weight: 800; color: #1e1b4b;">
+            <span>Total Estimate:</span>
+            <span id="pdf-grand">₹0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FRONTEND JAVASCRIPT ENGINE -->
   <script>
     const DB_KEY = 'OG_DASK_AGENCY_OS_V3';
-    function getDB() { const s = localStorage.getItem(DB_KEY); return s ? JSON.parse(s) : {}; }
-    function saveDB(db) { localStorage.setItem(DB_KEY, JSON.stringify(db)); renderAdmin(); }
-    function handleLogin(e) {
-      e.preventDefault();
-      if(document.getElementById('admin-pin').value === 'admin123') {
-        document.getElementById('login-gate').classList.add('hidden');
-        populateAdmin();
-      } else { alert('Wrong password! Use admin123'); }
+    let cart = [];
+    let currentCurrency = 'INR';
+    let activeModalService = null;
+
+    const defaultData = {
+      brand: { name: 'OG Dask', tagline: 'Global Digital Agency', domain: 'ogdask.com', phone: '+91 98765 43210', email: 'hello@ogdask.com', usdRate: 83 },
+      seo: { title: 'Global Digital Agency & E-Commerce Management', desc: 'Scale your brand globally.', keys: 'ecommerce, quick commerce, branding' },
+      about: {
+        title: 'Built by Operators, Driven by Measurable Brand Growth.',
+        story: 'OG Dask is a high-performance digital growth and e-commerce agency helping brands dominate marketplaces worldwide.\n\nEvery section of this website is dynamically managed from our secure separate admin dashboard.',
+        mission: 'To empower global brands with seamless multi-channel execution.',
+        vision: 'To set the global benchmark for e-commerce operational excellence.'
+      },
+      services: [
+        {
+          id: 'S-1',
+          title: 'Complete Marketplace Management',
+          category: 'E-Commerce',
+          priceINR: 15000,
+          priceUSD: 180,
+          billing: 'Monthly',
+          summary: 'End-to-end Amazon, Flipkart & international marketplace scaling.',
+          subservices: ['A+ Content & Storefront Design', 'Listing Keyword SEO Optimization', 'PPC Sponsored Ads Management', 'Inventory & Return Audits']
+        },
+        {
+          id: 'S-2',
+          title: 'Quick Commerce Onboarding',
+          category: 'Quick Commerce',
+          priceINR: 12000,
+          priceUSD: 145,
+          billing: 'One-Time',
+          summary: 'Fast-track onboarding onto Blinkit, Zepto, and Instamart dark stores.',
+          subservices: ['Brand Document Verification', 'Dark Store SKU Mapping', 'Margin & Pricing Calculations', 'Fulfillment Setup']
+        },
+        {
+          id: 'S-3',
+          title: 'Global Branding & 3D Mockups',
+          category: 'Branding & Design',
+          priceINR: 9500,
+          priceUSD: 115,
+          billing: 'One-Time',
+          summary: 'High-converting visual identity and packaging design.',
+          subservices: ['Print-Ready Packaging Die-line', 'Photorealistic 3D Mockups', 'Marketplace Infographics Set']
+        }
+      ],
+      projects: [
+        { id: 'P-1', clientName: 'Hombria Global', projectName: 'Amazon & Quick Commerce Scaling', code: 'PRJ-501', stage: 'Execution', progress: 80, note: 'A+ content live; PPC ROAS at 3.4x.' }
+      ],
+      portfolio: [
+        { id: 'PF-1', title: 'Global Marketplace Launch & Packaging', client: 'D2C Brand', category: 'E-Commerce', result: '+210% Revenue Growth', media: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80', desc: 'Full storefront revamp and international ad scaling.' }
+      ],
+      team: [
+        { id: 'TM-1', name: 'Jenish Kamli', designation: 'Founder & Managing Partner', group: 'Partner', photo: '', bio: 'E-Commerce Operations & Global Growth Strategy.' }
+      ],
+      reviews: []
+    };
+
+    function getDB() {
+      const s = localStorage.getItem(DB_KEY);
+      if (!s) { localStorage.setItem(DB_KEY, JSON.stringify(defaultData)); return defaultData; }
+      return { ...defaultData, ...JSON.parse(s) };
     }
-    function switchTab(id) {
-      document.querySelectorAll('.adm-pane').forEach(p => p.classList.add('hidden'));
-      document.getElementById(id).classList.remove('hidden');
+
+    function navigatePage(key) {
+      document.querySelectorAll('.page-view').forEach(p => p.classList.add('hidden'));
+      document.getElementById('page-' + key).classList.remove('hidden');
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('bg-indigo-600', 'text-white'));
+      const btn = document.getElementById('nav-btn-' + key);
+      if (btn) btn.classList.add('bg-indigo-600', 'text-white');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-    function populateAdmin() {
+
+    function formatPrice(item) {
       const db = getDB();
-      if(!db.brand) return;
-      document.getElementById('b-name').value = db.brand.name;
-      document.getElementById('b-tag').value = db.brand.tagline;
-      document.getElementById('b-dom').value = db.brand.domain;
-      document.getElementById('b-phone').value = db.brand.phone;
-      document.getElementById('b-email').value = db.brand.email;
-      document.getElementById('b-usd').value = db.brand.usdRate || 83;
-      document.getElementById('ab-title').value = db.about.title;
-      document.getElementById('ab-story').value = db.about.story;
-      renderAdmin();
+      const rate = Number(db.brand.usdRate || 83);
+      if (currentCurrency === 'USD') {
+        const usd = item.priceUSD || Math.round((item.priceINR || 0) / rate);
+        return `$${usd}`;
+      }
+      return `₹${Number(item.priceINR || 0).toLocaleString('en-IN')}`;
     }
-    function saveBrand(e) {
-      e.preventDefault();
-      const db = getDB();
-      db.brand.name = document.getElementById('b-name').value;
-      db.brand.tagline = document.getElementById('b-tag').value;
-      db.brand.domain = document.getElementById('b-dom').value;
-      db.brand.phone = document.getElementById('b-phone').value;
-      db.brand.email = document.getElementById('b-email').value;
-      db.brand.usdRate = Number(document.getElementById('b-usd').value || 83);
-      saveDB(db); alert('Saved!');
+
+    function switchCurrency(curr) {
+      currentCurrency = curr;
+      renderWebsite();
     }
-    function addService(e) {
-      e.preventDefault();
+
+    function renderWebsite() {
       const db = getDB();
-      db.services.push({
-        id: 'S-' + Date.now(),
-        title: document.getElementById('s-title').value,
-        category: document.getElementById('s-cat').value,
-        priceINR: Number(document.getElementById('s-inr').value),
-        priceUSD: Number(document.getElementById('s-usd').value),
-        billing: 'Monthly',
-        summary: document.getElementById('s-summary').value,
-        subservices: document.getElementById('s-subs').value.split(',').map(x=>x.trim()).filter(Boolean)
-      });
-      saveDB(db); e.target.reset();
-    }
-    function addProject(e) {
-      e.preventDefault();
-      const db = getDB();
-      db.projects.unshift({
-        id: 'P-' + Date.now(),
-        clientName: document.getElementById('p-client').value,
-        projectName: document.getElementById('p-name').value,
-        code: document.getElementById('p-code').value || 'PRJ-100',
-        stage: document.getElementById('p-stage').value,
-        progress: Number(document.getElementById('p-prog').value),
-        note: document.getElementById('p-note').value
-      });
-      saveDB(db); e.target.reset();
-    }
-    function updateProjProg(id, val) {
-      const db = getDB();
-      const p = db.projects.find(x => x.id === id);
-      if(p) { p.progress = Number(val); if(p.progress===100) p.stage='Completed'; saveDB(db); }
-    }
-    function addPortfolio(e) {
-      e.preventDefault();
-      const db = getDB();
-      db.portfolio.unshift({
-        id: 'PF-' + Date.now(),
-        title: document.getElementById('pf-title').value,
-        client: document.getElementById('pf-client').value,
-        category: document.getElementById('pf-cat').value,
-        result: document.getElementById('pf-res').value,
-        media: document.getElementById('pf-img').value,
-        desc: document.getElementById('pf-desc').value
-      });
-      saveDB(db); e.target.reset();
-    }
-    function saveAbout(e) {
-      e.preventDefault();
-      const db = getDB();
-      db.about.title = document.getElementById('ab-title').value;
-      db.about.story = document.getElementById('ab-story').value;
-      saveDB(db); alert('About Saved!');
-    }
-    function addTeam(e) {
-      e.preventDefault();
-      const db = getDB();
-      db.team.push({
-        id: 'TM-' + Date.now(),
-        name: document.getElementById('tm-name').value,
-        designation: document.getElementById('tm-des').value,
-        group: document.getElementById('tm-grp').value,
-        photo: document.getElementById('tm-photo').value
-      });
-      saveDB(db); e.target.reset();
-    }
-    function removeItem(col, id) {
-      const db = getDB();
-      db[col] = db[col].filter(x => x.id !== id);
-      saveDB(db);
-    }
-    function renderAdmin() {
-      const db = getDB();
-      document.getElementById('adm-services-list').innerHTML = (db.services||[]).map(s=>`
-        <div class="p-3 rounded-xl bg-[#09090b] flex justify-between items-center text-xs">
-          <div><strong>${s.title}</strong> (₹${s.priceINR} / $${s.priceUSD})</div>
-          <button onclick="removeItem('services','${s.id}')" class="text-rose-400 font-bold">Delete</button>
+      document.getElementById('nav-brand-name').innerText = db.brand.name;
+      document.getElementById('nav-brand-tagline').innerText = db.brand.tagline;
+      document.getElementById('footer-brand').innerText = db.brand.name;
+      document.getElementById('footer-domain').innerText = db.brand.domain;
+      document.getElementById('footer-contacts').innerHTML = `<span>📞 ${db.brand.phone}</span><span>✉️ ${db.brand.email}</span>`;
+
+      // Services Grid
+      const sGrid = document.getElementById('services-grid');
+      sGrid.innerHTML = (db.services || []).map(s => `
+        <div onclick="openServiceModal('${s.id}')" class="bento-card rounded-3xl p-6 flex flex-col justify-between cursor-pointer">
+          <div>
+            <span class="px-3 py-1 rounded-full text-[11px] font-extrabold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">${s.category}</span>
+            <h3 class="text-xl font-bold text-white mt-3">${s.title}</h3>
+            <p class="text-xs text-zinc-400 mt-2">${s.summary}</p>
+            <div class="text-2xl font-extrabold text-emerald-400 mt-4">${formatPrice(s)} <span class="text-xs text-zinc-500 font-normal">(${s.billing})</span></div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-[#27272a] flex items-center justify-between text-xs font-bold text-indigo-400">
+            <span>Inspect Sub-Services & Add →</span>
+          </div>
         </div>
       `).join('');
-      document.getElementById('adm-projects-list').innerHTML = (db.projects||[]).map(p=>`
-        <div class="p-3 rounded-xl bg-[#09090b] flex items-center justify-between gap-4 text-xs">
-          <div><strong>${p.clientName}</strong> — ${p.projectName}</div>
-          <div class="flex items-center gap-2"><input type="range" min="0" max="100" value="${p.progress}" onchange="updateProjProg('${p.id}',this.value)"><span class="text-emerald-400 font-bold">${p.progress}%</span><button onclick="removeItem('projects','${p.id}')" class="text-rose-400">Del</button></div>
+
+      // Portfolio
+      document.getElementById('portfolio-grid').innerHTML = (db.portfolio || []).map(pf => `
+        <div class="bento-card rounded-3xl overflow-hidden flex flex-col">
+          <div class="h-48 bg-zinc-900 relative">
+            <img src="${pf.media}" class="w-full h-full object-cover" />
+            <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[11px] font-bold bg-black/80 text-purple-300">${pf.category}</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="text-xs text-zinc-400 font-bold">Client: ${pf.client}</div>
+              <h3 class="text-lg font-bold text-white mt-1">${pf.title}</h3>
+              <p class="text-xs text-zinc-300 mt-2">${pf.desc}</p>
+            </div>
+            ${pf.result ? `<div class="mt-4 pt-3 border-t border-[#27272a] text-xs font-extrabold text-emerald-400">📈 ${pf.result}</div>` : ''}
+          </div>
         </div>
       `).join('');
-      document.getElementById('adm-portfolio-list').innerHTML = (db.portfolio||[]).map(pf=>`
-        <div class="p-3 rounded-xl bg-[#09090b] flex justify-between items-center text-xs">
-          <div><strong>${pf.title}</strong> (${pf.client})</div>
-          <button onclick="removeItem('portfolio','${pf.id}')" class="text-rose-400">Delete</button>
+
+      // About & Team
+      document.getElementById('about-title').innerText = db.about.title;
+      document.getElementById('about-story').innerText = db.about.story;
+      document.getElementById('about-mission').innerText = db.about.mission;
+      document.getElementById('about-vision').innerText = db.about.vision;
+
+      const partners = (db.team || []).filter(t => t.group === 'Partner');
+      const staff = (db.team || []).filter(t => t.group !== 'Partner');
+
+      document.getElementById('partners-grid').innerHTML = partners.map(p => `
+        <div class="bento-card rounded-2xl p-5 flex items-center gap-4">
+          <img src="${p.photo || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(p.name) + '&background=4f46e5&color=fff'}" class="w-16 h-16 rounded-2xl object-cover shrink-0" />
+          <div>
+            <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-amber-400/20 text-amber-300">Partner</span>
+            <h4 class="text-base font-bold text-white mt-1">${p.name}</h4>
+            <p class="text-xs text-indigo-300">${p.designation}</p>
+          </div>
         </div>
       `).join('');
-      document.getElementById('adm-team-list').innerHTML = (db.team||[]).map(t=>`
-        <div class="p-3 rounded-xl bg-[#09090b] flex justify-between items-center text-xs">
-          <div><strong>${t.name}</strong> [${t.group}]</div>
-          <button onclick="removeItem('team','${t.id}')" class="text-rose-400">Remove</button>
+
+      document.getElementById('staff-grid').innerHTML = staff.map(m => `
+        <div class="bento-card rounded-2xl p-4 text-center">
+          <img src="${m.photo || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(m.name) + '&background=1e293b&color=fff'}" class="w-14 h-14 rounded-full mx-auto object-cover mb-2" />
+          <h4 class="text-sm font-bold text-white">${m.name}</h4>
+          <p class="text-xs text-zinc-400">${m.designation}</p>
+        </div>
+      `).join('');
+
+      document.getElementById('contact-info-box').innerHTML = `
+        <div class="bento-card rounded-2xl p-4"><strong>Direct Email:</strong><br>${db.brand.email}</div>
+        <div class="bento-card rounded-2xl p-4"><strong>WhatsApp / Phone:</strong><br>${db.brand.phone}</div>
+      `;
+
+      renderTracker();
+      renderCartList();
+    }
+
+    // Modal Service Inspection
+    function openServiceModal(id) {
+      const db = getDB();
+      activeModalService = db.services.find(s => s.id === id);
+      if (!activeModalService) return;
+
+      document.getElementById('modal-category').innerText = activeModalService.category;
+      document.getElementById('modal-title').innerText = activeModalService.title;
+      document.getElementById('modal-price').innerText = formatPrice(activeModalService) + ' (' + activeModalService.billing + ')';
+
+      const list = document.getElementById('modal-subservices-list');
+      list.innerHTML = (activeModalService.subservices || []).map(sub => `
+        <div class="p-3 rounded-xl bg-[#09090b] border border-[#27272a] text-xs text-zinc-200 flex items-center gap-2">
+          <span class="text-emerald-400 font-bold">✔</span> <span>${sub}</span>
+        </div>
+      `).join('');
+
+      const m = document.getElementById('service-modal');
+      m.classList.remove('hidden'); m.classList.add('flex');
+    }
+
+    function closeServiceModal() {
+      const m = document.getElementById('service-modal');
+      m.classList.add('hidden'); m.classList.remove('flex');
+    }
+
+    function addModalServiceToCart() {
+      if (!activeModalService) return;
+      if (!cart.some(i => i.id === activeModalService.id)) {
+        cart.push(activeModalService);
+      }
+      document.getElementById('cart-badge').innerText = cart.length;
+      closeServiceModal();
+      toggleCartModal();
+    }
+
+    function toggleCartModal() {
+      const m = document.getElementById('cart-modal');
+      m.classList.toggle('hidden'); m.classList.toggle('flex');
+      renderCartList();
+    }
+
+    function renderCartList() {
+      const box = document.getElementById('cart-modal-items');
+      const boxPage = document.getElementById('cart-page-items');
+      if (cart.length === 0) {
+        const emptyHtml = `<div class="text-center py-6 text-zinc-500 text-xs">Your quotation cart is empty.</div>`;
+        if (box) box.innerHTML = emptyHtml;
+        if (boxPage) boxPage.innerHTML = emptyHtml;
+        document.getElementById('cart-modal-total').innerText = currentCurrency === 'USD' ? '$0' : '₹0';
+        document.getElementById('cart-page-total').innerText = currentCurrency === 'USD' ? '$0' : '₹0';
+        return;
+      }
+
+      const totalVal = cart.reduce((sum, i) => sum + Number(currentCurrency === 'USD' ? (i.priceUSD || 100) : i.priceINR), 0);
+      const totalStr = currentCurrency === 'USD' ? `$${totalVal}` : `₹${totalVal.toLocaleString('en-IN')}`;
+
+      const html = cart.map(item => `
+        <div class="flex items-center justify-between p-3 rounded-xl bg-[#09090b] border border-[#27272a]">
+          <div>
+            <div class="font-bold text-xs text-white">${item.title}</div>
+            <div class="text-[10px] text-zinc-400">${item.billing}</div>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="font-extrabold text-emerald-400 text-xs">${formatPrice(item)}</span>
+            <button onclick="removeFromCart('${item.id}')" class="text-rose-400 text-xs font-bold">✕</button>
+          </div>
+        </div>
+      `).join('');
+
+      if (box) box.innerHTML = html;
+      if (boxPage) boxPage.innerHTML = html;
+      document.getElementById('cart-modal-total').innerText = totalStr;
+      document.getElementById('cart-page-total').innerText = totalStr;
+    }
+
+    function removeFromCart(id) {
+      cart = cart.filter(i => i.id !== id);
+      document.getElementById('cart-badge').innerText = cart.length;
+      renderCartList();
+    }
+
+    function renderTracker() {
+      const db = getDB();
+      const q = (document.getElementById('tracker-search')?.value || '').toLowerCase();
+      const list = (db.projects || []).filter(p => p.clientName.toLowerCase().includes(q) || p.projectName.toLowerCase().includes(q));
+      const grid = document.getElementById('tracker-grid');
+      if (list.length === 0) {
+        grid.innerHTML = `<div class="col-span-full text-center py-6 text-zinc-500 text-xs">No matching projects found.</div>`;
+        return;
+      }
+      grid.innerHTML = list.map(p => `
+        <div class="bento-card rounded-2xl p-5">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-extrabold text-indigo-400 uppercase">${p.code}</span>
+              <h4 class="text-base font-bold text-white">${p.clientName} — ${p.projectName}</h4>
+            </div>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">${p.stage}</span>
+          </div>
+          <p class="text-xs text-zinc-400 mt-2">${p.note || ''}</p>
+          <div class="mt-4">
+            <div class="flex justify-between text-xs font-bold mb-1">
+              <span class="text-zinc-400">Completion</span>
+              <span class="text-emerald-400">${p.progress}%</span>
+            </div>
+            <div class="w-full h-2.5 rounded-full bg-[#09090b] overflow-hidden border border-[#27272a]">
+              <div class="h-full bg-gradient-to-r from-indigo-500 to-emerald-400 transition-all duration-500" style="width:${p.progress}%"></div>
+            </div>
+          </div>
         </div>
       `).join('');
     }
-    function loadSampleData() {
-      localStorage.setItem(DB_KEY, JSON.stringify({
-        brand: { name: 'OG Dask', tagline: 'Global Digital Agency', domain: 'ogdask.com', phone: '+91 98765 43210', email: 'hello@ogdask.com', usdRate: 83 },
-        seo: { title: 'Global Agency', desc: '', keys: '' },
-        about: { title: 'Built by Operators', story: 'We scale brands globally.', mission: '', vision: '' },
-        services: [
-          { id: 'S-1', title: 'Complete Marketplace Management', category: 'E-Commerce', priceINR: 15000, priceUSD: 180, billing: 'Monthly', summary: 'End-to-end Amazon & Flipkart scaling.', subservices: ['A+ Content', 'PPC Ads', 'Listing SEO'] }
-        ],
-        projects: [{ id: 'P-1', clientName: 'Hombria', projectName: 'Scaling', code: 'PRJ-101', stage: 'Execution', progress: 70, note: 'Live' }],
-        portfolio: [{ id: 'PF-1', title: 'Launch', client: 'Brand', category: 'E-Commerce', result: '+200%', media: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80', desc: 'Scaling.' }],
-        team: [{ id: 'TM-1', name: 'Jenish Kamli', designation: 'Founder', group: 'Partner', photo: '', bio: '' }],
-        reviews: []
-      }));
-      populateAdmin(); alert('Demo data loaded!');
+
+    function generatePDFQuotation(e) {
+      e.preventDefault();
+      if (cart.length === 0) { alert('Cart is empty!'); return; }
+      const db = getDB();
+      const name = document.getElementById('qt-name').value.trim();
+      const brand = document.getElementById('qt-brand').value.trim();
+      const phone = document.getElementById('qt-phone').value.trim();
+      const qNo = 'QT-' + Math.floor(100000 + Math.random() * 900000);
+
+      document.getElementById('pdf-bname').innerText = db.brand.name;
+      document.getElementById('pdf-btag').innerText = db.brand.tagline;
+      document.getElementById('pdf-bcontact').innerText = `${db.brand.phone} | ${db.brand.email}`;
+      document.getElementById('pdf-qno').innerText = `Proposal #: ${qNo}`;
+      document.getElementById('pdf-date').innerText = `Date: ${new Date().toLocaleDateString()}`;
+      document.getElementById('pdf-client').innerText = `${name} (${brand}) [Phone: ${phone}]`;
+
+      const totalVal = cart.reduce((sum, i) => sum + Number(currentCurrency === 'USD' ? (i.priceUSD || 100) : i.priceINR), 0);
+      const currSymbol = currentCurrency === 'USD' ? '$' : '₹';
+
+      document.getElementById('pdf-tbody').innerHTML = cart.map((item, idx) => `
+        <tr style="border-bottom:1px solid #e2e8f0;">
+          <td style="padding:10px;">${idx + 1}</td>
+          <td style="padding:10px;"><strong>${item.title}</strong><br><span style="font-size:10px;color:#64748b;">${(item.subservices||[]).join(', ')}</span></td>
+          <td style="padding:10px;">${item.billing}</td>
+          <td style="padding:10px;text-align:right;font-weight:700;">${currSymbol}${currentCurrency === 'USD' ? (item.priceUSD || 100) : item.priceINR}</td>
+        </tr>
+      `).join('');
+
+      document.getElementById('pdf-grand').innerText = `${currSymbol}${totalVal}`;
+
+      html2pdf().set({
+        margin: 0.3,
+        filename: `${brand.replace(/\s+/g, '_')}_Proposal_${qNo}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+      }).from(document.getElementById('pdf-sheet')).save();
     }
+
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      alert('✅ Message sent successfully! Our global desk will contact you shortly.');
+      e.target.reset();
+    }
+
+    window.addEventListener('DOMContentLoaded', renderWebsite);
   </script>
 </body>
 </html>
