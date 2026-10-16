@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="meta-title">YOUR AGENCY | Digital Growth & E-Commerce Partner</title>
+  <meta name="description" id="meta-desc" content="Full-service digital agency for e-commerce management, quick commerce onboarding, branding, and custom web solutions." />
+  <meta name="keywords" id="meta-keywords" content="digital agency, ecommerce management, quick commerce onboarding, branding, web design" />
+  <meta property="og:title" id="og-title" content="YOUR AGENCY | Digital Growth Partner" />
+  <meta property="og:description" id="og-desc" content="Build instant quotations, track live project status, and explore our portfolio." />
+
+  <!-- Auto-Generated Google SEO Schema (JSON-LD) -->
+  <script type="application/ld+json" id="seo-json-ld"></script>
+
+  <!-- Tailwind CSS & HTML2PDF Engine -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+      --glass-border: rgba(255, 255, 255, 0.12);
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #05070e;
+      color: #f8fafc;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, .brand-font {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    /* Animated Dark Liquid-Glass Ambient Background */
+    .liquid-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: #05070e;
+      overflow: hidden;
+    }
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.35;
+      animation: floatBlob 18s infinite alternate ease-in-out;
+    }
+    .blob-1 { width: 480px; height: 480px; background: #4f46e5; top: -10%; left: -5%; }
+    .blob-2 { width: 420px; height: 420px; background: #10b981; bottom: 5%; right: -5%; animation-delay: -6s; }
+    .blob-3 { width: 360px; height: 360px; background: #9333ea; top: 40%; left: 35%; animation-delay: -11s; }
+
+    @keyframes floatBlob {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(40px, -35px) scale(1.12); }
+    }
+
+    /* Liquid Glass Surface */
+    .liquid-glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.55), inset 0 1px 0 0 rgba(255, 255, 255, 0.18);
+    }
+    .liquid-card {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.06) 0%, rgba(15, 23, 42, 0.45) 100%);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .liquid-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(99, 102, 241, 0.55);
+      box-shadow: 0 20px 45px -10px rgba(79, 70, 229, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    }
+    .input-glass {
+      background: rgba(10, 15, 29, 0.85) !important;
+      border: 1px solid rgba(255, 255, 255, 0.15) !important;
+      color: #ffffff !important;
+    }
+    .input-glass:focus {
+      border-color: #6366f1 !important;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+    }
+    .progress-glow {
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.65);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-indigo-500 selection:text-white">
+
+  <!-- Ambient Liquid Background -->
+  <div class="liquid-bg">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- VIEW 1: PUBLIC MULTI-PAGE WEBSITE                                     -->
+  <!-- ===================================================================== -->
+  <div id="public-website-view" class="flex-1 flex flex-col">
+
+    <!-- STICKY LIQUID-GLASS NAVBAR -->
+    <header class="sticky top-0 z-40 px-4 py-3.5">
+      <nav class="max-w-7xl mx-auto liquid-glass rounded-2xl px-5 py-3 flex items-center justify-between gap-4">
+        <!-- Dynamic Brand Logo & Name Placeholder -->
+        <button onclick="navigatePage('home')" class="flex items-center gap-3 text-left group">
+          <div id="nav-logo-box" class="w-11 h-11 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-emerald-400 flex items-center justify-center font-extrabold text-lg text-white shadow-lg overflow-hidden">
+            AG
+          </div>
+          <div>
+            <span id="nav-brand-name" class="brand-font font-bold text-xl tracking-tight text-white group-hover:text-indigo-300 transition">YOUR AGENCY</span>
+            <span id="nav-brand-tagline" class="block text-[11px] text-slate-400">Digital Growth Partner</span>
+          </div>
+        </button>
+
+        <!-- Multi-Page Navigation Links -->
+        <div class="hidden lg:flex items-center gap-1.5 bg-slate-950/50 p-1.5 rounded-xl border border-white/10">
+          <button onclick="navigatePage('home')" id="nav-btn-home" class="page-nav-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-indigo-600 text-white transition">Home</button>
+          <button onclick="navigatePage('services')" id="nav-btn-services" class="page-nav-btn px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-300 hover:text-white transition">Services & Quote</button>
+          <button onclick="navigatePage('tracker')" id="nav-btn-tracker" class="page-nav-btn px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-300 hover:text-white transition">Client Tracker</button>
+          <button onclick="navigatePage('portfolio')" id="nav-btn-portfolio" class="page-nav-btn px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-300 hover:text-white transition">Portfolio & Reels</button>
+          <button onclick="navigatePage('about')" id="nav-btn-about" class="page-nav-btn px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-300 hover:text-white transition">About & Team</button>
+          <button onclick="navigatePage('reviews')" id="nav-btn-reviews" class="page-nav-btn px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-300 hover:text-white transition">Reviews</button>
+        </div>
+
+        <!-- Action Buttons: Cart & Admin Backend -->
+        <div class="flex items-center gap-2.5">
+          <button onclick="toggleCartModal()" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white text-xs md:text-sm font-bold flex items-center gap-2 shadow-lg shadow-indigo-600/30 transition">
+            <span>🛒 Quote Cart</span>
+            <span id="cart-badge" class="px-2 py-0.5 text-xs rounded-full bg-white text-indigo-950 font-extrabold">0</span>
+          </button>
+
+          <button onclick="openAdminView()" class="px-3.5 py-2.5 rounded-xl liquid-glass hover:border-indigo-400 text-slate-200 text-xs font-bold transition" title="Open Backend CMS">
+            🔒 Admin
+          </button>
+        </div>
+      </nav>
+
+      <!-- Mobile Navigation Bar -->
+      <div class="flex lg:hidden overflow-x-auto gap-2 max-w-7xl mx-auto mt-2 pb-1">
+        <button onclick="navigatePage('home')" class="px-3 py-1.5 rounded-lg liquid-glass text-xs font-bold whitespace-nowrap">Home</button>
+        <button onclick="navigatePage('services')" class="px-3 py-1.5 rounded-lg liquid-glass text-xs font-bold whitespace-nowrap">Services & Cart</button>
+        <button onclick="navigatePage('tracker')" class="px-3 py-1.5 rounded-lg liquid-glass text-xs font-bold whitespace-nowrap">Live Tracker</button>
+        <button onclick="navigatePage('portfolio')" class="px-3 py-1.5 rounded-lg liquid-glass text-xs font-bold whitespace-nowrap">Portfolio</button>
+        <button onclick="navigatePage('about')" class="px-3 py-1.5 rounded-lg liquid-glass text-xs font-bold whitespace-nowrap">About & Team</button>
+        <button onclick="navigatePage('reviews')" class="px-3 py-1.5 rounded-lg liquid-glass text-xs font-bold whitespace-nowrap">Reviews</button>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-8 space-y-20">
+
+      <!-- ==================== HERO SECTION (HOME) ==================== -->
+      <section id="sec-home" class="page-section pt-6 text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full liquid-glass text-xs font-bold text-indigo-300 mb-6">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span id="hero-badge">100% Dynamic Agency Portal & Instant Quotation Builder</span>
+        </div>
+
+        <h1 id="hero-title" class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-[1.12]">
+          Scale Your Brand Across Every Digital Marketplace.
+        </h1>
+
+        <p id="hero-subtitle" class="mt-5 text-slate-300 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
+          Build your custom service package and download an instant official PDF quotation, explore our latest client reels, or track your live project completion status.
+        </p>
+
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <button onclick="navigatePage('services')" class="px-7 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 via-purple-600 to-emerald-500 hover:opacity-95 text-white font-extrabold text-sm shadow-xl shadow-indigo-600/30 transition">
+            ⚡ Build Instant Quotation
+          </button>
+          <button onclick="navigatePage('tracker')" class="px-7 py-4 rounded-2xl liquid-glass hover:border-emerald-400/60 text-slate-100 font-bold text-sm transition">
+            📊 Track Live Project Status
+          </button>
+          <button onclick="navigatePage('about')" class="px-6 py-4 rounded-2xl liquid-glass hover:border-indigo-400/60 text-slate-200 font-bold text-sm transition">
+            👥 Meet Our Team
+          </button>
+        </div>
+
+        <!-- Live Agency Counters -->
+        <div class="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+          <div class="liquid-card rounded-2xl p-5">
+            <div id="stat-1-num" class="text-2xl md:text-3xl font-extrabold text-white">50+</div>
+            <div id="stat-1-txt" class="text-xs text-slate-400 mt-1">Brands Scaled</div>
+          </div>
+          <div class="liquid-card rounded-2xl p-5">
+            <div id="stat-2-num" class="text-2xl md:text-3xl font-extrabold text-emerald-400">200+</div>
+            <div id="stat-2-txt" class="text-xs text-slate-400 mt-1">Projects Delivered</div>
+          </div>
+          <div class="liquid-card rounded-2xl p-5">
+            <div id="stat-avg-rating" class="text-2xl md:text-3xl font-extrabold text-amber-400">5.0 ★</div>
+            <div class="text-xs text-slate-400 mt-1">Client Satisfaction</div>
+          </div>
+          <div class="liquid-card rounded-2xl p-5">
+            <div id="stat-3-num" class="text-2xl md:text-3xl font-extrabold text-indigo-400">100%</div>
+            <div id="stat-3-txt" class="text-xs text-slate-400 mt-1">Live Transparency</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SERVICES & AUTO-QUOTE CART ==================== -->
+      <section id="sec-services" class="page-section">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+          <div>
+            <span class="text-xs font-extrabold uppercase tracking-wider text-indigo-400">Self-Serve Package Builder</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mt-1">Select Services & Generate Quote</h2>
+            <p class="text-sm text-slate-400 mt-1">Add the services you need to your cart and download an instant customized PDF quotation.</p>
+          </div>
+          <div id="service-category-pills" class="flex flex-wrap gap-2"></div>
+        </div>
+
+        <div id="services-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      </section>
+
+      <!-- ==================== LIVE CLIENT WORK TRACKER ==================== -->
+      <section id="sec-tracker" class="page-section">
+        <div class="liquid-glass rounded-3xl p-6 md:p-10">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+            <div>
+              <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-400">Real-Time Client Portal</span>
+              <h2 class="text-3xl font-bold text-white mt-1">Live Client Work Status (0% – 100%)</h2>
+              <p class="text-sm text-slate-400 mt-1">Search your brand or project ID to view real-time completion progress updated from our backend.</p>
+            </div>
+            <div class="w-full md:w-80">
+              <input type="text" id="tracker-search-input" oninput="renderPublicTracker()" placeholder="🔍 Search Client, Brand or ID..." class="w-full px-4 py-3 rounded-xl input-glass text-sm" />
+            </div>
+          </div>
+
+          <div id="tracker-container" class="grid grid-cols-1 md:grid-cols-2 gap-5"></div>
+        </div>
+      </section>
+
+      <!-- ==================== PORTFOLIO & REELS ==================== -->
+      <section id="sec-portfolio" class="page-section">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+          <div>
+            <span class="text-xs font-extrabold uppercase tracking-wider text-purple-400">Featured Work & Showreel</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mt-1">Client Portfolio & Reels</h2>
+            <p class="text-sm text-slate-400 mt-1">Recent case studies, creative shoots, marketplace growth results, and campaigns.</p>
+          </div>
+        </div>
+
+        <div id="portfolio-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      </section>
+
+      <!-- ==================== DEDICATED ABOUT US, PARTNERS & STAFF PAGE ==================== -->
+      <section id="sec-about" class="page-section">
+        <div class="liquid-glass rounded-3xl p-6 md:p-12 space-y-12">
+          <!-- Agency Story & Mission/Vision -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+            <div class="lg:col-span-2">
+              <span class="text-xs font-extrabold uppercase tracking-wider text-indigo-400">About Our Agency</span>
+              <h2 id="about-title-display" class="text-3xl md:text-4xl font-bold text-white mt-1">Built by Operators, Driven by Measurable Growth.</h2>
+              <p id="about-story-display" class="text-slate-300 mt-4 leading-relaxed text-sm md:text-base whitespace-pre-line"></p>
+            </div>
+            <div class="space-y-4">
+              <div class="liquid-card rounded-2xl p-5">
+                <div class="text-xs font-extrabold uppercase text-emerald-400">Our Mission</div>
+                <p id="about-mission-display" class="text-xs md:text-sm text-slate-300 mt-2 leading-relaxed"></p>
+              </div>
+              <div class="liquid-card rounded-2xl p-5">
+                <div class="text-xs font-extrabold uppercase text-purple-400">Our Vision</div>
+                <p id="about-vision-display" class="text-xs md:text-sm text-slate-300 mt-2 leading-relaxed"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Founders & Partners Directory -->
+          <div>
+            <div class="flex items-center gap-3 mb-6">
+              <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-amber-500/20 text-amber-300 border border-amber-400/30">Leadership</span>
+              <h3 class="text-2xl font-bold text-white">Founders & Managing Partners</h3>
+            </div>
+            <div id="partners-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+          </div>
+
+          <!-- Employees / Core Team Directory -->
+          <div>
+            <div class="flex items-center gap-3 mb-6">
+              <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-indigo-500/20 text-indigo-300 border border-indigo-400/30">Our Team</span>
+              <h3 class="text-2xl font-bold text-white">Core Team & Specialists</h3>
+            </div>
+            <div id="staff-container" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== CLIENT 5-STAR REVIEWS & FEEDBACK ==================== -->
+      <section id="sec-reviews" class="page-section">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+          <div>
+            <span class="text-xs font-extrabold uppercase tracking-wider text-amber-400">Verified Client Feedback</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mt-1">Client Ratings & Testimonials</h2>
+            <p class="text-sm text-slate-400 mt-1">Worked with us? Share your rating and experience directly below.</p>
+          </div>
+          <button onclick="toggleReviewModal()" class="px-6 py-3.5 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs md:text-sm shadow-lg shadow-amber-500/20 transition self-start md:self-auto">
+            ★ Give Feedback / Rate Us
+          </button>
+        </div>
+
+        <div id="reviews-container" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="mt-20 border-t border-white/10 py-10 px-4 bg-slate-950/60">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-xs md:text-sm text-slate-400">
+        <div>
+          <strong id="footer-brand-name" class="text-white font-bold">YOUR AGENCY</strong> — <span id="footer-domain">yourdomain.com</span>
+          <p id="footer-tagline" class="text-xs text-slate-500 mt-1">All rights reserved.</p>
+        </div>
+        <div id="footer-contact-info" class="flex flex-wrap gap-5"></div>
+        <button onclick="openAdminView()" class="px-4 py-2 rounded-xl liquid-glass text-indigo-300 hover:text-white font-bold text-xs">
+          ⚙️ Employee / Owner Backend Login →
+        </button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- VIEW 2: FULL NO-CODE ADMIN BACKEND DASHBOARD                          -->
+  <!-- ===================================================================== -->
+  <div id="admin-backend-view" class="hidden min-h-screen flex-col">
+
+    <!-- Admin Login Gate -->
+    <div id="admin-login-gate" class="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-xl flex items-center justify-center p-4">
+      <div class="liquid-glass rounded-3xl max-w-md w-full p-8 text-center">
+        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 mx-auto flex items-center justify-center text-2xl mb-4 shadow-lg">🔐</div>
+        <h2 class="text-2xl font-bold text-white">Agency Backend Login</h2>
+        <p class="text-xs text-slate-400 mt-1">Default Password: <code class="text-emerald-400 font-bold">admin123</code> (Can be changed inside settings)</p>
+
+        <form onsubmit="verifyAdminLogin(event)" class="mt-6 space-y-4">
+          <input type="password" id="admin-pass-input" required placeholder="Enter Admin Password..." class="w-full px-4 py-3.5 rounded-xl input-glass text-sm text-center" />
+          <div class="flex gap-3">
+            <button type="button" onclick="closeAdminView()" class="w-1/3 py-3 rounded-xl liquid-glass text-xs font-bold text-slate-300">← Back</button>
+            <button type="submit" class="w-2/3 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-sm">Unlock Backend</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Main Admin Control Panel -->
+    <div class="max-w-7xl w-full mx-auto px-4 py-6 space-y-6">
+      <!-- Top Admin Bar -->
+      <div class="liquid-glass rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <span class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-400">No-Code Control Center</span>
+          <h1 class="text-xl font-bold text-white">⚡ Agency Backend CMS Dashboard</h1>
+        </div>
+        <div class="flex flex-wrap items-center gap-2.5">
+          <button onclick="seedSampleAgencyData()" class="px-3.5 py-2 rounded-xl bg-amber-500/20 border border-amber-400/40 text-amber-300 text-xs font-bold hover:bg-amber-500/30">
+            ✨ Load Demo Data
+          </button>
+          <button onclick="exportDatabaseJSON()" class="px-3.5 py-2 rounded-xl liquid-glass text-xs font-bold text-slate-200 hover:border-indigo-400">
+            ⬇️ Backup Data
+          </button>
+          <button onclick="closeAdminView()" class="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold">
+            🌐 Back to Live Website ↗
+          </button>
+        </div>
+      </div>
+
+      <!-- Admin Navigation Tabs -->
+      <div class="flex flex-wrap gap-2">
+        <button onclick="switchAdminTab('adm-brand')" class="adm-tab-btn px-4 py-2.5 rounded-xl text-xs font-bold bg-indigo-600 text-white">1. Brand, Domain & SEO</button>
+        <button onclick="switchAdminTab('adm-services')" class="adm-tab-btn px-4 py-2.5 rounded-xl text-xs font-bold liquid-glass text-slate-300">2. Services & Cart Pricing</button>
+        <button onclick="switchAdminTab('adm-tracker')" class="adm-tab-btn px-4 py-2.5 rounded-xl text-xs font-bold liquid-glass text-slate-300">3. Client Work Tracker (0-100%)</button>
+        <button onclick="switchAdminTab('adm-portfolio')" class="adm-tab-btn px-4 py-2.5 rounded-xl text-xs font-bold liquid-glass text-slate-300">4. Portfolio & Reels Upload</button>
+        <button onclick="switchAdminTab('adm-about')" class="adm-tab-btn px-4 py-2.5 rounded-xl text-xs font-bold liquid-glass text-slate-300">5. About Page, Partners & Staff</button>
+        <button onclick="switchAdminTab('adm-leads')" class="adm-tab-btn px-4 py-2.5 rounded-xl text-xs font-bold liquid-glass text-slate-300">6. Quotation Leads</button>
+        <button onclick="switchAdminTab('adm-reviews')" class="adm-tab-btn px-4 py-2.5 rounded-xl text-xs font-bold liquid-glass text-slate-300">7. Client Reviews</button>
+      </div>
+
+      <!-- TAB 1: BRAND PLACEHOLDERS, DOMAIN & SEO -->
+      <div id="adm-brand" class="adm-panel liquid-glass rounded-3xl p-6 space-y-6">
+        <h2 class="text-lg font-bold text-white border-b border-white/10 pb-3">1. Brand Name Placeholder, Logo, Quotation Template & Google SEO</h2>
+        <form onsubmit="saveBrandSettings(event)" class="space-y-5">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <label class="text-xs text-slate-400 block mb-1">Agency Name (Updates Everywhere)</label>
+              <input type="text" id="inp-brand-name" required class="w-full px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+            </div>
+            <div>
+              <label class="text-xs text-slate-400 block mb-1">Brand Tagline</label>
+              <input type="text" id="inp-brand-tagline" class="w-full px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+            </div>
+            <div>
+              <label class="text-xs text-slate-400 block mb-1">Available Domain Placeholder</label>
+              <input type="text" id="inp-brand-domain" placeholder="e.g. daskor.com" class="w-full px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <label class="text-xs text-slate-400 block mb-1">Upload Agency Logo (Optional)</label>
+              <input type="file" accept="image/*" onchange="handleImageUpload(this, 'inp-brand-logo')" class="w-full px-3 py-2 rounded-xl input-glass text-xs" />
+              <input type="hidden" id="inp-brand-logo" />
+            </div>
+            <div>
+              <label class="text-xs text-slate-400 block mb-1">WhatsApp / Contact Number</label>
+              <input type="text" id="inp-brand-phone" class="w-full px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+            </div>
+            <div>
+              <label class="text-xs text-slate-400 block mb-1">Official Email</label>
+              <input type="email" id="inp-brand-email" class="w-full px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="text-xs text-slate-400 block mb-1">Hero Banner Main Heading</label>
+              <input type="text" id="inp-hero-title" class="w-full px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+            </div>
+            <div>
+              <label class="text-xs text-slate-400 block mb-1">Hero Banner Subtitle</label>
+              <input type="text" id="inp-hero-sub" class="w-full px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+            </div>
+          </div>
+
+          <!-- Quotation Template Settings -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-white/10">
+            <div>
+              <label class="text-xs text-emerald-400 font-bold block mb-1">Quotation GST % (Set 0 for No GST)</label>
+              <input type="number" id="inp-quote-gst" class="w-full px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+            </div>
+            <div class="md:col-span-2">
+              <label class="text-xs text-emerald-400 font-bold block mb-1">Quotation PDF Terms & Bank/Payment Notes</label>
+              <textarea id="inp-quote-terms" rows="2" class="w-full px-3.5 py-2.5 rounded-xl input-glass text-sm"></textarea>
+            </div>
+          </div>
+
+          <!-- SEO Settings -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-white/10">
+            <div>
+              <label class="text-xs text-indigo-400 font-bold block mb-1">Google SEO Title</label>
+              <input type="text" id="inp-seo-title" class="w-full px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+            </div>
+            <div>
+              <label class="text-xs text-indigo-400 font-bold block mb-1">Google Meta Description</label>
+              <input type="text" id="inp-seo-desc" class="w-full px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+            </div>
+            <div>
+              <label class="text-xs text-indigo-400 font-bold block mb-1">SEO Target Keywords</label>
+              <input type="text" id="inp-seo-keys" class="w-full px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between gap-4 pt-2">
+            <button type="submit" class="px-7 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-sm">
+              💾 Save Brand, Quote Template & SEO
+            </button>
+            <button type="button" onclick="downloadSitemapXML()" class="px-4 py-2.5 rounded-xl liquid-glass text-xs font-bold text-emerald-300 hover:border-emerald-400">
+              🗺️ Download Auto-Generated sitemap.xml
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- TAB 2: SERVICES & PRICING MANAGER -->
+      <div id="adm-services" class="adm-panel liquid-glass rounded-3xl p-6 hidden space-y-6">
+        <h2 class="text-lg font-bold text-white border-b border-white/10 pb-3">2. Manage Services (Auto-Syncs with Website & Quotation Cart)</h2>
+        <form onsubmit="handleAddService(event)" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input type="text" id="sv-name" required placeholder="Service Title (e.g. Complete Amazon & Flipkart Management)" class="px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+          <input type="text" id="sv-category" required placeholder="Category (e.g. E-Commerce, Quick Commerce, Branding)" class="px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+          <input type="number" id="sv-price" required placeholder="Price in ₹ (e.g. 15000)" class="px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+          <select id="sv-billing" class="px-3.5 py-2.5 rounded-xl input-glass text-sm">
+            <option value="One-Time">One-Time Project</option>
+            <option value="Monthly">Monthly Retainer</option>
+          </select>
+          <input type="text" id="sv-deliverables" required placeholder="Deliverables (comma separated: Listing SEO, A+ Content, PPC Ads)" class="md:col-span-2 px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+          <button type="submit" class="md:col-span-2 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-sm">
+            + Publish Service to Website & Cart
+          </button>
+        </form>
+
+        <div id="adm-services-list" class="space-y-3 pt-4"></div>
+      </div>
+
+      <!-- TAB 3: LIVE CLIENT WORK TRACKER (0-100% SLIDER) -->
+      <div id="adm-tracker" class="adm-panel liquid-glass rounded-3xl p-6 hidden space-y-6">
+        <h2 class="text-lg font-bold text-white border-b border-white/10 pb-3">3. Live Client Work Status & Percentage Slider (0% – 100%)</h2>
+        <form onsubmit="handleAddTrackerProject(event)" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <input type="text" id="tr-client-name" required placeholder="Client / Brand Name" class="px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+          <input type="text" id="tr-project-name" required placeholder="Project Name (e.g. Blinkit & Zepto Onboarding)" class="px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+          <input type="text" id="tr-code" placeholder="Project ID (e.g. PRJ-105)" class="px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+          <select id="tr-stage" class="px-3.5 py-2.5 rounded-xl input-glass text-sm">
+            <option value="Onboarding & Docs">Onboarding & Docs</option>
+            <option value="Strategy & Audit">Strategy & Audit</option>
+            <option value="Design & Execution">Design & Execution</option>
+            <option value="Quality Review">Quality Review</option>
+            <option value="Completed">Completed</option>
+          </select>
+          <div class="flex items-center gap-3 px-3.5 py-2 rounded-xl input-glass">
+            <span class="text-xs text-slate-400">Done:</span>
+            <input type="range" id="tr-pct" min="0" max="100" value="50" oninput="document.getElementById('tr-pct-lbl').innerText=this.value+'%'" class="flex-1" />
+            <span id="tr-pct-lbl" class="text-xs font-extrabold text-emerald-400">50%</span>
+          </div>
+          <input type="text" id="tr-note" placeholder="Current update note for client..." class="px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+          <button type="submit" class="md:col-span-3 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-sm">
+            + Add Client to Live Tracker
+          </button>
+        </form>
+
+        <div id="adm-tracker-list" class="space-y-3 pt-4"></div>
+      </div>
+
+      <!-- TAB 4: PORTFOLIO & REELS MANAGER -->
+      <div id="adm-portfolio" class="adm-panel liquid-glass rounded-3xl p-6 hidden space-y-6">
+        <h2 class="text-lg font-bold text-white border-b border-white/10 pb-3">4. Upload Client Portfolio, Photos & Reels</h2>
+        <form onsubmit="handleAddPortfolio(event)" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input type="text" id="pf-title" required placeholder="Project Title (e.g. Brand Packaging & A+ Storefront)" class="px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+          <input type="text" id="pf-client" required placeholder="Client Brand Name" class="px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+          <input type="text" id="pf-category" required placeholder="Category (e.g. E-Commerce / Packaging / Video Reel)" class="px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+          <input type="text" id="pf-result" placeholder="Key Result Metric (e.g. +210% Sales in 60 Days)" class="px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+          <div>
+            <label class="text-xs text-slate-400 block mb-1">Upload Project Photo (From Phone/PC)</label>
+            <input type="file" accept="image/*" onchange="handleImageUpload(this, 'pf-img-data')" class="w-full px-3 py-2 rounded-xl input-glass text-xs" />
+          </div>
+          <div>
+            <label class="text-xs text-slate-400 block mb-1">OR Paste Image / Reel / Video Link</label>
+            <input type="text" id="pf-img-data" placeholder="https://..." class="w-full px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+          </div>
+          <textarea id="pf-desc" required rows="2" placeholder="Short description of what you delivered for this client..." class="md:col-span-2 px-3.5 py-2.5 rounded-xl input-glass text-sm"></textarea>
+          <button type="submit" class="md:col-span-2 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-extrabold text-sm">
+            📤 Upload to Portfolio Page
+          </button>
+        </form>
+
+        <div id="adm-portfolio-list" class="space-y-3 pt-4"></div>
+      </div>
+
+      <!-- TAB 5: ABOUT US, PARTNERS & EMPLOYEES MANAGER -->
+      <div id="adm-about" class="adm-panel liquid-glass rounded-3xl p-6 hidden space-y-6">
+        <h2 class="text-lg font-bold text-white border-b border-white/10 pb-3">5. Manage About Us Story, Partners & Employees (Staff)</h2>
+
+        <!-- Agency Story Form -->
+        <form onsubmit="handleSaveAboutPage(event)" class="space-y-4 border-b border-white/10 pb-6">
+          <input type="text" id="ab-title-inp" required placeholder="About Us Main Headline" class="w-full px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+          <textarea id="ab-story-inp" required rows="3" placeholder="Full story about your agency..." class="w-full px-3.5 py-2.5 rounded-xl input-glass text-sm"></textarea>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input type="text" id="ab-mission-inp" placeholder="Our Mission Statement" class="px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+            <input type="text" id="ab-vision-inp" placeholder="Our Vision Statement" class="px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+          </div>
+          <button type="submit" class="px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-extrabold">
+            💾 Save About Us Text
+          </button>
+        </form>
+
+        <!-- Add Partner / Staff Form -->
+        <h3 class="text-sm font-extrabold text-amber-400">Add Founder, Partner or Employee Card</h3>
+        <form onsubmit="handleAddTeamMember(event)" class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <input type="text" id="tm-name" required placeholder="Full Name" class="px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+          <input type="text" id="tm-designation" required placeholder="Role (e.g. Co-Founder / Graphic Designer)" class="px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+          <select id="tm-group" class="px-3.5 py-2.5 rounded-xl input-glass text-sm">
+            <option value="Partner">Founder / Managing Partner</option>
+            <option value="Staff">Core Team / Employee (Staff)</option>
+          </select>
+          <div>
+            <input type="file" accept="image/*" onchange="handleImageUpload(this, 'tm-photo-data')" class="w-full px-3 py-2 rounded-xl input-glass text-xs" />
+            <input type="hidden" id="tm-photo-data" />
+          </div>
+          <input type="text" id="tm-bio" placeholder="Short bio or specialization (e.g. Marketplace Growth & Strategy)" class="md:col-span-3 px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+          <button type="submit" class="py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs">
+            + Add Member to About Page
+          </button>
+        </form>
+
+        <div id="adm-team-list" class="space-y-2.5 pt-4"></div>
+      </div>
+
+      <!-- TAB 6: QUOTATION LEADS -->
+      <div id="adm-leads" class="adm-panel liquid-glass rounded-3xl p-6 hidden space-y-4">
+        <h2 class="text-lg font-bold text-white border-b border-white/10 pb-3">6. Instant Quotation Leads (Clients Who Downloaded Quotes)</h2>
+        <div id="adm-leads-list" class="space-y-3"></div>
+      </div>
+
+      <!-- TAB 7: CLIENT REVIEWS MANAGER -->
+      <div id="adm-reviews" class="adm-panel liquid-glass rounded-3xl p-6 hidden space-y-4">
+        <h2 class="text-lg font-bold text-white border-b border-white/10 pb-3">7. Manage Client 5-Star Ratings & Reviews</h2>
+        <div id="adm-reviews-list" class="space-y-3"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL 1: QUOTATION CART & INSTANT PDF GENERATOR                       -->
+  <!-- ===================================================================== -->
+  <div id="cart-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="liquid-glass rounded-3xl max-w-2xl w-full p-6 md:p-8 max-h-[92vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4">
+        <div>
+          <h3 class="text-xl font-bold text-white">🛒 Your Custom Quotation Cart</h3>
+          <p class="text-xs text-slate-400">Enter your brand details below to download an instant official PDF quotation.</p>
+        </div>
+        <button onclick="toggleCartModal()" class="w-8 h-8 rounded-lg liquid-glass text-slate-300 hover:text-white font-bold">✕</button>
+      </div>
+
+      <div id="cart-modal-items" class="my-5 space-y-2.5"></div>
+
+      <div class="p-4 rounded-2xl bg-slate-900/90 border border-white/10 flex items-center justify-between mb-6">
+        <span class="text-xs md:text-sm text-slate-300 font-bold">Estimated Package Total:</span>
+        <span id="cart-modal-total" class="text-2xl font-extrabold text-emerald-400">₹0</span>
+      </div>
+
+      <form onsubmit="generateClientQuotationPDF(event)" class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input type="text" id="qt-client-name" required placeholder="Your Full Name *" class="w-full px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+          <input type="text" id="qt-brand-name" required placeholder="Brand / Company Name *" class="w-full px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input type="tel" id="qt-client-phone" required placeholder="WhatsApp / Mobile Number *" class="w-full px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+          <input type="text" id="qt-client-notes" placeholder="Specific requirement (Optional)" class="w-full px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+        </div>
+        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-extrabold text-sm shadow-xl transition">
+          📥 Download Official PDF Quotation Now
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL 2: CLIENT 5-STAR FEEDBACK SUBMISSION                            -->
+  <!-- ===================================================================== -->
+  <div id="review-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="liquid-glass rounded-3xl max-w-md w-full p-6">
+      <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
+        <h3 class="text-lg font-bold text-white">★ Share Your Feedback</h3>
+        <button onclick="toggleReviewModal()" class="text-slate-400 hover:text-white font-bold">✕</button>
+      </div>
+      <form onsubmit="handleSubmitReview(event)" class="space-y-4">
+        <div>
+          <label class="text-xs text-slate-300 block mb-1">Rating</label>
+          <select id="rv-stars" class="w-full px-3.5 py-2.5 rounded-xl input-glass text-sm text-amber-400 font-bold">
+            <option value="5">★★★★★ (5/5 - Outstanding)</option>
+            <option value="4">★★★★☆ (4/5 - Very Good)</option>
+            <option value="3">★★★☆☆ (3/5 - Good)</option>
+            <option value="2">★★☆☆☆ (2/5 - Fair)</option>
+            <option value="1">★☆☆☆☆ (1/5 - Poor)</option>
+          </select>
+        </div>
+        <input type="text" id="rv-name" required placeholder="Your Name *" class="w-full px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+        <input type="text" id="rv-brand" required placeholder="Your Brand / Company Name *" class="w-full px-3.5 py-2.5 rounded-xl input-glass text-sm" />
+        <textarea id="rv-comment" required rows="3" placeholder="Write your experience working with our agency..." class="w-full px-3.5 py-2.5 rounded-xl input-glass text-sm"></textarea>
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-sm">
+          Publish Feedback
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- HIDDEN PRINTABLE A4 QUOTATION TEMPLATE (FOR HTML2PDF)                 -->
+  <!-- ===================================================================== -->
+  <div class="hidden">
+    <div id="pdf-quote-sheet" style="width: 780px; padding: 40px; background: #ffffff; color: #0f172a; font-family: 'Plus Jakarta Sans', sans-serif;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 3px solid #4f46e5; padding-bottom: 18px;">
+        <div>
+          <h1 id="pdf-brand" style="font-size: 28px; font-weight: 800; color: #1e1b4b; margin: 0;">YOUR AGENCY</h1>
+          <p id="pdf-tagline" style="font-size: 12px; color: #64748b; margin: 4px 0 0 0;"></p>
+          <p id="pdf-contact" style="font-size: 11px; color: #475569; margin-top: 6px;"></p>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-size: 20px; font-weight: 800; color: #4f46e5;">OFFICIAL QUOTATION</div>
+          <div id="pdf-qno" style="font-size: 12px; font-weight: 700; color: #334155; margin-top: 4px;"></div>
+          <div id="pdf-date" style="font-size: 11px; color: #64748b;"></div>
+        </div>
+      </div>
+
+      <div style="margin-top: 22px; padding: 14px 18px; background: #f8fafc; border-radius: 10px; border: 1px solid #e2e8f0;">
+        <div style="font-size: 10px; font-weight: 800; color: #64748b; text-transform: uppercase;">Prepared Exclusively For:</div>
+        <div id="pdf-client-line" style="font-size: 15px; font-weight: 800; color: #0f172a; margin-top: 3px;"></div>
+        <div id="pdf-client-sub" style="font-size: 12px; color: #475569; margin-top: 2px;"></div>
+      </div>
+
+      <table style="width: 100%; border-collapse: collapse; margin-top: 22px; font-size: 12.5px;">
+        <thead>
+          <tr style="background: #1e1b4b; color: #ffffff; text-align: left;">
+            <th style="padding: 11px;">#</th>
+            <th style="padding: 11px;">Service & Deliverables</th>
+            <th style="padding: 11px;">Billing</th>
+            <th style="padding: 11px; text-align: right;">Price (₹)</th>
+          </tr>
+        </thead>
+        <tbody id="pdf-tbody"></tbody>
+      </table>
+
+      <div style="margin-top: 20px; display: flex; justify-content: flex-end;">
+        <div style="width: 270px; background: #f1f5f9; padding: 15px; border-radius: 10px;">
+          <div style="display: flex; justify-content: space-between; font-size: 12.5px; margin-bottom: 6px;">
+            <span>Subtotal:</span>
+            <strong id="pdf-sub">₹0</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 12.5px; margin-bottom: 8px; color: #475569;">
+            <span id="pdf-gst-lbl">GST (0%):</span>
+            <strong id="pdf-gst-amt">₹0</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 16px; font-weight: 800; color: #1e1b4b; border-top: 2px solid #cbd5e1; padding-top: 8px;">
+            <span>Total Estimate:</span>
+            <span id="pdf-total">₹0</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 28px; border-top: 1px solid #e2e8f0; padding-top: 14px; font-size: 11px; color: #475569;">
+        <strong>Terms & Conditions:</strong>
+        <p id="pdf-terms-box" style="margin-top: 4px; white-space: pre-line; line-height: 1.5;"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MASTER JAVASCRIPT ENGINE (CMS + CART + PDF + MULTI-PAGE ROUTER)       -->
+  <!-- ===================================================================== -->
+  <script>
+    const DB_KEY = 'DYNAMIC_AGENCY_OS_V2';
+    let quoteCart = [];
+    let selectedCategory = 'All';
+
+    const initialDatabase = {
+      brand: {
+        name: 'YOUR AGENCY',
+        tagline: 'Digital Growth & E-Commerce Partner',
+        domain: 'yourdomain.com',
+        logo: '',
+        phone: '+91 98765 43210',
+        email: 'hello@yourdomain.com',
+        heroTitle: 'Scale Your Brand Across Every Digital Marketplace.',
+        heroSub: 'Select your required services to generate an instant official PDF quotation, explore our live portfolio, or track your ongoing project progress in real time.',
+        gst: 0,
+        terms: '1. 50% advance payment required to initiate onboarding.\n2. Quotation is valid for 15 days from date of generation.\n3. Dedicated account manager & weekly live tracking included.'
+      },
+      seo: {
+        title: 'Digital Growth, E-Commerce & Branding Agency',
+        desc: 'Complete marketplace management, quick commerce onboarding, product graphics, and custom web development.',
+        keywords: 'ecommerce agency, amazon flipkart management, blinkit zepto onboarding, branding agency'
+      },
+      about: {
+        title: 'Built by Operators, Driven by Measurable Brand Growth.',
+        story: 'We are a full-stack digital growth and e-commerce agency helping brands launch, optimize, and scale across marketplaces, quick-commerce platforms, and custom web storefronts.\n\nEvery detail on this website—from our services and live client work tracker to our leadership and team directory below—is managed in real time from our custom backend dashboard.',
+        mission: 'To empower brands with transparent, high-converting digital operations without technical friction.',
+        vision: 'To become the most trusted growth partner for emerging D2C and marketplace brands.'
+      },
+      services: [
+        {
+          id: 'SVC-1',
+          title: 'Complete Marketplace Management (Amazon & Flipkart)',
+          category: 'E-Commerce',
+          price: 15000,
+          billing: 'Monthly',
+          deliverables: 'A+ Listing Optimization, Keyword & SEO Audit, PPC Ads Management, Weekly Growth Reporting'
+        },
+        {
+          id: 'SVC-2',
+          title: 'Quick Commerce Onboarding (Blinkit, Zepto, Instamart)',
+          category: 'Quick Commerce',
+          price: 12000,
+          billing: 'One-Time',
+          deliverables: 'Brand Documentation & Approval, APOB/Dark Store Setup, Catalog & Margin Calculation'
+        },
+        {
+          id: 'SVC-3',
+          title: 'Product Packaging, Mockups & A+ Graphics',
+          category: 'Branding & Design',
+          price: 8500,
+          billing: 'One-Time',
+          deliverables: 'Print-Ready Packaging Design, 3D Studio Mockups, 7-Slide Marketplace Infographics'
+        }
+      ],
+      projects: [
+        {
+          id: 'PRJ-1',
+          clientName: 'Hombria Grooming',
+          projectName: 'Marketplace Growth & Listing Audit',
+          code: 'PRJ-201',
+          stage: 'Design & Execution',
+          progress: 75,
+          note: 'A+ Brand Story & Listing SEO completed; PPC campaign optimization live.'
+        }
+      ],
+      portfolio: [
+        {
+          id: 'PF-1',
+          title: 'Full Marketplace Launch & 3D Packaging Redesign',
+          client: 'Premium D2C Brand',
+          category: 'E-Commerce & Branding',
+          result: '+190% Conversion Rate Growth',
+          media: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+          desc: 'Complete catalog overhaul, high-converting infographics, and sponsored ads scaling.'
+        }
+      ],
+      team: [
+        {
+          id: 'TM-1',
+          name: 'Agency Founder',
+          designation: 'Founder & Managing Partner',
+          group: 'Partner',
+          photo: '',
+          bio: 'E-Commerce Strategy, Quick Commerce & Digital Brand Architecture.'
+        }
+      ],
+      reviews: [
+        {
+          id: 'REV-1',
+          stars: 5,
+          name: 'Verified Client',
+          brand: 'D2C Brand Partner',
+          comment: 'Super smooth onboarding and transparent live tracking. Their instant quotation and marketplace execution saved us weeks!'
+        }
+      ],
+      leads: []
+    };
+
+    function getDB() {
+      const saved = localStorage.getItem(DB_KEY);
+      if (!saved) {
+        localStorage.setItem(DB_KEY, JSON.stringify(initialDatabase));
+        return initialDatabase;
+      }
+      return { ...initialDatabase, ...JSON.parse(saved) };
+    }
+
+    function saveDB(db) {
+      localStorage.setItem(DB_KEY, JSON.stringify(db));
+      renderWebsite();
+      renderAdminLists();
+    }
+
+    // Multi-Page Navigation Router
+    function navigatePage(pageKey) {
+      const sections = ['home', 'services', 'tracker', 'portfolio', 'about', 'reviews'];
+      document.querySelectorAll('.page-nav-btn').forEach(btn => {
+        btn.classList.remove('bg-indigo-600', 'text-white');
+        btn.classList.add('text-slate-300');
+      });
+      const activeBtn = document.getElementById('nav-btn-' + pageKey);
+      if (activeBtn) {
+        activeBtn.classList.add('bg-indigo-600', 'text-white');
+        activeBtn.classList.remove('text-slate-300');
+      }
+
+      if (pageKey === 'home') {
+        sections.forEach(s => document.getElementById('sec-' + s).classList.remove('hidden'));
+      } else {
+        sections.forEach(s => {
+          const el = document.getElementById('sec-' + s);
+          if (s === pageKey) el.classList.remove('hidden');
+          else el.classList.add('hidden');
+        });
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Render Entire Public Website
+    function renderWebsite() {
+      const db = getDB();
+
+      // 1. Brand & SEO
+      document.getElementById('meta-title').innerText = `${db.brand.name} | ${db.seo.title}`;
+      document.getElementById('meta-desc').setAttribute('content', db.seo.desc);
+      document.getElementById('meta-keywords').setAttribute('content', db.seo.keywords);
+      document.getElementById('nav-brand-name').innerText = db.brand.name;
+      document.getElementById('nav-brand-tagline').innerText = db.brand.tagline;
+      document.getElementById('footer-brand-name').innerText = db.brand.name;
+      document.getElementById('footer-domain').innerText = db.brand.domain;
+      document.getElementById('footer-contact-info').innerHTML = `<span>📞 ${db.brand.phone}</span><span>✉️ ${db.brand.email}</span>`;
+
+      const logoEl = document.getElementById('nav-logo-box');
+      if (db.brand.logo) {
+        logoEl.innerHTML = `<img src="${db.brand.logo}" alt="${db.brand.name}" class="w-full h-full object-cover" />`;
+      } else {
+        logoEl.innerText = db.brand.name.substring(0, 2).toUpperCase();
+      }
+
+      document.getElementById('hero-title').innerText = db.brand.heroTitle;
+      document.getElementById('hero-subtitle').innerText = db.brand.heroSub;
+
+      // JSON-LD Schema for Google SEO
+      document.getElementById('seo-json-ld').textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": db.brand.name,
+        "url": "https://" + db.brand.domain,
+        "telephone": db.brand.phone,
+        "description": db.seo.desc
+      });
+
+      // 2. Services & Categories
+      const cats = ['All', ...new Set((db.services || []).map(s => s.category || 'General'))];
+      document.getElementById('service-category-pills').innerHTML = cats.map(c => `
+        <button onclick="filterServiceCategory('${c}')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold transition ${selectedCategory === c ? 'bg-indigo-600 text-white' : 'liquid-glass text-slate-300 hover:text-white'}">
+          ${c}
+        </button>
+      `).join('');
+
+      const filteredServices = selectedCategory === 'All'
+        ? db.services
+        : db.services.filter(s => (s.category || 'General') === selectedCategory);
+
+      const sGrid = document.getElementById('services-container');
+      if (!filteredServices || filteredServices.length === 0) {
+        sGrid.innerHTML = `<div class="col-span-full liquid-glass rounded-2xl p-8 text-center text-slate-400 text-sm">No services in this category yet. Add services from the Admin Dashboard.</div>`;
+      } else {
+        sGrid.innerHTML = filteredServices.map(s => {
+          const added = quoteCart.some(item => item.id === s.id);
+          const pts = (s.deliverables || '').split(',').map(x => x.trim()).filter(Boolean);
+          return `
+            <div class="liquid-card rounded-3xl p-6 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-3">
+                  <span class="px-3 py-1 rounded-full text-[11px] font-extrabold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">${s.category}</span>
+                  <span class="text-xs text-slate-400 font-semibold">${s.billing}</span>
+                </div>
+                <h3 class="text-xl font-bold text-white">${s.title}</h3>
+                <div class="text-2xl font-extrabold text-emerald-400 mt-2">₹${Number(s.price).toLocaleString('en-IN')}</div>
+                <ul class="mt-4 space-y-2 text-xs text-slate-300">
+                  ${pts.map(p => `<li class="flex items-start gap-2"><span class="text-emerald-400 font-bold">✔</span><span>${p}</span></li>`).join('')}
+                </ul>
+              </div>
+              <button onclick="toggleServiceInCart('${s.id}')" class="mt-6 w-full py-3.5 rounded-xl font-extrabold text-xs transition ${added ? 'bg-emerald-500/20 border border-emerald-400 text-emerald-300' : 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-600/25'}">
+                ${added ? '✓ Added to Quote Cart (Click to Remove)' : '+ Add to Quotation Cart'}
+              </button>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // 3. Tracker
+      renderPublicTracker();
+
+      // 4. Portfolio
+      const pfGrid = document.getElementById('portfolio-container');
+      if (!db.portfolio || db.portfolio.length === 0) {
+        pfGrid.innerHTML = `<div class="col-span-full liquid-glass rounded-2xl p-8 text-center text-slate-400 text-sm">No portfolio projects uploaded yet.</div>`;
+      } else {
+        pfGrid.innerHTML = db.portfolio.map(pf => `
+          <div class="liquid-card rounded-3xl overflow-hidden flex flex-col">
+            <div class="h-52 bg-slate-900 relative overflow-hidden">
+              ${pf.media ? `<img src="${pf.media}" alt="${pf.title}" class="w-full h-full object-cover" />` : `<div class="w-full h-full flex items-center justify-center text-slate-500 text-xs">Project Media</div>`}
+              <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[11px] font-bold bg-black/75 backdrop-blur-md text-purple-300">${pf.category}</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="text-xs text-slate-400 font-bold">Client: ${pf.client}</div>
+                <h3 class="text-lg font-bold text-white mt-1">${pf.title}</h3>
+                <p class="text-xs text-slate-300 mt-2 leading-relaxed">${pf.desc}</p>
+              </div>
+              ${pf.result ? `<div class="mt-4 pt-3 border-t border-white/10 text-xs font-extrabold text-emerald-400">📈 Impact: ${pf.result}</div>` : ''}
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // 5. About Us, Partners & Staff
+      document.getElementById('about-title-display').innerText = db.about.title;
+      document.getElementById('about-story-display').innerText = db.about.story;
+      document.getElementById('about-mission-display').innerText = db.about.mission;
+      document.getElementById('about-vision-display').innerText = db.about.vision;
+
+      const partners = (db.team || []).filter(t => t.group === 'Partner');
+      const staff = (db.team || []).filter(t => t.group !== 'Partner');
+
+      document.getElementById('partners-container').innerHTML = partners.length ? partners.map(p => `
+        <div class="liquid-card rounded-2xl p-5 flex items-center gap-4 border-amber-400/30">
+          <img src="${p.photo || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(p.name) + '&background=4f46e5&color=fff'}" alt="${p.name}" class="w-16 h-16 rounded-2xl object-cover border border-amber-400/50 shrink-0" />
+          <div>
+            <span class="text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full bg-amber-400/20 text-amber-300">Founder / Partner</span>
+            <h4 class="text-base font-bold text-white mt-1">${p.name}</h4>
+            <p class="text-xs text-indigo-300 font-semibold">${p.designation}</p>
+            ${p.bio ? `<p class="text-[11px] text-slate-400 mt-1">${p.bio}</p>` : ''}
+          </div>
+        </div>
+      `).join('') : `<div class="text-xs text-slate-400">Add Founders/Partners from Admin Tab 5.</div>`;
+
+      document.getElementById('staff-container').innerHTML = staff.length ? staff.map(m => `
+        <div class="liquid-card rounded-2xl p-5 text-center">
+          <img src="${m.photo || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(m.name) + '&background=1e293b&color=fff'}" alt="${m.name}" class="w-16 h-16 rounded-full mx-auto object-cover mb-3 border border-white/15" />
+          <h4 class="text-sm font-bold text-white">${m.name}</h4>
+          <p class="text-xs text-indigo-400 font-semibold mt-0.5">${m.designation}</p>
+          ${m.bio ? `<p class="text-[11px] text-slate-400 mt-1">${m.bio}</p>` : ''}
+        </div>
+      `).join('') : `<div class="col-span-full text-xs text-slate-400">Add Core Team / Employees from Admin Tab 5.</div>`;
+
+      // 6. Reviews
+      const revs = db.reviews || [];
+      if (revs.length > 0) {
+        const avg = (revs.reduce((s, r) => s + Number(r.stars), 0) / revs.length).toFixed(1);
+        document.getElementById('stat-avg-rating').innerText = `${avg} ★`;
+      }
+      document.getElementById('reviews-container').innerHTML = revs.length ? revs.map(r => `
+        <div class="liquid-card rounded-3xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="text-amber-400 text-sm font-bold tracking-widest">${'★'.repeat(r.stars)}${'☆'.repeat(5 - r.stars)}</div>
+            <p class="text-sm text-slate-200 mt-3 leading-relaxed">"${r.comment}"</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/10">
+            <div class="font-bold text-white text-sm">${r.name}</div>
+            <div class="text-xs text-slate-400">${r.brand}</div>
+          </div>
+        </div>
+      `).join('') : `<div class="col-span-full text-center text-slate-400 text-sm py-6">No reviews yet. Be the first to rate us!</div>`;
+    }
+
+    function filterServiceCategory(cat) {
+      selectedCategory = cat;
+      renderWebsite();
+    }
+
+    function renderPublicTracker() {
+      const db = getDB();
+      const q = (document.getElementById('tracker-search-input')?.value || '').toLowerCase();
+      const list = (db.projects || []).filter(p =>
+        p.clientName.toLowerCase().includes(q) ||
+        p.projectName.toLowerCase().includes(q) ||
+        (p.code || '').toLowerCase().includes(q)
+      );
+      const box = document.getElementById('tracker-container');
+      if (list.length === 0) {
+        box.innerHTML = `<div class="col-span-full text-center py-6 text-slate-400 text-sm">No matching active projects found.</div>`;
+        return;
+      }
+      box.innerHTML = list.map(p => `
+        <div class="liquid-card rounded-2xl p-5">
+          <div class="flex items-center justify-between gap-2">
+            <div>
+              <span class="text-[11px] font-extrabold text-indigo-400 uppercase">${p.code}</span>
+              <h4 class="text-lg font-bold text-white">${p.clientName} — ${p.projectName}</h4>
+            </div>
+            <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">${p.stage}</span>
+          </div>
+          <p class="text-xs text-slate-300 mt-2">${p.note || ''}</p>
+          <div class="mt-4">
+            <div class="flex justify-between text-xs font-extrabold mb-1.5">
+              <span class="text-slate-400">Live Completion Status</span>
+              <span class="text-emerald-400">${p.progress}%</span>
+            </div>
+            <div class="w-full h-3 rounded-full bg-slate-900 overflow-hidden p-0.5 border border-white/10">
+              <div class="h-full rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-400 progress-glow transition-all duration-500" style="width:${p.progress}%"></div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Cart & Instant PDF Quotation Functions
+    function toggleServiceInCart(id) {
+      const db = getDB();
+      const svc = db.services.find(s => s.id === id);
+      if (!svc) return;
+      const idx = quoteCart.findIndex(i => i.id === id);
+      if (idx > -1) quoteCart.splice(idx, 1);
+      else quoteCart.push(svc);
+
+      document.getElementById('cart-badge').innerText = quoteCart.length;
+      renderWebsite();
+      renderCartModalList();
+    }
+
+    function toggleCartModal() {
+      const m = document.getElementById('cart-modal');
+      m.classList.toggle('hidden');
+      m.classList.toggle('flex');
+      renderCartModalList();
+    }
+
+    function renderCartModalList() {
+      const box = document.getElementById('cart-modal-items');
+      if (quoteCart.length === 0) {
+        box.innerHTML = `<div class="text-center py-6 text-slate-400 text-sm">Your quotation cart is empty. Click "+ Add to Quotation Cart" on any service first.</div>`;
+        document.getElementById('cart-modal-total').innerText = '₹0';
+        return;
+      }
+      const total = quoteCart.reduce((s, i) => s + Number(i.price || 0), 0);
+      box.innerHTML = quoteCart.map(item => `
+        <div class="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/90 border border-white/10">
+          <div>
+            <div class="font-bold text-sm text-white">${item.title}</div>
+            <div class="text-xs text-slate-400">${item.category} • ${item.billing}</div>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="font-extrabold text-emerald-400 text-sm">₹${Number(item.price).toLocaleString('en-IN')}</span>
+            <button onclick="toggleServiceInCart('${item.id}')" class="text-rose-400 text-xs font-bold">Remove</button>
+          </div>
+        </div>
+      `).join('');
+      document.getElementById('cart-modal-total').innerText = `₹${total.toLocaleString('en-IN')}`;
+    }
+
+    function generateClientQuotationPDF(e) {
+      e.preventDefault();
+      if (quoteCart.length === 0) {
+        alert('Please select at least 1 service before downloading your quotation!');
+        return;
+      }
+      const db = getDB();
+      const cName = document.getElementById('qt-client-name').value.trim();
+      const bName = document.getElementById('qt-brand-name').value.trim();
+      const phone = document.getElementById('qt-client-phone').value.trim();
+      const notes = document.getElementById('qt-client-notes').value.trim();
+
+      const qNo = 'QT-' + Math.floor(100000 + Math.random() * 900000);
+      const dateStr = new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+      const sub = quoteCart.reduce((s, i) => s + Number(i.price || 0), 0);
+      const gstPct = Number(db.brand.gst || 0);
+      const gstAmt = Math.round((sub * gstPct) / 100);
+      const grand = sub + gstAmt;
+
+      // Save Lead to Backend
+      db.leads.unshift({
+        id: qNo,
+        date: dateStr,
+        client: cName,
+        brand: bName,
+        phone,
+        services: quoteCart.map(x => x.title).join(', '),
+        total: grand
+      });
+      saveDB(db);
+
+      // Fill Printable Sheet
+      document.getElementById('pdf-brand').innerText = db.brand.name;
+      document.getElementById('pdf-tagline').innerText = db.brand.tagline;
+      document.getElementById('pdf-contact').innerText = `${db.brand.phone} | ${db.brand.email} | ${db.brand.domain}`;
+      document.getElementById('pdf-qno').innerText = `Quote #: ${qNo}`;
+      document.getElementById('pdf-date').innerText = `Date: ${dateStr}`;
+      document.getElementById('pdf-client-line').innerText = `${cName} — ${bName}`;
+      document.getElementById('pdf-client-sub').innerText = `WhatsApp/Phone: ${phone} ${notes ? ' | Requirement: ' + notes : ''}`;
+
+      document.getElementById('pdf-tbody').innerHTML = quoteCart.map((item, i) => `
+        <tr style="border-bottom: 1px solid #e2e8f0;">
+          <td style="padding: 11px;">${i + 1}</td>
+          <td style="padding: 11px;">
+            <strong style="color: #0f172a;">${item.title}</strong>
+            <div style="font-size: 11px; color: #64748b; margin-top: 2px;">${item.deliverables}</div>
+          </td>
+          <td style="padding: 11px;">${item.billing}</td>
+          <td style="padding: 11px; text-align: right; font-weight: 700;">₹${Number(item.price).toLocaleString('en-IN')}</td>
+        </tr>
+      `).join('');
+
+      document.getElementById('pdf-sub').innerText = `₹${sub.toLocaleString('en-IN')}`;
+      document.getElementById('pdf-gst-lbl').innerText = `GST (${gstPct}%):`;
+      document.getElementById('pdf-gst-amt').innerText = `₹${gstAmt.toLocaleString('en-IN')}`;
+      document.getElementById('pdf-total').innerText = `₹${grand.toLocaleString('en-IN')}`;
+      document.getElementById('pdf-terms-box').innerText = db.brand.terms;
+
+      const sheet = document.getElementById('pdf-quote-sheet');
+      html2pdf().set({
+        margin: 0.3,
+        filename: `${bName.replace(/\s+/g, '_')}_Quotation_${qNo}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+      }).from(sheet).save();
+
+      toggleCartModal();
+    }
+
+    // Client Review Modal
+    function toggleReviewModal() {
+      const m = document.getElementById('review-modal');
+      m.classList.toggle('hidden');
+      m.classList.toggle('flex');
+    }
+
+    function handleSubmitReview(e) {
+      e.preventDefault();
+      const db = getDB();
+      db.reviews.unshift({
+        id: 'REV-' + Date.now(),
+        stars: Number(document.getElementById('rv-stars').value),
+        name: document.getElementById('rv-name').value.trim(),
+        brand: document.getElementById('rv-brand').value.trim(),
+        comment: document.getElementById('rv-comment').value.trim()
+      });
+      saveDB(db);
+      e.target.reset();
+      toggleReviewModal();
+    }
+
+    // =====================================================================
+    // ADMIN BACKEND CMS LOGIC
+    // =====================================================================
+    function openAdminView() {
+      document.getElementById('public-website-view').classList.add('hidden');
+      document.getElementById('admin-backend-view').classList.remove('hidden');
+      document.getElementById('admin-backend-view').classList.add('flex');
+      populateAdminInputs();
+    }
+
+    function closeAdminView() {
+      document.getElementById('admin-backend-view').classList.add('hidden');
+      document.getElementById('admin-backend-view').classList.remove('flex');
+      document.getElementById('public-website-view').classList.remove('hidden');
+      renderWebsite();
+    }
+
+    function verifyAdminLogin(e) {
+      e.preventDefault();
+      const val = document.getElementById('admin-pass-input').value;
+      if (val === 'admin123') {
+        document.getElementById('admin-login-gate').classList.add('hidden');
+        populateAdminInputs();
+      } else {
+        alert('Wrong password! Use default: admin123');
+      }
+    }
+
+    function switchAdminTab(tabId) {
+      document.querySelectorAll('.adm-panel').forEach(p => p.classList.add('hidden'));
+      document.getElementById(tabId).classList.remove('hidden');
+    }
+
+    function handleImageUpload(inputEl, targetHiddenId) {
+      const file = inputEl.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        const img = new Image();
+        img.onload = function() {
+          const canvas = document.createElement('canvas');
+          const max = 600;
+          const ratio = Math.min(1, max / img.width);
+          canvas.width = img.width * ratio;
+          canvas.height = img.height * ratio;
+          canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+          document.getElementById(targetHiddenId).value = canvas.toDataURL('image/jpeg', 0.82);
+        };
+        img.src = evt.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function populateAdminInputs() {
+      const db = getDB();
+      document.getElementById('inp-brand-name').value = db.brand.name;
+      document.getElementById('inp-brand-tagline').value = db.brand.tagline;
+      document.getElementById('inp-brand-domain').value = db.brand.domain;
+      document.getElementById('inp-brand-logo').value = db.brand.logo || '';
+      document.getElementById('inp-brand-phone').value = db.brand.phone;
+      document.getElementById('inp-brand-email').value = db.brand.email;
+      document.getElementById('inp-hero-title').value = db.brand.heroTitle;
+      document.getElementById('inp-hero-sub').value = db.brand.heroSub;
+      document.getElementById('inp-quote-gst').value = db.brand.gst;
+      document.getElementById('inp-quote-terms').value = db.brand.terms;
+
+      document.getElementById('inp-seo-title').value = db.seo.title;
+      document.getElementById('inp-seo-desc').value = db.seo.desc;
+      document.getElementById('inp-seo-keys').value = db.seo.keywords;
+
+      document.getElementById('ab-title-inp').value = db.about.title;
+      document.getElementById('ab-story-inp').value = db.about.story;
+      document.getElementById('ab-mission-inp').value = db.about.mission;
+      document.getElementById('ab-vision-inp').value = db.about.vision;
+
+      renderAdminLists();
+    }
+
+    function saveBrandSettings(e) {
+      e.preventDefault();
+      const db = getDB();
+      db.brand = {
+        name: document.getElementById('inp-brand-name').value.trim(),
+        tagline: document.getElementById('inp-brand-tagline').value.trim(),
+        domain: document.getElementById('inp-brand-domain').value.trim(),
+        logo: document.getElementById('inp-brand-logo').value,
+        phone: document.getElementById('inp-brand-phone').value.trim(),
+        email: document.getElementById('inp-brand-email').value.trim(),
+        heroTitle: document.getElementById('inp-hero-title').value.trim(),
+        heroSub: document.getElementById('inp-hero-sub').value.trim(),
+        gst: Number(document.getElementById('inp-quote-gst').value || 0),
+        terms: document.getElementById('inp-quote-terms').value
+      };
+      db.seo = {
+        title: document.getElementById('inp-seo-title').value.trim(),
+        desc: document.getElementById('inp-seo-desc').value.trim(),
+        keywords: document.getElementById('inp-seo-keys').value.trim()
+      };
+      saveDB(db);
+      alert('✅ Brand Identity, Quotation Template & SEO Updated!');
+    }
+
+    function handleAddService(e) {
+      e.preventDefault();
+      const db = getDB();
+      db.services.push({
+        id: 'SVC-' + Date.now(),
+        title: document.getElementById('sv-name').value.trim(),
+        category: document.getElementById('sv-category').value.trim(),
+        price: Number(document.getElementById('sv-price').value),
+        billing: document.getElementById('sv-billing').value,
+        deliverables: document.getElementById('sv-deliverables').value.trim()
+      });
+      saveDB(db);
+      e.target.reset();
+    }
+
+    function handleAddTrackerProject(e) {
+      e.preventDefault();
+      const db = getDB();
+      db.projects.unshift({
+        id: 'PRJ-' + Date.now(),
+        clientName: document.getElementById('tr-client-name').value.trim(),
+        projectName: document.getElementById('tr-project-name').value.trim(),
+        code: document.getElementById('tr-code').value.trim() || 'PRJ-' + Math.floor(100 + Math.random() * 900),
+        stage: document.getElementById('tr-stage').value,
+        progress: Number(document.getElementById('tr-pct').value),
+        note: document.getElementById('tr-note').value.trim()
+      });
+      saveDB(db);
+      e.target.reset();
+    }
+
+    function updateLiveSlider(id, val) {
+      const db = getDB();
+      const proj = db.projects.find(p => p.id === id);
+      if (proj) {
+        proj.progress = Number(val);
+        if (proj.progress === 100) proj.stage = 'Completed';
+        saveDB(db);
+      }
+    }
+
+    function handleAddPortfolio(e) {
+      e.preventDefault();
+      const db = getDB();
+      db.portfolio.unshift({
+        id: 'PF-' + Date.now(),
+        title: document.getElementById('pf-title').value.trim(),
+        client: document.getElementById('pf-client').value.trim(),
+        category: document.getElementById('pf-category').value.trim(),
+        result: document.getElementById('pf-result').value.trim(),
+        media: document.getElementById('pf-img-data').value.trim(),
+        desc: document.getElementById('pf-desc').value.trim()
+      });
+      saveDB(db);
+      e.target.reset();
+    }
+
+    function handleSaveAboutPage(e) {
+      e.preventDefault();
+      const db = getDB();
+      db.about = {
+        title: document.getElementById('ab-title-inp').value.trim(),
+        story: document.getElementById('ab-story-inp').value.trim(),
+        mission: document.getElementById('ab-mission-inp').value.trim(),
+        vision: document.getElementById('ab-vision-inp').value.trim()
+      };
+      saveDB(db);
+      alert('✅ About Us Page Content Saved!');
+    }
+
+    function handleAddTeamMember(e) {
+      e.preventDefault();
+      const db = getDB();
+      db.team.push({
+        id: 'TM-' + Date.now(),
+        name: document.getElementById('tm-name').value.trim(),
+        designation: document.getElementById('tm-designation').value.trim(),
+        group: document.getElementById('tm-group').value,
+        photo: document.getElementById('tm-photo-data').value,
+        bio: document.getElementById('tm-bio').value.trim()
+      });
+      saveDB(db);
+      e.target.reset();
+    }
+
+    function removeRecord(key, id) {
+      const db = getDB();
+      db[key] = (db[key] || []).filter(x => x.id !== id);
+      saveDB(db);
+    }
+
+    function renderAdminLists() {
+      const db = getDB();
+
+      // Services List
+      document.getElementById('adm-services-list').innerHTML = (db.services || []).map(s => `
+        <div class="p-4 rounded-2xl bg-slate-900/90 border border-white/10 flex items-center justify-between gap-4">
+          <div>
+            <span class="text-xs font-bold text-indigo-400">${s.category} • ${s.billing}</span>
+            <div class="font-bold text-white">${s.title} — <span class="text-emerald-400">₹${s.price}</span></div>
+            <div class="text-xs text-slate-400">${s.deliverables}</div>
+          </div>
+          <button onclick="removeRecord('services','${s.id}')" class="px-3 py-1.5 rounded-xl bg-rose-500/20 text-rose-300 text-xs font-bold">Delete</button>
+        </div>
+      `).join('');
+
+      // Client Tracker List with Live Slider
+      document.getElementById('adm-tracker-list').innerHTML = (db.projects || []).map(p => `
+        <div class="p-4 rounded-2xl bg-slate-900/90 border border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <span class="text-xs font-bold text-indigo-400">${p.code} • ${p.stage}</span>
+            <div class="font-bold text-white">${p.clientName} — ${p.projectName}</div>
+            <div class="text-xs text-slate-400">${p.note || ''}</div>
+          </div>
+          <div class="flex items-center gap-3">
+            <input type="range" min="0" max="100" value="${p.progress}" onchange="updateLiveSlider('${p.id}', this.value)" class="w-36" />
+            <span class="text-sm font-extrabold text-emerald-400 w-12">${p.progress}%</span>
+            <button onclick="removeRecord('projects','${p.id}')" class="px-3 py-1.5 rounded-xl bg-rose-500/20 text-rose-300 text-xs font-bold">Delete</button>
+          </div>
+        </div>
+      `).join('');
+
+      // Portfolio List
+      document.getElementById('adm-portfolio-list').innerHTML = (db.portfolio || []).map(pf => `
+        <div class="p-4 rounded-2xl bg-slate-900/90 border border-white/10 flex items-center justify-between">
+          <div>
+            <div class="font-bold text-white">${pf.title} <span class="text-xs text-slate-400">(${pf.client})</span></div>
+            <div class="text-xs text-emerald-400">${pf.result || ''}</div>
+          </div>
+          <button onclick="removeRecord('portfolio','${pf.id}')" class="px-3 py-1.5 rounded-xl bg-rose-500/20 text-rose-300 text-xs font-bold">Delete</button>
+        </div>
+      `).join('');
+
+      // Team List
+      document.getElementById('adm-team-list').innerHTML = (db.team || []).map(t => `
+        <div class="p-3.5 rounded-2xl bg-slate-900/90 border border-white/10 flex items-center justify-between">
+          <div>
+            <span class="text-xs font-bold text-amber-400">[${t.group}]</span>
+            <strong class="text-white text-sm ml-1">${t.name}</strong> — <span class="text-xs text-indigo-300">${t.designation}</span>
+          </div>
+          <button onclick="removeRecord('team','${t.id}')" class="px-3 py-1 rounded-xl bg-rose-500/20 text-rose-300 text-xs font-bold">Remove</button>
+        </div>
+      `).join('');
+
+      // Quotation Leads
+      document.getElementById('adm-leads-list').innerHTML = (db.leads || []).map(l => `
+        <div class="p-4 rounded-2xl bg-slate-900/90 border border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold text-emerald-400">${l.id} • ${l.date}</span>
+            <div class="font-bold text-white">${l.client} (${l.brand}) — 📞 ${l.phone}</div>
+            <div class="text-xs text-slate-400">Selected: ${l.services}</div>
+          </div>
+          <div class="text-lg font-extrabold text-emerald-400">₹${Number(l.total).toLocaleString('en-IN')}</div>
+        </div>
+      `).join('') || `<div class="text-xs text-slate-400">No quotations downloaded yet.</div>`;
+
+      // Reviews List
+      document.getElementById('adm-reviews-list').innerHTML = (db.reviews || []).map(r => `
+        <div class="p-4 rounded-2xl bg-slate-900/90 border border-white/10 flex items-center justify-between">
+          <div>
+            <div class="text-amber-400 text-xs font-bold">${'★'.repeat(r.stars)} — ${r.name} (${r.brand})</div>
+            <div class="text-xs text-slate-300 mt-1">"${r.comment}"</div>
+          </div>
+          <button onclick="removeRecord('reviews','${r.id}')" class="px-3 py-1.5 rounded-xl bg-rose-500/20 text-rose-300 text-xs font-bold">Delete</button>
+        </div>
+      `).join('');
+    }
+
+    // Sitemap & Backup Utilities
+    function downloadSitemapXML() {
+      const db = getDB();
+      const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>https://${db.brand.domain}/</loc><priority>1.0</priority></url>\n</urlset>`;
+      const blob = new Blob([xml], { type: 'application/xml' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'sitemap.xml';
+      a.click();
+    }
+
+    function exportDatabaseJSON() {
+      const blob = new Blob([JSON.stringify(getDB(), null, 2)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'agency_cms_backup.json';
+      a.click();
+    }
+
+    function seedSampleAgencyData() {
+      localStorage.setItem(DB_KEY, JSON.stringify(initialDatabase));
+      populateAdminInputs();
+      renderWebsite();
+      alert('✨ Sample Data Restored!');
+    }
+
+    window.addEventListener('DOMContentLoaded', renderWebsite);
+  </script>
+</body>
+</html>
