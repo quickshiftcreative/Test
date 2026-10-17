@@ -3,334 +3,1776 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title id="seo-meta-title">Global Digital & E-Commerce Growth Agency</title>
-  <meta name="description" id="seo-meta-desc" content="End-to-end marketplace management, quick commerce onboarding, brand identity, and custom web solutions for global brands." />
-  
+  <title id="seo-title">OG Desk | Global Creative, E-Commerce & Digital Studio</title>
+  <meta name="description" id="seo-desc" content="Where Strategy Meets Bold Execution. Global branding, e-commerce marketplace management, quick-commerce onboarding, 3D visuals, and web engineering." />
+  <meta name="keywords" id="seo-keys" content="global creative agency, ecommerce management, quick commerce onboarding, brand identity, 3d packaging, web studio, dubai india agency" />
+  <meta property="og:title" id="seo-og-title" content="OG Desk | Global Creative & Digital Studio" />
+  <meta property="og:description" id="seo-og-desc" content="Explore interactive service packages, generate instant international proposals, and track real-time project milestones." />
+  <meta property="og:image" id="seo-og-image" content="" />
+  <link rel="icon" id="seo-favicon" href="https://ui-avatars.com/api/?name=OG&background=6366f1&color=fff" />
+
+  <script type="application/ld+json" id="seo-schema"></script>
+
+  <!-- Tailwind CSS, HTML2PDF & Google Model-Viewer for 3D .glb Models -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg-matte: #09090b;
-      --surface-charcoal: #121215;
-      --surface-elevated: #18181c;
-      --border-hairline: #27272a;
+      --bg-solid: #09090b;
+      --surface-charcoal: #111114;
+      --surface-hover: #17171c;
+      --border-subtle: #242429;
+      --accent-primary: #6366f1;
+      --accent-secondary: #10b981;
+      --text-main: #f4f4f5;
+      --text-muted: #a1a1aa;
     }
-    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-matte); color: #f4f4f5; overflow-x: hidden; }
-    h1, h2, h3, h4, .heading-font { font-family: 'Space Grotesk', sans-serif; }
-    .charcoal-card { background-color: var(--surface-charcoal); border: 1px solid var(--border-hairline); transition: all 0.28s ease; }
-    .charcoal-card:hover { background-color: var(--surface-elevated); border-color: #3f3f46; transform: translateY(-3px); }
-    .liquid-glass-card {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(24, 24, 28, 0.75) 100%);
-      backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.14);
-      box-shadow: 0 25px 55px -12px rgba(0, 0, 0, 0.85);
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-solid);
+      color: var(--text-main);
+      overflow-x: hidden;
     }
-    .matte-input { background-color: #09090b !important; border: 1px solid #27272a !important; color: #ffffff !important; }
+    h1, h2, h3, h4, .editorial-font {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .accent-bg { background-color: var(--accent-primary); }
+    .accent-text { color: var(--accent-primary); }
+    .accent-border { border-color: var(--accent-primary); }
+    .secondary-text { color: var(--accent-secondary); }
+    .secondary-bg { background-color: var(--accent-secondary); }
+
+    /* Solid Charcoal Architectural Card */
+    .charcoal-card {
+      background-color: var(--surface-charcoal);
+      border: 1px solid var(--border-subtle);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .charcoal-card:hover {
+      background-color: var(--surface-hover);
+      border-color: rgba(255, 255, 255, 0.22);
+      transform: translateY(-3px);
+      box-shadow: 0 24px 48px -15px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Liquid-Glass Card & Floating Header Effect */
+    .liquid-glass {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(17, 17, 20, 0.78) 100%);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75), inset 0 1px 0 0 rgba(255, 255, 255, 0.18);
+    }
+
+    .matte-input {
+      background-color: #09090b !important;
+      border: 1px solid var(--border-subtle) !important;
+      color: #ffffff !important;
+    }
+    .matte-input:focus {
+      border-color: var(--accent-primary) !important;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    }
+
+    /* Infinite Marquee Animation (blonqoo.ae style) */
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marqueeScroll 28s linear infinite;
+    }
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    /* 3D Character Floating & Interactive Tilt */
+    @keyframes float3D {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-14px) rotate(1.5deg); }
+    }
+    .floating-3d {
+      animation: float3D 5s ease-in-out infinite;
+    }
+    .stage-3d-glow {
+      background: radial-gradient(circle at 50% 50%, var(--accent-primary) 0%, transparent 68%);
+      opacity: 0.22;
+      filter: blur(45px);
+    }
   </style>
 </head>
 <body class="min-h-screen flex flex-col selection:bg-indigo-600 selection:text-white">
 
-  <!-- HEADER -->
-  <header class="sticky top-0 z-40 bg-[#09090b]/95 backdrop-blur-md border-b border-[#27272a]">
-    <div class="max-w-7xl mx-auto px-4 py-3.5 flex items-center justify-between gap-3">
-      <button onclick="switchPage('home')" class="flex items-center gap-3 text-left group">
-        <div id="brand-logo-container" class="w-10 h-10 rounded-xl bg-white text-zinc-950 flex items-center justify-center font-extrabold text-base">AG</div>
+  <!-- ================= TOP ANNOUNCEMENT BAR (BACKEND TOGGLEABLE) ================= -->
+  <div id="top-announcement-bar" class="hidden border-b border-[#242429] bg-[#111114] px-4 py-2 text-center text-[11px] font-semibold text-zinc-300">
+    <span id="announcement-text">🌍 Operating Globally Across India, UAE, US & UK — Book Your Free Brand Audit Today</span>
+  </div>
+
+  <!-- ================= SINGLE-LINE LIQUID-GLASS FLOATING NAVBAR ================= -->
+  <header class="sticky top-3 z-40 px-3 sm:px-6 mt-3">
+    <div class="max-w-7xl mx-auto liquid-glass rounded-2xl px-4 py-3 flex items-center justify-between gap-2">
+      
+      <!-- Brand Identity -->
+      <button onclick="navigate('home')" class="flex items-center gap-3 text-left shrink-0 group">
+        <div id="nav-logo-box" class="w-10 h-10 rounded-xl accent-bg text-white flex items-center justify-center font-extrabold text-sm tracking-tighter overflow-hidden shadow-lg">
+          OG
+        </div>
         <div>
-          <span id="brand-name-display" class="heading-font font-bold text-lg text-white block leading-none">YOUR AGENCY</span>
-          <span id="brand-tagline-display" class="text-[11px] text-zinc-400 block mt-1">Global Digital Partner</span>
+          <span id="nav-brand-name" class="editorial-font font-bold text-base sm:text-lg tracking-tight text-white block leading-none">OG DESK</span>
+          <span id="nav-brand-tagline" class="text-[10px] text-zinc-400 block mt-1">Global Creative & Growth Studio</span>
         </div>
       </button>
 
-      <nav class="hidden lg:flex items-center gap-1 bg-[#121215] p-1.5 rounded-xl border border-[#27272a]">
-        <button onclick="switchPage('home')" id="desk-nav-home" class="desk-nav px-3.5 py-1.5 rounded-lg text-xs font-bold bg-white text-zinc-950">Home</button>
-        <button onclick="switchPage('services')" id="desk-nav-services" class="desk-nav px-3.5 py-1.5 rounded-lg text-xs font-bold text-zinc-400 hover:text-white">Services</button>
-        <button onclick="switchPage('quotation')" id="desk-nav-quotation" class="desk-nav px-3.5 py-1.5 rounded-lg text-xs font-bold text-zinc-400 hover:text-white">Quotation</button>
-        <button onclick="switchPage('portfolio')" id="desk-nav-portfolio" class="desk-nav px-3.5 py-1.5 rounded-lg text-xs font-bold text-zinc-400 hover:text-white">Portfolio</button>
-        <button onclick="switchPage('tracker')" id="desk-nav-tracker" class="desk-nav px-3.5 py-1.5 rounded-lg text-xs font-bold text-zinc-400 hover:text-white">Client Tracker</button>
-        <button onclick="switchPage('about')" id="desk-nav-about" class="desk-nav px-3.5 py-1.5 rounded-lg text-xs font-bold text-zinc-400 hover:text-white">About Us</button>
-        <button onclick="switchPage('reviews')" id="desk-nav-reviews" class="desk-nav px-3.5 py-1.5 rounded-lg text-xs font-bold text-zinc-400 hover:text-white">Reviews</button>
-        <button onclick="switchPage('contact')" id="desk-nav-contact" class="desk-nav px-3.5 py-1.5 rounded-lg text-xs font-bold text-zinc-400 hover:text-white">Contact</button>
+      <!-- Desktop Minimal Quick Links -->
+      <nav class="hidden xl:flex items-center gap-1 bg-black/40 p-1 rounded-xl border border-white/10">
+        <button onclick="navigate('home')" id="dnav-home" class="dnav-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-zinc-950 transition">Home</button>
+        <button onclick="navigate('services')" id="dnav-services" class="dnav-btn px-3 py-1.5 rounded-lg text-xs font-bold text-zinc-300 hover:text-white transition">Services</button>
+        <button onclick="navigate('portfolio')" id="dnav-portfolio" class="dnav-btn px-3 py-1.5 rounded-lg text-xs font-bold text-zinc-300 hover:text-white transition">Work</button>
+        <button onclick="navigate('tracker')" id="dnav-tracker" class="dnav-btn px-3 py-1.5 rounded-lg text-xs font-bold text-zinc-300 hover:text-white transition">Client Tracker</button>
+        <button onclick="navigate('about')" id="dnav-about" class="dnav-btn px-3 py-1.5 rounded-lg text-xs font-bold text-zinc-300 hover:text-white transition">About</button>
+        <button onclick="navigate('reviews')" id="dnav-reviews" class="dnav-btn px-3 py-1.5 rounded-lg text-xs font-bold text-zinc-300 hover:text-white transition">Reviews</button>
+        <button onclick="navigate('contact')" id="dnav-contact" class="dnav-btn px-3 py-1.5 rounded-lg text-xs font-bold text-zinc-300 hover:text-white transition">Contact</button>
       </nav>
 
-      <div class="flex items-center gap-2">
-        <select id="currency-select" onchange="changeCurrency(this.value)" class="px-2.5 py-2 rounded-xl matte-input text-xs font-bold">
+      <!-- Single-Row Right Controls: Currency + Cart + Universal Liquid-Glass Hamburger -->
+      <div class="flex items-center gap-2 shrink-0">
+        <select id="currency-switcher" onchange="setCurrency(this.value)" aria-label="Currency" class="px-2.5 py-2 rounded-xl bg-black/60 border border-white/15 text-xs font-bold text-white cursor-pointer focus:outline-none">
           <option value="INR">₹ INR</option>
           <option value="USD">$ USD</option>
+          <option value="AED">AED</option>
         </select>
-        <button onclick="switchPage('quotation')" class="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold flex items-center gap-1.5">
-          <span>Quote</span>
-          <span id="nav-cart-count" class="px-1.5 py-0.5 text-[10px] rounded-full bg-white text-indigo-950 font-extrabold">0</span>
+
+        <button onclick="navigate('quotation')" class="px-3.5 py-2 rounded-xl accent-bg hover:opacity-95 text-white text-xs font-extrabold flex items-center gap-1.5 shadow-lg transition">
+          <span id="nav-quote-btn-label">Quote</span>
+          <span id="nav-cart-badge" class="px-1.5 py-0.5 text-[10px] rounded-full bg-white text-zinc-950 font-black">0</span>
         </button>
-        <button onclick="toggleMobileMenu()" class="lg:hidden w-10 h-10 rounded-xl charcoal-card flex items-center justify-center text-white">☰</button>
+
+        <!-- Universal Liquid-Glass Hamburger Menu Trigger (Single Row) -->
+        <button onclick="toggleHamburgerDrawer()" aria-label="Open Navigation Drawer" class="w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 flex items-center justify-center text-white transition">
+          <svg id="hb-open-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
       </div>
     </div>
 
-    <!-- MOBILE DRAWER -->
-    <div id="mobile-menu-drawer" class="hidden lg:hidden border-t border-[#27272a] bg-[#09090b]/98 px-4 py-5 space-y-2">
-      <div class="grid grid-cols-2 gap-2">
-        <button onclick="switchPage('home'); toggleMobileMenu();" class="p-3 rounded-xl charcoal-card text-left text-xs font-bold text-white">🏠 Home</button>
-        <button onclick="switchPage('services'); toggleMobileMenu();" class="p-3 rounded-xl charcoal-card text-left text-xs font-bold text-white">⚡ Services</button>
-        <button onclick="switchPage('quotation'); toggleMobileMenu();" class="p-3 rounded-xl charcoal-card text-left text-xs font-bold text-emerald-400">📄 Quotation</button>
-        <button onclick="switchPage('tracker'); toggleMobileMenu();" class="p-3 rounded-xl charcoal-card text-left text-xs font-bold text-indigo-400">📊 Tracker</button>
-        <button onclick="switchPage('about'); toggleMobileMenu();" class="p-3 rounded-xl charcoal-card text-left text-xs font-bold text-white">👥 About Us</button>
-        <button onclick="switchPage('contact'); toggleMobileMenu();" class="p-3 rounded-xl charcoal-card text-left text-xs font-bold text-white">📞 Contact</button>
+    <!-- LIQUID-GLASS HAMBURGER DRAWER OVERLAY -->
+    <div id="hamburger-drawer" class="hidden max-w-7xl mx-auto mt-2 liquid-glass rounded-3xl p-6 transition-all">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-5">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-zinc-400">Navigation Directory</span>
+        <button onclick="toggleHamburgerDrawer()" class="px-3 py-1 rounded-lg bg-white/10 text-xs font-bold text-white">✕ Close</button>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <button onclick="navigate('home'); toggleHamburgerDrawer();" class="p-4 rounded-2xl charcoal-card text-left flex items-center justify-between group">
+          <div><span class="text-[10px] text-zinc-500 font-bold">(01)</span><div class="text-sm font-bold text-white group-hover:text-indigo-400">Home & 3D Overview</div></div>
+          <span>→</span>
+        </button>
+        <button onclick="navigate('services'); toggleHamburgerDrawer();" class="p-4 rounded-2xl charcoal-card text-left flex items-center justify-between group">
+          <div><span class="text-[10px] text-zinc-500 font-bold">(02)</span><div class="text-sm font-bold text-white group-hover:text-indigo-400">Services & Interactive Pop-up</div></div>
+          <span>→</span>
+        </button>
+        <button onclick="navigate('quotation'); toggleHamburgerDrawer();" class="p-4 rounded-2xl charcoal-card text-left flex items-center justify-between group">
+          <div><span class="text-[10px] text-emerald-400 font-bold">(03)</span><div class="text-sm font-bold text-emerald-400">Instant Quotation Builder</div></div>
+          <span>→</span>
+        </button>
+        <button onclick="navigate('portfolio'); toggleHamburgerDrawer();" class="p-4 rounded-2xl charcoal-card text-left flex items-center justify-between group">
+          <div><span class="text-[10px] text-zinc-500 font-bold">(04)</span><div class="text-sm font-bold text-white group-hover:text-indigo-400">Selected Work & Reels</div></div>
+          <span>→</span>
+        </button>
+        <button onclick="navigate('tracker'); toggleHamburgerDrawer();" class="p-4 rounded-2xl charcoal-card text-left flex items-center justify-between group">
+          <div><span class="text-[10px] text-indigo-400 font-bold">(05)</span><div class="text-sm font-bold text-indigo-400">Live Client Work Tracker (0-100%)</div></div>
+          <span>→</span>
+        </button>
+        <button onclick="navigate('about'); toggleHamburgerDrawer();" class="p-4 rounded-2xl charcoal-card text-left flex items-center justify-between group">
+          <div><span class="text-[10px] text-zinc-500 font-bold">(06)</span><div class="text-sm font-bold text-white group-hover:text-indigo-400">About Us, Partners & Team</div></div>
+          <span>→</span>
+        </button>
+        <button onclick="navigate('reviews'); toggleHamburgerDrawer();" class="p-4 rounded-2xl charcoal-card text-left flex items-center justify-between group">
+          <div><span class="text-[10px] text-amber-400 font-bold">(07)</span><div class="text-sm font-bold text-amber-400">Verified Client Reviews ★</div></div>
+          <span>→</span>
+        </button>
+        <button onclick="navigate('contact'); toggleHamburgerDrawer();" class="p-4 rounded-2xl charcoal-card text-left flex items-center justify-between group">
+          <div><span class="text-[10px] text-zinc-500 font-bold">(08)</span><div class="text-sm font-bold text-white group-hover:text-indigo-400">Global Studios & Contact</div></div>
+          <span>→</span>
+        </button>
+        <button onclick="navigate('policies'); toggleHamburgerDrawer();" class="p-4 rounded-2xl charcoal-card text-left flex items-center justify-between group">
+          <div><span class="text-[10px] text-zinc-500 font-bold">(09)</span><div class="text-sm font-bold text-zinc-300">Privacy, Terms & Refund Policies</div></div>
+          <span>→</span>
+        </button>
       </div>
     </div>
   </header>
 
-  <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-10">
-    <!-- HOME -->
-    <section id="page-home" class="page-section space-y-16">
-      <div class="pt-6 pb-4 text-center max-w-4xl mx-auto">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full charcoal-card text-xs font-semibold text-zinc-300 mb-6">
-          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-          <span id="hero-badge-display">Global E-Commerce Growth Agency</span>
+  <!-- ================= MAIN SPA VIEWPORT ================= -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-10 space-y-20">
+
+    <!-- ======================================================================= -->
+    <!-- PAGE 1: HOME (BLONQOO EDITORIAL + INTERACTIVE 3D HERO STAGE)           -->
+    <!-- ======================================================================= -->
+    <section id="view-home" class="spa-view space-y-24">
+
+      <!-- HERO SPLIT: EDITORIAL TYPOGRAPHY + 3D INTERACTIVE CHARACTER/MODEL STAGE -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center pt-4">
+        <div id="hero-left-col" class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full liquid-glass text-xs font-bold text-zinc-200">
+            <span class="w-2 h-2 rounded-full secondary-bg animate-ping"></span>
+            <span id="hero-badge-text">Where Bold Strategy Meets Global Execution</span>
+          </div>
+
+          <h1 id="hero-main-heading" class="text-4xl sm:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.04]">
+            Defining Culture. <span class="accent-text">Scaling Brands</span> Globally.
+          </h1>
+
+          <p id="hero-sub-text" class="text-zinc-400 text-base sm:text-lg max-w-2xl leading-relaxed">
+            From high-converting e-commerce marketplaces and quick-commerce dark stores to iconic 3D packaging and custom digital experiences.
+          </p>
+
+          <!-- Blonqoo-inspired Discipline Pills -->
+          <div id="hero-pills-container" class="flex flex-wrap gap-2 pt-1"></div>
+
+          <div class="pt-3 flex flex-wrap items-center gap-3.5">
+            <button onclick="navigate('services')" id="hero-btn-primary" class="px-7 py-4 rounded-2xl bg-white hover:bg-zinc-200 text-zinc-950 font-extrabold text-sm transition shadow-xl">
+              Explore Services & Build Quote ↗
+            </button>
+            <button onclick="navigate('tracker')" id="hero-btn-secondary" class="px-6 py-4 rounded-2xl liquid-glass text-white font-bold text-sm hover:border-white/30 transition">
+              Track Live Project (0-100%)
+            </button>
+          </div>
         </div>
-        <h1 id="hero-title-display" class="text-4xl sm:text-6xl font-bold tracking-tight text-white leading-[1.08]">We Build & Scale Brands Globally.</h1>
-        <p id="hero-sub-display" class="mt-5 text-zinc-400 text-base max-w-2xl mx-auto">Click on any service category to customize deliverables and generate an instant PDF quotation.</p>
-        <div class="mt-8 flex justify-center gap-3.5">
-          <button onclick="switchPage('services')" class="px-7 py-3.5 rounded-xl bg-white text-zinc-950 font-extrabold text-sm">Explore Services →</button>
-          <button onclick="switchPage('tracker')" class="px-7 py-3.5 rounded-xl charcoal-card text-white font-bold text-sm">Live Tracker</button>
+
+        <!-- 3D CHARACTER / MODEL STAGE (Editable from Backend: Image Tilt, .GLB 3D, or Spline Iframe) -->
+        <div id="hero-3d-wrapper" class="lg:col-span-5 relative flex items-center justify-center min-h-[360px] sm:min-h-[440px]">
+          <div class="absolute inset-0 stage-3d-glow rounded-full pointer-events-none"></div>
+          <div id="hero-3d-stage" onmousemove="tilt3DCard(event, this)" onmouseleave="reset3DCard(this)" class="relative w-full h-[380px] sm:h-[440px] liquid-glass rounded-3xl p-6 flex flex-col items-center justify-center overflow-hidden transition-transform duration-200 ease-out">
+            <!-- Populated dynamically by render3DStage() -->
+          </div>
         </div>
       </div>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="charcoal-card rounded-2xl p-6"><div id="stat-1-val" class="text-3xl font-bold text-white">50+</div><div class="text-xs text-zinc-400 mt-1">Brands Scaled</div></div>
-        <div class="charcoal-card rounded-2xl p-6"><div id="stat-2-val" class="text-3xl font-bold text-emerald-400">250+</div><div class="text-xs text-zinc-400 mt-1">Delivered</div></div>
-        <div class="charcoal-card rounded-2xl p-6"><div id="stat-rating-home" class="text-3xl font-bold text-amber-400">5.0 ★</div><div class="text-xs text-zinc-400 mt-1">Rating</div></div>
-        <div class="charcoal-card rounded-2xl p-6"><div id="stat-3-val" class="text-3xl font-bold text-indigo-400">100%</div><div class="text-xs text-zinc-400 mt-1">Transparency</div></div>
+
+      <!-- INFINITE TRUST / PLATFORM MARQUEE STRIP -->
+      <div id="home-marquee-section" class="border-y border-[#242429] py-4 overflow-hidden bg-[#111114]/60 -mx-4 sm:-mx-6 px-4">
+        <div id="marquee-items-track" class="marquee-track gap-12 items-center text-xs sm:text-sm font-bold uppercase tracking-widest text-zinc-400"></div>
+      </div>
+
+      <!-- KEY AGENCY METRICS BENTO -->
+      <div id="home-stats-section" class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="charcoal-card rounded-3xl p-6">
+          <span class="text-[11px] font-bold text-zinc-500">(01)</span>
+          <div id="metric-1-val" class="text-3xl sm:text-4xl font-extrabold text-white mt-2">50+</div>
+          <div id="metric-1-lbl" class="text-xs text-zinc-400 mt-1">Global Brands Scaled</div>
+        </div>
+        <div class="charcoal-card rounded-3xl p-6">
+          <span class="text-[11px] font-bold text-zinc-500">(02)</span>
+          <div id="metric-2-val" class="text-3xl sm:text-4xl font-extrabold secondary-text mt-2">250+</div>
+          <div id="metric-2-lbl" class="text-xs text-zinc-400 mt-1">Projects & Launches</div>
+        </div>
+        <div class="charcoal-card rounded-3xl p-6">
+          <span class="text-[11px] font-bold text-zinc-500">(03)</span>
+          <div id="metric-rating-val" class="text-3xl sm:text-4xl font-extrabold text-amber-400 mt-2">5.0 ★</div>
+          <div id="metric-3-lbl" class="text-xs text-zinc-400 mt-1">Verified Client Rating</div>
+        </div>
+        <div class="charcoal-card rounded-3xl p-6">
+          <span class="text-[11px] font-bold text-zinc-500">(04)</span>
+          <div id="metric-4-val" class="text-3xl sm:text-4xl font-extrabold accent-text mt-2">24/7</div>
+          <div id="metric-4-lbl" class="text-xs text-zinc-400 mt-1">Real-Time Tracker Access</div>
+        </div>
+      </div>
+
+      <!-- HOME FEATURED SERVICES (NUMBERED EDITORIAL CARDS) -->
+      <div class="space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#242429] pb-6">
+          <div>
+            <span id="home-srv-eyebrow" class="text-xs font-extrabold uppercase tracking-widest accent-text">Full-Service Capabilities</span>
+            <h2 id="home-srv-heading" class="text-3xl sm:text-4xl font-bold text-white mt-1">Click Any Vertical to Customize Your Quote</h2>
+          </div>
+          <button onclick="navigate('services')" class="text-xs font-extrabold text-white hover:underline">Explore All Services ↗</button>
+        </div>
+        <div id="home-services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      </div>
+
+      <!-- HOME SELECTED WORK PREVIEW (BLONQOO NUMBERED CASE STUDIES) -->
+      <div id="home-work-section" class="space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#242429] pb-6">
+          <div>
+            <span id="home-work-eyebrow" class="text-xs font-extrabold uppercase tracking-widest secondary-text">Selected Works</span>
+            <h2 id="home-work-heading" class="text-3xl sm:text-4xl font-bold text-white mt-1">Recent Brand Transformations</h2>
+          </div>
+          <button onclick="navigate('portfolio')" class="text-xs font-extrabold text-white hover:underline">View All Case Studies ↗</button>
+        </div>
+        <div id="home-portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+      </div>
+
+      <!-- 4-STEP HOW WE WORK PROCESS -->
+      <div id="home-process-section" class="space-y-8">
+        <div class="border-b border-[#242429] pb-6">
+          <span class="text-xs font-extrabold uppercase tracking-widest accent-text">Execution Framework</span>
+          <h2 id="process-main-heading" class="text-3xl sm:text-4xl font-bold text-white mt-1">How We Engineer Growth</h2>
+        </div>
+        <div id="process-steps-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"></div>
+      </div>
+
+      <!-- BLONQOO-INSPIRED AWARDS & RECOGNITION TABLE ((001) - (004)) -->
+      <div id="home-awards-section" class="space-y-6">
+        <div class="border-b border-[#242429] pb-5">
+          <span class="text-xs font-extrabold uppercase tracking-widest text-amber-400">Milestones & Benchmarks</span>
+          <h2 id="awards-main-heading" class="text-3xl font-bold text-white mt-1">Recognition & Operational Excellence</h2>
+        </div>
+        <div id="awards-rows-container" class="divide-y divide-[#242429] border-b border-[#242429]"></div>
+      </div>
+
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- PAGE 2: SERVICES & LIQUID-GLASS POP-UP INSPECTOR                       -->
+    <!-- ======================================================================= -->
+    <section id="view-services" class="spa-view hidden space-y-10">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#242429] pb-6">
+        <div>
+          <span id="srv-page-eyebrow" class="text-xs font-extrabold uppercase tracking-widest accent-text">Interactive Service Catalog</span>
+          <h1 id="srv-page-heading" class="text-3xl sm:text-5xl font-bold text-white mt-1">Our Services & Solutions</h1>
+          <p id="srv-page-sub" class="text-sm text-zinc-400 mt-2">Click on any service card below to open its Liquid-Glass Pop-up and add specific sub-services to your quotation.</p>
+        </div>
+        <button onclick="navigate('quotation')" class="px-5 py-3.5 rounded-2xl secondary-bg text-zinc-950 font-extrabold text-xs shrink-0 self-start md:self-auto">
+          Open Quotation Cart (<span id="srv-cart-counter">0</span>) →
+        </button>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div id="service-filter-bar" class="flex flex-wrap gap-2"></div>
+
+      <div id="services-catalog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+      <!-- FAQ Section -->
+      <div id="faq-section-wrapper" class="pt-12 border-t border-[#242429] space-y-6">
+        <h3 id="faq-main-heading" class="text-2xl font-bold text-white">Frequently Asked Questions</h3>
+        <div id="faq-accordion-list" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
       </div>
     </section>
 
-    <!-- SERVICES -->
-    <section id="page-services" class="page-section hidden space-y-8">
-      <div class="flex justify-between items-center border-b border-[#27272a] pb-6">
-        <div><h2 class="text-3xl font-bold text-white">Service Verticals</h2><p class="text-sm text-zinc-400">Click a category to view sub-services.</p></div>
-        <button onclick="switchPage('quotation')" class="px-5 py-3 rounded-xl bg-emerald-500 text-zinc-950 font-extrabold text-xs">View Quote Cart (<span id="services-cart-count">0</span>) →</button>
-      </div>
-      <div id="services-main-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-    </section>
-
-    <!-- QUOTATION -->
-    <section id="page-quotation" class="page-section hidden max-w-4xl mx-auto space-y-8">
-      <div class="liquid-glass-card rounded-3xl p-6 md:p-8 space-y-6">
-        <h3 class="text-lg font-bold text-white">Quotation Cart</h3>
-        <div id="quote-cart-list" class="space-y-3"></div>
-        <div class="p-5 rounded-2xl bg-[#09090b] border border-[#27272a] flex justify-between text-lg font-extrabold text-white">
-          <span>Total:</span><span id="quote-total-display" class="text-emerald-400">₹0</span>
+    <!-- ======================================================================= -->
+    <!-- PAGE 3: QUOTATION BUILDER (PDF + WHATSAPP DIRECT CLOSING)              -->
+    <!-- ======================================================================= -->
+    <section id="view-quotation" class="spa-view hidden max-w-4xl mx-auto space-y-8">
+      <div class="border-b border-[#242429] pb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs font-extrabold uppercase tracking-widest secondary-text">Automated Proposal Engine</span>
+          <h1 id="quote-page-heading" class="text-3xl sm:text-5xl font-bold text-white mt-1">Instant Quotation Builder</h1>
+          <p id="quote-page-sub" class="text-sm text-zinc-400 mt-2">Customize your selected deliverables, download an official international PDF proposal, or send directly to WhatsApp.</p>
         </div>
-        <form onsubmit="downloadOfficialQuotePDF(event)" class="space-y-4">
-          <div class="grid grid-cols-2 gap-4">
-            <input type="text" id="q-client-name" required placeholder="Full Name *" class="w-full px-4 py-3 rounded-xl matte-input text-sm" />
-            <input type="text" id="q-brand-name" required placeholder="Brand Name *" class="w-full px-4 py-3 rounded-xl matte-input text-sm" />
+        <button onclick="navigate('services')" class="px-4 py-2.5 rounded-xl charcoal-card text-xs font-bold text-indigo-400 self-start sm:self-auto">
+          + Add More Services
+        </button>
+      </div>
+
+      <div class="liquid-glass rounded-3xl p-6 sm:p-8 space-y-6">
+        <div id="quote-items-container" class="space-y-3"></div>
+
+        <!-- Totals Box (Adapts to Backend Pricing Visibility Mode) -->
+        <div id="quote-totals-box" class="p-5 rounded-2xl bg-[#09090b] border border-[#242429] space-y-2">
+          <div class="flex justify-between text-xs text-zinc-400">
+            <span>Subtotal:</span>
+            <span id="q-subtotal-val">₹0</span>
           </div>
-          <div class="grid grid-cols-2 gap-4">
-            <input type="email" id="q-client-email" required placeholder="Email *" class="w-full px-4 py-3 rounded-xl matte-input text-sm" />
-            <input type="tel" id="q-client-phone" required placeholder="Phone *" class="w-full px-4 py-3 rounded-xl matte-input text-sm" />
+          <div class="flex justify-between text-xs text-zinc-400">
+            <span id="q-tax-lbl">Tax / GST (0%):</span>
+            <span id="q-tax-val">₹0</span>
           </div>
-          <button type="submit" class="w-full py-4 rounded-xl bg-white text-zinc-950 font-extrabold text-sm">Download PDF Quotation</button>
+          <div class="flex justify-between text-lg font-extrabold text-white pt-2 border-t border-[#242429]">
+            <span>Estimated Total:</span>
+            <span id="q-grand-val" class="secondary-text">₹0</span>
+          </div>
+        </div>
+
+        <form onsubmit="handleQuoteSubmission(event)" class="space-y-4 pt-2">
+          <h4 class="text-xs font-extrabold uppercase tracking-wider text-zinc-400">Client Details to Unlock & Download Proposal</h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <input type="text" id="q-inp-name" required placeholder="Your Full Name *" class="w-full px-4 py-3 rounded-xl matte-input text-sm" />
+            <input type="text" id="q-inp-brand" required placeholder="Brand / Company Name *" class="w-full px-4 py-3 rounded-xl matte-input text-sm" />
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <input type="email" id="q-inp-email" required placeholder="Official Email *" class="w-full px-4 py-3 rounded-xl matte-input text-sm" />
+            <input type="tel" id="q-inp-phone" required placeholder="WhatsApp Number (with Country Code) *" class="w-full px-4 py-3 rounded-xl matte-input text-sm" />
+            <input type="text" id="q-inp-country" placeholder="Country / City (e.g. UAE / India / USA)" class="w-full px-4 py-3 rounded-xl matte-input text-sm" />
+          </div>
+          <input type="text" id="q-inp-notes" placeholder="Project timeline or custom requirements (Optional)" class="w-full px-4 py-3 rounded-xl matte-input text-sm" />
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+            <button type="submit" class="w-full py-4 rounded-xl bg-white hover:bg-zinc-200 text-zinc-950 font-extrabold text-sm shadow-xl transition">
+              📥 Download Official PDF Quotation
+            </button>
+            <button type="button" onclick="sendQuoteViaWhatsApp()" class="w-full py-4 rounded-xl secondary-bg hover:opacity-95 text-zinc-950 font-extrabold text-sm shadow-xl transition">
+              💬 Send Quote on WhatsApp Now
+            </button>
+          </div>
         </form>
       </div>
     </section>
 
-    <!-- PORTFOLIO -->
-    <section id="page-portfolio" class="page-section hidden space-y-8">
-      <h2 class="text-3xl font-bold text-white">Portfolio & Case Studies</h2>
-      <div id="portfolio-main-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+    <!-- ======================================================================= -->
+    <!-- PAGE 4: PORTFOLIO, CASE STUDIES & REELS                                -->
+    <!-- ======================================================================= -->
+    <section id="view-portfolio" class="spa-view hidden space-y-10">
+      <div class="border-b border-[#242429] pb-6">
+        <span class="text-xs font-extrabold uppercase tracking-widest secondary-text">Proven Transformations</span>
+        <h1 id="pf-page-heading" class="text-3xl sm:text-5xl font-bold text-white mt-1">Selected Works & Case Studies</h1>
+        <p id="pf-page-sub" class="text-sm text-zinc-400 mt-2">Click on any project to inspect the challenge, execution strategy, and measurable growth impact.</p>
+      </div>
+      <div id="portfolio-catalog-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
     </section>
 
-    <!-- TRACKER -->
-    <section id="page-tracker" class="page-section hidden space-y-8">
-      <div class="charcoal-card rounded-3xl p-6 md:p-10 space-y-8">
-        <div class="flex justify-between items-center"><h2 class="text-3xl font-bold text-white">Client Work Status</h2><input type="text" id="tracker-search-box" oninput="renderClientTracker()" placeholder="Search..." class="px-4 py-2 rounded-xl matte-input text-sm" /></div>
-        <div id="tracker-main-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+    <!-- ======================================================================= -->
+    <!-- PAGE 5: LIVE CLIENT WORK TRACKER (0% - 100%)                           -->
+    <!-- ======================================================================= -->
+    <section id="view-tracker" class="spa-view hidden space-y-8">
+      <div class="charcoal-card rounded-3xl p-6 sm:p-10 space-y-8">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#242429] pb-6">
+          <div>
+            <span class="text-xs font-extrabold uppercase tracking-widest secondary-text">Real-Time Operations Portal</span>
+            <h1 id="tr-page-heading" class="text-3xl sm:text-4xl font-bold text-white mt-1">Live Client Work Tracker (0% – 100%)</h1>
+            <p id="tr-page-sub" class="text-sm text-zinc-400 mt-1">Search your Brand Name, Client Name, or Project Code to inspect real-time progress and deliverables.</p>
+          </div>
+          <div class="w-full md:w-80">
+            <input type="text" id="tracker-query-inp" oninput="renderTrackerCards()" placeholder="🔍 Search Brand or Project ID..." class="w-full px-4 py-3 rounded-xl matte-input text-sm" />
+          </div>
+        </div>
+        <div id="tracker-cards-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="page-about" class="page-section hidden space-y-12">
-      <div class="charcoal-card rounded-3xl p-6 md:p-12 space-y-8">
-        <h2 id="about-heading-display" class="text-3xl font-bold text-white">About Us</h2>
-        <p id="about-story-display" class="text-zinc-300 text-sm whitespace-pre-line"></p>
-        <h3 class="text-xl font-bold text-white mt-6">Leadership</h3>
-        <div id="about-partners-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
-        <h3 class="text-xl font-bold text-white mt-6">Core Team</h3>
-        <div id="about-staff-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
+    <!-- ======================================================================= -->
+    <!-- PAGE 6: ABOUT US, FOUNDERS/PARTNERS & CORE STAFF                       -->
+    <!-- ======================================================================= -->
+    <section id="view-about" class="spa-view hidden space-y-12">
+      <div class="charcoal-card rounded-3xl p-6 sm:p-12 space-y-12">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+          <div class="lg:col-span-2 space-y-4">
+            <span class="text-xs font-extrabold uppercase tracking-widest accent-text">Our Story & DNA</span>
+            <h1 id="about-main-heading" class="text-3xl sm:text-5xl font-bold text-white leading-tight">Built by Operators, Driven by Global Brand Growth.</h1>
+            <p id="about-main-story" class="text-zinc-300 text-sm sm:text-base leading-relaxed whitespace-pre-line"></p>
+          </div>
+          <div class="space-y-4">
+            <div class="liquid-glass rounded-2xl p-6">
+              <div class="text-xs font-extrabold uppercase secondary-text">Our Mission</div>
+              <p id="about-mission-text" class="text-xs sm:text-sm text-zinc-300 mt-2 leading-relaxed"></p>
+            </div>
+            <div class="liquid-glass rounded-2xl p-6">
+              <div class="text-xs font-extrabold uppercase accent-text">Our Vision</div>
+              <p id="about-vision-text" class="text-xs sm:text-sm text-zinc-300 mt-2 leading-relaxed"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Founders & Managing Partners -->
+        <div class="pt-8 border-t border-[#242429]">
+          <span class="text-xs font-extrabold uppercase tracking-widest text-amber-400">Executive Leadership</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1 mb-6">Founders & Managing Partners</h2>
+          <div id="about-partners-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+
+        <!-- Core Team & Specialists -->
+        <div class="pt-8 border-t border-[#242429]">
+          <span class="text-xs font-extrabold uppercase tracking-widest accent-text">The Specialists</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1 mb-6">Core Team & Execution Desk</h2>
+          <div id="about-staff-list" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5"></div>
+        </div>
       </div>
     </section>
 
-    <!-- REVIEWS -->
-    <section id="page-reviews" class="page-section hidden space-y-8">
-      <h2 class="text-3xl font-bold text-white">Client Reviews</h2>
-      <div id="reviews-main-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+    <!-- ======================================================================= -->
+    <!-- PAGE 7: VERIFIED CLIENT REVIEWS & RATINGS                              -->
+    <!-- ======================================================================= -->
+    <section id="view-reviews" class="spa-view hidden space-y-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#242429] pb-6">
+        <div>
+          <span class="text-xs font-extrabold uppercase tracking-widest text-amber-400">Client Testimonials</span>
+          <h1 class="text-3xl sm:text-5xl font-bold text-white mt-1">Verified 5-Star Reviews</h1>
+          <p class="text-sm text-zinc-400 mt-2">Real feedback from founders and marketing heads across the globe.</p>
+        </div>
+        <button onclick="openReviewModal()" class="px-6 py-3.5 rounded-2xl bg-amber-400 hover:bg-amber-300 text-zinc-950 font-extrabold text-xs self-start sm:self-auto">
+          ★ Write a Client Review
+        </button>
+      </div>
+      <div id="reviews-cards-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="page-contact" class="page-section hidden max-w-4xl mx-auto space-y-8">
-      <div class="charcoal-card rounded-3xl p-6 space-y-6">
-        <h2 class="text-3xl font-bold text-white">Contact Us</h2>
-        <form onsubmit="submitContactForm(event)" class="space-y-4">
-          <input type="text" id="cnt-name" required placeholder="Name" class="w-full px-4 py-3 rounded-xl matte-input text-sm" />
-          <input type="email" id="cnt-email" required placeholder="Email" class="w-full px-4 py-3 rounded-xl matte-input text-sm" />
-          <textarea id="cnt-msg" required rows="4" placeholder="Message" class="w-full px-4 py-3 rounded-xl matte-input text-sm"></textarea>
-          <button type="submit" class="w-full py-3 rounded-xl bg-indigo-600 text-white font-bold text-sm">Send Inquiry</button>
+    <!-- ======================================================================= -->
+    <!-- PAGE 8: CONTACT US & GLOBAL REGIONAL HUBS (BLONQOO INDIA + UAE STYLE)  -->
+    <!-- ======================================================================= -->
+    <section id="view-contact" class="spa-view hidden space-y-12">
+      <div class="border-b border-[#242429] pb-6">
+        <span class="text-xs font-extrabold uppercase tracking-widest accent-text">Global Presence</span>
+        <h1 id="contact-main-heading" class="text-3xl sm:text-5xl font-bold text-white mt-1">Connect With Our Global Studios</h1>
+        <p id="contact-main-sub" class="text-sm text-zinc-400 mt-2">Reach out directly to our regional hubs or submit a brief below.</p>
+      </div>
+
+      <!-- Blonqoo-Style Multi-Country Studio Hub Cards -->
+      <div id="studios-hub-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+
+      <!-- Inquiry Form -->
+      <div class="charcoal-card rounded-3xl p-6 sm:p-10 max-w-4xl mx-auto">
+        <h3 class="text-xl font-bold text-white mb-6">Send a Direct Project Brief</h3>
+        <form onsubmit="handleContactSubmission(event)" class="space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <input type="text" id="cnt-name" required placeholder="Your Full Name *" class="w-full px-4 py-3 rounded-xl matte-input text-sm" />
+            <input type="text" id="cnt-brand" required placeholder="Brand / Company Name *" class="w-full px-4 py-3 rounded-xl matte-input text-sm" />
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <input type="email" id="cnt-email" required placeholder="Official Email Address *" class="w-full px-4 py-3 rounded-xl matte-input text-sm" />
+            <input type="tel" id="cnt-phone" required placeholder="WhatsApp / Mobile Number *" class="w-full px-4 py-3 rounded-xl matte-input text-sm" />
+          </div>
+          <textarea id="cnt-msg" required rows="4" placeholder="Tell us about your brand, target marketplaces, or creative requirements..." class="w-full px-4 py-3 rounded-xl matte-input text-sm"></textarea>
+          <button type="submit" class="w-full py-4 rounded-xl accent-bg hover:opacity-95 text-white font-extrabold text-sm transition">
+            Submit Project Inquiry →
+          </button>
         </form>
       </div>
     </section>
 
-    <!-- POLICIES -->
-    <section id="page-policies" class="page-section hidden max-w-4xl mx-auto space-y-6">
-      <h2 class="text-3xl font-bold text-white">Legal Policies</h2>
-      <div class="charcoal-card rounded-2xl p-6"><h3 class="text-lg font-bold text-white">Privacy Policy</h3><p id="policy-privacy-display" class="text-xs text-zinc-400 mt-2"></p></div>
+    <!-- ======================================================================= -->
+    <!-- PAGE 9: LEGAL POLICIES (PRIVACY, TERMS & REFUND)                       -->
+    <!-- ======================================================================= -->
+    <section id="view-policies" class="spa-view hidden max-w-4xl mx-auto space-y-6">
+      <div class="border-b border-[#242429] pb-6">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-zinc-400">Legal & Compliance</span>
+        <h1 class="text-3xl sm:text-4xl font-bold text-white mt-1">Agency Policies & Terms</h1>
+      </div>
+      <div class="space-y-6">
+        <div class="charcoal-card rounded-3xl p-6 sm:p-8">
+          <h3 class="text-lg font-bold text-white mb-2">1. Privacy Policy</h3>
+          <p id="pol-privacy-text" class="text-xs sm:text-sm text-zinc-400 leading-relaxed whitespace-pre-line"></p>
+        </div>
+        <div class="charcoal-card rounded-3xl p-6 sm:p-8">
+          <h3 class="text-lg font-bold text-white mb-2">2. Terms & Conditions</h3>
+          <p id="pol-terms-text" class="text-xs sm:text-sm text-zinc-400 leading-relaxed whitespace-pre-line"></p>
+        </div>
+        <div class="charcoal-card rounded-3xl p-6 sm:p-8">
+          <h3 class="text-lg font-bold text-white mb-2">3. Refund & Cancellation Policy</h3>
+          <p id="pol-refund-text" class="text-xs sm:text-sm text-zinc-400 leading-relaxed whitespace-pre-line"></p>
+        </div>
+      </div>
     </section>
+
   </main>
 
-  <!-- SERVICE MODAL -->
-  <div id="service-popup-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
-    <div class="liquid-glass-card rounded-3xl max-w-2xl w-full p-6 space-y-4">
-      <div class="flex justify-between items-center"><h3 id="popup-service-title" class="text-2xl font-bold text-white">Service</h3><button onclick="closeServicePopup()" class="text-white font-bold">✕</button></div>
-      <div id="popup-subservices-container" class="space-y-2"></div>
-      <button onclick="closeServicePopup(); switchPage('quotation');" class="w-full py-3 rounded-xl bg-emerald-500 text-zinc-950 font-bold text-xs">Go to Quotation Cart →</button>
+  <!-- ================= BLONQOO-INSPIRED KINETIC FOOTER MARQUEE ================= -->
+  <div onclick="navigate('quotation')" class="mt-20 border-y border-[#242429] py-6 overflow-hidden bg-[#111114] cursor-pointer group">
+    <div id="footer-kinetic-marquee" class="marquee-track gap-12 items-center text-3xl sm:text-5xl font-extrabold editorial-font tracking-tight text-white group-hover:text-indigo-400 transition"></div>
+  </div>
+
+  <!-- ================= GLOBAL FOOTER (ZERO ADMIN TRACE) ================= -->
+  <footer class="bg-[#09090b] py-14 px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8 text-xs text-zinc-400">
+      <div>
+        <strong id="ft-brand-name" class="text-white text-lg font-bold editorial-font">OG DESK</strong>
+        <p id="ft-brand-domain" class="text-zinc-500 mt-1">ogdesk.com</p>
+        <p id="ft-copyright" class="text-zinc-500 mt-2">© 2026 All rights reserved.</p>
+      </div>
+      <div class="flex flex-wrap gap-5 font-semibold">
+        <button onclick="navigate('home')" class="hover:text-white">Home</button>
+        <button onclick="navigate('services')" class="hover:text-white">Services</button>
+        <button onclick="navigate('quotation')" class="hover:text-white">Quotation</button>
+        <button onclick="navigate('portfolio')" class="hover:text-white">Selected Work</button>
+        <button onclick="navigate('tracker')" class="hover:text-white">Client Tracker</button>
+        <button onclick="navigate('about')" class="hover:text-white">About & Team</button>
+        <button onclick="navigate('policies')" class="hover:text-white">Legal Policies</button>
+      </div>
+      <div id="ft-socials" class="flex flex-wrap gap-3"></div>
+    </div>
+  </footer>
+
+  <!-- ================= FLOATING QUICK-ACTION DOCK ================= -->
+  <div class="fixed bottom-5 right-5 z-40 flex items-center gap-2">
+    <button onclick="openDirectWhatsApp()" class="px-4 py-3 rounded-2xl liquid-glass text-xs font-extrabold text-emerald-400 hover:border-emerald-400/50 flex items-center gap-2 shadow-2xl">
+      <span>💬 WhatsApp Desk</span>
+    </button>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- LIQUID-GLASS MODAL 1: SERVICE & SUB-SERVICES POP-UP                       -->
+  <!-- ========================================================================= -->
+  <div id="service-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="liquid-glass rounded-3xl max-w-2xl w-full p-6 sm:p-8 max-h-[90vh] overflow-y-auto space-y-5">
+      <div class="flex items-start justify-between gap-4 border-b border-white/10 pb-4">
+        <div>
+          <span id="smodal-badge" class="px-3 py-1 rounded-full text-[11px] font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">Category</span>
+          <h3 id="smodal-title" class="text-2xl font-bold text-white mt-2">Service Title</h3>
+          <p id="smodal-desc" class="text-xs text-zinc-300 mt-1"></p>
+        </div>
+        <button onclick="closeServiceModal()" class="w-9 h-9 rounded-xl charcoal-card text-zinc-300 hover:text-white font-bold shrink-0">✕</button>
+      </div>
+
+      <div class="space-y-3">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-extrabold uppercase tracking-wider text-zinc-400">Select Sub-Services for Your Quotation:</span>
+          <button id="smodal-add-all" class="text-xs font-extrabold secondary-text hover:underline">+ Select All</button>
+        </div>
+        <div id="smodal-sublist" class="space-y-2.5"></div>
+      </div>
+
+      <div class="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
+        <button onclick="closeServiceModal()" class="px-5 py-2.5 rounded-xl charcoal-card text-xs font-bold text-zinc-300">Continue Browsing</button>
+        <button onclick="closeServiceModal(); navigate('quotation');" class="px-6 py-3 rounded-xl secondary-bg text-zinc-950 font-extrabold text-xs">
+          Proceed to Quotation Cart →
+        </button>
+      </div>
     </div>
   </div>
 
-  <script>
-    const CLOUD_URL = 'https://backend-f4e0c-default-rtdb.firebaseio.com/';
-    let activeCurrency = 'INR', quotationCart = [];
+  <!-- ========================================================================= -->
+  <!-- LIQUID-GLASS MODAL 2: CASE STUDY PROBLEM / SOLUTION / IMPACT INSPECTOR    -->
+  <!-- ========================================================================= -->
+  <div id="portfolio-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="liquid-glass rounded-3xl max-w-2xl w-full p-6 sm:p-8 max-h-[90vh] overflow-y-auto space-y-5">
+      <div class="flex items-start justify-between gap-4 border-b border-white/10 pb-4">
+        <div>
+          <span id="pmodal-cat" class="text-xs font-extrabold uppercase secondary-text">Case Study</span>
+          <h3 id="pmodal-title" class="text-2xl font-bold text-white mt-1">Project Title</h3>
+          <div id="pmodal-client" class="text-xs text-zinc-400 mt-0.5"></div>
+        </div>
+        <button onclick="closePortfolioModal()" class="w-9 h-9 rounded-xl charcoal-card text-white font-bold">✕</button>
+      </div>
+      <div id="pmodal-media-box" class="rounded-2xl overflow-hidden bg-black/50 max-h-64 flex items-center justify-center"></div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+        <div class="p-4 rounded-2xl bg-black/60 border border-white/10">
+          <strong class="text-rose-400 uppercase block mb-1">The Challenge</strong>
+          <p id="pmodal-challenge" class="text-zinc-300 leading-relaxed"></p>
+        </div>
+        <div class="p-4 rounded-2xl bg-black/60 border border-white/10">
+          <strong class="secondary-text uppercase block mb-1">Our Execution & Solution</strong>
+          <p id="pmodal-solution" class="text-zinc-300 leading-relaxed"></p>
+        </div>
+      </div>
+      <div class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-between">
+        <div>
+          <span class="text-[10px] uppercase font-bold text-emerald-300 block">Measurable Impact</span>
+          <strong id="pmodal-metric" class="text-lg font-extrabold text-emerald-400"></strong>
+        </div>
+        <a id="pmodal-link" href="#" target="_blank" class="hidden px-4 py-2 rounded-xl bg-white text-zinc-950 font-extrabold text-xs">Watch Reel / Live Link ↗</a>
+      </div>
+    </div>
+  </div>
 
-    async function syncFromCloud() {
+  <!-- ========================================================================= -->
+  <!-- LIQUID-GLASS MODAL 3: SUBMIT 5-STAR REVIEW                                -->
+  <!-- ========================================================================= -->
+  <div id="review-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="liquid-glass rounded-3xl max-w-md w-full p-6 space-y-4">
+      <div class="flex items-center justify-between border-b border-white/10 pb-3">
+        <h3 class="text-lg font-bold text-white">★ Submit Verified Review</h3>
+        <button onclick="closeReviewModal()" class="text-zinc-400 hover:text-white font-bold">✕</button>
+      </div>
+      <form onsubmit="handleReviewSubmit(event)" class="space-y-4">
+        <select id="rev-stars" class="w-full px-4 py-3 rounded-xl matte-input text-sm text-amber-400 font-bold">
+          <option value="5">★★★★★ (5/5 - Exceptional)</option>
+          <option value="4">★★★★☆ (4/5 - Very Good)</option>
+          <option value="3">★★★☆☆ (3/5 - Good)</option>
+          <option value="2">★★☆☆☆ (2/5 - Fair)</option>
+          <option value="1">★☆☆☆☆ (1/5 - Poor)</option>
+        </select>
+        <input type="text" id="rev-name" required placeholder="Your Full Name *" class="w-full px-4 py-3 rounded-xl matte-input text-sm" />
+        <input type="text" id="rev-brand" required placeholder="Brand / Company Name *" class="w-full px-4 py-3 rounded-xl matte-input text-sm" />
+        <textarea id="rev-text" required rows="3" placeholder="Share your experience working with us..." class="w-full px-4 py-3 rounded-xl matte-input text-sm"></textarea>
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-amber-400 text-zinc-950 font-extrabold text-sm">Publish Review</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- HIDDEN PRINTABLE A4 INTERNATIONAL PDF PROPOSAL SHEET                      -->
+  <!-- ========================================================================= -->
+  <div class="hidden">
+    <div id="pdf-proposal-sheet" style="width: 780px; padding: 42px; background: #ffffff; color: #09090b; font-family: 'Plus Jakarta Sans', sans-serif;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #09090b; padding-bottom: 20px;">
+        <div>
+          <h1 id="pdf-agency-name" style="font-size: 26px; font-weight: 800; color: #09090b; margin: 0;">OG DESK</h1>
+          <p id="pdf-agency-tagline" style="font-size: 12px; color: #52525b; margin: 4px 0 0 0;"></p>
+          <p id="pdf-agency-contact" style="font-size: 11px; color: #52525b; margin-top: 6px;"></p>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-size: 18px; font-weight: 800; color: #4f46e5;">OFFICIAL PROPOSAL & QUOTATION</div>
+          <div id="pdf-quote-id" style="font-size: 12px; font-weight: 700; color: #18181b; margin-top: 4px;"></div>
+          <div id="pdf-quote-date" style="font-size: 11px; color: #71717a;"></div>
+        </div>
+      </div>
+      <div style="margin-top: 22px; padding: 14px 18px; background: #f4f4f5; border-radius: 10px;">
+        <div style="font-size: 10px; font-weight: 800; color: #52525b; text-transform: uppercase;">Prepared For:</div>
+        <div id="pdf-client-line1" style="font-size: 15px; font-weight: 800; color: #09090b; margin-top: 3px;"></div>
+        <div id="pdf-client-line2" style="font-size: 11.5px; color: #3f3f46; margin-top: 2px;"></div>
+      </div>
+      <table style="width: 100%; border-collapse: collapse; margin-top: 22px; font-size: 12.5px;">
+        <thead>
+          <tr style="background: #09090b; color: #ffffff; text-align: left;">
+            <th style="padding: 11px;">#</th>
+            <th style="padding: 11px;">Deliverable & Scope</th>
+            <th style="padding: 11px;">Vertical</th>
+            <th style="padding: 11px; text-align: right;">Investment</th>
+          </tr>
+        </thead>
+        <tbody id="pdf-table-body"></tbody>
+      </table>
+      <div style="margin-top: 20px; display: flex; justify-content: flex-end;">
+        <div style="width: 290px; background: #f4f4f5; padding: 16px; border-radius: 10px;">
+          <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px;">
+            <span>Subtotal:</span><strong id="pdf-sub">₹0</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 8px; color: #52525b;">
+            <span id="pdf-tax-label">Tax / GST:</span><strong id="pdf-tax">₹0</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 16px; font-weight: 800; color: #09090b; border-top: 1px solid #d4d4d8; padding-top: 8px;">
+            <span>Total Estimate:</span><span id="pdf-grand">₹0</span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 28px; border-top: 1px solid #e4e4e7; padding-top: 14px; font-size: 11px; color: #52525b;">
+        <strong>Terms & Conditions:</strong>
+        <p id="pdf-terms" style="margin-top: 4px; white-space: pre-line; line-height: 1.5;"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- REAL-TIME GLOBAL FIREBASE ENGINE (https://backend-f4e0c-default-rtdb...)  -->
+  <!-- ========================================================================= -->
+  <script>
+    const FIREBASE_DB_URL = 'https://backend-f4e0c-default-rtdb.firebaseio.com/agency_os_v5.json';
+    const LOCAL_CACHE_KEY = 'OG_DESK_GLOBAL_V5_CACHE';
+    const CART_STORAGE_KEY = 'OG_DESK_PERSISTENT_CART_V5';
+    const CURRENCY_STORAGE_KEY = 'OG_DESK_CURRENCY_V5';
+
+    let activeCurrency = localStorage.getItem(CURRENCY_STORAGE_KEY) || 'INR';
+    let activeServiceFilter = 'ALL';
+    let cart = JSON.parse(localStorage.getItem(CART_STORAGE_KEY) || '[]');
+
+    const defaultMasterDB = {
+      theme: {
+        bgSolid: '#09090b',
+        cardCharcoal: '#111114',
+        accentPrimary: '#6366f1',
+        accentSecondary: '#10b981',
+        textMain: '#f4f4f5'
+      },
+      visibility: {
+        showAnnouncement: true,
+        show3DStage: true,
+        showMarquee: true,
+        showStats: true,
+        showProcess: true,
+        showAwards: true,
+        showFAQ: true,
+        pricingMode: 'show' // 'show' | 'unlock_in_pdf' | 'custom_quote'
+      },
+      brand: {
+        name: 'OG DESK',
+        tagline: 'Where Strategy Meets Bold Execution',
+        domain: 'ogdesk.com',
+        logo: '',
+        phone: '+91 98765 43210',
+        whatsapp: '919876543210',
+        email: 'hello@ogdesk.com',
+        announcement: '🌍 Operating Globally Across India, UAE, USA & UK — Instant Custom Proposals Live',
+        heroBadge: 'Where Bold Strategy Meets Global Execution',
+        heroTitle: 'Defining Culture. Scaling Brands Globally.',
+        heroSub: 'We partner with ambitious brands across India, UAE, and worldwide to dominate e-commerce marketplaces, quick-commerce dark stores, 3D packaging, and digital experiences.',
+        heroBtn1: 'Explore Services & Build Quote ↗',
+        heroBtn2: 'Track Live Project (0-100%)',
+        pills: ['E-Commerce Management', 'Quick Commerce Onboarding', 'Brand Identity & 3D Packaging', 'Web & UI Engineering', 'Commercial Reels & CGI', 'India • UAE • Global'],
+        marqueeItems: ['AMAZON GLOBAL', 'FLIPKART', 'BLINKIT', 'ZEPTO', 'SWIGGY INSTAMART', 'SHOPIFY PLUS', 'NOON UAE', '3D PACKAGING STUDIO'],
+        kineticFooterText: 'LET’S SCALE YOUR BRAND _ GET IN TOUCH _ BUILD INSTANT QUOTE _ ',
+        stat1Val: '50+', stat1Lbl: 'Global Brands Scaled',
+        stat2Val: '250+', stat2Lbl: 'Projects & Launches',
+        stat3Lbl: 'Verified Client Rating',
+        stat4Val: '24/7', stat4Lbl: 'Real-Time Tracker Access',
+        usdRate: 84,
+        aedRate: 23,
+        gstPercent: 0,
+        quoteTerms: '1. 50% advance retainer to initiate project onboarding.\n2. Proposal valid for 15 calendar days.\n3. Live 0-100% client tracker portal included with every project.',
+        copyright: '© 2026 OG Desk Global Studio. All rights reserved.',
+        socials: [
+          { label: 'Instagram', url: 'https://instagram.com' },
+          { label: 'LinkedIn', url: 'https://linkedin.com' },
+          { label: 'Behance', url: 'https://behance.net' }
+        ]
+      },
+      hero3D: {
+        mode: 'character_image', // 'character_image' | 'glb_model' | 'spline_embed'
+        title: 'Interactive 3D Growth Mascot',
+        subtitle: 'Move your cursor or touch to tilt in 3D space',
+        badgeText: '3D INTERACTIVE STAGE',
+        imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=900&q=85',
+        glbUrl: 'https://modelviewer.dev/shared-assets/models/Astronaut.glb',
+        splineUrl: ''
+      },
+      seo: {
+        title: 'OG Desk | Global Creative, E-Commerce & Digital Growth Studio',
+        desc: 'Where Strategy Meets Bold Execution. Complete marketplace management, quick-commerce onboarding, 3D packaging, and web engineering.',
+        keywords: 'ecommerce agency, blinkit zepto onboarding, amazon management, branding agency dubai india, 3d packaging mockups',
+        ogImage: '',
+        favicon: ''
+      },
+      headings: {
+        homeSrvEyebrow: 'Full-Service Capabilities',
+        homeSrvHeading: 'Click Any Vertical to Customize Your Quote',
+        homeWorkEyebrow: 'Selected Works',
+        homeWorkHeading: 'Recent Brand Transformations',
+        processHeading: 'How We Engineer Growth',
+        awardsHeading: 'Recognition & Operational Excellence',
+        srvPageEyebrow: 'Interactive Service Catalog',
+        srvPageHeading: 'Our Services & Solutions',
+        srvPageSub: 'Click on any service card below to open its Liquid-Glass Pop-up and add specific sub-services to your quotation.',
+        quotePageHeading: 'Instant Quotation Builder',
+        quotePageSub: 'Customize your selected deliverables, download an official international PDF proposal, or send directly to WhatsApp.',
+        pfPageHeading: 'Selected Works & Case Studies',
+        pfPageSub: 'Click on any project to inspect the challenge, execution strategy, and measurable growth impact.',
+        trPageHeading: 'Live Client Work Tracker (0% – 100%)',
+        trPageSub: 'Search your Brand Name, Client Name, or Project Code to inspect real-time progress and deliverables.',
+        faqHeading: 'Frequently Asked Questions',
+        contactHeading: 'Connect With Our Global Studios',
+        contactSub: 'Reach out directly to our regional hubs or submit a project brief below.'
+      },
+      about: {
+        heading: 'Built by Operators, Driven by Measurable Brand Growth.',
+        story: 'Inspired by global design excellence and hardcore marketplace execution, we bridge the gap between high-craft branding and rapid commercial scaling.\n\nEvery number, colour, 3D stage asset, service pop-up, and client milestone on this platform is controlled in real time from our private cloud backend.',
+        mission: 'To empower modern brands across India, UAE, and global markets with transparent, high-ROAS digital operations.',
+        vision: 'To stand as the most trusted creative and e-commerce growth partner worldwide.'
+      },
+      studios: [
+        { id: 'ST-1', country: 'INDIA STUDIO', city: 'Gujarat & Odisha Operations Desk', phone: '+91 98765 43210', email: 'india@ogdesk.com', address: 'Umargam, Gujarat • Basudevpur, Odisha' },
+        { id: 'ST-2', country: 'UAE & MIDDLE EAST DESK', city: 'Dubai Remote & Partner Hub', phone: '+971 50 000 0000', email: 'uae@ogdesk.com', address: 'Business Bay / Global Remote Desk, UAE' },
+        { id: 'ST-3', country: 'GLOBAL OPERATIONS', city: 'US, UK & Europe Client Desk', phone: '+1 (800) 000-0000', email: 'global@ogdesk.com', address: '24/7 International Account Management' }
+      ],
+      process: [
+        { step: '(01)', title: 'Discovery & Audit', desc: 'Deep-dive audit of your brand positioning, catalog health, and marketplace unit economics.' },
+        { step: '(02)', title: 'Strategy & 3D Identity', desc: 'Crafting high-converting visual assets, A+ storylines, packaging die-lines, and pricing models.' },
+        { step: '(03)', title: 'Multi-Channel Launch', desc: 'Rapid onboarding across Amazon, Flipkart, Blinkit, Zepto, Instamart, and custom web storefronts.' },
+        { step: '(04)', title: 'Performance Scaling', desc: 'Aggressive PPC ROAS optimization, inventory forecasting, and 24/7 live tracker reporting.' }
+      ],
+      awards: [
+        { code: '(001)', title: 'Top Multi-Channel E-Commerce Growth Partner', org: 'Global D2C Benchmark', year: '2026' },
+        { code: '(002)', title: 'Excellence in Quick-Commerce Dark Store Scaling', org: 'Rapid Retail Index', year: '2025' },
+        { code: '(003)', title: 'Best 3D Packaging & Brand Identity System', org: 'Creative Studio Awards', year: '2025' },
+        { code: '(004)', title: '100% Transparent Client Portal Innovation', org: 'Agency Ops Standard', year: '2026' }
+      ],
+      faqs: [
+        { id: 'FQ-1', q: 'How does the interactive Quotation Builder work?', a: 'Click on any service category card to open its Liquid-Glass pop-up, select the exact sub-services your brand needs, and download an instant PDF proposal or send it directly to our WhatsApp desk.' },
+        { id: 'FQ-2', q: 'How do I track my live project progress?', a: 'Visit the Client Tracker tab and enter your Brand Name or Project ID. You can view real-time completion percentage (0% to 100%) and completed deliverable checklists.' },
+        { id: 'FQ-3', q: 'Do you work with international clients outside India?', a: 'Yes! Use the currency switcher in the top navbar to view estimates in INR (₹), USD ($), or AED, and connect with our India, UAE, or Global desks.' },
+        { id: 'FQ-4', q: 'What is the onboarding timeline for Quick Commerce (Blinkit/Zepto)?', a: 'Once documentation and trademark/GST verifications are submitted, we complete APOB/dark-store mapping and catalog onboarding within 7 to 14 business days.' }
+      ],
+      policies: {
+        privacy: 'We respect your confidentiality. All brand data, SKU sheets, trademark documents, and contact details submitted through our quotation engine are encrypted and never shared with third parties.',
+        terms: 'Project execution commences upon receipt of the agreed advance retainer and necessary brand assets. Timelines are tracked transparently via the Live Client Tracker.',
+        refund: 'Due to dedicated creative, technical, and onboarding resource allocation, advance retainers are non-refundable once project milestones have been initiated.'
+      },
+      services: [
+        {
+          id: 'CAT-1',
+          index: '(01)',
+          title: 'E-Commerce Marketplace Management',
+          badge: 'Marketplaces',
+          description: 'End-to-end growth operations, A+ cataloging, keyword SEO, and profitable PPC scaling across Amazon, Flipkart & Meesho.',
+          subServices: [
+            { id: 'SUB-101', name: 'Amazon Complete Account Management (SEO + Operations)', priceINR: 15000, billing: 'Monthly' },
+            { id: 'SUB-102', name: 'Flipkart & Meesho Full Growth Management', priceINR: 10000, billing: 'Monthly' },
+            { id: 'SUB-103', name: 'A+ Content, EBC & Brand Storefront Design', priceINR: 7500, billing: 'One-Time' },
+            { id: 'SUB-104', name: 'High-ROAS Marketplace PPC & Sponsored Ads Scaling', priceINR: 8500, billing: 'Monthly' }
+          ]
+        },
+        {
+          id: 'CAT-2',
+          index: '(02)',
+          title: 'Quick Commerce Onboarding & Scaling',
+          badge: 'Quick Commerce',
+          description: 'Fast-track brand onboarding, dark-store SKU mapping, and visibility ads on Blinkit, Zepto, and Swiggy Instamart.',
+          subServices: [
+            { id: 'SUB-201', name: 'Blinkit Brand Onboarding & Dark-Store Setup', priceINR: 12000, billing: 'One-Time' },
+            { id: 'SUB-202', name: 'Zepto & Swiggy Instamart Complete Onboarding', priceINR: 14000, billing: 'One-Time' },
+            { id: 'SUB-203', name: 'Quick Commerce Performance Ads & Stock Planning', priceINR: 10000, billing: 'Monthly' }
+          ]
+        },
+        {
+          id: 'CAT-3',
+          index: '(03)',
+          title: 'Brand Identity, 3D Packaging & Web Studio',
+          badge: 'Creative & Web',
+          description: 'Luxury brand identity systems, print-ready packaging die-lines, photorealistic 3D product renders, and custom websites.',
+          subServices: [
+            { id: 'SUB-301', name: 'Complete Brand Identity & Visual Guidelines Book', priceINR: 15000, billing: 'One-Time' },
+            { id: 'SUB-302', name: 'Product Packaging Design & 3D Studio Mockups', priceINR: 9500, billing: 'One-Time' },
+            { id: 'SUB-303', name: 'Commercial Ad Reel, CGI & Video Editing Package', priceINR: 7500, billing: 'One-Time' },
+            { id: 'SUB-304', name: 'Custom High-Converting Brand Website (UI/UX + Dev)', priceINR: 22000, billing: 'One-Time' }
+          ]
+        }
+      ],
+      projects: [
+        {
+          id: 'PRJ-1',
+          clientName: 'Hombria Grooming',
+          projectName: 'Multi-Channel Marketplace & Quick Commerce Scale',
+          code: 'PRJ-204',
+          stage: 'Execution & Scaling',
+          progress: 82,
+          note: 'Flipkart & Amazon A+ modules live; PPC campaign ROAS stabilized at 3.8x.',
+          deliverables: ['Catalog & Keyword Audit ✔', 'A+ Visual Modules ✔', 'Sponsored Ads Active ✔', 'Quick Commerce Onboarding (In Progress)'],
+          liveLink: ''
+        }
+      ],
+      portfolio: [
+        {
+          id: 'PF-1',
+          index: '(01)',
+          title: 'Hombria — Complete Marketplace & Brand Transformation',
+          client: 'Hombria',
+          category: 'E-Commerce & Branding',
+          metric: '+240% Quarterly GMV Growth',
+          media: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80',
+          summary: 'Full catalog overhaul, conversion-focused infographics, and profitable ad scaling.',
+          challenge: 'High ad spend with low conversion rate due to unoptimized product visuals and missing keyword indexing.',
+          solution: 'Engineered 3D studio product renders, A+ comparison charts, and restructured search-term campaigns.',
+          liveUrl: ''
+        },
+        {
+          id: 'PF-2',
+          index: '(02)',
+          title: 'OneLife Accessories — Commercial Ad Reels & Packaging',
+          client: 'OneLife',
+          category: '3D Packaging & Reels',
+          metric: '3.9x Ad Return on Spend',
+          media: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=80',
+          summary: 'High-contrast retail packaging system paired with fast-paced commercial product reels.',
+          challenge: 'Needed a bold international retail look to stand out in crowded electronics categories.',
+          solution: 'Created matte-black packaging with neon accents and 3D motion commercial videos.',
+          liveUrl: ''
+        }
+      ],
+      team: [
+        {
+          id: 'TM-1',
+          name: 'Jenish Kamli',
+          role: 'Founder & Managing Partner',
+          type: 'Partner',
+          photo: '',
+          bio: 'Global E-Commerce Strategy, Quick Commerce & Creative Direction.'
+        }
+      ],
+      reviews: [
+        {
+          id: 'REV-1',
+          stars: 5,
+          name: 'Nitin Dhiman',
+          brand: 'Hombria',
+          text: 'Their structured marketplace audit, A+ design execution, and live project tracker gave us complete confidence. Highly recommended for serious brands!',
+          approved: true
+        }
+      ],
+      leads: [],
+      inquiries: []
+    };
+
+    function getDB() {
+      const cached = localStorage.getItem(LOCAL_CACHE_KEY);
+      if (!cached) {
+        localStorage.setItem(LOCAL_CACHE_KEY, JSON.stringify(defaultMasterDB));
+        return defaultMasterDB;
+      }
       try {
-        const res = await fetch(CLOUD_URL + 'agency_cms.json');
+        const parsed = JSON.parse(cached);
+        return {
+          ...defaultMasterDB,
+          ...parsed,
+          theme: { ...defaultMasterDB.theme, ...(parsed.theme || {}) },
+          visibility: { ...defaultMasterDB.visibility, ...(parsed.visibility || {}) },
+          brand: { ...defaultMasterDB.brand, ...(parsed.brand || {}) },
+          hero3D: { ...defaultMasterDB.hero3D, ...(parsed.hero3D || {}) },
+          seo: { ...defaultMasterDB.seo, ...(parsed.seo || {}) },
+          headings: { ...defaultMasterDB.headings, ...(parsed.headings || {}) },
+          about: { ...defaultMasterDB.about, ...(parsed.about || {}) },
+          policies: { ...defaultMasterDB.policies, ...(parsed.policies || {}) }
+        };
+      } catch (e) {
+        return defaultMasterDB;
+      }
+    }
+
+    async function pullCloudDB() {
+      try {
+        const res = await fetch(FIREBASE_DB_URL + '?t=' + Date.now(), { cache: 'no-store' });
         if (res.ok) {
-          const data = await res.json();
-          if (data && data.brand) {
-            localStorage.setItem('GLOBAL_AGENCY_CMS_V4', JSON.stringify(data));
-            renderEntireWebsite();
+          const cloudData = await res.json();
+          if (cloudData && cloudData.brand) {
+            const currentRaw = localStorage.getItem(LOCAL_CACHE_KEY);
+            const nextRaw = JSON.stringify(cloudData);
+            if (currentRaw !== nextRaw) {
+              localStorage.setItem(LOCAL_CACHE_KEY, nextRaw);
+              renderAll();
+            }
+          } else {
+            await pushCloudDB(getDB());
           }
         }
       } catch (e) {}
     }
 
-    function getDB() {
-      const raw = localStorage.getItem('GLOBAL_AGENCY_CMS_V4');
-      return raw ? JSON.parse(raw) : { services: [], projects: [], portfolio: [], team: [], reviews: [], leads: [], inquiries: [], brand: {name:'OG Dask', usdRate:84}, seo:{}, about:{}, policies:{} };
+    async function pushCloudDB(db) {
+      localStorage.setItem(LOCAL_CACHE_KEY, JSON.stringify(db));
+      try {
+        await fetch(FIREBASE_DB_URL, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(db)
+        });
+      } catch (e) {}
     }
 
-    function formatMoney(amt) {
+    // URL Hash Navigation (Persists Page Across Browser Refreshes!)
+    const validPages = ['home', 'services', 'quotation', 'portfolio', 'tracker', 'about', 'reviews', 'contact', 'policies'];
+    function navigate(pageId, skipHashUpdate = false) {
+      const targetPage = validPages.includes(pageId) ? pageId : 'home';
+      document.querySelectorAll('.spa-view').forEach(sec => sec.classList.add('hidden'));
+      const targetEl = document.getElementById('view-' + targetPage);
+      if (targetEl) targetEl.classList.remove('hidden');
+
+      document.querySelectorAll('.dnav-btn').forEach(btn => {
+        btn.classList.remove('bg-white', 'text-zinc-950');
+        btn.classList.add('text-zinc-300');
+      });
+      const activeBtn = document.getElementById('dnav-' + targetPage);
+      if (activeBtn) {
+        activeBtn.classList.add('bg-white', 'text-zinc-950');
+        activeBtn.classList.remove('text-zinc-300');
+      }
+
+      if (!skipHashUpdate) {
+        history.replaceState(null, null, '#' + targetPage);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    function restorePageFromHash() {
+      const hash = (window.location.hash || '#home').replace('#', '').toLowerCase();
+      navigate(validPages.includes(hash) ? hash : 'home', true);
+    }
+
+    window.addEventListener('hashchange', restorePageFromHash);
+
+    function toggleHamburgerDrawer() {
+      document.getElementById('hamburger-drawer').classList.toggle('hidden');
+    }
+
+    // Currency & Pricing Modes
+    function setCurrency(curr) {
+      activeCurrency = curr;
+      localStorage.setItem(CURRENCY_STORAGE_KEY, curr);
+      renderAll();
+    }
+
+    function formatPrice(inrValue, forceShowForPDF = false) {
       const db = getDB();
-      const rate = Number(db.brand.usdRate || 84);
-      return activeCurrency === 'USD' ? '$' + Math.max(1, Math.round(amt / rate)) : '₹' + Number(amt).toLocaleString('en-IN');
+      const mode = db.visibility?.pricingMode || 'show';
+      if (mode === 'custom_quote') return 'Custom Quote';
+      if (mode === 'unlock_in_pdf' && !forceShowForPDF) return 'Unlock in PDF Quote';
+
+      const num = Number(inrValue || 0);
+      if (activeCurrency === 'USD') {
+        const rate = Number(db.brand.usdRate || 84);
+        return '$' + Math.max(1, Math.round(num / rate)).toLocaleString('en-US');
+      }
+      if (activeCurrency === 'AED') {
+        const rate = Number(db.brand.aedRate || 23);
+        return 'AED ' + Math.max(1, Math.round(num / rate)).toLocaleString('en-US');
+      }
+      return '₹' + num.toLocaleString('en-IN');
     }
 
-    function changeCurrency(val) { activeCurrency = val; renderEntireWebsite(); }
-    function toggleMobileMenu() { document.getElementById('mobile-menu-drawer').classList.toggle('hidden'); }
-    function switchPage(id) {
-      document.querySelectorAll('.page-section').forEach(s => s.classList.add('hidden'));
-      document.getElementById('page-' + id).classList.remove('hidden');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    // 3D Stage Tilt & Render
+    function tilt3DCard(e, el) {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const rotY = ((x / rect.width) - 0.5) * 16;
+      const rotX = ((0.5 - (y / rect.height)) * 16);
+      el.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+    }
+    function reset3DCard(el) {
+      el.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
     }
 
-    function renderEntireWebsite() {
+    function render3DStage(db) {
+      const wrap = document.getElementById('hero-3d-wrapper');
+      const leftCol = document.getElementById('hero-left-col');
+      if (db.visibility.show3DStage === false) {
+        wrap.classList.add('hidden');
+        leftCol.className = 'lg:col-span-12 space-y-6 text-center max-w-4xl mx-auto';
+        return;
+      }
+      wrap.classList.remove('hidden');
+      leftCol.className = 'lg:col-span-7 space-y-6';
+
+      const stage = document.getElementById('hero-3d-stage');
+      const h3d = db.hero3D || {};
+      if (h3d.mode === 'glb_model' && h3d.glbUrl) {
+        stage.innerHTML = `
+          <span class="absolute top-4 left-4 px-3 py-1 rounded-full text-[10px] font-extrabold bg-white/10 text-white border border-white/15 z-10">${h3d.badgeText || '3D INTERACTIVE MODEL'}</span>
+          <model-viewer src="${h3d.glbUrl}" auto-rotate camera-controls shadow-intensity="1" style="width: 100%; height: 310px; background: transparent;"></model-viewer>
+          <div class="text-center mt-2">
+            <h4 class="text-sm font-bold text-white">${h3d.title || ''}</h4>
+            <p class="text-[11px] text-zinc-400">${h3d.subtitle || 'Drag to rotate 360° in 3D'}</p>
+          </div>
+        `;
+      } else if (h3d.mode === 'spline_embed' && h3d.splineUrl) {
+        stage.innerHTML = `
+          <iframe src="${h3d.splineUrl}" frameborder="0" width="100%" height="100%" class="rounded-2xl"></iframe>
+        `;
+      } else {
+        stage.innerHTML = `
+          <span class="absolute top-4 left-4 px-3 py-1 rounded-full text-[10px] font-extrabold bg-white/10 text-white border border-white/15 z-10">${h3d.badgeText || '3D INTERACTIVE STAGE'}</span>
+          <div class="floating-3d relative w-56 h-56 sm:w-64 sm:h-64 rounded-3xl overflow-hidden border border-white/20 shadow-2xl">
+            <img src="${h3d.imageUrl || 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=900&q=85'}" alt="${h3d.title}" class="w-full h-full object-cover" />
+          </div>
+          <div class="text-center mt-5 z-10">
+            <h4 class="text-base font-bold text-white">${h3d.title || 'Interactive 3D Character Stage'}</h4>
+            <p class="text-xs text-zinc-400 mt-0.5">${h3d.subtitle || 'Hover or touch to tilt in 3D'}</p>
+          </div>
+        `;
+      }
+    }
+
+    // Master Render Engine
+    function renderAll() {
       const db = getDB();
-      document.getElementById('brand-name-display').innerText = db.brand.name || 'OG Dask';
-      document.getElementById('brand-tagline-display').innerText = db.brand.tagline || 'Global Agency';
-      document.getElementById('hero-title-display').innerText = db.brand.heroTitle || 'Scale Globally.';
-      
-      document.getElementById('services-main-grid').innerHTML = (db.services || []).map(cat => `
-        <div onclick="openServicePopup('${cat.id}')" class="liquid-glass-card rounded-3xl p-6 cursor-pointer hover:border-indigo-400 transition">
-          <h3 class="text-xl font-bold text-white">${cat.title}</h3>
-          <p class="text-xs text-zinc-300 mt-2">${cat.description}</p>
-          <span class="inline-block mt-4 text-xs font-bold text-indigo-400">View Sub-Services →</span>
-        </div>
-      `).join('') || '<div class="text-zinc-500 text-xs">No services added.</div>';
 
-      document.getElementById('portfolio-main-grid').innerHTML = (db.portfolio || []).map(pf => `
-        <div class="charcoal-card rounded-3xl p-4">
-          <img src="${pf.media}" class="w-full h-40 object-cover rounded-xl" />
-          <h3 class="font-bold text-white mt-2">${pf.title}</h3>
-          <p class="text-xs text-zinc-400">${pf.summary}</p>
-        </div>
+      // Dynamic CSS Variables (Colors Editable from Backend)
+      const root = document.documentElement;
+      root.style.setProperty('--bg-solid', db.theme?.bgSolid || '#09090b');
+      root.style.setProperty('--surface-charcoal', db.theme?.cardCharcoal || '#111114');
+      root.style.setProperty('--accent-primary', db.theme?.accentPrimary || '#6366f1');
+      root.style.setProperty('--accent-secondary', db.theme?.accentSecondary || '#10b981');
+      root.style.setProperty('--text-main', db.theme?.textMain || '#f4f4f5');
+
+      document.getElementById('currency-switcher').value = activeCurrency;
+
+      // SEO & Meta
+      document.getElementById('seo-title').innerText = db.seo?.title || db.brand.name;
+      document.getElementById('seo-desc').setAttribute('content', db.seo?.desc || '');
+      document.getElementById('seo-keys').setAttribute('content', db.seo?.keywords || '');
+      document.getElementById('seo-og-title').setAttribute('content', db.seo?.title || db.brand.name);
+      document.getElementById('seo-og-desc').setAttribute('content', db.seo?.desc || '');
+      if (db.seo?.ogImage) document.getElementById('seo-og-image').setAttribute('content', db.seo.ogImage);
+      if (db.seo?.favicon) document.getElementById('seo-favicon').setAttribute('href', db.seo.favicon);
+
+      document.getElementById('seo-schema').textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": db.brand.name,
+        "description": db.seo?.desc,
+        "url": "https://" + db.brand.domain,
+        "telephone": db.brand.phone
+      });
+
+      // Announcement Bar
+      const annBar = document.getElementById('top-announcement-bar');
+      if (db.visibility?.showAnnouncement && db.brand.announcement) {
+        annBar.classList.remove('hidden');
+        document.getElementById('announcement-text').innerText = db.brand.announcement;
+      } else {
+        annBar.classList.add('hidden');
+      }
+
+      // Navbar & Brand
+      document.getElementById('nav-brand-name').innerText = db.brand.name;
+      document.getElementById('nav-brand-tagline').innerText = db.brand.tagline;
+      const logoBox = document.getElementById('nav-logo-box');
+      if (db.brand.logo) {
+        logoBox.innerHTML = `<img src="${db.brand.logo}" alt="${db.brand.name}" class="w-full h-full object-cover" />`;
+      } else {
+        logoBox.innerText = (db.brand.name || 'OG').substring(0, 2).toUpperCase();
+      }
+
+      // Hero Text & Pills
+      document.getElementById('hero-badge-text').innerText = db.brand.heroBadge || '';
+      document.getElementById('hero-main-heading').innerText = db.brand.heroTitle || '';
+      document.getElementById('hero-sub-text').innerText = db.brand.heroSub || '';
+      document.getElementById('hero-btn-primary').innerText = db.brand.heroBtn1 || 'Explore Services ↗';
+      document.getElementById('hero-btn-secondary').innerText = db.brand.heroBtn2 || 'Track Live Project';
+
+      document.getElementById('hero-pills-container').innerHTML = (db.brand.pills || []).map(p => `
+        <span class="px-3.5 py-1.5 rounded-full charcoal-card text-xs font-semibold text-zinc-300">${p}</span>
       `).join('');
 
-      document.getElementById('about-heading-display').innerText = db.about.heading || 'About Us';
-      document.getElementById('about-story-display').innerText = db.about.story || '';
-      document.getElementById('about-partners-grid').innerHTML = (db.team || []).filter(t => t.type==='Partner').map(p => `
-        <div class="charcoal-card rounded-2xl p-4 flex gap-3 items-center">
-          <img src="${p.photo || 'https://ui-avatars.com/api/?name='+encodeURIComponent(p.name)}" class="w-12 h-12 rounded-xl object-cover" />
-          <div><h4 class="font-bold text-white text-sm">${p.name}</h4><p class="text-xs text-indigo-400">${p.role}</p></div>
-        </div>
+      render3DStage(db);
+
+      // Marquee
+      const mqSec = document.getElementById('home-marquee-section');
+      if (db.visibility?.showMarquee === false) {
+        mqSec.classList.add('hidden');
+      } else {
+        mqSec.classList.remove('hidden');
+        const items = db.brand.marqueeItems || [];
+        const doubled = [...items, ...items, ...items];
+        document.getElementById('marquee-items-track').innerHTML = doubled.map(m => `
+          <span class="flex items-center gap-4"><span>${m}</span><span class="accent-text">✦</span></span>
+        `).join('');
+      }
+
+      // Stats
+      const stSec = document.getElementById('home-stats-section');
+      stSec.classList.toggle('hidden', db.visibility?.showStats === false);
+      document.getElementById('metric-1-val').innerText = db.brand.stat1Val || '50+';
+      document.getElementById('metric-1-lbl').innerText = db.brand.stat1Lbl || '';
+      document.getElementById('metric-2-val').innerText = db.brand.stat2Val || '250+';
+      document.getElementById('metric-2-lbl').innerText = db.brand.stat2Lbl || '';
+      document.getElementById('metric-3-lbl').innerText = db.brand.stat3Lbl || '';
+      document.getElementById('metric-4-val').innerText = db.brand.stat4Val || '24/7';
+      document.getElementById('metric-4-lbl').innerText = db.brand.stat4Lbl || '';
+
+      // Section Headings
+      const h = db.headings || {};
+      document.getElementById('home-srv-eyebrow').innerText = h.homeSrvEyebrow || 'Capabilities';
+      document.getElementById('home-srv-heading').innerText = h.homeSrvHeading || 'Our Services';
+      document.getElementById('home-work-eyebrow').innerText = h.homeWorkEyebrow || 'Selected Works';
+      document.getElementById('home-work-heading').innerText = h.homeWorkHeading || 'Recent Transformations';
+      document.getElementById('process-main-heading').innerText = h.processHeading || 'How We Work';
+      document.getElementById('awards-main-heading').innerText = h.awardsHeading || 'Recognition';
+      document.getElementById('srv-page-eyebrow').innerText = h.srvPageEyebrow || 'Catalog';
+      document.getElementById('srv-page-heading').innerText = h.srvPageHeading || 'Services';
+      document.getElementById('srv-page-sub').innerText = h.srvPageSub || '';
+      document.getElementById('quote-page-heading').innerText = h.quotePageHeading || 'Instant Quotation Builder';
+      document.getElementById('quote-page-sub').innerText = h.quotePageSub || '';
+      document.getElementById('pf-page-heading').innerText = h.pfPageHeading || 'Selected Works';
+      document.getElementById('pf-page-sub').innerText = h.pfPageSub || '';
+      document.getElementById('tr-page-heading').innerText = h.trPageHeading || 'Live Client Work Tracker';
+      document.getElementById('tr-page-sub').innerText = h.trPageSub || '';
+      document.getElementById('faq-main-heading').innerText = h.faqHeading || 'FAQs';
+      document.getElementById('contact-main-heading').innerText = h.contactHeading || 'Contact Us';
+      document.getElementById('contact-main-sub').innerText = h.contactSub || '';
+
+      // Services Filter & Cards
+      const categories = ['ALL', ...new Set((db.services || []).map(s => s.badge).filter(Boolean))];
+      document.getElementById('service-filter-bar').innerHTML = categories.map(cat => `
+        <button onclick="activeServiceFilter='${cat}'; renderAll();" class="px-4 py-2 rounded-xl text-xs font-extrabold transition ${activeServiceFilter === cat ? 'bg-white text-zinc-950' : 'charcoal-card text-zinc-400 hover:text-white'}">
+          ${cat}
+        </button>
       `).join('');
 
-      document.getElementById('reviews-main-grid').innerHTML = (db.reviews || []).map(r => `
-        <div class="charcoal-card rounded-2xl p-4 text-xs">
-          <div class="text-amber-400">${'★'.repeat(r.stars)}</div>
-          <p class="text-zinc-300 mt-2">"${r.text}"</p>
-          <strong class="text-white block mt-2">${r.name}</strong>
-        </div>
-      `).join('');
-
-      renderClientTracker();
-      renderQuotationCart();
-    }
-
-    let currentCat = null;
-    function openServicePopup(id) {
-      currentCat = (getDB().services || []).find(c => c.id === id);
-      if (!currentCat) return;
-      document.getElementById('popup-service-title').innerText = currentCat.title;
-      document.getElementById('popup-subservices-container').innerHTML = (currentCat.subServices || []).map(sub => {
-        const inCart = quotationCart.some(i => i.id === sub.id);
+      const filteredServices = (db.services || []).filter(s => activeServiceFilter === 'ALL' || s.badge === activeServiceFilter);
+      const renderServiceCard = (cat, idx) => {
+        const subs = cat.subServices || [];
+        const minINR = subs.length > 0 ? Math.min(...subs.map(x => Number(x.priceINR || 0))) : 0;
+        const numTag = cat.index || `(0${idx + 1})`;
         return `
-          <div class="p-3 rounded-xl bg-[#09090b] flex justify-between items-center text-xs">
-            <div><strong>${sub.name}</strong><br><span class="text-emerald-400">${formatMoney(sub.priceINR)}</span></div>
-            <button onclick="toggleSub('${sub.id}')" class="px-3 py-1.5 rounded-lg ${inCart ? 'bg-emerald-500/20 text-emerald-300' : 'bg-indigo-600 text-white'} font-bold">${inCart ? 'Added ✓' : '+ Add'}</button>
+          <div onclick="openServiceModal('${cat.id}')" class="liquid-glass rounded-3xl p-7 flex flex-col justify-between cursor-pointer hover:border-white/40 transition group">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-5">
+                <span class="editorial-font text-sm font-bold text-zinc-400">${numTag}</span>
+                <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-white/10 text-white border border-white/15">${cat.badge || 'Vertical'}</span>
+              </div>
+              <h3 class="text-2xl font-bold text-white group-hover:text-indigo-300 transition">${cat.title}</h3>
+              <p class="text-xs sm:text-sm text-zinc-300 mt-3 leading-relaxed">${cat.description}</p>
+            </div>
+            <div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] uppercase tracking-wider text-zinc-400 block">${ subs.length } Sub-Services</span>
+                <span class="text-base font-extrabold secondary-text">${formatPrice(minINR)}</span>
+              </div>
+              <span class="px-4 py-2.5 rounded-xl bg-white text-zinc-950 font-extrabold text-xs group-hover:bg-indigo-500 group-hover:text-white transition">
+                Inspect & Add ↗
+              </span>
+            </div>
+          </div>
+        `;
+      };
+
+      document.getElementById('home-services-grid').innerHTML = (db.services || []).map(renderServiceCard).join('');
+      document.getElementById('services-catalog-grid').innerHTML = filteredServices.map(renderServiceCard).join('');
+
+      // Portfolio Cards (blonqoo.ae numbered editorial style)
+      const renderPortfolioCard = (pf, idx) => {
+        const numTag = pf.index || `(0${idx + 1})`;
+        return `
+          <div onclick="openPortfolioModal('${pf.id}')" class="charcoal-card rounded-3xl overflow-hidden flex flex-col cursor-pointer group">
+            <div class="h-64 bg-zinc-900 relative overflow-hidden">
+              ${pf.media ? `<img src="${pf.media}" alt="${pf.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />` : ''}
+              <span class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-extrabold bg-black/80 text-white border border-white/15">${numTag} • ${pf.category}</span>
+            </div>
+            <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="text-xs font-bold text-zinc-400 uppercase tracking-wider">${pf.client}</div>
+                <h3 class="text-xl sm:text-2xl font-bold text-white mt-1 group-hover:text-indigo-400 transition">${pf.title}</h3>
+                <p class="text-xs sm:text-sm text-zinc-300 mt-2 leading-relaxed">${pf.summary}</p>
+              </div>
+              <div class="mt-5 pt-4 border-t border-[#242429] flex items-center justify-between text-xs font-extrabold">
+                <span class="secondary-text">📈 ${pf.metric || 'Case Study'}</span>
+                <span class="text-white group-hover:underline">Read Study ↗</span>
+              </div>
+            </div>
+          </div>
+        `;
+      };
+
+      document.getElementById('home-portfolio-grid').innerHTML = (db.portfolio || []).slice(0, 4).map(renderPortfolioCard).join('');
+      document.getElementById('portfolio-catalog-grid').innerHTML = (db.portfolio || []).map(renderPortfolioCard).join('');
+
+      // 4-Step Process
+      const procSec = document.getElementById('home-process-section');
+      procSec.classList.toggle('hidden', db.visibility?.showProcess === false);
+      document.getElementById('process-steps-grid').innerHTML = (db.process || []).map(pr => `
+        <div class="charcoal-card rounded-3xl p-6 space-y-3">
+          <span class="editorial-font text-sm font-extrabold accent-text">${pr.step}</span>
+          <h4 class="text-lg font-bold text-white">${pr.title}</h4>
+          <p class="text-xs text-zinc-400 leading-relaxed">${pr.desc}</p>
+        </div>
+      `).join('');
+
+      // Awards Table ((001) - (004))
+      const awSec = document.getElementById('home-awards-section');
+      awSec.classList.toggle('hidden', db.visibility?.showAwards === false);
+      document.getElementById('awards-rows-container').innerHTML = (db.awards || []).map(aw => `
+        <div class="py-4 px-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-white/[0.02] transition">
+          <div class="flex items-center gap-4">
+            <span class="editorial-font text-xs font-bold text-zinc-500">${aw.code}</span>
+            <span class="text-sm sm:text-base font-bold text-white">${aw.title}</span>
+          </div>
+          <div class="flex items-center gap-6 text-xs text-zinc-400">
+            <span>${aw.org}</span>
+            <span class="font-extrabold text-white">${aw.year}</span>
+          </div>
+        </div>
+      `).join('');
+
+      // FAQs
+      const fqSec = document.getElementById('faq-section-wrapper');
+      fqSec.classList.toggle('hidden', db.visibility?.showFAQ === false);
+      document.getElementById('faq-accordion-list').innerHTML = (db.faqs || []).map(f => `
+        <div class="charcoal-card rounded-2xl p-5 space-y-2">
+          <h4 class="text-sm font-bold text-white">Q: ${f.q}</h4>
+          <p class="text-xs text-zinc-400 leading-relaxed">${f.a}</p>
+        </div>
+      `).join('');
+
+      // About, Partners & Staff
+      document.getElementById('about-main-heading').innerText = db.about?.heading || '';
+      document.getElementById('about-main-story').innerText = db.about?.story || '';
+      document.getElementById('about-mission-text').innerText = db.about?.mission || '';
+      document.getElementById('about-vision-text').innerText = db.about?.vision || '';
+
+      const partners = (db.team || []).filter(t => t.type === 'Partner');
+      const staff = (db.team || []).filter(t => t.type !== 'Partner');
+
+      document.getElementById('about-partners-list').innerHTML = partners.map(p => `
+        <div class="liquid-glass rounded-3xl p-6 flex items-center gap-4">
+          <img src="${p.photo || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(p.name) + '&background=6366f1&color=fff'}" alt="${p.name}" class="w-16 h-16 rounded-2xl object-cover border border-amber-400/40 shrink-0" />
+          <div>
+            <span class="text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full bg-amber-400/20 text-amber-300">Partner</span>
+            <h4 class="text-base font-bold text-white mt-1">${p.name}</h4>
+            <p class="text-xs accent-text font-semibold">${p.role}</p>
+            ${p.bio ? `<p class="text-[11px] text-zinc-400 mt-1">${p.bio}</p>` : ''}
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('about-staff-list').innerHTML = staff.map(m => `
+        <div class="charcoal-card rounded-3xl p-5 text-center">
+          <img src="${m.photo || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(m.name) + '&background=27272a&color=fff'}" alt="${m.name}" class="w-16 h-16 rounded-full mx-auto object-cover mb-3 border border-white/10" />
+          <h4 class="text-sm font-bold text-white">${m.name}</h4>
+          <p class="text-xs accent-text font-semibold mt-0.5">${m.role}</p>
+          ${m.bio ? `<p class="text-[11px] text-zinc-400 mt-1">${m.bio}</p>` : ''}
+        </div>
+      `).join('') || `<div class="col-span-full text-xs text-zinc-500">Add core staff members from the Admin Backend.</div>`;
+
+      // Reviews
+      const revs = (db.reviews || []).filter(r => r.approved !== false);
+      if (revs.length > 0) {
+        const avg = (revs.reduce((s, r) => s + Number(r.stars || 5), 0) / revs.length).toFixed(1);
+        document.getElementById('metric-rating-val').innerText = `${avg} ★`;
+      }
+      document.getElementById('reviews-cards-grid').innerHTML = revs.map(r => `
+        <div class="charcoal-card rounded-3xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="text-amber-400 text-sm font-bold tracking-widest">${'★'.repeat(r.stars)}${'☆'.repeat(5 - r.stars)}</div>
+            <p class="text-sm text-zinc-200 mt-3 leading-relaxed">"${r.text}"</p>
+          </div>
+          <div class="mt-5 pt-3 border-t border-[#242429]">
+            <div class="font-bold text-white text-sm">${r.name}</div>
+            <div class="text-xs text-zinc-400">${r.brand}</div>
+          </div>
+        </div>
+      `).join('');
+
+      // Global Regional Studios (blonqoo.ae India / UAE style)
+      document.getElementById('studios-hub-grid').innerHTML = (db.studios || []).map((st, i) => `
+        <div class="liquid-glass rounded-3xl p-6 space-y-3 flex flex-col justify-between">
+          <div>
+            <span class="text-[11px] font-extrabold uppercase tracking-widest secondary-text">(0${i + 1}) ${st.country}</span>
+            <h3 class="text-xl font-bold text-white mt-1">${st.city}</h3>
+            <p class="text-xs text-zinc-400 mt-2">${st.address}</p>
+          </div>
+          <div class="pt-4 border-t border-white/10 space-y-1 text-xs">
+            <div class="font-bold text-white">📞 ${st.phone}</div>
+            <div class="text-zinc-300">✉️ ${st.email}</div>
+          </div>
+        </div>
+      `).join('');
+
+      // Legal Policies
+      document.getElementById('pol-privacy-text').innerText = db.policies?.privacy || '';
+      document.getElementById('pol-terms-text').innerText = db.policies?.terms || '';
+      document.getElementById('pol-refund-text').innerText = db.policies?.refund || '';
+
+      // Kinetic Footer & Links
+      const kinText = (db.brand.kineticFooterText || 'LET’S SCALE YOUR BRAND _ GET IN TOUCH _ ').repeat(4);
+      document.getElementById('footer-kinetic-marquee').innerHTML = `<span>${kinText}</span>`;
+      document.getElementById('ft-brand-name').innerText = db.brand.name;
+      document.getElementById('ft-brand-domain').innerText = db.brand.domain;
+      document.getElementById('ft-copyright').innerText = db.brand.copyright || '';
+      document.getElementById('ft-socials').innerHTML = (db.brand.socials || []).map(s => `
+        <a href="${s.url}" target="_blank" class="px-3 py-1.5 rounded-xl charcoal-card text-xs font-bold text-white hover:border-white/40">${s.label} ↗</a>
+      `).join('');
+
+      renderTrackerCards();
+      renderQuoteCartUI();
+    }
+
+    // Service Liquid-Glass Modal Logic
+    let currentModalCatId = null;
+    function openServiceModal(catId) {
+      currentModalCatId = catId;
+      const db = getDB();
+      const cat = (db.services || []).find(c => c.id === catId);
+      if (!cat) return;
+
+      document.getElementById('smodal-badge').innerText = cat.badge || 'Service';
+      document.getElementById('smodal-title').innerText = cat.title;
+      document.getElementById('smodal-desc').innerText = cat.description;
+
+      document.getElementById('smodal-add-all').onclick = () => {
+        (cat.subServices || []).forEach(sub => {
+          if (!cart.some(i => i.id === sub.id)) {
+            cart.push({ ...sub, categoryTitle: cat.title });
+          }
+        });
+        saveCart();
+        openServiceModal(catId);
+      };
+
+      document.getElementById('smodal-sublist').innerHTML = (cat.subServices || []).map(sub => {
+        const added = cart.some(i => i.id === sub.id);
+        return `
+          <div class="p-4 rounded-2xl bg-[#09090b]/90 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <div class="font-bold text-sm text-white">${sub.name}</div>
+              <div class="text-xs text-zinc-400 mt-0.5">${sub.billing} • <span class="secondary-text font-extrabold">${formatPrice(sub.priceINR)}</span></div>
+            </div>
+            <button onclick="toggleCartSubItem('${cat.id}', '${sub.id}')" class="px-4 py-2.5 rounded-xl font-extrabold text-xs shrink-0 transition ${added ? 'bg-emerald-500/20 border border-emerald-400 text-emerald-300' : 'accent-bg text-white'}">
+              ${added ? '✓ Added (Remove)' : '+ Add to Quotation'}
+            </button>
           </div>
         `;
       }).join('');
-      document.getElementById('service-popup-modal').classList.remove('hidden');
-      document.getElementById('service-popup-modal').classList.add('flex');
-    }
-    function closeServicePopup() { document.getElementById('service-popup-modal').classList.add('hidden'); document.getElementById('service-popup-modal').classList.remove('flex'); }
 
-    function toggleSub(subId) {
-      const sub = (currentCat.subServices || []).find(s => s.id === subId);
-      const idx = quotationCart.findIndex(i => i.id === subId);
-      if (idx > -1) quotationCart.splice(idx, 1);
-      else quotationCart.push({ ...sub, categoryTitle: currentCat.title });
-      openServicePopup(currentCat.id);
-      renderQuotationCart();
+      const m = document.getElementById('service-modal');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
     }
 
-    function renderQuotationCart() {
-      document.getElementById('nav-cart-count').innerText = quotationCart.length;
-      document.getElementById('services-cart-count').innerText = quotationCart.length;
-      const total = quotationCart.reduce((s, i) => s + Number(i.priceINR || 0), 0);
-      document.getElementById('quote-total-display').innerText = formatMoney(total);
-      document.getElementById('quote-cart-list').innerHTML = quotationCart.map(i => `
-        <div class="p-3 rounded-xl bg-[#09090b] flex justify-between text-xs">
-          <span>${i.name}</span><strong class="text-emerald-400">${formatMoney(i.priceINR)}</strong>
-        </div>
-      `).join('') || '<div class="text-zinc-500 text-xs">Cart is empty.</div>';
+    function closeServiceModal() {
+      const m = document.getElementById('service-modal');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
     }
 
-    function renderClientTracker() {
+    function toggleCartSubItem(catId, subId) {
       const db = getDB();
-      document.getElementById('tracker-main-grid').innerHTML = (db.projects || []).map(p => `
-        <div class="charcoal-card rounded-2xl p-4 text-xs">
-          <h4 class="font-bold text-white text-sm">${p.clientName} — ${p.projectName}</h4>
-          <div class="w-full h-2 rounded-full bg-[#09090b] mt-3"><div class="h-full bg-emerald-400 rounded-full" style="width:${p.progress}%"></div></div>
+      const cat = (db.services || []).find(c => c.id === catId);
+      if (!cat) return;
+      const sub = (cat.subServices || []).find(s => s.id === subId);
+      if (!sub) return;
+
+      const idx = cart.findIndex(i => i.id === subId);
+      if (idx > -1) cart.splice(idx, 1);
+      else cart.push({ ...sub, categoryTitle: cat.title });
+
+      saveCart();
+      openServiceModal(catId);
+    }
+
+    function removeFromQuoteCart(subId) {
+      cart = cart.filter(i => i.id !== subId);
+      saveCart();
+    }
+
+    function saveCart() {
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+      renderQuoteCartUI();
+    }
+
+    function renderQuoteCartUI() {
+      const db = getDB();
+      document.getElementById('nav-cart-badge').innerText = cart.length;
+      document.getElementById('srv-cart-counter').innerText = cart.length;
+
+      const container = document.getElementById('quote-items-container');
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="p-8 rounded-2xl bg-[#09090b] border border-[#242429] text-center space-y-3">
+            <p class="text-sm text-zinc-400">Your quotation cart is empty. Click any service category to add deliverables.</p>
+            <button onclick="navigate('services')" class="px-5 py-2.5 rounded-xl accent-bg text-white text-xs font-extrabold">Explore Services →</button>
+          </div>
+        `;
+        document.getElementById('q-subtotal-val').innerText = formatPrice(0);
+        document.getElementById('q-tax-val').innerText = formatPrice(0);
+        document.getElementById('q-grand-val').innerText = formatPrice(0);
+        return;
+      }
+
+      const subINR = cart.reduce((s, i) => s + Number(i.priceINR || 0), 0);
+      const gst = Number(db.brand.gstPercent || 0);
+      const taxINR = Math.round((subINR * gst) / 100);
+      const grandINR = subINR + taxINR;
+
+      container.innerHTML = cart.map(item => `
+        <div class="p-4 rounded-2xl bg-[#09090b] border border-[#242429] flex items-center justify-between gap-4">
+          <div>
+            <span class="text-[10px] font-bold uppercase accent-text">${item.categoryTitle} • ${item.billing}</span>
+            <div class="font-bold text-sm text-white">${item.name}</div>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="font-extrabold secondary-text text-sm">${formatPrice(item.priceINR)}</span>
+            <button onclick="removeFromQuoteCart('${item.id}')" class="text-xs font-bold text-rose-400 hover:underline">Remove</button>
+          </div>
         </div>
-      `).join('') || '<div class="text-zinc-500 text-xs">No projects found.</div>';
+      `).join('');
+
+      document.getElementById('q-subtotal-val').innerText = formatPrice(subINR);
+      document.getElementById('q-tax-lbl').innerText = `Tax / GST (${gst}%):`;
+      document.getElementById('q-tax-val').innerText = formatPrice(taxINR);
+      document.getElementById('q-grand-val').innerText = formatPrice(grandINR);
     }
 
-    function downloadOfficialQuotePDF(e) {
+    async function handleQuoteSubmission(e) {
       e.preventDefault();
-      html2pdf().from(document.getElementById('printable-quote-sheet')).save('Quotation.pdf');
+      if (cart.length === 0) {
+        alert('Please add at least one service to your quotation cart first!');
+        return;
+      }
+      const db = getDB();
+      const name = document.getElementById('q-inp-name').value.trim();
+      const brand = document.getElementById('q-inp-brand').value.trim();
+      const email = document.getElementById('q-inp-email').value.trim();
+      const phone = document.getElementById('q-inp-phone').value.trim();
+      const country = document.getElementById('q-inp-country').value.trim();
+      const notes = document.getElementById('q-inp-notes').value.trim();
+
+      const quoteId = 'QT-' + Math.floor(100000 + Math.random() * 900000);
+      const dateStr = new Date().toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' });
+      const subINR = cart.reduce((s, i) => s + Number(i.priceINR || 0), 0);
+      const gst = Number(db.brand.gstPercent || 0);
+      const taxINR = Math.round((subINR * gst) / 100);
+      const grandINR = subINR + taxINR;
+
+      db.leads = db.leads || [];
+      db.leads.unshift({
+        id: quoteId,
+        date: dateStr,
+        client: name,
+        brand,
+        email,
+        phone,
+        country,
+        currency: activeCurrency,
+        items: cart.map(i => i.name).join(', '),
+        totalFormatted: formatPrice(grandINR, true)
+      });
+      await pushCloudDB(db);
+
+      document.getElementById('pdf-agency-name').innerText = db.brand.name;
+      document.getElementById('pdf-agency-tagline').innerText = db.brand.tagline;
+      document.getElementById('pdf-agency-contact').innerText = `${db.brand.phone} | ${db.brand.email} | ${db.brand.domain}`;
+      document.getElementById('pdf-quote-id').innerText = `Proposal #: ${quoteId}`;
+      document.getElementById('pdf-quote-date').innerText = `Date: ${dateStr} | Currency: ${activeCurrency}`;
+      document.getElementById('pdf-client-line1').innerText = `${name} — ${brand}`;
+      document.getElementById('pdf-client-line2').innerText = `${email} | ${phone} ${country ? ' | ' + country : ''} ${notes ? ' | Note: ' + notes : ''}`;
+
+      document.getElementById('pdf-table-body').innerHTML = cart.map((item, idx) => `
+        <tr style="border-bottom: 1px solid #e4e4e7;">
+          <td style="padding: 11px;">${idx + 1}</td>
+          <td style="padding: 11px;"><strong>${item.name}</strong> (${item.billing})</td>
+          <td style="padding: 11px;">${item.categoryTitle}</td>
+          <td style="padding: 11px; text-align: right; font-weight: 700;">${formatPrice(item.priceINR, true)}</td>
+        </tr>
+      `).join('');
+
+      document.getElementById('pdf-sub').innerText = formatPrice(subINR, true);
+      document.getElementById('pdf-tax-label').innerText = `Tax / GST (${gst}%):`;
+      document.getElementById('pdf-tax').innerText = formatPrice(taxINR, true);
+      document.getElementById('pdf-grand').innerText = formatPrice(grandINR, true);
+      document.getElementById('pdf-terms').innerText = db.brand.quoteTerms || '';
+
+      html2pdf().set({
+        margin: 0.3,
+        filename: `${brand.replace(/\s+/g, '_')}_Proposal_${quoteId}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+      }).from(document.getElementById('pdf-proposal-sheet')).save();
     }
 
-    function submitContactForm(e) { e.preventDefault(); alert('Inquiry sent!'); e.target.reset(); }
+    function sendQuoteViaWhatsApp() {
+      if (cart.length === 0) {
+        alert('Add at least one service to your quotation cart first!');
+        return;
+      }
+      const db = getDB();
+      const name = document.getElementById('q-inp-name').value.trim() || 'Client';
+      const brand = document.getElementById('q-inp-brand').value.trim() || 'Brand';
+      const subINR = cart.reduce((s, i) => s + Number(i.priceINR || 0), 0);
+      const itemsTxt = cart.map((i, idx) => `${idx + 1}. ${i.name} (${formatPrice(i.priceINR, true)})`).join('%0A');
+      const waNum = (db.brand.whatsapp || db.brand.phone || '').replace(/[^0-9]/g, '');
+      const text = `Hello ${db.brand.name},%0A%0AI am *${name}* from *${brand}*.%0AI have selected the following services on your website:%0A${itemsTxt}%0A%0A*Estimated Total:* ${formatPrice(subINR, true)}%0A%0ALet's discuss onboarding!`;
+      window.open(`https://wa.me/${waNum}?text=${text}`, '_blank');
+    }
 
-    window.addEventListener('DOMContentLoaded', () => { syncFromCloud(); renderEntireWebsite(); });
+    function openDirectWhatsApp() {
+      const db = getDB();
+      const waNum = (db.brand.whatsapp || db.brand.phone || '').replace(/[^0-9]/g, '');
+      window.open(`https://wa.me/${waNum}?text=Hello%20${encodeURIComponent(db.brand.name)},%20I%20would%20like%20to%20discuss%20a%20project.`, '_blank');
+    }
+
+    // Portfolio Case Study Modal
+    function openPortfolioModal(pfId) {
+      const db = getDB();
+      const pf = (db.portfolio || []).find(p => p.id === pfId);
+      if (!pf) return;
+      document.getElementById('pmodal-cat').innerText = `${pf.index || ''} ${pf.category}`;
+      document.getElementById('pmodal-title').innerText = pf.title;
+      document.getElementById('pmodal-client').innerText = `Client: ${pf.client}`;
+      document.getElementById('pmodal-media-box').innerHTML = pf.media ? `<img src="${pf.media}" class="w-full h-full object-cover" />` : '';
+      document.getElementById('pmodal-challenge').innerText = pf.challenge || pf.summary || '';
+      document.getElementById('pmodal-solution').innerText = pf.solution || pf.summary || '';
+      document.getElementById('pmodal-metric').innerText = pf.metric || 'Completed';
+
+      const linkEl = document.getElementById('pmodal-link');
+      if (pf.liveUrl) {
+        linkEl.href = pf.liveUrl;
+        linkEl.classList.remove('hidden');
+      } else {
+        linkEl.classList.add('hidden');
+      }
+
+      const m = document.getElementById('portfolio-modal');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    }
+
+    function closePortfolioModal() {
+      const m = document.getElementById('portfolio-modal');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    }
+
+    // Live Client Work Tracker
+    function renderTrackerCards() {
+      const db = getDB();
+      const q = (document.getElementById('tracker-query-inp')?.value || '').toLowerCase();
+      const list = (db.projects || []).filter(p =>
+        p.clientName.toLowerCase().includes(q) ||
+        p.projectName.toLowerCase().includes(q) ||
+        (p.code || '').toLowerCase().includes(q)
+      );
+
+      const grid = document.getElementById('tracker-cards-grid');
+      if (list.length === 0) {
+        grid.innerHTML = `<div class="col-span-full text-center py-8 text-zinc-500 text-sm">No matching client project found.</div>`;
+        return;
+      }
+
+      grid.innerHTML = list.map(p => `
+        <div class="liquid-glass rounded-3xl p-6 space-y-4">
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <span class="text-[11px] font-extrabold accent-text uppercase">${p.code}</span>
+              <h4 class="text-lg font-bold text-white">${p.clientName} — ${p.projectName}</h4>
+            </div>
+            <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">${p.stage}</span>
+          </div>
+          <p class="text-xs text-zinc-300 leading-relaxed">${p.note || ''}</p>
+          <div>
+            <div class="flex justify-between text-xs font-extrabold mb-1.5">
+              <span class="text-zinc-400">Live Completion Percentage</span>
+              <span class="secondary-text">${p.progress}%</span>
+            </div>
+            <div class="w-full h-3 rounded-full bg-[#09090b] overflow-hidden p-0.5 border border-white/10">
+              <div class="h-full rounded-full bg-gradient-to-r from-indigo-500 to-emerald-400 transition-all duration-500" style="width:${p.progress}%"></div>
+            </div>
+          </div>
+          ${(p.deliverables && p.deliverables.length > 0) ? `
+            <div class="pt-3 border-t border-white/10 flex flex-wrap gap-2">
+              ${p.deliverables.map(d => `<span class="px-2.5 py-1 rounded-lg bg-black/60 text-[11px] text-zinc-300 border border-white/10">${d}</span>`).join('')}
+            </div>
+          ` : ''}
+          ${p.liveLink ? `<div class="pt-2"><a href="${p.liveLink}" target="_blank" class="text-xs font-extrabold accent-text hover:underline">Open Shared Project Folder / Report ↗</a></div>` : ''}
+        </div>
+      `).join('');
+    }
+
+    // Reviews & Contact Submissions
+    function openReviewModal() {
+      const m = document.getElementById('review-modal');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    }
+    function closeReviewModal() {
+      const m = document.getElementById('review-modal');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    }
+    async function handleReviewSubmit(e) {
+      e.preventDefault();
+      const db = getDB();
+      db.reviews = db.reviews || [];
+      db.reviews.unshift({
+        id: 'REV-' + Date.now(),
+        stars: Number(document.getElementById('rev-stars').value),
+        name: document.getElementById('rev-name').value.trim(),
+        brand: document.getElementById('rev-brand').value.trim(),
+        text: document.getElementById('rev-text').value.trim(),
+        approved: true
+      });
+      await pushCloudDB(db);
+      e.target.reset();
+      closeReviewModal();
+      renderAll();
+    }
+
+    async function handleContactSubmission(e) {
+      e.preventDefault();
+      const db = getDB();
+      db.inquiries = db.inquiries || [];
+      db.inquiries.unshift({
+        id: 'INQ-' + Date.now(),
+        date: new Date().toLocaleDateString(),
+        name: document.getElementById('cnt-name').value.trim(),
+        brand: document.getElementById('cnt-brand').value.trim(),
+        email: document.getElementById('cnt-email').value.trim(),
+        phone: document.getElementById('cnt-phone').value.trim(),
+        message: document.getElementById('cnt-msg').value.trim()
+      });
+      await pushCloudDB(db);
+      e.target.reset();
+      alert('✅ Project brief received! Our global desk will reach out shortly.');
+    }
+
+    // Instant Real-Time Sync Polling (Updates Frontend Globally within ~2.5s of Backend Save)
+    window.addEventListener('DOMContentLoaded', () => {
+      restorePageFromHash();
+      renderAll();
+      pullCloudDB();
+      setInterval(pullCloudDB, 2500);
+    });
   </script>
 </body>
 </html>
