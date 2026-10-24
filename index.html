@@ -3198,3 +3198,265 @@
   })();
 </script>
 <!-- ==================== INDEX.HTML : UNTHINKABLE VIRAL FEATURES PATCH COMPLETE ==================== -->
+<!-- ==================== INDEX.HTML : LUXURY UI CUSTOMIZER, LISTING GRADER & CALL BOOKER PATCH (PASTE AT VERY BOTTOM) ==================== -->
+<style id="luxury-dynamic-css">
+  :root {
+    --custom-glass-blur: 24px;
+    --custom-card-radius: 24px;
+    --spotlight-color: rgba(245, 158, 11, 0.13);
+  }
+  #cursor-ambient-spotlight {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 520px;
+    height: 520px;
+    border-radius: 9999px;
+    background: radial-gradient(circle, var(--spotlight-color) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+  }
+  .liquid-glass {
+    backdrop-filter: blur(var(--custom-glass-blur)) !important;
+    -webkit-backdrop-filter: blur(var(--custom-glass-blur)) !important;
+    border-radius: var(--custom-card-radius) !important;
+  }
+  .charcoal-card {
+    border-radius: var(--custom-card-radius) !important;
+  }
+  body.gold-border-shimmer .liquid-glass,
+  body.gold-border-shimmer .charcoal-card:hover {
+    border-color: rgba(245, 158, 11, 0.45) !important;
+    box-shadow: 0 20px 45px -15px rgba(245, 158, 11, 0.18) !important;
+  }
+</style>
+
+<!-- Ambient Cursor Spotlight Layer -->
+<div id="cursor-ambient-spotlight"></div>
+
+<!-- 15-Min VIP Strategy Call Booking Modal -->
+<div id="call-booker-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
+  <div class="liquid-glass max-w-lg w-full p-6 sm:p-8 space-y-5 border border-amber-400/40 shadow-2xl relative">
+    <div class="flex items-start justify-between border-b border-white/10 pb-4">
+      <div>
+        <span class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase bg-amber-400/20 text-amber-300 border border-amber-400/30">📅 Priority Discovery Desk</span>
+        <h3 id="call-modal-title" class="text-2xl font-bold text-white mt-2">Book a 15-Min Brand & Organic Growth Call</h3>
+        <p class="text-xs text-zinc-400 mt-1">Select your preferred date and time slot for a 1-on-1 strategy session.</p>
+      </div>
+      <button onclick="closeCallBookerModal()" class="w-9 h-9 rounded-xl charcoal-card text-zinc-300 hover:text-white font-bold">✕</button>
+    </div>
+
+    <form onsubmit="submitCallBooking(event)" class="space-y-3.5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <input type="text" id="cb-name" required placeholder="Your Full Name *" class="w-full px-4 py-3 rounded-xl matte-input text-xs font-bold" />
+        <input type="text" id="cb-brand" required placeholder="Brand / Store Name *" class="w-full px-4 py-3 rounded-xl matte-input text-xs font-bold" />
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <input type="tel" id="cb-phone" required placeholder="WhatsApp Number *" class="w-full px-4 py-3 rounded-xl matte-input text-xs font-bold" />
+        <select id="cb-topic" class="w-full px-4 py-3 rounded-xl matte-input text-xs font-bold text-amber-300">
+          <option value="Amazon Global / India Organic Scale">Amazon Global / India Organic Scale</option>
+          <option value="Flipkart & Quick-Commerce Onboarding">Flipkart & Quick-Commerce Scale</option>
+          <option value="3D Product Renders & A+ Redesign">3D Product Renders & A+ Redesign</option>
+          <option value="Full-Stack Website / D2C Launch">Full-Stack Website / D2C Launch</option>
+        </select>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div>
+          <label class="text-[10px] font-bold text-zinc-400 uppercase block mb-1">Preferred Date *</label>
+          <input type="date" id="cb-date" required class="w-full px-4 py-2.5 rounded-xl matte-input text-xs font-bold" />
+        </div>
+        <div>
+          <label class="text-[10px] font-bold text-zinc-400 uppercase block mb-1">Preferred Time Slot *</label>
+          <select id="cb-time" class="w-full px-4 py-2.5 rounded-xl matte-input text-xs font-bold">
+            <option value="11:30 AM IST (10:00 AM Dubai)">11:30 AM IST (10:00 AM Dubai)</option>
+            <option value="02:30 PM IST (01:00 PM Dubai)">02:30 PM IST (01:00 PM Dubai)</option>
+            <option value="05:00 PM IST (03:30 PM Dubai)">05:00 PM IST (03:30 PM Dubai)</option>
+            <option value="08:00 PM IST (10:30 AM EST)">08:00 PM IST (10:30 AM US EST)</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 text-zinc-950 font-black text-xs tracking-wide shadow-xl hover:opacity-95 transition">
+        📅 Confirm My Strategy Call Slot & Notify on WhatsApp →
+      </button>
+    </form>
+  </div>
+</div>
+
+<script>
+  (function () {
+    /* 1. Interactive Cursor Spotlight Follower */
+    const spot = document.getElementById('cursor-ambient-spotlight');
+    window.addEventListener('mousemove', (e) => {
+      if (!spot) return;
+      spot.style.left = e.clientX + 'px';
+      spot.style.top = e.clientY + 'px';
+    });
+
+    /* 2. Add "📅 Book Strategy Call" Button to Floating Bottom-Right Dock */
+    const dock = document.querySelector('.fixed.bottom-5.right-5');
+    if (dock && !document.getElementById('dock-book-call-btn')) {
+      const callBtn = document.createElement('button');
+      callBtn.id = 'dock-book-call-btn';
+      callBtn.onclick = () => window.openCallBookerModal();
+      callBtn.className = 'px-4 py-3 rounded-2xl liquid-glass text-xs font-extrabold text-white hover:border-amber-400/50 flex items-center gap-2 shadow-2xl border border-amber-400/30';
+      callBtn.innerHTML = '<span>📅 Book 15m Audit Call</span>';
+      dock.prepend(callBtn);
+    }
+
+    window.openCallBookerModal = function () {
+      const dateInp = document.getElementById('cb-date');
+      if (dateInp && !dateInp.value) {
+        const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0];
+        dateInp.value = tomorrow;
+      }
+      document.getElementById('call-booker-modal').classList.remove('hidden');
+      document.getElementById('call-booker-modal').classList.add('flex');
+    };
+
+    window.closeCallBookerModal = function () {
+      document.getElementById('call-booker-modal').classList.add('hidden');
+      document.getElementById('call-booker-modal').classList.remove('flex');
+    };
+
+    window.submitCallBooking = async function (e) {
+      e.preventDefault();
+      const db = getDB();
+      const name = document.getElementById('cb-name').value.trim();
+      const brand = document.getElementById('cb-brand').value.trim();
+      const phone = document.getElementById('cb-phone').value.trim();
+      const topic = document.getElementById('cb-topic').value;
+      const date = document.getElementById('cb-date').value;
+      const time = document.getElementById('cb-time').value;
+
+      db.inquiries = db.inquiries || [];
+      db.inquiries.unshift({
+        id: 'CALL-' + Date.now(),
+        date: new Date().toLocaleDateString(),
+        name,
+        brand,
+        email: 'Strategy Call Booking',
+        phone,
+        message: `📅 BOOKED CALL: ${topic} | Slot: ${date} at ${time}`
+      });
+      await pushCloudDB(db);
+      window.closeCallBookerModal();
+
+      const waNum = (db.brand.whatsapp || db.brand.phone || '').replace(/[^0-9]/g, '');
+      const msg = encodeURIComponent(
+        `Hello *${db.brand.name}*,\nI just booked a *15-Min Strategy Call*!\n\n👤 *Name:* ${name}\n🏢 *Brand:* ${brand}\n🎯 *Focus:* ${topic}\n📅 *Date:* ${date}\n⏰ *Slot:* ${time}`
+      );
+      window.open(`https://wa.me/${waNum}?text=${msg}`, '_blank');
+    };
+
+    /* 3. Inject Interactive "Marketplace Listing SEO & Visual Conversion Grader" on Home Page */
+    const viralSuite = document.getElementById('home-block-viral-suite');
+    if (viralSuite && !document.getElementById('listing-grader-widget')) {
+      const grader = document.createElement('div');
+      grader.id = 'listing-grader-widget';
+      grader.className = 'liquid-glass rounded-3xl p-6 sm:p-8 space-y-5 border border-amber-500/30';
+      grader.innerHTML = `
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/10 pb-4">
+          <div>
+            <span class="px-3 py-1 rounded-full text-[10px] font-extrabold bg-amber-400/20 text-amber-300 border border-amber-400/30">📦 INSTANT LISTING SEO & A+ AUDITOR</span>
+            <h3 class="text-xl sm:text-2xl font-bold text-white mt-2">Amazon & Flipkart Listing Conversion Grader</h3>
+            <p class="text-xs text-zinc-400">Test your product title & visual readiness against A10 / Flipkart organic ranking benchmarks.</p>
+          </div>
+          <div class="text-left sm:text-right">
+            <span class="text-[10px] uppercase font-bold text-zinc-400 block">Listing Health Score</span>
+            <strong id="lg-score-val" class="text-2xl sm:text-3xl font-black text-amber-400">86 / 100</strong>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+          <div class="md:col-span-6">
+            <label class="text-[11px] font-bold text-zinc-300 block mb-1">Paste Your Product Listing Title (Amazon / Flipkart)</label>
+            <input type="text" id="lg-title-inp" oninput="evaluateListingGrade()" value="65W GaN Fast Charger Type-C Adapter with PD 3.0 for iPhone 15, MacBook & Samsung" placeholder="Paste product title here..." class="w-full px-4 py-3 rounded-xl matte-input text-xs font-bold" />
+          </div>
+          <div class="md:col-span-3">
+            <label class="text-[11px] font-bold text-zinc-300 block mb-1">3D Infographics Count</label>
+            <select id="lg-img-count" onchange="evaluateListingGrade()" class="w-full px-3.5 py-3 rounded-xl matte-input text-xs font-bold">
+              <option value="10">1–3 Basic Photos (Low CTR)</option>
+              <option value="22">4–5 Standard Infographics</option>
+              <option value="35" selected>7+ Studio 3D Infographics + Video</option>
+            </select>
+          </div>
+          <div class="md:col-span-3">
+            <label class="text-[11px] font-bold text-zinc-300 block mb-1">A+ / EBC Storyline Status</label>
+            <select id="lg-aplus-status" onchange="evaluateListingGrade()" class="w-full px-3.5 py-3 rounded-xl matte-input text-xs font-bold">
+              <option value="5">No A+ Content</option>
+              <option value="18">Basic Text + Image A+</option>
+              <option value="30" selected>Premium A+ with Comparison Chart</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-[#09090b] border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs">
+          <p id="lg-feedback-text" class="text-zinc-300 leading-relaxed">
+            ✅ Strong keyword density (79 chars). Adding 3D exploded-view callout graphics and backend search terms can boost organic impressions by +180%.
+          </p>
+          <button onclick="openCallBookerModal()" class="px-5 py-3 rounded-xl bg-amber-400 text-zinc-950 font-extrabold text-xs shrink-0 shadow-lg">
+            📅 Book Free Listing Audit Call →
+          </button>
+        </div>
+      `;
+      viralSuite.appendChild(grader);
+    }
+
+    window.evaluateListingGrade = function () {
+      const title = (document.getElementById('lg-title-inp')?.value || '').trim();
+      const imgPts = Number(document.getElementById('lg-img-count')?.value || 22);
+      const aplusPts = Number(document.getElementById('lg-aplus-status')?.value || 18);
+
+      let titlePts = 10;
+      if (title.length >= 120) titlePts = 35;
+      else if (title.length >= 70) titlePts = 28;
+      else if (title.length >= 35) titlePts = 18;
+
+      const total = Math.min(100, titlePts + imgPts + aplusPts);
+      const scoreEl = document.getElementById('lg-score-val');
+      const fbEl = document.getElementById('lg-feedback-text');
+      if (scoreEl) {
+        scoreEl.innerText = `${total} / 100`;
+        scoreEl.className = `text-2xl sm:text-3xl font-black ${total >= 80 ? 'text-emerald-400' : total >= 55 ? 'text-amber-400' : 'text-rose-400'}`;
+      }
+      if (fbEl) {
+        if (total < 65) {
+          fbEl.innerText = `⚠️ High Revenue Leak Detected (${title.length} chars): Your listing lacks A10 keyword depth and high-contrast 3D infographics. Competitors are capturing your organic clicks.`;
+        } else if (total < 85) {
+          fbEl.innerText = `⚡ Good Foundation (${title.length} chars): Upgrading to 7+ dark-mode 3D callout visuals and A+ comparison charts can lift conversion rate by +35%.`;
+        } else {
+          fbEl.innerText = `🔥 Elite Marketplace Readiness (${title.length} chars): Your title structure and A+ visual stack are primed for aggressive organic ranking & low-TACOS scale!`;
+        }
+      }
+    };
+
+    /* 4. Apply Luxury UI Settings from Backend DB */
+    const prevRender = window.renderAll;
+    window.renderAll = function () {
+      if (typeof prevRender === 'function') prevRender();
+      const db = getDB();
+      const lux = db.luxuryUI || { blurPx: 24, radiusPx: 24, spotlight: 'gold', goldShimmer: true, showGrader: true, showCallBtn: true };
+
+      const root = document.documentElement;
+      root.style.setProperty('--custom-glass-blur', (lux.blurPx ?? 24) + 'px');
+      root.style.setProperty('--custom-card-radius', (lux.radiusPx ?? 24) + 'px');
+
+      const spotColors = {
+        gold: 'rgba(245, 158, 11, 0.14)',
+        indigo: 'rgba(99, 102, 241, 0.15)',
+        emerald: 'rgba(16, 185, 129, 0.14)',
+        none: 'transparent'
+      };
+      root.style.setProperty('--spotlight-color', spotColors[lux.spotlight || 'gold'] || spotColors.gold);
+
+      document.body.classList.toggle('gold-border-shimmer', lux.goldShimmer !== false);
+      document.getElementById('listing-grader-widget')?.classList.toggle('hidden', lux.showGrader === false);
+      document.getElementById('dock-book-call-btn')?.classList.toggle('hidden', lux.showCallBtn === false);
+    };
+
+    setTimeout(() => window.renderAll(), 400);
+  })();
+</script>
+<!-- ==================== INDEX.HTML : LUXURY UI & CALL BOOKER PATCH COMPLETE ==================== -->
