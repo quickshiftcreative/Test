@@ -2909,3 +2909,104 @@
   })();
 </script>
 <!-- ==================== INDEX.HTML : MASTER RECOVERY PATCH COMPLETE ==================== -->
+<!-- ==================== INDEX.HTML : DYNAMIC LOADING SCREEN & FINAL POLISH PATCH (PASTE AT VERY BOTTOM) ==================== -->
+<style>
+  #agency-loader-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background-color: #09090b;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+  #agency-loader-overlay.fade-out {
+    opacity: 0;
+    visibility: hidden;
+  }
+  @keyframes loaderPulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 0 25px rgba(99,102,241,0.6)); }
+  }
+  .loader-brand-logo {
+    animation: loaderPulse 2s ease-in-out infinite;
+  }
+  .loader-progress-bar {
+    transition: width 0.15s ease-out;
+  }
+</style>
+
+<div id="agency-loader-overlay">
+  <div class="liquid-glass rounded-3xl p-8 max-w-sm w-full mx-4 text-center space-y-6 shadow-2xl border border-white/15">
+    <div class="loader-brand-logo w-16 h-16 rounded-2xl accent-bg mx-auto flex items-center justify-center font-black text-white text-2xl shadow-xl">
+      <span id="loader-logo-initials">BP</span>
+    </div>
+    <div class="space-y-1">
+      <h3 id="loader-brand-title" class="text-xl font-bold text-white tracking-tight">THE BLANK PAGE</h3>
+      <p class="text-[11px] text-zinc-400 uppercase tracking-widest font-mono">Loading Studio Environment...</p>
+    </div>
+    <div class="space-y-2">
+      <div class="flex justify-between text-xs font-bold font-mono">
+        <span class="text-zinc-400">System Readiness</span>
+        <span id="loader-pct-text" class="accent-text">0%</span>
+      </div>
+      <div class="w-full h-2 rounded-full bg-black/60 overflow-hidden border border-white/10">
+        <div id="loader-progress-fill" class="loader-progress-bar h-full accent-bg w-[5%]"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    /* 1. Simulate Smooth Loading Progress */
+    let currentPct = 5;
+    const pctEl = document.getElementById('loader-pct-text');
+    const fillEl = document.getElementById('loader-progress-fill');
+    const loaderOverlay = document.getElementById('agency-loader-overlay');
+
+    const loadInterval = setInterval(() => {
+      currentPct += Math.floor(Math.random() * 18) + 8;
+      if (currentPct >= 100) {
+        currentPct = 100;
+        clearInterval(loadInterval);
+        setTimeout(() => {
+          if (loaderOverlay) loaderOverlay.classList.add('fade-out');
+        }, 300);
+      }
+      if (pctEl) pctEl.innerText = currentPct + '%';
+      if (fillEl) fillEl.style.width = currentPct + '%';
+    }, 90);
+
+    /* Fallback hide loader after window load */
+    window.addEventListener('load', () => {
+      currentPct = 100;
+      if (pctEl) pctEl.innerText = '100%';
+      if (fillEl) fillEl.style.width = '100%';
+      setTimeout(() => {
+        if (loaderOverlay) loaderOverlay.classList.add('fade-out');
+      }, 400);
+    });
+
+    /* 2. Brand-Aware Loading Screen & WhatsApp Dynamic Sync */
+    const origRender = window.renderAll;
+    window.renderAll = function () {
+      if (typeof origRender === 'function') origRender();
+      const db = getDB();
+
+      const titleEl = document.getElementById('loader-brand-title');
+      const initEl = document.getElementById('loader-logo-initials');
+      if (titleEl && db.brand?.name) titleEl.innerText = db.brand.name;
+      if (initEl && db.brand?.name) initEl.innerText = (db.brand.logoText || db.brand.name).substring(0, 2).toUpperCase();
+
+      /* Sync floating WhatsApp button with backend number */
+      const waBtn = document.querySelector('button[onclick="openDirectWhatsApp()"]');
+      if (waBtn && db.brand?.whatsapp) {
+        waBtn.setAttribute('title', 'Chat on WhatsApp: ' + db.brand.whatsapp);
+      }
+    };
+  })();
+</script>
+<!-- ==================== INDEX.HTML : DYNAMIC LOADING SCREEN PATCH COMPLETE ==================== -->
