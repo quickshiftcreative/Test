@@ -4,22 +4,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title id="seo-title">OG Desk | Global Creative, E-Commerce & Digital Studio</title>
+  <title id="seo-title">The Blank Page | Global Creative, E-Commerce & Digital Studio</title>
   <meta name="description" id="seo-desc" content="Where Strategy Meets Bold Execution. Global branding, e-commerce marketplace management, quick-commerce onboarding, 3D visuals, and web engineering." />
-  <meta name="keywords" id="seo-keys" content="global creative agency, ecommerce management, quick commerce onboarding, brand identity, 3d packaging, web studio" />
-  <meta property="og:title" id="seo-og-title" content="OG Desk | Global Creative & Digital Studio" />
+  <meta name="keywords" id="seo-keys" content="global creative agency, ecommerce growth consultant, quick commerce onboarding, brand identity, 3d packaging, web studio" />
+  <meta property="og:title" id="seo-og-title" content="The Blank Page | Global Creative & Digital Studio" />
   <meta property="og:description" id="seo-og-desc" content="Explore interactive service packages, generate instant international proposals, and track real-time project milestones." />
   <meta property="og:image" id="seo-og-image" content="" />
-  <link rel="icon" id="seo-favicon" href="https://ui-avatars.com/api/?name=OG&background=6366f1&color=fff" />
+  <link rel="icon" id="seo-favicon" href="https://ui-avatars.com/api/?name=BP&background=6366f1&color=fff" />
 
   <script type="application/ld+json" id="seo-schema"></script>
 
-  <!-- Core Libraries: Tailwind, HTML2PDF, Canvas-Confetti & Google 3D Model-Viewer -->
+  <!-- Core Libraries: Tailwind CSS, HTML2PDF, Canvas-Confetti & Google 3D Model-Viewer -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
-  <link id="dynamic-google-fonts" href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@600;700&family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;700;800&family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link id="dynamic-google-fonts" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;700;800&family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -63,7 +63,7 @@
     }
 
     .liquid-glass {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(17, 17, 20, 0.80) 100%);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(17, 17, 20, 0.82) 100%);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
       border: 1px solid rgba(255, 255, 255, 0.15);
@@ -94,7 +94,6 @@
     .shape-square { border-radius: 1.25rem; }
     .shape-square img { border-radius: 1.15rem; }
     .shape-hexagon { clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%); }
-    .shape-portrait { border-radius: 1.5rem; aspect-ratio: 3/4; }
 
     @keyframes marqueeScroll {
       0% { transform: translateX(0%); }
@@ -146,7 +145,7 @@
       </div>
       <div class="flex items-center gap-2 mx-auto lg:mx-0 text-center">
         <span class="w-2 h-2 rounded-full secondary-bg animate-pulse"></span>
-        <span id="announcement-text">🌍 Operating Globally Across India, UAE, US & UK — Book Your Free Brand Audit Today</span>
+        <span id="announcement-text">🌍 Operating Globally Across India, UAE, US & UK — Instant Custom Proposals Live</span>
       </div>
       <div id="scarcity-slot-badge" class="px-2.5 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 text-[10px] font-extrabold">
         🔥 Only <span id="scarcity-slots-num">2</span> Client Onboarding Slots Left
@@ -154,7 +153,7 @@
     </div>
   </div>
 
-  <!-- ================= CLIENT-SPECIFIC PERSONALIZED PROPOSAL BANNER (IF ?client= IN URL) ================= -->
+  <!-- ================= CLIENT-SPECIFIC PERSONALIZED BANNER (?client=Name) ================= -->
   <div id="vip-personal-banner" class="hidden bg-gradient-to-r from-indigo-600/30 via-emerald-500/20 to-indigo-600/30 border-b border-white/15 px-4 py-2.5 text-center text-xs font-extrabold text-white">
     ✨ <span id="vip-personal-text">Welcome — Exclusive Growth Roadmap Prepared For Your Brand</span>
   </div>
@@ -165,10 +164,10 @@
       
       <!-- Brand Identity -->
       <button onclick="navigate('home')" class="flex items-center gap-3 text-left shrink-0 group">
-        <div id="nav-logo-box" class="w-10 h-10 rounded-xl accent-bg text-white flex items-center justify-center font-extrabold text-sm tracking-tighter overflow-hidden shadow-lg">OG</div>
+        <div id="nav-logo-box" class="w-10 h-10 rounded-xl accent-bg text-white flex items-center justify-center font-extrabold text-sm tracking-tighter overflow-hidden shadow-lg">BP</div>
         <div>
-          <span id="nav-brand-name" class="editorial-font font-bold text-base sm:text-lg tracking-tight text-white block leading-none">OG DESK</span>
-          <span id="nav-brand-tagline" class="text-[10px] text-zinc-400 block mt-1">Global Creative & Growth Studio</span>
+          <span id="nav-brand-name" class="editorial-font font-bold text-base sm:text-lg tracking-tight text-white block leading-none">THE BLANK PAGE</span>
+          <span id="nav-brand-tagline" class="text-[10px] text-zinc-400 block mt-1">Where Strategy Meets Bold Execution</span>
         </div>
       </button>
 
@@ -177,33 +176,23 @@
 
       <!-- Single-Row Right Controls -->
       <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
-        <!-- Quick Command Palette (⌘K) -->
         <button onclick="openCommandPalette()" title="Quick Search (⌘K)" class="w-9 h-9 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 flex items-center justify-center text-xs text-zinc-300">🔍</button>
-
-        <!-- X-Ray Vision Mode Toggle -->
         <button onclick="toggleXRayMode()" id="xray-btn" title="Toggle X-Ray Blueprint Mode" class="hidden sm:flex w-9 h-9 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 items-center justify-center text-xs text-zinc-300">👁️</button>
-
-        <!-- Spatial UI Sound Mute/Unmute -->
         <button onclick="toggleUISound()" id="sound-toggle-btn" title="Toggle Spatial UI Sound" class="hidden sm:flex w-9 h-9 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 items-center justify-center text-xs text-zinc-300">🔊</button>
-
-        <!-- JARVIS Voice Navigation Trigger -->
         <button onclick="toggleJarvisVoice()" id="jarvis-mic-btn" title="JARVIS Voice Command — Speak to Website" class="w-9 h-9 rounded-xl bg-indigo-600/25 hover:bg-indigo-600/45 border border-indigo-500/40 flex items-center justify-center text-sm text-indigo-300 transition">🎙️</button>
 
-        <!-- Multi-Currency Switcher -->
         <select id="currency-switcher" onchange="setCurrency(this.value)" aria-label="Currency" class="px-2 py-2 rounded-xl bg-black/60 border border-white/15 text-xs font-bold text-white cursor-pointer focus:outline-none">
           <option value="INR">₹ INR</option>
           <option value="USD">$ USD</option>
           <option value="AED">AED</option>
         </select>
 
-        <!-- Quotation Cart Button -->
         <button onclick="navigate('quotation')" class="px-3 py-2 rounded-xl accent-bg hover:opacity-95 text-white text-xs font-extrabold flex items-center gap-1.5 shadow-lg transition">
-          <span id="nav-quote-btn-label" class="hidden sm:inline">Quote</span>
+          <span class="hidden sm:inline">Quote</span>
           <span>🛒</span>
           <span id="nav-cart-badge" class="px-1.5 py-0.5 text-[10px] rounded-full bg-white text-zinc-950 font-black">0</span>
         </button>
 
-        <!-- Universal Liquid-Glass Hamburger Button (Single Row) -->
         <button onclick="toggleHamburgerDrawer()" aria-label="Menu" class="w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 flex items-center justify-center text-white transition">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
@@ -225,20 +214,20 @@
     </div>
   </header>
 
-  <!-- ================= MAIN SPA VIEWPORT ================= -->
+  <!-- ================= MAIN SPA VIEWPORT (WITH WORDPRESS BLOCK SLOTS ON EVERY PAGE) ================= -->
   <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-10 space-y-20">
 
     <!-- ======================================================================= -->
-    <!-- PAGE 1: HOME (REORDERABLE SECTIONS + 4-MODE 3D/VIDEO HERO MOVER)        -->
+    <!-- PAGE 1: HOME (REORDERABLE SECTIONS + UNIVERSAL WORDPRESS BLOCKS)        -->
     <!-- ======================================================================= -->
     <section id="view-home" class="spa-view flex flex-col gap-20">
+      <div id="wp-blocks-top-home" class="space-y-8 empty:hidden" style="order: 0;"></div>
 
-      <!-- HOME BLOCK A: HERO SPLIT (POSITION & SIZE ADJUSTABLE FROM BACKEND) -->
-      <div id="home-block-hero" class="relative pt-2">
+      <!-- HOME BLOCK A: HERO SPLIT -->
+      <div id="home-block-hero" class="relative pt-2" style="order: 1;">
         <div id="hero-bg-media-layer" class="hidden absolute inset-0 -z-10 rounded-3xl overflow-hidden opacity-35"></div>
         <div id="hero-layout-grid" class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           
-          <!-- Hero Typography Column -->
           <div id="hero-text-col" class="lg:col-span-7 space-y-6">
             <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full liquid-glass text-xs font-bold text-zinc-200">
               <span class="w-2 h-2 rounded-full secondary-bg animate-ping"></span>
@@ -263,7 +252,6 @@
             </div>
           </div>
 
-          <!-- Hero 3D / Video / Character Stage (Movable Left, Right, Center, Top, or Background + X/Y/Scale) -->
           <div id="hero-3d-wrapper" class="lg:col-span-5 relative flex items-center justify-center min-h-[360px] sm:min-h-[440px]">
             <div class="absolute inset-0 stage-3d-glow rounded-full pointer-events-none"></div>
             <div id="hero-3d-stage" onmousemove="tilt3DCard(event, this)" onmouseleave="reset3DCard(this)" class="relative w-full h-[380px] sm:h-[440px] liquid-glass rounded-3xl p-5 flex flex-col items-center justify-center overflow-hidden transition-transform duration-200 ease-out"></div>
@@ -272,12 +260,12 @@
       </div>
 
       <!-- HOME BLOCK B: INFINITE TRUST MARQUEE -->
-      <div id="home-block-marquee" class="border-y border-[#242429] py-4 overflow-hidden bg-[#111114]/60 -mx-4 sm:-mx-6 px-4">
+      <div id="home-block-marquee" class="border-y border-[#242429] py-4 overflow-hidden bg-[#111114]/60 -mx-4 sm:-mx-6 px-4" style="order: 2;">
         <div id="marquee-items-track" class="marquee-track gap-12 items-center text-xs sm:text-sm font-bold uppercase tracking-widest text-zinc-400"></div>
       </div>
 
       <!-- HOME BLOCK C: 4 KEY METRICS BENTO -->
-      <div id="home-block-stats" class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div id="home-block-stats" class="grid grid-cols-2 lg:grid-cols-4 gap-4" style="order: 3;">
         <div class="charcoal-card rounded-3xl p-6">
           <span class="text-[11px] font-bold text-zinc-500">(01)</span>
           <div id="metric-1-val" class="text-3xl sm:text-4xl font-extrabold text-white mt-2">50+</div>
@@ -301,7 +289,7 @@
       </div>
 
       <!-- HOME BLOCK D: FEATURED SERVICES -->
-      <div id="home-block-services" class="space-y-8">
+      <div id="home-block-services" class="space-y-8" style="order: 4;">
         <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#242429] pb-6">
           <div>
             <span id="home-srv-eyebrow" class="text-xs font-extrabold uppercase tracking-widest accent-text">Full-Service Capabilities</span>
@@ -312,11 +300,10 @@
         <div id="home-services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
       </div>
 
-      <!-- HOME BLOCK E: VIRAL AI TOOLS (10s BRAND SCANNER + ROI SIMULATOR + 3D PACKAGING PLAYGROUND) -->
-      <div id="home-block-viral-suite" class="space-y-8">
+      <!-- HOME BLOCK E: VIRAL AI TOOLS (10s BRAND SCANNER + ROI SIMULATOR + 3D PACKAGING) -->
+      <div id="home-block-viral-suite" class="space-y-8" style="order: 5;">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
           
-          <!-- 10-Second AI Brand Readiness & Revenue Leak Scanner -->
           <div class="liquid-glass rounded-3xl p-6 sm:p-8 space-y-5 relative overflow-hidden">
             <div id="scanner-laser" class="hidden laser-line"></div>
             <div>
@@ -349,13 +336,12 @@
               </div>
               <p id="scan-res-leak" class="text-xs text-zinc-300 leading-relaxed"></p>
               <div class="flex flex-wrap gap-2 pt-1">
-                <button onclick="autoAddRecommendedPackage()" class="flex-1 py-2.5 rounded-xl secondary-bg text-zinc-950 font-extrabold text-xs">⚡ Auto-Load Recommended Package to Quote</button>
+                <button onclick="autoAddRecommendedPackage()" class="flex-1 py-2.5 rounded-xl secondary-bg text-zinc-950 font-extrabold text-xs">⚡ Auto-Load Recommended Package</button>
                 <button onclick="shareBrandScoreOnWhatsApp()" class="px-4 py-2.5 rounded-xl charcoal-card text-white font-bold text-xs">📲 Share Score</button>
               </div>
             </div>
           </div>
 
-          <!-- Interactive ROI Growth Simulator + 3D Packaging Live Customizer -->
           <div class="charcoal-card rounded-3xl p-6 sm:p-8 space-y-6 flex flex-col justify-between">
             <div class="space-y-4">
               <div class="flex items-center justify-between border-b border-[#242429] pb-3">
@@ -382,7 +368,6 @@
               </select>
             </div>
 
-            <!-- Interactive 3D Packaging & Brand Color Playground -->
             <div class="p-4 rounded-2xl bg-[#09090b] border border-[#242429] space-y-3">
               <div class="flex items-center justify-between">
                 <span class="text-xs font-extrabold text-indigo-400">🎨 Live 3D Packaging Box Previewer</span>
@@ -407,7 +392,7 @@
       </div>
 
       <!-- HOME BLOCK F: SELECTED WORKS -->
-      <div id="home-block-work" class="space-y-8">
+      <div id="home-block-work" class="space-y-8" style="order: 6;">
         <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#242429] pb-6">
           <div>
             <span id="home-work-eyebrow" class="text-xs font-extrabold uppercase tracking-widest secondary-text">Selected Works</span>
@@ -419,7 +404,7 @@
       </div>
 
       <!-- HOME BLOCK G: 4-STEP PROCESS -->
-      <div id="home-block-process" class="space-y-8">
+      <div id="home-block-process" class="space-y-8" style="order: 7;">
         <div class="border-b border-[#242429] pb-6">
           <span class="text-xs font-extrabold uppercase tracking-widest accent-text">Execution Framework</span>
           <h2 id="process-main-heading" class="text-3xl sm:text-4xl font-bold text-white mt-1">How We Engineer Growth</h2>
@@ -427,8 +412,8 @@
         <div id="process-steps-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"></div>
       </div>
 
-      <!-- HOME BLOCK H: AWARDS & RECOGNITION TABLE -->
-      <div id="home-block-awards" class="space-y-6">
+      <!-- HOME BLOCK H: AWARDS TABLE -->
+      <div id="home-block-awards" class="space-y-6" style="order: 8;">
         <div class="border-b border-[#242429] pb-5">
           <span class="text-xs font-extrabold uppercase tracking-widest text-amber-400">Milestones & Benchmarks</span>
           <h2 id="awards-main-heading" class="text-3xl font-bold text-white mt-1">Recognition & Operational Excellence</h2>
@@ -436,12 +421,14 @@
         <div id="awards-rows-container" class="divide-y divide-[#242429] border-b border-[#242429]"></div>
       </div>
 
+      <div id="wp-blocks-bottom-home" class="space-y-8 empty:hidden" style="order: 99;"></div>
     </section>
 
     <!-- ======================================================================= -->
     <!-- PAGE 2: SERVICES & LIQUID-GLASS POP-UP INSPECTOR                       -->
     <!-- ======================================================================= -->
     <section id="view-services" class="spa-view hidden space-y-10">
+      <div id="wp-blocks-top-services" class="space-y-8 empty:hidden"></div>
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#242429] pb-6">
         <div>
           <span id="srv-page-eyebrow" class="text-xs font-extrabold uppercase tracking-widest accent-text">Interactive Service Catalog</span>
@@ -459,12 +446,14 @@
         <h3 id="faq-main-heading" class="text-2xl font-bold text-white">Frequently Asked Questions</h3>
         <div id="faq-accordion-list" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
       </div>
+      <div id="wp-blocks-bottom-services" class="space-y-8 empty:hidden"></div>
     </section>
 
     <!-- ======================================================================= -->
     <!-- PAGE 3: QUOTATION BUILDER (SCRATCH CARD + DIGITAL SIGNATURE + PDF)     -->
     <!-- ======================================================================= -->
     <section id="view-quotation" class="spa-view hidden max-w-4xl mx-auto space-y-8">
+      <div id="wp-blocks-top-quotation" class="space-y-8 empty:hidden"></div>
       <div class="border-b border-[#242429] pb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
           <span class="text-xs font-extrabold uppercase tracking-widest secondary-text">Automated Proposal Engine</span>
@@ -477,7 +466,6 @@
       <div class="liquid-glass rounded-3xl p-6 sm:p-8 space-y-6">
         <div id="quote-items-container" class="space-y-3"></div>
 
-        <!-- Metallic Gold Scratch Card -->
         <div id="scratch-card-wrapper" class="p-5 rounded-2xl bg-gradient-to-r from-amber-500/10 via-amber-500/20 to-amber-500/10 border border-amber-500/30 text-center space-y-2">
           <span class="text-xs font-extrabold uppercase text-amber-400">🎁 Interactive VIP Founder Grant</span>
           <p class="text-xs text-zinc-300">Scratch or tap below to unlock your priority onboarding discount!</p>
@@ -511,7 +499,6 @@
           </div>
           <input type="text" id="q-inp-notes" placeholder="Project timeline or custom notes (Optional)" class="w-full px-4 py-3 rounded-xl matte-input text-sm" />
 
-          <!-- Digital Signature Pad -->
           <div class="space-y-1.5">
             <div class="flex justify-between items-center text-xs">
               <span class="font-bold text-zinc-300">✍️ Digital Signature (Draw with finger or mouse):</span>
@@ -531,24 +518,28 @@
           </div>
         </form>
       </div>
+      <div id="wp-blocks-bottom-quotation" class="space-y-8 empty:hidden"></div>
     </section>
 
     <!-- ======================================================================= -->
     <!-- PAGE 4: PORTFOLIO, BEFORE/AFTER SLIDER & VIDEO REELS                    -->
     <!-- ======================================================================= -->
     <section id="view-portfolio" class="spa-view hidden space-y-10">
+      <div id="wp-blocks-top-portfolio" class="space-y-8 empty:hidden"></div>
       <div class="border-b border-[#242429] pb-6">
         <span class="text-xs font-extrabold uppercase tracking-widest secondary-text">Proven Transformations</span>
         <h1 id="pf-page-heading" class="text-3xl sm:text-5xl font-bold text-white mt-1">Selected Works & Case Studies</h1>
         <p id="pf-page-sub" class="text-sm text-zinc-400 mt-2">Click any project to inspect the Before/After comparison slider, video reel, and measurable growth impact.</p>
       </div>
       <div id="portfolio-catalog-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
+      <div id="wp-blocks-bottom-portfolio" class="space-y-8 empty:hidden"></div>
     </section>
 
     <!-- ======================================================================= -->
     <!-- PAGE 5: PRIVATE VIP CLIENT LOGIN & MULTI-STYLE LIVE TRACKER (0%-100%)   -->
     <!-- ======================================================================= -->
     <section id="view-tracker" class="spa-view hidden space-y-8">
+      <div id="wp-blocks-top-tracker" class="space-y-8 empty:hidden"></div>
       <div class="charcoal-card rounded-3xl p-6 sm:p-10 space-y-8">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#242429] pb-6">
           <div>
@@ -561,7 +552,6 @@
           </button>
         </div>
 
-        <!-- Client Login Gate -->
         <div id="client-login-gate" class="max-w-md mx-auto liquid-glass rounded-3xl p-6 sm:p-8 space-y-4">
           <div class="text-center space-y-1">
             <h3 class="text-lg font-bold text-white">Unlock Your Project Dashboard</h3>
@@ -576,7 +566,6 @@
           </form>
         </div>
 
-        <!-- Unlocked Client Project Dashboard -->
         <div id="client-dashboard-box" class="hidden space-y-6">
           <div class="flex flex-wrap items-center justify-between gap-3 p-4 rounded-2xl bg-[#09090b] border border-[#242429]">
             <div>
@@ -588,12 +577,14 @@
           <div id="tracker-cards-grid" class="space-y-6"></div>
         </div>
       </div>
+      <div id="wp-blocks-bottom-tracker" class="space-y-8 empty:hidden"></div>
     </section>
 
     <!-- ======================================================================= -->
     <!-- PAGE 6: ABOUT US, PHOTO SHAPE/SIZE/ALIGN STUDIO & TEAM                 -->
     <!-- ======================================================================= -->
     <section id="view-about" class="spa-view hidden space-y-12">
+      <div id="wp-blocks-top-about" class="space-y-8 empty:hidden"></div>
       <div class="charcoal-card rounded-3xl p-6 sm:p-12 space-y-12">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           <div class="lg:col-span-2 space-y-4">
@@ -625,12 +616,14 @@
           <div id="about-staff-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"></div>
         </div>
       </div>
+      <div id="wp-blocks-bottom-about" class="space-y-8 empty:hidden"></div>
     </section>
 
     <!-- ======================================================================= -->
     <!-- PAGE 7: VERIFIED CLIENT REVIEWS                                         -->
     <!-- ======================================================================= -->
     <section id="view-reviews" class="spa-view hidden space-y-8">
+      <div id="wp-blocks-top-reviews" class="space-y-8 empty:hidden"></div>
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#242429] pb-6">
         <div>
           <span class="text-xs font-extrabold uppercase tracking-widest text-amber-400">Client Testimonials</span>
@@ -642,12 +635,14 @@
         </button>
       </div>
       <div id="reviews-cards-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+      <div id="wp-blocks-bottom-reviews" class="space-y-8 empty:hidden"></div>
     </section>
 
     <!-- ======================================================================= -->
     <!-- PAGE 8: GLOBAL STUDIOS & 30s WALKIE-TALKIE VOICE BRIEF RECORDER         -->
     <!-- ======================================================================= -->
     <section id="view-contact" class="spa-view hidden space-y-12">
+      <div id="wp-blocks-top-contact" class="space-y-8 empty:hidden"></div>
       <div class="border-b border-[#242429] pb-6">
         <span class="text-xs font-extrabold uppercase tracking-widest accent-text">Global Presence</span>
         <h1 id="contact-main-heading" class="text-3xl sm:text-5xl font-bold text-white mt-1">Connect With Our Global Studios</h1>
@@ -659,7 +654,6 @@
       <div class="charcoal-card rounded-3xl p-6 sm:p-10 max-w-4xl mx-auto space-y-6">
         <h3 class="text-xl font-bold text-white">Send a Direct Project Brief or 30s Voice Note</h3>
         
-        <!-- 30s Walkie-Talkie Voice Recorder -->
         <div class="p-4 rounded-2xl bg-[#09090b] border border-[#242429] flex flex-wrap items-center justify-between gap-4">
           <div>
             <span class="text-xs font-extrabold uppercase text-indigo-400">🎙️ Walkie-Talkie 30-Second Voice Brief</span>
@@ -690,6 +684,7 @@
           </button>
         </form>
       </div>
+      <div id="wp-blocks-bottom-contact" class="space-y-8 empty:hidden"></div>
     </section>
 
     <!-- ======================================================================= -->
@@ -708,7 +703,7 @@
     </section>
 
     <!-- ======================================================================= -->
-    <!-- PAGE 10: DYNAMIC CUSTOM PAGES & BLOGS RENDERER (CREATED FROM BACKEND)   -->
+    <!-- PAGE 10: DYNAMIC CUSTOM PAGES & BLOGS RENDERER (WITH EXTRA BLOCKS)      -->
     <!-- ======================================================================= -->
     <section id="view-custom-page" class="spa-view hidden max-w-5xl mx-auto space-y-8">
       <div class="border-b border-[#242429] pb-6">
@@ -718,6 +713,7 @@
       </div>
       <div id="cpage-media-box" class="hidden rounded-3xl overflow-hidden bg-black/50 border border-[#242429]"></div>
       <div id="cpage-body" class="charcoal-card rounded-3xl p-6 sm:p-10 text-zinc-200 text-sm sm:text-base leading-relaxed whitespace-pre-line"></div>
+      <div id="cpage-extra-blocks" class="space-y-8 empty:hidden"></div>
     </section>
 
   </main>
@@ -731,8 +727,8 @@
   <footer class="bg-[#09090b] py-14 px-4 sm:px-6">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8 text-xs text-zinc-400">
       <div>
-        <strong id="ft-brand-name" class="text-white text-lg font-bold editorial-font">OG DESK</strong>
-        <p id="ft-brand-domain" class="text-zinc-500 mt-1">ogdesk.com</p>
+        <strong id="ft-brand-name" class="text-white text-lg font-bold editorial-font">THE BLANK PAGE</strong>
+        <p id="ft-brand-domain" class="text-zinc-500 mt-1">theblankpage.agency</p>
         <p id="ft-copyright" class="text-zinc-500 mt-2">© 2026 All rights reserved.</p>
       </div>
       <div class="flex flex-wrap gap-5 font-semibold">
@@ -766,9 +762,7 @@
     </button>
   </div>
 
-  <!-- ========================================================================= -->
-  <!-- MODAL 1: SERVICE & SUB-SERVICES LIQUID-GLASS POP-UP                       -->
-  <!-- ========================================================================= -->
+  <!-- ================= MODAL 1: SERVICE & SUB-SERVICES POP-UP ================= -->
   <div id="service-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
     <div class="liquid-glass rounded-3xl max-w-2xl w-full p-6 sm:p-8 max-h-[90vh] overflow-y-auto space-y-5">
       <div class="flex items-start justify-between gap-4 border-b border-white/10 pb-4">
@@ -794,9 +788,7 @@
     </div>
   </div>
 
-  <!-- ========================================================================= -->
-  <!-- MODAL 2: PORTFOLIO BEFORE/AFTER SLIDER & VIDEO REEL INSPECTOR             -->
-  <!-- ========================================================================= -->
+  <!-- ================= MODAL 2: PORTFOLIO BEFORE/AFTER & REEL INSPECTOR ================= -->
   <div id="portfolio-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
     <div class="liquid-glass rounded-3xl max-w-2xl w-full p-6 sm:p-8 max-h-[90vh] overflow-y-auto space-y-5">
       <div class="flex items-start justify-between gap-4 border-b border-white/10 pb-4">
@@ -808,7 +800,6 @@
         <button onclick="closePortfolioModal()" class="w-9 h-9 rounded-xl charcoal-card text-white font-bold">✕</button>
       </div>
 
-      <!-- Video Player (If Video Uploaded) OR Interactive Before/After Image Slider -->
       <div id="pmodal-video-wrap" class="hidden rounded-2xl overflow-hidden bg-black max-h-72"></div>
       <div id="pmodal-ba-wrap" class="relative h-64 rounded-2xl overflow-hidden bg-black/60 select-none border border-white/10">
         <img id="pmodal-after-img" src="" class="absolute inset-0 w-full h-full object-cover" />
@@ -831,9 +822,7 @@
     </div>
   </div>
 
-  <!-- ========================================================================= -->
-  <!-- MODAL 3: 3D METALLIC VIP PARTNER / INFLUENCER REFERRAL PASS GENERATOR     -->
-  <!-- ========================================================================= -->
+  <!-- ================= MODAL 3: 3D METALLIC VIP PARTNER PASS ================= -->
   <div id="vip-pass-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
     <div class="liquid-glass rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-5">
       <div class="flex items-center justify-between border-b border-white/10 pb-3">
@@ -845,14 +834,13 @@
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <input type="text" id="vip-inp-name" oninput="updateVIPPassCard()" placeholder="Your Name / Handle *" class="px-3.5 py-2.5 rounded-xl matte-input text-xs" />
-        <input type="text" id="vip-inp-code" oninput="updateVIPPassCard()" placeholder="Custom Code (e.g. RAHUL)" class="px-3.5 py-2.5 rounded-xl matte-input text-xs uppercase" />
+        <input type="text" id="vip-inp-code" oninput="updateVIPPassCard()" placeholder="Custom Code (e.g. JENISH)" class="px-3.5 py-2.5 rounded-xl matte-input text-xs uppercase" />
       </div>
-      <!-- 3D Rotating Metallic Black Card -->
       <div onmousemove="tilt3DCard(event, this)" onmouseleave="reset3DCard(this)" class="p-6 rounded-3xl bg-gradient-to-br from-zinc-900 via-black to-zinc-800 border border-amber-400/40 shadow-2xl space-y-6 transition-transform duration-200">
         <div class="flex justify-between items-start">
           <div>
             <span class="text-[10px] font-extrabold tracking-widest text-amber-400 block">OFFICIAL PARTNER PASS</span>
-            <h4 id="vip-card-agency" class="text-lg font-black text-white editorial-font">OG DESK</h4>
+            <h4 id="vip-card-agency" class="text-lg font-black text-white editorial-font">THE BLANK PAGE</h4>
           </div>
           <span class="px-2.5 py-1 rounded-full bg-amber-400/20 text-amber-300 text-[10px] font-extrabold">VIP TIER</span>
         </div>
@@ -868,9 +856,7 @@
     </div>
   </div>
 
-  <!-- ========================================================================= -->
-  <!-- MODAL 4: COMMAND PALETTE (⌘K QUICK SEARCH)                                -->
-  <!-- ========================================================================= -->
+  <!-- ================= MODAL 4: COMMAND PALETTE (⌘K) ================= -->
   <div id="cmd-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-start justify-center pt-20 p-4">
     <div class="liquid-glass rounded-3xl max-w-lg w-full p-5 space-y-4">
       <div class="flex items-center gap-3 border-b border-white/10 pb-3">
@@ -882,9 +868,7 @@
     </div>
   </div>
 
-  <!-- ========================================================================= -->
-  <!-- MODAL 5: SUBMIT 5-STAR REVIEW                                             -->
-  <!-- ========================================================================= -->
+  <!-- ================= MODAL 5: SUBMIT 5-STAR REVIEW ================= -->
   <div id="review-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
     <div class="liquid-glass rounded-3xl max-w-md w-full p-6 space-y-4">
       <div class="flex items-center justify-between border-b border-white/10 pb-3">
@@ -907,14 +891,12 @@
     </div>
   </div>
 
-  <!-- ========================================================================= -->
-  <!-- HIDDEN PRINTABLE A4 INTERNATIONAL PDF PROPOSAL SHEET                      -->
-  <!-- ========================================================================= -->
+  <!-- ================= HIDDEN PRINTABLE A4 PDF PROPOSAL SHEET ================= -->
   <div class="hidden">
     <div id="pdf-proposal-sheet" style="width: 780px; padding: 42px; background: #ffffff; color: #09090b; font-family: 'Plus Jakarta Sans', sans-serif;">
       <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #09090b; padding-bottom: 20px;">
         <div>
-          <h1 id="pdf-agency-name" style="font-size: 26px; font-weight: 800; color: #09090b; margin: 0;">OG DESK</h1>
+          <h1 id="pdf-agency-name" style="font-size: 26px; font-weight: 800; color: #09090b; margin: 0;">THE BLANK PAGE</h1>
           <p id="pdf-agency-tagline" style="font-size: 12px; color: #52525b; margin: 4px 0 0 0;"></p>
           <p id="pdf-agency-contact" style="font-size: 11px; color: #52525b; margin-top: 6px;"></p>
         </div>
@@ -980,7 +962,7 @@
     let activeReferralCode = new URLSearchParams(window.location.search).get('ref') || '';
     let personalizedClientName = new URLSearchParams(window.location.search).get('client') || '';
 
-    /* ================= MASTER DEFAULT DATABASE (ALL 43+ FEATURES) ================= */
+    /* ================= DEFAULT MASTER DATABASE ================= */
     const defaultMasterDB = {
       theme: {
         bgSolid: '#09090b',
@@ -1031,7 +1013,7 @@
         phone: '+91 98765 43210',
         whatsapp: '919876543210',
         email: 'hello@theblankpage.agency',
-        announcement: '🌍 Operating Globally Across India, UAE, USA & UK — Instant Custom Proposals Live',
+        announcement: '🌍 Operating Globally Across India, UAE, US & UK — Instant Custom Proposals Live',
         heroBadge: 'Where Bold Strategy Meets Global Execution',
         heroTitle: 'Defining Culture. Scaling Brands Globally.',
         heroSub: 'We partner with ambitious brands across India, UAE, and worldwide to dominate e-commerce marketplaces, quick-commerce dark stores, 3D packaging, and digital experiences.',
@@ -1121,7 +1103,7 @@
       ],
       faqs: [
         { id: 'FQ-1', q: 'How does the interactive Quotation Builder work?', a: 'Click any service category to open its Liquid-Glass pop-up, select sub-services, scratch for your VIP grant, sign digitally, and download an instant PDF proposal.' },
-        { id: 'FQ-2', q: 'How do I access my Private VIP Client Portal?', a: 'Open the Client Tracker tab and enter your registered Email ID and Project ID (or click 1-Click Demo Login) to view your live step-by-step progress.' },
+        { id: 'FQ-2', q: 'How do I access my Private VIP Client Portal?', a: 'Open the Client Tracker tab and enter your registered Email ID and Project ID to view your live step-by-step progress.' },
         { id: 'FQ-3', q: 'Can I speak to the website using voice commands?', a: 'Yes! Tap the 🎙️ JARVIS Mic icon in the top navbar and say "Open Services", "Open Quotation", "Switch to Dollars", or "Track my project".' },
         { id: 'FQ-4', q: 'Do you work with international clients across UAE, USA, and UK?', a: 'Absolutely. Use the currency switcher in the header to view proposals in INR (₹), USD ($), or AED.' }
       ],
@@ -1132,55 +1114,20 @@
       },
       services: [
         {
-          id: 'CAT-1',
-          index: '(01)',
-          title: 'E-Commerce Marketplace Growth',
-          badge: 'Marketplaces',
-          mediaUrl: '',
+          id: 'CAT-1', index: '(01)', title: 'E-Commerce Marketplace Growth', badge: 'Marketplaces', mediaUrl: '',
           description: 'End-to-end organic growth, A+ cataloging, keyword SEO, and marketplace scaling across Amazon Global, Amazon India & Flipkart.',
           subServices: [
             { id: 'SUB-101', name: 'Amazon Complete Account & Organic Growth Management', priceINR: 15000, billing: 'Monthly' },
             { id: 'SUB-102', name: 'Flipkart Full Catalog & Growth Operations', priceINR: 10000, billing: 'Monthly' },
-            { id: 'SUB-103', name: 'A+ Content, EBC & Brand Storefront Redesign', priceINR: 7500, billing: 'One-Time' },
-            { id: 'SUB-104', name: 'Listing SEO Audit & High-CTR Infographic Redesign', priceINR: 6000, billing: 'One-Time' }
+            { id: 'SUB-103', name: 'A+ Content, EBC & Brand Storefront Redesign', priceINR: 7500, billing: 'One-Time' }
           ]
         },
         {
-          id: 'CAT-2',
-          index: '(02)',
-          title: 'Quick Commerce Onboarding & Scale',
-          badge: 'Quick Commerce',
-          mediaUrl: '',
+          id: 'CAT-2', index: '(02)', title: 'Quick Commerce Onboarding & Scale', badge: 'Quick Commerce', mediaUrl: '',
           description: 'Fast-track brand onboarding, APOB/dark-store SKU mapping, and visibility scaling on Blinkit, Zepto, and Swiggy Instamart.',
           subServices: [
             { id: 'SUB-201', name: 'Blinkit Brand Onboarding & Dark-Store Setup', priceINR: 12000, billing: 'One-Time' },
-            { id: 'SUB-202', name: 'Zepto & Swiggy Instamart Complete Onboarding', priceINR: 14000, billing: 'One-Time' },
-            { id: 'SUB-203', name: 'Quick-Commerce City Expansion & Inventory Ops', priceINR: 12000, billing: 'Monthly' }
-          ]
-        },
-        {
-          id: 'CAT-3',
-          index: '(03)',
-          title: 'Brand Identity, 3D Packaging & CGI',
-          badge: 'Creative & 3D',
-          mediaUrl: '',
-          description: 'Luxury brand identity systems, print-ready packaging die-lines, photorealistic 3D product renders, and commercial CGI.',
-          subServices: [
-            { id: 'SUB-301', name: 'Complete Brand Identity & Visual Guidelines Book', priceINR: 15000, billing: 'One-Time' },
-            { id: 'SUB-302', name: 'Product Packaging Design & 3D Studio Mockups', priceINR: 9500, billing: 'One-Time' },
-            { id: 'SUB-303', name: 'Commercial 3D Product Animation & Ad Reels (Set of 5)', priceINR: 12500, billing: 'One-Time' }
-          ]
-        },
-        {
-          id: 'CAT-4',
-          index: '(04)',
-          title: 'Custom Web, Shopify Plus & Liquid-Glass UI',
-          badge: 'Web Studio',
-          mediaUrl: '',
-          description: 'High-converting D2C Shopify stores, custom interactive web applications, and cloud-synced admin portals.',
-          subServices: [
-            { id: 'SUB-401', name: 'Custom D2C E-Commerce Website (Full-Stack / Shopify)', priceINR: 22000, billing: 'One-Time' },
-            { id: 'SUB-402', name: 'Interactive 3D Corporate Website + Visual CMS', priceINR: 18000, billing: 'One-Time' }
+            { id: 'SUB-202', name: 'Zepto & Swiggy Instamart Complete Onboarding', priceINR: 14000, billing: 'One-Time' }
           ]
         }
       ],
@@ -1208,69 +1155,44 @@
       ],
       portfolio: [
         {
-          id: 'PF-1',
-          index: '(01)',
-          title: 'Catalog Restructuring & Organic Impression Scale (2.8L → 20.2L+)',
-          client: 'Consumer Electronics & Grooming Portfolio',
-          category: 'E-Commerce Growth',
-          metric: '20.2 Lakh+ Organic Impressions',
+          id: 'PF-1', index: '(01)', title: 'Catalog Restructuring & Organic Impression Scale (2.8L → 20.2L+)',
+          client: 'Consumer Electronics & Grooming Portfolio', category: 'E-Commerce Growth', metric: '20.2 Lakh+ Organic Impressions',
           beforeImg: 'https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=800&q=80',
           afterImg: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80',
           videoUrl: '',
           summary: 'Complete listing SEO restructuring, high-contrast 3D infographic cards, and conversion optimization.',
-          challenge: 'Low organic visibility and stagnant impressions due to unindexed backend keywords and generic product imagery.',
-          solution: 'Executed a full A10/Flipkart search algorithm audit, redesigned hero callout visuals, and deployed A+ comparison modules.',
-          liveUrl: ''
-        },
-        {
-          id: 'PF-2',
-          index: '(02)',
-          title: 'GaN Chargers & MagSafe Powerbanks — Visual & Listing Audit',
-          client: 'D2C Tech Accessories Brand',
-          category: '3D Visuals & Marketplace',
-          metric: '+185% Listing CTR Boost',
-          beforeImg: 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=800&q=80',
-          afterImg: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&w=900&q=80',
-          videoUrl: '',
-          summary: 'Premium dark-mode technical infographics and feature callout system for flagship mobile accessories.',
-          challenge: 'Complex technical specs (GaN wattage, MagSafe alignment) were not clear to mobile shoppers at first glance.',
-          solution: 'Created interactive-style 3D exploded views and clean metallic-accent comparison charts.',
+          challenge: 'Low organic visibility and stagnant impressions due to unindexed backend keywords.',
+          solution: 'Executed a full search algorithm audit, redesigned hero callout visuals, and deployed A+ comparison modules.',
           liveUrl: ''
         }
       ],
       team: [
-        { id: 'TM-1', name: 'Jenish Kamli', role: 'Founder & E-Commerce Growth Consultant', type: 'Partner', photo: '', shape: 'circle', bio: 'Specializing in organic marketplace growth, D2C strategy, and global brand scaling.' },
-        { id: 'TM-2', name: 'Aarav Mehta', role: 'Head of Quick-Commerce & Dark Stores', type: 'Partner', photo: '', shape: 'circle', bio: 'Blinkit, Zepto & Instamart onboarding and city-wise SKU velocity.' },
-        { id: 'TM-3', name: 'Riya Sharma', role: 'Senior UI/UX & 3D Packaging Lead', type: 'Staff', photo: '', shape: 'circle', bio: 'Luxury packaging die-lines, CGI renders & A+ brand storefronts.' },
-        { id: 'TM-4', name: 'Karan Verma', role: 'Full-Stack Web & Liquid-Glass Engineer', type: 'Staff', photo: '', shape: 'circle', bio: 'High-speed web apps, Shopify Plus & custom cloud portals.' }
+        { id: 'TM-1', name: 'Jenish Kamli', role: 'Founder & E-Commerce Growth Consultant', type: 'Partner', photo: '', shape: 'circle', bio: 'Specializing in organic marketplace growth, D2C strategy, and global brand scaling.' }
       ],
       reviews: [
-        { id: 'REV-1', stars: 5, name: 'Nitin Dhiman', brand: 'Hombria / NextPage IT', text: 'Their structured marketplace scaling strategy, catalog overhaul, and live project tracker gave us complete clarity and rapid growth!', approved: true },
-        { id: 'REV-2', stars: 5, name: 'Pranay P.', brand: 'D2C Electronics Brand', text: 'Exceptional listing audit and visual redesign concepts for our GaN chargers and MagSafe lineup. Truly operator-level depth.', approved: true }
+        { id: 'REV-1', stars: 5, name: 'Nitin Dhiman', brand: 'Hombria / NextPage IT', text: 'Their structured marketplace scaling strategy, catalog overhaul, and live project tracker gave us complete clarity!', approved: true }
       ],
       customPages: [
         {
-          id: 'PG-1',
-          slug: 'insights',
-          navLabel: 'Insights',
-          badge: 'Growth Playbook',
+          id: 'PG-1', slug: 'insights', navLabel: 'Insights', badge: 'Growth Playbook',
           title: 'How D2C Brands Scale Organically on Amazon & Quick-Commerce in 2026',
           subtitle: 'By Jenish Kamli • 4 Min Read',
           mediaUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80',
-          content: 'Organic marketplace growth is built on three pillars: search-intent keyword architecture, high-contrast hero imagery that wins the click, and A+ comparison modules that lock in the conversion.\n\nUse our interactive Quotation Builder or 10-Second Brand Scanner on the home page to get a custom roadmap for your brand.'
+          content: 'Organic marketplace growth is built on three pillars: search-intent keyword architecture, high-contrast hero imagery, and A+ comparison modules.'
         }
       ],
+      customMediaBlocks: [],
       leads: [],
       inquiries: [],
       analytics: { totalViews: 128, quoteClicks: 34, scannerRuns: 19 }
     };
 
-    /* ================= DATABASE SYNC ENGINE ================= */
+    /* ================= DATABASE ENGINE (FIXED: NO AUTO-RESET CLASH) ================= */
     function getDB() {
       const cached = localStorage.getItem(LOCAL_CACHE_KEY);
       if (!cached) {
         localStorage.setItem(LOCAL_CACHE_KEY, JSON.stringify(defaultMasterDB));
-        return defaultMasterDB;
+        return JSON.parse(JSON.stringify(defaultMasterDB));
       }
       try {
         const parsed = JSON.parse(cached);
@@ -1289,7 +1211,7 @@
           policies: { ...defaultMasterDB.policies, ...(parsed.policies || {}) }
         };
       } catch (e) {
-        return defaultMasterDB;
+        return JSON.parse(JSON.stringify(defaultMasterDB));
       }
     }
 
@@ -1303,7 +1225,10 @@
             const nextRaw = JSON.stringify(cloudData);
             if (currentRaw !== nextRaw) {
               localStorage.setItem(LOCAL_CACHE_KEY, nextRaw);
-              renderAll();
+              /* FIXED: Only re-render if user is NOT actively typing in an input or form */
+              if (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+                renderAll();
+              }
             }
           } else {
             await pushCloudDB(getDB());
@@ -1323,7 +1248,7 @@
       } catch (e) {}
     }
 
-    /* ================= SPATIAL UI SOUND SYNTHESIZER ================= */
+    /* ================= SPATIAL UI SOUND ================= */
     function playUISound(freq = 520, duration = 0.045) {
       if (!uiSoundEnabled) return;
       try {
@@ -1353,7 +1278,7 @@
       playUISound(440, 0.07);
     }
 
-    /* ================= WORLD CLOCKS ENGINE ================= */
+    /* ================= WORLD CLOCKS ================= */
     function updateWorldClocks() {
       const fmt = (tz) => new Intl.DateTimeFormat('en-US', { timeZone: tz, hour: '2-digit', minute: '2-digit', hour12: true }).format(new Date());
       const indEl = document.getElementById('clk-ind');
@@ -1364,7 +1289,7 @@
       document.getElementById('clk-us').innerText = fmt('America/New_York');
     }
 
-    /* ================= SPA NAVIGATION & HASH ROUTING (WITH CUSTOM PAGES) ================= */
+    /* ================= SPA NAVIGATION & WORDPRESS UNIVERSAL BLOCK RENDERER ================= */
     const corePages = ['home', 'services', 'quotation', 'portfolio', 'tracker', 'about', 'reviews', 'contact', 'policies'];
 
     function navigate(pageId, skipHashUpdate = false) {
@@ -1420,7 +1345,7 @@
       if (cp.mediaUrl) {
         mediaBox.classList.remove('hidden');
         if (cp.mediaUrl.startsWith('data:video') || cp.mediaUrl.endsWith('.mp4') || cp.mediaUrl.endsWith('.webm')) {
-          mediaBox.innerHTML = `<video src="${cp.mediaUrl}" controls autoplay muted loop class="w-full max-h-[460px] object-cover"></video>`;
+          mediaBox.innerHTML = `<video src="${cp.mediaUrl}" controls autoplay loop muted playsinline class="w-full max-h-[460px] object-cover"></video>`;
         } else {
           mediaBox.innerHTML = `<img src="${cp.mediaUrl}" class="w-full max-h-[460px] object-cover" />`;
         }
@@ -1428,13 +1353,33 @@
         mediaBox.classList.add('hidden');
         mediaBox.innerHTML = '';
       }
+      renderUniversalWordPressBlocks('custom:' + cp.slug, document.getElementById('cpage-extra-blocks'));
     }
 
     function toggleHamburgerDrawer() {
       document.getElementById('hamburger-drawer').classList.toggle('hidden');
     }
 
-    /* ================= MULTI-CURRENCY & 3-MODE PRICING ================= */
+    /* Render WordPress-style Custom Media Blocks on any page */
+    function renderUniversalWordPressBlocks(pageKey, containerEl) {
+      if (!containerEl) return;
+      containerEl.innerHTML = '';
+      const db = getDB();
+      const blocks = (db.customMediaBlocks || []).filter(b => (b.page || 'home') === pageKey);
+      blocks.forEach(blk => {
+        const wrap = document.createElement('div');
+        wrap.className = 'charcoal-card rounded-3xl p-6 space-y-3 overflow-hidden my-6';
+        const isVid = blk.mediaUrl && (blk.mediaUrl.startsWith('data:video') || /\.(mp4|webm|ogg)(\?.*)?$/i.test(blk.mediaUrl));
+        wrap.innerHTML = `
+          ${blk.title ? `<div class="flex items-center justify-between"><span class="text-xs font-extrabold uppercase accent-text">${blk.badge || 'Featured Block'}</span><h3 class="text-xl font-bold text-white">${blk.title}</h3></div>` : ''}
+          ${blk.mediaUrl ? `<div class="rounded-2xl overflow-hidden bg-black/60 border border-white/10">${isVid ? `<video src="${blk.mediaUrl}" controls ${blk.autoplay !== false ? 'autoplay muted loop playsinline' : ''} class="w-full max-h-[480px] object-cover"></video>` : `<img src="${blk.mediaUrl}" class="w-full max-h-[480px] object-cover" />`}</div>` : ''}
+          ${blk.content ? `<p class="text-xs sm:text-sm text-zinc-300 leading-relaxed whitespace-pre-line">${blk.content}</p>` : ''}
+        `;
+        containerEl.appendChild(wrap);
+      });
+    }
+
+    /* ================= MULTI-CURRENCY & PRICING ================= */
     function setCurrency(curr) {
       activeCurrency = curr;
       localStorage.setItem(CURRENCY_STORAGE_KEY, curr);
@@ -1459,7 +1404,7 @@
       return '₹' + num.toLocaleString('en-IN');
     }
 
-    /* ================= 3D CARD TILT & 4-MODE HERO STAGE + MOVER ================= */
+    /* ================= 3D TILT & HERO STAGE MOVER ================= */
     function tilt3DCard(e, el) {
       const rect = el.getBoundingClientRect();
       const x = e.clientX - rect.left;
@@ -1555,7 +1500,7 @@
       }
     }
 
-    /* ================= VIRAL SUITE: 10s BRAND SCANNER, ROI & 3D BOX ================= */
+    /* ================= VIRAL TOOLS & SCANNER ================= */
     async function runBrandScanner() {
       const brandName = document.getElementById('scan-brand-inp').value.trim();
       const cat = document.getElementById('scan-cat-inp').value;
@@ -1571,7 +1516,7 @@
         const estLoss = Math.floor(3.2 + Math.random() * 5.5).toFixed(1);
         document.getElementById('scan-res-brand').innerText = `${brandName} (${cat})`;
         document.getElementById('scan-res-score').innerText = `${score}/100`;
-        document.getElementById('scan-res-leak').innerText = `Diagnostic Alert: ${brandName} is currently missing ~₹${estLoss}L/month in organic marketplace impressions & Quick-Commerce dark-store velocity. We recommend immediate A+ visual restructuring & multi-channel onboarding.`;
+        document.getElementById('scan-res-leak').innerText = `Diagnostic Alert: ${brandName} is missing ~₹${estLoss}L/month in marketplace impressions & Quick-Commerce dark-store velocity.`;
         document.getElementById('scan-result-card').classList.remove('hidden');
 
         const db = getDB();
@@ -1596,7 +1541,7 @@
     function shareBrandScoreOnWhatsApp() {
       const brand = document.getElementById('scan-res-brand').innerText;
       const score = document.getElementById('scan-res-score').innerText;
-      const text = encodeURIComponent(`🔥 Just scanned *${brand}* on ${getDB().brand.name}'s AI Brand Readiness Scanner!\nScore: *${score}*\nCheck yours at: ${window.location.href}`);
+      const text = encodeURIComponent(`🔥 Just scanned *${brand}* on ${getDB().brand.name}'s AI Brand Readiness Scanner!\nScore: *${score}*`);
       window.open(`https://wa.me/?text=${text}`, '_blank');
     }
 
@@ -1614,7 +1559,7 @@
       playUISound(580, 0.04);
     }
 
-    /* ================= JARVIS VOICE NAVIGATION + TALKING AI ================= */
+    /* ================= JARVIS VOICE & TALKING AI ================= */
     function speakAI(message) {
       if (!('speechSynthesis' in window)) return;
       window.speechSynthesis.cancel();
@@ -1626,10 +1571,7 @@
 
     function toggleJarvisVoice() {
       const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (!SR) {
-        alert('Voice commands require Chrome, Edge, or Safari.');
-        return;
-      }
+      if (!SR) { alert('Voice recognition not supported in this browser.'); return; }
       const recognition = new SR();
       recognition.lang = 'en-US';
       const btn = document.getElementById('jarvis-mic-btn');
@@ -1640,44 +1582,20 @@
       recognition.onresult = (event) => {
         btn.classList.remove('animate-pulse', 'bg-emerald-500', 'text-zinc-950');
         const cmd = event.results[0][0].transcript.toLowerCase();
-        if (cmd.includes('service') || cmd.includes('package')) {
-          speakAI('Opening interactive services catalog.');
-          navigate('services');
-        } else if (cmd.includes('quote') || cmd.includes('price') || cmd.includes('cart')) {
-          speakAI('Opening instant quotation builder.');
-          navigate('quotation');
-        } else if (cmd.includes('work') || cmd.includes('portfolio') || cmd.includes('reel')) {
-          speakAI('Showing selected works and case studies.');
-          navigate('portfolio');
-        } else if (cmd.includes('track') || cmd.includes('client') || cmd.includes('portal')) {
-          speakAI('Opening VIP client project tracker.');
-          navigate('tracker');
-        } else if (cmd.includes('about') || cmd.includes('team') || cmd.includes('founder')) {
-          speakAI('Opening agency story and leadership desk.');
-          navigate('about');
-        } else if (cmd.includes('dollar') || cmd.includes('usd')) {
-          setCurrency('USD');
-          speakAI('Switched currency to US Dollars.');
-        } else if (cmd.includes('dirham') || cmd.includes('aed') || cmd.includes('dubai')) {
-          setCurrency('AED');
-          speakAI('Switched currency to UAE Dirhams.');
-        } else if (cmd.includes('rupee') || cmd.includes('inr') || cmd.includes('india')) {
-          setCurrency('INR');
-          speakAI('Switched currency to Indian Rupees.');
-        } else if (cmd.includes('contact') || cmd.includes('call') || cmd.includes('studio')) {
-          speakAI('Opening global studio contact desk.');
-          navigate('contact');
-        } else {
-          speakAI('Navigating to requested view.');
-          navigate('services');
-        }
+        if (cmd.includes('service') || cmd.includes('package')) { speakAI('Opening services catalog.'); navigate('services'); }
+        else if (cmd.includes('quote') || cmd.includes('price')) { speakAI('Opening quotation builder.'); navigate('quotation'); }
+        else if (cmd.includes('work') || cmd.includes('portfolio')) { speakAI('Opening selected works.'); navigate('portfolio'); }
+        else if (cmd.includes('track') || cmd.includes('client')) { speakAI('Opening client portal.'); navigate('tracker'); }
+        else if (cmd.includes('about') || cmd.includes('team')) { speakAI('Opening about page.'); navigate('about'); }
+        else if (cmd.includes('dollar') || cmd.includes('usd')) { setCurrency('USD'); speakAI('Switched to US Dollars.'); }
+        else if (cmd.includes('dirham') || cmd.includes('aed')) { setCurrency('AED'); speakAI('Switched to UAE Dirhams.'); }
+        else if (cmd.includes('rupee') || cmd.includes('inr')) { setCurrency('INR'); speakAI('Switched to Indian Rupees.'); }
+        else { speakAI('Navigating.'); navigate('services'); }
       };
-      recognition.onerror = () => {
-        btn.classList.remove('animate-pulse', 'bg-emerald-500', 'text-zinc-950');
-      };
+      recognition.onerror = () => { btn.classList.remove('animate-pulse', 'bg-emerald-500', 'text-zinc-950'); };
     }
 
-    /* ================= 30s WALKIE-TALKIE VOICE NOTE RECORDER ================= */
+    /* ================= 30s WALKIE-TALKIE VOICE RECORDER ================= */
     async function toggleVoiceRecord() {
       const btn = document.getElementById('rec-btn');
       const status = document.getElementById('rec-status');
@@ -1706,19 +1624,15 @@
           btn.innerText = '⏹️ Stop Recording';
           status.innerText = '🔴 Recording (Max 30s)...';
           status.classList.remove('hidden');
-          setTimeout(() => {
-            if (mediaRecorder && mediaRecorder.state === 'recording') toggleVoiceRecord();
-          }, 30000);
-        } catch (err) {
-          alert('Microphone permission is required to record a voice note.');
-        }
+          setTimeout(() => { if (mediaRecorder && mediaRecorder.state === 'recording') toggleVoiceRecord(); }, 30000);
+        } catch (err) { alert('Microphone permission required.'); }
       } else {
         mediaRecorder.stop();
         btn.innerText = '🔴 Re-Record Voice Note';
       }
     }
 
-    /* ================= VIP CLIENT LOGIN + MULTI-STYLE PROGRESS VISUALIZER ================= */
+    /* ================= VIP CLIENT LOGIN & PROGRESS GAUGE ================= */
     function fillDemoClientLogin() {
       const db = getDB();
       const first = (db.projects || [])[0];
@@ -1734,16 +1648,12 @@
       const email = document.getElementById('cli-login-email').value.trim().toLowerCase();
       const pid = document.getElementById('cli-login-pid').value.trim().toUpperCase();
       const db = getDB();
-      const project = (db.projects || []).find(p =>
-        (p.clientEmail || '').toLowerCase() === email && (p.code || '').toUpperCase() === pid
-      );
+      const project = (db.projects || []).find(p => (p.clientEmail || '').toLowerCase() === email && (p.code || '').toUpperCase() === pid);
 
       if (project) {
         localStorage.setItem(CLIENT_SESSION_KEY, JSON.stringify({ email, pid }));
         renderClientDashboard(project);
-        if (Number(project.progress) >= 100 && typeof confetti === 'function') {
-          confetti({ particleCount: 90, spread: 70, origin: { y: 0.6 } });
-        }
+        if (Number(project.progress) >= 100 && typeof confetti === 'function') confetti({ particleCount: 90, spread: 70 });
       } else {
         alert('Invalid Client Email or Project ID. Click "✨ 1-Click Public Demo Login" to preview!');
       }
@@ -1761,9 +1671,7 @@
       try {
         const { email, pid } = JSON.parse(raw);
         const db = getDB();
-        const project = (db.projects || []).find(p =>
-          (p.clientEmail || '').toLowerCase() === email && (p.code || '').toUpperCase() === pid
-        );
+        const project = (db.projects || []).find(p => (p.clientEmail || '').toLowerCase() === email && (p.code || '').toUpperCase() === pid);
         if (project) renderClientDashboard(project);
       } catch (e) {}
     }
@@ -1776,87 +1684,32 @@
       const remPct = Math.max(0, 100 - pct);
 
       if (style === 'split_bar') {
-        return `
-          <div class="space-y-2 w-full">
-            <div class="flex justify-between text-xs font-extrabold">
-              <span style="color:${doneCol}">✓ Completed: ${pct}%</span>
-              <span class="text-zinc-400">Remaining: ${remPct}%</span>
-            </div>
-            <div class="w-full h-5 rounded-full overflow-hidden flex border border-white/15" style="background:${remCol}">
-              <div style="width:${pct}%; background:${doneCol}" class="h-full transition-all duration-700"></div>
-            </div>
-          </div>
-        `;
+        return `<div class="space-y-2 w-full"><div class="flex justify-between text-xs font-extrabold"><span style="color:${doneCol}">✓ Completed: ${pct}%</span><span class="text-zinc-400">Remaining: ${remPct}%</span></div><div class="w-full h-5 rounded-full overflow-hidden flex border border-white/15" style="background:${remCol}"><div style="width:${pct}%; background:${doneCol}" class="h-full transition-all duration-700"></div></div></div>`;
       }
-
       if (style === 'segmented_blocks') {
         const activeBlocks = Math.round(pct / 10);
         let blocks = '';
-        for (let i = 1; i <= 10; i++) {
-          blocks += `<div class="h-4 flex-1 rounded-md transition-all" style="background:${i <= activeBlocks ? doneCol : remCol}"></div>`;
-        }
-        return `
-          <div class="space-y-2 w-full">
-            <div class="flex justify-between text-xs font-extrabold">
-              <span style="color:${doneCol}">${pct}% Milestone Complete</span>
-              <span class="text-zinc-400">${remPct}% Pending</span>
-            </div>
-            <div class="flex gap-1.5">${blocks}</div>
-          </div>
-        `;
+        for (let i = 1; i <= 10; i++) { blocks += `<div class="h-4 flex-1 rounded-md transition-all" style="background:${i <= activeBlocks ? doneCol : remCol}"></div>`; }
+        return `<div class="space-y-2 w-full"><div class="flex justify-between text-xs font-extrabold"><span style="color:${doneCol}">${pct}% Milestone Complete</span><span class="text-zinc-400">${remPct}% Pending</span></div><div class="flex gap-1.5">${blocks}</div></div>`;
       }
-
       const stroke = 10;
       const radius = (size - stroke) / 2;
       const circ = 2 * Math.PI * radius;
       const offset = circ - (pct / 100) * circ;
-      return `
-        <div class="flex items-center gap-6">
-          <div class="relative flex items-center justify-center shrink-0" style="width:${size}px; height:${size}px;">
-            <svg width="${size}" height="${size}" class="-rotate-90">
-              <circle cx="${size/2}" cy="${size/2}" r="${radius}" stroke="${remCol}" stroke-width="${stroke}" fill="transparent" />
-              <circle cx="${size/2}" cy="${size/2}" r="${radius}" stroke="${doneCol}" stroke-width="${stroke}" stroke-dasharray="${circ}" stroke-dashoffset="${offset}" stroke-linecap="round" fill="transparent" />
-            </svg>
-            <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
-              <span class="text-xl font-black text-white">${pct}%</span>
-              <span class="text-[9px] uppercase text-zinc-400 font-bold">Done</span>
-            </div>
-          </div>
-          <div class="space-y-1 text-xs">
-            <div class="font-extrabold text-white">Live Execution Gauge</div>
-            <div style="color:${doneCol}" class="font-bold">● Completed: ${pct}%</div>
-            <div class="text-zinc-400">● Remaining: ${remPct}%</div>
-          </div>
-        </div>
-      `;
+      return `<div class="flex items-center gap-6"><div class="relative flex items-center justify-center shrink-0" style="width:${size}px; height:${size}px;"><svg width="${size}" height="${size}" class="-rotate-90"><circle cx="${size/2}" cy="${size/2}" r="${radius}" stroke="${remCol}" stroke-width="${stroke}" fill="transparent" /><circle cx="${size/2}" cy="${size/2}" r="${radius}" stroke="${doneCol}" stroke-width="${stroke}" stroke-dasharray="${circ}" stroke-dashoffset="${offset}" stroke-linecap="round" fill="transparent" /></svg><div class="absolute inset-0 flex flex-col items-center justify-center text-center"><span class="text-xl font-black text-white">${pct}%</span><span class="text-[9px] uppercase text-zinc-400 font-bold">Done</span></div></div><div class="space-y-1 text-xs"><div class="font-extrabold text-white">Live Execution Gauge</div><div style="color:${doneCol}" class="font-bold">● Completed: ${pct}%</div><div class="text-zinc-400">● Remaining: ${remPct}%</div></div></div>`;
     }
 
     function renderClientDashboard(p) {
       const db = getDB();
       document.getElementById('client-login-gate').classList.add('hidden');
       document.getElementById('client-dashboard-box').classList.remove('hidden');
-      document.getElementById('cli-dash-code').innerText = `${p.code} • ${p.clientEmail || ''}`;
+      document.getElementById('cli-dash-code').innerText = p.code;
       document.getElementById('cli-dash-title').innerText = `${p.clientName} — ${p.projectName}`;
 
       const stepsHTML = (p.steps || []).map((st, idx) => {
         const isDone = st.status === 'completed';
         const isCurr = st.status === 'in_progress';
-        return `
-          <div class="p-3.5 rounded-2xl bg-[#09090b] border ${isCurr ? 'border-amber-400/50' : 'border-[#242429]'} flex items-center justify-between gap-3">
-            <div class="flex items-center gap-3">
-              <span class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-black ${isDone ? 'bg-emerald-500 text-zinc-950' : isCurr ? 'bg-amber-400 text-zinc-950 animate-pulse' : 'bg-zinc-800 text-zinc-400'}">
-                ${isDone ? '✓' : idx + 1}
-              </span>
-              <div>
-                <div class="text-xs sm:text-sm font-bold text-white">${st.title}</div>
-                <div class="text-[10px] text-zinc-400">${st.date || ''}</div>
-              </div>
-            </div>
-            <span class="px-2.5 py-1 rounded-full text-[10px] font-extrabold uppercase ${isDone ? 'bg-emerald-500/20 text-emerald-300' : isCurr ? 'bg-amber-400/20 text-amber-300' : 'bg-zinc-800 text-zinc-400'}">
-              ${isDone ? 'Completed' : isCurr ? 'In Progress' : 'Pending'}
-            </span>
-          </div>
-        `;
+        return `<div class="p-3.5 rounded-2xl bg-[#09090b] border ${isCurr ? 'border-amber-400/50' : 'border-[#242429]'} flex items-center justify-between gap-3"><div class="flex items-center gap-3"><span class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-black ${isDone ? 'bg-emerald-500 text-zinc-950' : isCurr ? 'bg-amber-400 text-zinc-950 animate-pulse' : 'bg-zinc-800 text-zinc-400'}">${isDone ? '✓' : idx + 1}</span><div><div class="text-xs sm:text-sm font-bold text-white">${st.title}</div><div class="text-[10px] text-zinc-400">${st.date || ''}</div></div></div><span class="px-2.5 py-1 rounded-full text-[10px] font-extrabold uppercase ${isDone ? 'bg-emerald-500/20 text-emerald-300' : isCurr ? 'bg-amber-400/20 text-amber-300' : 'bg-zinc-800 text-zinc-400'}">${isDone ? 'Completed' : isCurr ? 'In Progress' : 'Pending'}</span></div>`;
       }).join('');
 
       document.getElementById('tracker-cards-grid').innerHTML = `
@@ -1867,26 +1720,17 @@
               <h4 class="text-2xl font-bold text-white">${p.projectName}</h4>
               <p class="text-xs sm:text-sm text-zinc-300 leading-relaxed">${p.note || ''}</p>
             </div>
-            <div class="shrink-0">
-              ${buildProgressVisualizerHTML(Number(p.progress || 0), db.trackerConfig)}
-            </div>
+            <div class="shrink-0">${buildProgressVisualizerHTML(Number(p.progress || 0), db.trackerConfig)}</div>
           </div>
-
-          <div class="space-y-3">
-            <h5 class="text-xs font-extrabold uppercase tracking-wider text-zinc-400">Step-by-Step Live Execution Pipeline</h5>
-            <div class="grid grid-cols-1 gap-2.5">${stepsHTML}</div>
-          </div>
-
+          <div class="space-y-3"><h5 class="text-xs font-extrabold uppercase tracking-wider text-zinc-400">Step-by-Step Live Execution Pipeline</h5><div class="grid grid-cols-1 gap-2.5">${stepsHTML}</div></div>
           <div class="pt-4 border-t border-white/10 grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
             <div class="flex gap-2">
-              <input type="url" id="cli-doc-inp" value="${p.clientDocUrl || ''}" placeholder="Paste Google Drive / Brand Assets Link..." class="flex-1 px-3.5 py-2.5 rounded-xl matte-input text-xs" />
+              <input type="url" id="cli-doc-inp" value="${p.clientDocUrl || ''}" placeholder="Paste Google Drive / Asset Link..." class="flex-1 px-3.5 py-2.5 rounded-xl matte-input text-xs" />
               <button onclick="submitClientAssetLink('${p.id}')" class="px-4 py-2.5 rounded-xl accent-bg text-white font-extrabold text-xs">Send Link</button>
             </div>
             <div class="flex flex-wrap items-center justify-end gap-3">
-              ${p.liveLink ? `<a href="${p.liveLink}" target="_blank" class="px-4 py-2.5 rounded-xl charcoal-card text-xs font-extrabold text-white">📂 View Shared Deliverables ↗</a>` : ''}
-              <button onclick="approveCurrentStage('${p.id}')" class="px-5 py-2.5 rounded-xl secondary-bg text-zinc-950 font-extrabold text-xs">
-                ${p.clientApproved ? '✓ Stage Approved by You' : '✅ Approve Current Stage'}
-              </button>
+              ${p.liveLink ? `<a href="${p.liveLink}" target="_blank" class="px-4 py-2.5 rounded-xl charcoal-card text-xs font-extrabold text-white">📂 View Deliverables ↗</a>` : ''}
+              <button onclick="approveCurrentStage('${p.id}')" class="px-5 py-2.5 rounded-xl secondary-bg text-zinc-950 font-extrabold text-xs">${p.clientApproved ? '✓ Stage Approved' : '✅ Approve Current Stage'}</button>
             </div>
           </div>
         </div>
@@ -1898,25 +1742,16 @@
       if (!link) return;
       const db = getDB();
       const p = (db.projects || []).find(x => x.id === projId);
-      if (p) {
-        p.clientDocUrl = link;
-        await pushCloudDB(db);
-        alert('✅ Your asset/document link has been synced directly with the agency desk!');
-      }
+      if (p) { p.clientDocUrl = link; await pushCloudDB(db); alert('✅ Asset link synced with agency desk!'); }
     }
 
     async function approveCurrentStage(projId) {
       const db = getDB();
       const p = (db.projects || []).find(x => x.id === projId);
-      if (p) {
-        p.clientApproved = true;
-        await pushCloudDB(db);
-        renderClientDashboard(p);
-        if (typeof confetti === 'function') confetti({ particleCount: 70, spread: 60 });
-      }
+      if (p) { p.clientApproved = true; await pushCloudDB(db); renderClientDashboard(p); if (typeof confetti === 'function') confetti({ particleCount: 70, spread: 60 }); }
     }
 
-    /* ================= SCRATCH CARD & DIGITAL SIGNATURE PAD ================= */
+    /* ================= SCRATCH CARD & SIGNATURE PAD ================= */
     function scratchCardTrigger() {
       if (scratchUnlocked) return;
       scratchUnlocked = true;
@@ -1943,21 +1778,11 @@
         const r = canvas.getBoundingClientRect();
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
         const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-        return {
-          x: (clientX - r.left) * (canvas.width / r.width),
-          y: (clientY - r.top) * (canvas.height / r.height)
-        };
+        return { x: (clientX - r.left) * (canvas.width / r.width), y: (clientY - r.top) * (canvas.height / r.height) };
       };
 
       const start = (e) => { drawing = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); };
-      const move = (e) => {
-        if (!drawing) return;
-        if (e.cancelable) e.preventDefault();
-        const p = getPos(e);
-        ctx.lineTo(p.x, p.y);
-        ctx.stroke();
-        document.getElementById('sig-data-input').value = canvas.toDataURL();
-      };
+      const move = (e) => { if (!drawing) return; if (e.cancelable) e.preventDefault(); const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); document.getElementById('sig-data-input').value = canvas.toDataURL(); };
       const end = () => { drawing = false; };
 
       canvas.addEventListener('mousedown', start);
@@ -1975,16 +1800,9 @@
       document.getElementById('sig-data-input').value = '';
     }
 
-    /* ================= 3D VIP PARTNER REFERRAL PASS GENERATOR ================= */
-    function openVIPPassModal() {
-      updateVIPPassCard();
-      document.getElementById('vip-pass-modal').classList.remove('hidden');
-      document.getElementById('vip-pass-modal').classList.add('flex');
-    }
-    function closeVIPPassModal() {
-      document.getElementById('vip-pass-modal').classList.add('hidden');
-      document.getElementById('vip-pass-modal').classList.remove('flex');
-    }
+    /* ================= 3D VIP PARTNER PASS ================= */
+    function openVIPPassModal() { updateVIPPassCard(); document.getElementById('vip-pass-modal').classList.remove('hidden'); document.getElementById('vip-pass-modal').classList.add('flex'); }
+    function closeVIPPassModal() { document.getElementById('vip-pass-modal').classList.add('hidden'); document.getElementById('vip-pass-modal').classList.remove('flex'); }
     function updateVIPPassCard() {
       const db = getDB();
       const name = document.getElementById('vip-inp-name').value.trim() || 'CREATOR / PARTNER';
@@ -1995,9 +1813,8 @@
       document.getElementById('vip-card-link').innerText = `${base}?ref=${code}`;
     }
     function copyVIPReferralLink() {
-      const link = document.getElementById('vip-card-link').innerText;
-      navigator.clipboard.writeText(link);
-      alert('✅ Your VIP Referral Link is copied! Share it on Instagram, YouTube, or WhatsApp.');
+      navigator.clipboard.writeText(document.getElementById('vip-card-link').innerText);
+      alert('✅ VIP Referral Link copied!');
     }
 
     /* ================= COMMAND PALETTE (⌘K) ================= */
@@ -2008,53 +1825,37 @@
       document.getElementById('cmd-search-inp').focus();
       renderCommandResults();
     }
-    function closeCommandPalette() {
-      document.getElementById('cmd-modal').classList.add('hidden');
-      document.getElementById('cmd-modal').classList.remove('flex');
-    }
+    function closeCommandPalette() { document.getElementById('cmd-modal').classList.add('hidden'); document.getElementById('cmd-modal').classList.remove('flex'); }
     window.addEventListener('keydown', (e) => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
-        e.preventDefault();
-        openCommandPalette();
-      } else if (e.key === 'Escape') {
-        closeCommandPalette();
-      }
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); openCommandPalette(); }
+      else if (e.key === 'Escape') { closeCommandPalette(); }
     });
 
     function renderCommandResults() {
       const q = (document.getElementById('cmd-search-inp').value || '').toLowerCase();
       const db = getDB();
       const list = [];
-
       corePages.forEach(p => list.push({ label: `Go to Page: ${p.toUpperCase()}`, action: () => { closeCommandPalette(); navigate(p); } }));
       (db.services || []).forEach(s => list.push({ label: `Service: ${s.title}`, action: () => { closeCommandPalette(); openServiceModal(s.id); } }));
       (db.customPages || []).forEach(cp => list.push({ label: `Article: ${cp.title}`, action: () => { closeCommandPalette(); navigate('custom:' + cp.slug); } }));
 
       const filtered = list.filter(i => i.label.toLowerCase().includes(q)).slice(0, 8);
-      const container = document.getElementById('cmd-results-list');
-      container.innerHTML = filtered.map((item, idx) => `
-        <button onclick="window._cmdActions[${idx}]()" class="w-full text-left px-4 py-2.5 rounded-xl hover:bg-white/10 text-xs font-bold text-zinc-200 flex justify-between">
-          <span>${item.label}</span><span>↵</span>
-        </button>
+      document.getElementById('cmd-results-list').innerHTML = filtered.map((item, idx) => `
+        <button onclick="window._cmdActions[${idx}]()" class="w-full text-left px-4 py-2.5 rounded-xl hover:bg-white/10 text-xs font-bold text-zinc-200 flex justify-between"><span>${item.label}</span><span>↵</span></button>
       `).join('');
       window._cmdActions = filtered.map(i => i.action);
     }
 
-    /* ================= FLOATING PIP VIDEO BUBBLE ================= */
+    /* ================= PIP VIDEO BUBBLE ================= */
     function togglePiPExpand() {
       const bubble = document.getElementById('pip-bubble');
       const vid = document.getElementById('pip-video-el');
       pipExpanded = !pipExpanded;
-      if (pipExpanded) {
-        bubble.className = 'w-64 h-80 rounded-3xl overflow-hidden border-2 border-indigo-500 shadow-2xl cursor-pointer relative bg-black transition-all';
-        vid.muted = false;
-      } else {
-        bubble.className = 'w-20 h-20 rounded-full overflow-hidden border-2 border-indigo-500 shadow-2xl cursor-pointer relative group bg-black transition-all';
-        vid.muted = true;
-      }
+      if (pipExpanded) { bubble.className = 'w-64 h-80 rounded-3xl overflow-hidden border-2 border-indigo-500 shadow-2xl cursor-pointer relative bg-black transition-all'; vid.muted = false; }
+      else { bubble.className = 'w-20 h-20 rounded-full overflow-hidden border-2 border-indigo-500 shadow-2xl cursor-pointer relative group bg-black transition-all'; vid.muted = true; }
     }
 
-    /* ================= MASTER RENDER FUNCTION ================= */
+    /* ================= MASTER RENDER FUNCTION (WITH WORDPRESS BLOCKS) ================= */
     function renderAll() {
       const db = getDB();
       const root = document.documentElement;
@@ -2069,50 +1870,38 @@
 
       document.getElementById('currency-switcher').value = activeCurrency;
 
-      /* Anti-Copy Competitor Stealth Shield */
       if (db.visibility?.stealthAntiCopy) {
         document.oncontextmenu = (e) => e.preventDefault();
-        document.oncopy = (e) => {
-          e.preventDefault();
-          if (e.clipboardData) e.clipboardData.setData('text/plain', `Inspired by ${db.brand.name}? Let's collaborate at ${window.location.href}`);
-        };
+        document.oncopy = (e) => { e.preventDefault(); if (e.clipboardData) e.clipboardData.setData('text/plain', `Inspired by ${db.brand.name}? Let's collaborate at ${window.location.href}`); };
       } else {
         document.oncontextmenu = null;
         document.oncopy = null;
       }
 
-      /* Personalized VIP Proposal Link Banner (?client=Name) */
       const vipBan = document.getElementById('vip-personal-banner');
       if (personalizedClientName) {
         vipBan.classList.remove('hidden');
-        document.getElementById('vip-personal-text').innerText = `Welcome ${personalizedClientName} — Exclusive Growth & Execution Roadmap Prepared For Your Brand`;
+        document.getElementById('vip-personal-text').innerText = `Welcome ${personalizedClientName} — Exclusive Growth Roadmap Prepared For Your Brand`;
       }
 
-      /* SEO & Schema */
       document.getElementById('seo-title').innerText = db.seo?.title || db.brand.name;
       document.getElementById('seo-desc').setAttribute('content', db.seo?.desc || '');
       document.getElementById('seo-keys').setAttribute('content', db.seo?.keywords || '');
       if (db.seo?.ogImage) document.getElementById('seo-og-image').setAttribute('content', db.seo.ogImage);
       if (db.seo?.favicon) document.getElementById('seo-favicon').setAttribute('href', db.seo.favicon);
 
-      /* Top Announcement, World Clocks & Scarcity Slot Counter */
       document.getElementById('top-announcement-bar').classList.toggle('hidden', db.visibility?.showAnnouncement === false);
       document.getElementById('announcement-text').innerText = db.brand.announcement || '';
       document.getElementById('world-clocks-strip').classList.toggle('lg:flex', db.visibility?.showWorldClocks !== false);
       document.getElementById('scarcity-slot-badge').classList.toggle('hidden', db.visibility?.showScarcityBadge === false);
       document.getElementById('scarcity-slots-num').innerText = db.visibility?.scarcitySlots ?? 2;
 
-      /* Brand & Logo */
       document.getElementById('nav-brand-name').innerText = db.brand.name;
       document.getElementById('nav-brand-tagline').innerText = db.brand.tagline;
       const logoBox = document.getElementById('nav-logo-box');
-      if (db.brand.logo) {
-        logoBox.innerHTML = `<img src="${db.brand.logo}" class="w-full h-full object-cover" />`;
-      } else {
-        logoBox.innerText = (db.brand.name || 'OG').substring(0, 2).toUpperCase();
-      }
+      if (db.brand.logo) { logoBox.innerHTML = `<img src="${db.brand.logo}" class="w-full h-full object-cover" />`; }
+      else { logoBox.innerText = (db.brand.name || 'BP').substring(0, 2).toUpperCase(); }
 
-      /* Dynamic Navigation Menu (Core + Unlimited Custom Pages) */
       const navItems = [
         { id: 'home', label: 'Home', num: '(01)' },
         { id: 'services', label: 'Services', num: '(02)' },
@@ -2122,11 +1911,7 @@
         { id: 'about', label: 'About', num: '(06)' },
         { id: 'reviews', label: 'Reviews', num: '(07)' },
         { id: 'contact', label: 'Contact', num: '(08)' },
-        ...(db.customPages || []).map((cp, idx) => ({
-          id: 'custom:' + cp.slug,
-          label: cp.navLabel || cp.title,
-          num: `(0${9 + idx})`
-        }))
+        ...(db.customPages || []).map((cp, idx) => ({ id: 'custom:' + cp.slug, label: cp.navLabel || cp.title, num: `(0${9 + idx})` }))
       ];
 
       document.getElementById('desktop-nav-links').innerHTML = navItems.map(item => `
@@ -2134,13 +1919,10 @@
       `).join('');
 
       document.getElementById('hamburger-links-grid').innerHTML = navItems.map(item => `
-        <button onclick="navigate('${item.id}'); toggleHamburgerDrawer();" class="p-4 rounded-2xl charcoal-card text-left flex items-center justify-between group">
-          <div><span class="text-[10px] text-zinc-500 font-bold">${item.num}</span><div class="text-sm font-bold text-white group-hover:text-indigo-400">${item.label}</div></div>
-          <span>→</span>
-        </button>
+        <button onclick="navigate('${item.id}'); toggleHamburgerDrawer();" class="p-4 rounded-2xl charcoal-card text-left flex items-center justify-between group"><div><span class="text-[10px] text-zinc-500 font-bold">${item.num}</span><div class="text-sm font-bold text-white group-hover:text-indigo-400">${item.label}</div></div><span>→</span></button>
       `).join('');
 
-      /* Home Section Order & Show/Hide Toggles */
+      /* Home Section Ordering & WordPress Blocks Injection */
       const blockMap = {
         hero: document.getElementById('home-block-hero'),
         marquee: document.getElementById('home-block-marquee'),
@@ -2163,34 +1945,36 @@
       document.getElementById('faq-section-wrapper').classList.toggle('hidden', db.visibility?.showFAQ === false);
       document.getElementById('scratch-card-wrapper').classList.toggle('hidden', db.visibility?.enableScratchCard === false);
 
-      /* Floating PiP Video Bubble */
+      /* Render WordPress Universal Blocks on Every Main Page */
+      renderUniversalWordPressBlocks('home_top', document.getElementById('wp-blocks-top-home'));
+      renderUniversalWordPressBlocks('home_bottom', document.getElementById('wp-blocks-bottom-home'));
+      renderUniversalWordPressBlocks('services', document.getElementById('wp-blocks-top-services'));
+      renderUniversalWordPressBlocks('quotation', document.getElementById('wp-blocks-top-quotation'));
+      renderUniversalWordPressBlocks('portfolio', document.getElementById('wp-blocks-top-portfolio'));
+      renderUniversalWordPressBlocks('tracker', document.getElementById('wp-blocks-top-tracker'));
+      renderUniversalWordPressBlocks('about', document.getElementById('wp-blocks-top-about'));
+      renderUniversalWordPressBlocks('reviews', document.getElementById('wp-blocks-top-reviews'));
+      renderUniversalWordPressBlocks('contact', document.getElementById('wp-blocks-top-contact'));
+
       const pipWidget = document.getElementById('pip-video-widget');
       if (db.visibility?.pipVideoUrl) {
         pipWidget.classList.remove('hidden');
         const vidEl = document.getElementById('pip-video-el');
         if (vidEl.getAttribute('src') !== db.visibility.pipVideoUrl) vidEl.src = db.visibility.pipVideoUrl;
-      } else {
-        pipWidget.classList.add('hidden');
-      }
+      } else { pipWidget.classList.add('hidden'); }
 
-      /* Hero Copy & 3D Stage */
       document.getElementById('hero-badge-text').innerText = db.brand.heroBadge || '';
       document.getElementById('hero-main-heading').innerText = db.brand.heroTitle || '';
       document.getElementById('hero-sub-text').innerText = db.brand.heroSub || '';
       document.getElementById('hero-btn-primary').innerText = db.brand.heroBtn1 || '';
       document.getElementById('hero-btn-secondary').innerText = db.brand.heroBtn2 || '';
-      document.getElementById('hero-pills-container').innerHTML = (db.brand.pills || []).map(p => `
-        <span class="px-3.5 py-1.5 rounded-full charcoal-card text-xs font-semibold text-zinc-300">${p}</span>
-      `).join('');
+      document.getElementById('hero-pills-container').innerHTML = (db.brand.pills || []).map(p => `<span class="px-3.5 py-1.5 rounded-full charcoal-card text-xs font-semibold text-zinc-300">${p}</span>`).join('');
 
       render3DStageAndLayout(db);
       calculateROI();
 
-      /* Marquee & Stats */
       const mItems = db.brand.marqueeItems || [];
-      document.getElementById('marquee-items-track').innerHTML = [...mItems, ...mItems, ...mItems].map(m => `
-        <span class="flex items-center gap-4"><span>${m}</span><span class="accent-text">✦</span></span>
-      `).join('');
+      document.getElementById('marquee-items-track').innerHTML = [...mItems, ...mItems, ...mItems].map(m => `<span class="flex items-center gap-4"><span>${m}</span><span class="accent-text">✦</span></span>`).join('');
 
       const revs = (db.reviews || []).filter(r => r.approved !== false);
       const avgRating = revs.length ? (revs.reduce((s, r) => s + Number(r.stars), 0) / revs.length).toFixed(1) : '5.0';
@@ -2203,7 +1987,6 @@
       document.getElementById('metric-4-val').innerText = db.brand.stat4Val || '24/7';
       document.getElementById('metric-4-lbl').innerText = db.brand.stat4Lbl || '';
 
-      /* Section Headings */
       const h = db.headings || {};
       document.getElementById('home-srv-eyebrow').innerText = h.homeSrvEyebrow || '';
       document.getElementById('home-srv-heading').innerText = h.homeSrvHeading || '';
@@ -2224,97 +2007,31 @@
       document.getElementById('contact-main-heading').innerText = h.contactHeading || '';
       document.getElementById('contact-main-sub').innerText = h.contactSub || '';
 
-      /* Services Filter & Cards */
       const categories = ['ALL', ...new Set((db.services || []).map(s => s.badge).filter(Boolean))];
-      document.getElementById('service-filter-bar').innerHTML = categories.map(cat => `
-        <button onclick="activeServiceFilter='${cat}'; renderAll();" class="px-4 py-2 rounded-xl text-xs font-extrabold transition ${activeServiceFilter === cat ? 'bg-white text-zinc-950' : 'charcoal-card text-zinc-400 hover:text-white'}">${cat}</button>
-      `).join('');
+      document.getElementById('service-filter-bar').innerHTML = categories.map(cat => `<button onclick="activeServiceFilter='${cat}'; renderAll();" class="px-4 py-2 rounded-xl text-xs font-extrabold transition ${activeServiceFilter === cat ? 'bg-white text-zinc-950' : 'charcoal-card text-zinc-400 hover:text-white'}">${cat}</button>`).join('');
 
       const filteredServices = (db.services || []).filter(s => activeServiceFilter === 'ALL' || s.badge === activeServiceFilter);
       const renderServiceCard = (cat, idx) => {
         const subs = cat.subServices || [];
         const minINR = subs.length > 0 ? Math.min(...subs.map(x => Number(x.priceINR || 0))) : 0;
-        return `
-          <div onclick="openServiceModal('${cat.id}')" class="liquid-glass rounded-3xl p-7 flex flex-col justify-between cursor-pointer hover:border-white/40 transition group">
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-5">
-                <span class="editorial-font text-sm font-bold text-zinc-400">${cat.index || '(0'+(idx+1)+')'}</span>
-                <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-white/10 text-white border border-white/15">${cat.badge || 'Service'}</span>
-              </div>
-              <h3 class="text-2xl font-bold text-white group-hover:text-indigo-300 transition">${cat.title}</h3>
-              <p class="text-xs sm:text-sm text-zinc-300 mt-3 leading-relaxed">${cat.description}</p>
-            </div>
-            <div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between">
-              <div>
-                <span class="text-[10px] uppercase tracking-wider text-zinc-400 block">${subs.length} Deliverables</span>
-                <span class="text-base font-extrabold secondary-text">${formatPrice(minINR)}</span>
-              </div>
-              <span class="px-4 py-2.5 rounded-xl bg-white text-zinc-950 font-extrabold text-xs group-hover:bg-indigo-500 group-hover:text-white transition">Inspect & Add ↗</span>
-            </div>
-          </div>
-        `;
+        return `<div onclick="openServiceModal('${cat.id}')" class="liquid-glass rounded-3xl p-7 flex flex-col justify-between cursor-pointer hover:border-white/40 transition group"><div><div class="flex items-center justify-between gap-2 mb-5"><span class="editorial-font text-sm font-bold text-zinc-400">${cat.index || '(0'+(idx+1)+')'}</span><span class="px-3 py-1 rounded-full text-[11px] font-bold bg-white/10 text-white border border-white/15">${cat.badge || 'Service'}</span></div><h3 class="text-2xl font-bold text-white group-hover:text-indigo-300 transition">${cat.title}</h3><p class="text-xs sm:text-sm text-zinc-300 mt-3 leading-relaxed">${cat.description}</p></div><div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between"><div><span class="text-[10px] uppercase tracking-wider text-zinc-400 block">${subs.length} Deliverables</span><span class="text-base font-extrabold secondary-text">${formatPrice(minINR)}</span></div><span class="px-4 py-2.5 rounded-xl bg-white text-zinc-950 font-extrabold text-xs group-hover:bg-indigo-500 group-hover:text-white transition">Inspect & Add ↗</span></div></div>`;
       };
       document.getElementById('home-services-grid').innerHTML = (db.services || []).map(renderServiceCard).join('');
       document.getElementById('services-catalog-grid').innerHTML = filteredServices.map(renderServiceCard).join('');
 
-      /* Portfolio Cards (Supports Direct Video or Image) */
       const renderPortfolioCard = (pf, idx) => {
-        const mediaHTML = pf.videoUrl
-          ? `<video src="${pf.videoUrl}" autoplay loop muted playsinline class="w-full h-full object-cover"></video>`
-          : `<img src="${pf.afterImg || pf.beforeImg}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />`;
-        return `
-          <div onclick="openPortfolioModal('${pf.id}')" class="charcoal-card rounded-3xl overflow-hidden flex flex-col cursor-pointer group">
-            <div class="h-64 bg-zinc-900 relative overflow-hidden">
-              ${mediaHTML}
-              <span class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-extrabold bg-black/80 text-white border border-white/15">${pf.index || '(0'+(idx+1)+')'} • ${pf.category}</span>
-            </div>
-            <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between">
-              <div>
-                <div class="text-xs font-bold text-zinc-400 uppercase tracking-wider">${pf.client}</div>
-                <h3 class="text-xl sm:text-2xl font-bold text-white mt-1 group-hover:text-indigo-400 transition">${pf.title}</h3>
-                <p class="text-xs sm:text-sm text-zinc-300 mt-2 leading-relaxed">${pf.summary}</p>
-              </div>
-              <div class="mt-5 pt-4 border-t border-[#242429] flex items-center justify-between text-xs font-extrabold">
-                <span class="secondary-text">📈 ${pf.metric || ''}</span>
-                <span class="text-white group-hover:underline">Inspect Before/After ↗</span>
-              </div>
-            </div>
-          </div>
-        `;
+        const mediaHTML = pf.videoUrl ? `<video src="${pf.videoUrl}" autoplay loop muted playsinline class="w-full h-full object-cover"></video>` : `<img src="${pf.afterImg || pf.beforeImg}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />`;
+        return `<div onclick="openPortfolioModal('${pf.id}')" class="charcoal-card rounded-3xl overflow-hidden flex flex-col cursor-pointer group"><div class="h-64 bg-zinc-900 relative overflow-hidden">${mediaHTML}<span class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-extrabold bg-black/80 text-white border border-white/15">${pf.index || '(0'+(idx+1)+')'} • ${pf.category}</span></div><div class="p-6 sm:p-7 flex-1 flex flex-col justify-between"><div><div class="text-xs font-bold text-zinc-400 uppercase tracking-wider">${pf.client}</div><h3 class="text-xl sm:text-2xl font-bold text-white mt-1 group-hover:text-indigo-400 transition">${pf.title}</h3><p class="text-xs sm:text-sm text-zinc-300 mt-2 leading-relaxed">${pf.summary}</p></div><div class="mt-5 pt-4 border-t border-[#242429] flex items-center justify-between text-xs font-extrabold"><span class="secondary-text">📈 ${pf.metric || ''}</span><span class="text-white group-hover:underline">Inspect Before/After ↗</span></div></div></div>`;
       };
       document.getElementById('home-portfolio-grid').innerHTML = (db.portfolio || []).slice(0, 4).map(renderPortfolioCard).join('');
       document.getElementById('portfolio-catalog-grid').innerHTML = (db.portfolio || []).map(renderPortfolioCard).join('');
 
-      /* Process, Awards & FAQ */
-      document.getElementById('process-steps-grid').innerHTML = (db.process || []).map(pr => `
-        <div class="charcoal-card rounded-3xl p-6 space-y-3">
-          <span class="editorial-font text-sm font-extrabold accent-text">${pr.step}</span>
-          <h4 class="text-lg font-bold text-white">${pr.title}</h4>
-          <p class="text-xs text-zinc-400 leading-relaxed">${pr.desc}</p>
-        </div>
-      `).join('');
+      document.getElementById('process-steps-grid').innerHTML = (db.process || []).map(pr => `<div class="charcoal-card rounded-3xl p-6 space-y-3"><span class="editorial-font text-sm font-extrabold accent-text">${pr.step}</span><h4 class="text-lg font-bold text-white">${pr.title}</h4><p class="text-xs text-zinc-400 leading-relaxed">${pr.desc}</p></div>`).join('');
 
-      document.getElementById('awards-rows-container').innerHTML = (db.awards || []).map(aw => `
-        <div class="py-4 px-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-white/[0.02] transition">
-          <div class="flex items-center gap-4">
-            <span class="editorial-font text-xs font-bold text-zinc-500">${aw.code}</span>
-            <span class="text-sm sm:text-base font-bold text-white">${aw.title}</span>
-          </div>
-          <div class="flex items-center gap-6 text-xs text-zinc-400">
-            <span>${aw.org}</span>
-            <span class="font-extrabold text-white">${aw.year}</span>
-          </div>
-        </div>
-      `).join('');
+      document.getElementById('awards-rows-container').innerHTML = (db.awards || []).map(aw => `<div class="py-4 px-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-white/[0.02] transition"><div class="flex items-center gap-4"><span class="editorial-font text-xs font-bold text-zinc-500">${aw.code}</span><span class="text-sm sm:text-base font-bold text-white">${aw.title}</span></div><div class="flex items-center gap-6 text-xs text-zinc-400"><span>${aw.org}</span><span class="font-extrabold text-white">${aw.year}</span></div></div>`).join('');
 
-      document.getElementById('faq-accordion-list').innerHTML = (db.faqs || []).map(f => `
-        <div class="charcoal-card rounded-2xl p-5 space-y-2">
-          <h4 class="text-sm font-bold text-white">Q: ${f.q}</h4>
-          <p class="text-xs text-zinc-400 leading-relaxed">${f.a}</p>
-        </div>
-      `).join('');
+      document.getElementById('faq-accordion-list').innerHTML = (db.faqs || []).map(f => `<div class="charcoal-card rounded-2xl p-5 space-y-2"><h4 class="text-sm font-bold text-white">Q: ${f.q}</h4><p class="text-xs text-zinc-400 leading-relaxed">${f.a}</p></div>`).join('');
 
-      /* About Page + Photo Studio (Shape, Size & Alignment Controls) */
       document.getElementById('about-main-heading').innerText = db.about?.heading || '';
       document.getElementById('about-main-story').innerText = db.about?.story || '';
       document.getElementById('about-mission-text').innerText = db.about?.mission || '';
@@ -2329,55 +2046,16 @@
         const avatar = member.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=6366f1&color=fff`;
         const mShape = member.shape ? `shape-${member.shape}` : shapeCls;
         const flexAlign = align === 'center' ? 'flex-col items-center text-center' : align === 'right' ? 'flex-row-reverse text-right items-center' : 'flex-row items-center text-left';
-        return `
-          <div class="${isPartner ? 'liquid-glass' : 'charcoal-card'} rounded-3xl p-6 flex ${flexAlign} gap-4">
-            <div class="${mShape} overflow-hidden shrink-0" style="width:${sizePx}px; height:${sizePx}px;">
-              <img src="${avatar}" class="w-full h-full object-cover" />
-            </div>
-            <div class="space-y-1">
-              <span class="text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full ${isPartner ? 'bg-amber-400/20 text-amber-300' : 'bg-white/10 text-zinc-300'}">${member.type || 'Team'}</span>
-              <h4 class="text-base font-bold text-white mt-1">${member.name}</h4>
-              <p class="text-xs accent-text font-bold">${member.role}</p>
-              ${member.bio ? `<p class="text-xs text-zinc-400 leading-relaxed pt-1">${member.bio}</p>` : ''}
-            </div>
-          </div>
-        `;
+        return `<div class="${isPartner ? 'liquid-glass' : 'charcoal-card'} rounded-3xl p-6 flex ${flexAlign} gap-4"><div class="${mShape} overflow-hidden shrink-0" style="width:${sizePx}px; height:${sizePx}px;"><img src="${avatar}" class="w-full h-full object-cover" /></div><div class="space-y-1"><span class="text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full ${isPartner ? 'bg-amber-400/20 text-amber-300' : 'bg-white/10 text-zinc-300'}">${member.type || 'Team'}</span><h4 class="text-base font-bold text-white mt-1">${member.name}</h4><p class="text-xs accent-text font-bold">${member.role}</p>${member.bio ? `<p class="text-xs text-zinc-400 leading-relaxed pt-1">${member.bio}</p>` : ''}</div></div>`;
       };
 
-      const partners = (db.team || []).filter(t => t.type === 'Partner');
-      const staff = (db.team || []).filter(t => t.type !== 'Partner');
-      document.getElementById('about-partners-list').innerHTML = partners.map(p => renderTeamCard(p, true)).join('');
-      document.getElementById('about-staff-list').innerHTML = staff.map(m => renderTeamCard(m, false)).join('');
+      document.getElementById('about-partners-list').innerHTML = (db.team || []).filter(t => t.type === 'Partner').map(p => renderTeamCard(p, true)).join('');
+      document.getElementById('about-staff-list').innerHTML = (db.team || []).filter(t => t.type !== 'Partner').map(m => renderTeamCard(m, false)).join('');
 
-      /* Reviews & Studios */
-      document.getElementById('reviews-cards-grid').innerHTML = revs.map(r => `
-        <div class="charcoal-card rounded-3xl p-6 flex flex-col justify-between">
-          <div>
-            <div class="text-amber-400 text-sm font-bold tracking-widest">${'★'.repeat(r.stars)}</div>
-            <p class="text-sm text-zinc-200 mt-3 leading-relaxed">"${r.text}"</p>
-          </div>
-          <div class="mt-5 pt-3 border-t border-[#242429]">
-            <div class="font-bold text-white text-sm">${r.name}</div>
-            <div class="text-xs text-zinc-400">${r.brand}</div>
-          </div>
-        </div>
-      `).join('');
+      document.getElementById('reviews-cards-grid').innerHTML = revs.map(r => `<div class="charcoal-card rounded-3xl p-6 flex flex-col justify-between"><div><div class="text-amber-400 text-sm font-bold tracking-widest">${'★'.repeat(r.stars)}</div><p class="text-sm text-zinc-200 mt-3 leading-relaxed">"${r.text}"</p></div><div class="mt-5 pt-3 border-t border-[#242429]"><div class="font-bold text-white text-sm">${r.name}</div><div class="text-xs text-zinc-400">${r.brand}</div></div></div>`).join('');
 
-      document.getElementById('studios-hub-grid').innerHTML = (db.studios || []).map((st, i) => `
-        <div class="liquid-glass rounded-3xl p-6 space-y-3 flex flex-col justify-between">
-          <div>
-            <span class="text-[11px] font-extrabold uppercase tracking-widest secondary-text">(0${i + 1}) ${st.country}</span>
-            <h3 class="text-xl font-bold text-white mt-1">${st.city}</h3>
-            <p class="text-xs text-zinc-400 mt-2">${st.address}</p>
-          </div>
-          <div class="pt-4 border-t border-white/10 space-y-1 text-xs">
-            <div class="font-bold text-white">📞 ${st.phone}</div>
-            <div class="text-zinc-300">✉️ ${st.email}</div>
-          </div>
-        </div>
-      `).join('');
+      document.getElementById('studios-hub-grid').innerHTML = (db.studios || []).map((st, i) => `<div class="liquid-glass rounded-3xl p-6 space-y-3 flex flex-col justify-between"><div><span class="text-[11px] font-extrabold uppercase tracking-widest secondary-text">(0${i + 1}) ${st.country}</span><h3 class="text-xl font-bold text-white mt-1">${st.city}</h3><p class="text-xs text-zinc-400 mt-2">${st.address}</p></div><div class="pt-4 border-t border-white/10 space-y-1 text-xs"><div class="font-bold text-white">📞 ${st.phone}</div><div class="text-zinc-300">✉️ ${st.email}</div></div></div>`).join('');
 
-      /* Policies & Footer */
       document.getElementById('pol-privacy-text').innerText = db.policies?.privacy || '';
       document.getElementById('pol-terms-text').innerText = db.policies?.terms || '';
       document.getElementById('pol-refund-text').innerText = db.policies?.refund || '';
@@ -2387,15 +2065,13 @@
       document.getElementById('ft-brand-name').innerText = db.brand.name;
       document.getElementById('ft-brand-domain').innerText = db.brand.domain;
       document.getElementById('ft-copyright').innerText = db.brand.copyright || '';
-      document.getElementById('ft-socials').innerHTML = (db.brand.socials || []).map(s => `
-        <a href="${s.url}" target="_blank" class="px-3 py-1.5 rounded-xl charcoal-card text-xs font-bold text-white">${s.label} ↗</a>
-      `).join('');
+      document.getElementById('ft-socials').innerHTML = (db.brand.socials || []).map(s => `<a href="${s.url}" target="_blank" class="px-3 py-1.5 rounded-xl charcoal-card text-xs font-bold text-white">${s.label} ↗</a>`).join('');
 
       renderQuoteCartUI();
       checkExistingClientSession();
     }
 
-    /* ================= SERVICE MODAL & CART ENGINE ================= */
+    /* ================= SERVICE MODAL & CART ================= -->
     function openServiceModal(catId) {
       playUISound(580, 0.04);
       const db = getDB();
@@ -2409,44 +2085,25 @@
       const mediaPreview = document.getElementById('smodal-media-preview');
       if (cat.mediaUrl) {
         mediaPreview.classList.remove('hidden');
-        mediaPreview.innerHTML = cat.mediaUrl.startsWith('data:video') || cat.mediaUrl.endsWith('.mp4')
-          ? `<video src="${cat.mediaUrl}" autoplay loop muted controls class="w-full h-48 object-cover"></video>`
-          : `<img src="${cat.mediaUrl}" class="w-full h-48 object-cover" />`;
-      } else {
-        mediaPreview.classList.add('hidden');
-      }
+        mediaPreview.innerHTML = cat.mediaUrl.startsWith('data:video') || cat.mediaUrl.endsWith('.mp4') ? `<video src="${cat.mediaUrl}" autoplay loop muted controls class="w-full h-48 object-cover"></video>` : `<img src="${cat.mediaUrl}" class="w-full h-48 object-cover" />`;
+      } else { mediaPreview.classList.add('hidden'); }
 
       document.getElementById('smodal-add-all').onclick = () => {
-        (cat.subServices || []).forEach(sub => {
-          if (!cart.some(i => i.id === sub.id)) cart.push({ ...sub, categoryTitle: cat.title });
-        });
+        (cat.subServices || []).forEach(sub => { if (!cart.some(i => i.id === sub.id)) cart.push({ ...sub, categoryTitle: cat.title }); });
         saveCart();
         openServiceModal(catId);
       };
 
       document.getElementById('smodal-sublist').innerHTML = (cat.subServices || []).map(sub => {
         const added = cart.some(i => i.id === sub.id);
-        return `
-          <div class="p-4 rounded-2xl bg-[#09090b]/90 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div>
-              <div class="font-bold text-sm text-white">${sub.name}</div>
-              <div class="text-xs text-zinc-400 mt-0.5">${sub.billing} • <span class="secondary-text font-extrabold">${formatPrice(sub.priceINR)}</span></div>
-            </div>
-            <button onclick="toggleCartSubItem('${cat.id}', '${sub.id}')" class="px-4 py-2.5 rounded-xl font-extrabold text-xs shrink-0 transition ${added ? 'bg-emerald-500/25 border border-emerald-400 text-emerald-300' : 'accent-bg text-white'}">
-              ${added ? '✓ Added (Remove)' : '+ Add to Quotation'}
-            </button>
-          </div>
-        `;
+        return `<div class="p-4 rounded-2xl bg-[#09090b]/90 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3"><div><div class="font-bold text-sm text-white">${sub.name}</div><div class="text-xs text-zinc-400 mt-0.5">${sub.billing} • <span class="secondary-text font-extrabold">${formatPrice(sub.priceINR)}</span></div></div><button onclick="toggleCartSubItem('${cat.id}', '${sub.id}')" class="px-4 py-2.5 rounded-xl font-extrabold text-xs shrink-0 transition ${added ? 'bg-emerald-500/25 border border-emerald-400 text-emerald-300' : 'accent-bg text-white'}">${added ? '✓ Added (Remove)' : '+ Add to Quotation'}</button></div>`;
       }).join('');
 
       document.getElementById('service-modal').classList.remove('hidden');
       document.getElementById('service-modal').classList.add('flex');
     }
 
-    function closeServiceModal() {
-      document.getElementById('service-modal').classList.add('hidden');
-      document.getElementById('service-modal').classList.remove('flex');
-    }
+    function closeServiceModal() { document.getElementById('service-modal').classList.add('hidden'); document.getElementById('service-modal').classList.remove('flex'); }
 
     function toggleCartSubItem(catId, subId) {
       playUISound(640, 0.04);
@@ -2459,20 +2116,12 @@
       const idx = cart.findIndex(i => i.id === subId);
       if (idx > -1) cart.splice(idx, 1);
       else cart.push({ ...sub, categoryTitle: cat.title });
-
       saveCart();
       openServiceModal(catId);
     }
 
-    function removeFromQuoteCart(subId) {
-      cart = cart.filter(i => i.id !== subId);
-      saveCart();
-    }
-
-    function saveCart() {
-      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
-      renderQuoteCartUI();
-    }
+    function removeFromQuoteCart(subId) { cart = cart.filter(i => i.id !== subId); saveCart(); }
+    function saveCart() { localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart)); renderQuoteCartUI(); }
 
     function renderQuoteCartUI() {
       const db = getDB();
@@ -2481,12 +2130,7 @@
 
       const container = document.getElementById('quote-items-container');
       if (cart.length === 0) {
-        container.innerHTML = `
-          <div class="p-8 rounded-2xl bg-[#09090b] border border-[#242429] text-center space-y-3">
-            <p class="text-sm text-zinc-400">Your quotation cart is empty. Click any service category to add deliverables.</p>
-            <button onclick="navigate('services')" class="px-5 py-2.5 rounded-xl accent-bg text-white text-xs font-extrabold">Explore Services →</button>
-          </div>
-        `;
+        container.innerHTML = `<div class="p-8 rounded-2xl bg-[#09090b] border border-[#242429] text-center space-y-3"><p class="text-sm text-zinc-400">Your quotation cart is empty.</p><button onclick="navigate('services')" class="px-5 py-2.5 rounded-xl accent-bg text-white text-xs font-extrabold">Explore Services →</button></div>`;
         document.getElementById('q-subtotal-val').innerText = formatPrice(0);
         document.getElementById('q-tax-val').innerText = formatPrice(0);
         document.getElementById('q-grand-val').innerText = formatPrice(0);
@@ -2501,33 +2145,19 @@
       const taxINR = Math.round(afterDiscINR * (gstPct / 100));
       const grandINR = afterDiscINR + taxINR;
 
-      container.innerHTML = cart.map(item => `
-        <div class="p-4 rounded-2xl bg-[#09090b] border border-[#242429] flex items-center justify-between gap-4">
-          <div>
-            <span class="text-[10px] font-bold uppercase accent-text">${item.categoryTitle} • ${item.billing}</span>
-            <div class="font-bold text-sm text-white">${item.name}</div>
-          </div>
-          <div class="flex items-center gap-3">
-            <span class="font-extrabold secondary-text text-sm">${formatPrice(item.priceINR)}</span>
-            <button onclick="removeFromQuoteCart('${item.id}')" class="text-xs font-bold text-rose-400 hover:underline">Remove</button>
-          </div>
-        </div>
-      `).join('');
+      container.innerHTML = cart.map(item => `<div class="p-4 rounded-2xl bg-[#09090b] border border-[#242429] flex items-center justify-between gap-4"><div><span class="text-[10px] font-bold uppercase accent-text">${item.categoryTitle} • ${item.billing}</span><div class="font-bold text-sm text-white">${item.name}</div></div><div class="flex items-center gap-3"><span class="font-extrabold secondary-text text-sm">${formatPrice(item.priceINR)}</span><button onclick="removeFromQuoteCart('${item.id}')" class="text-xs font-bold text-rose-400 hover:underline">Remove</button></div></div>`).join('');
 
       document.getElementById('q-subtotal-val').innerText = formatPrice(subINR);
       if (scratchUnlocked) {
         document.getElementById('q-discount-row').classList.remove('hidden');
         document.getElementById('q-discount-lbl').innerText = `VIP Founder Grant (${discPct}% OFF):`;
         document.getElementById('q-discount-val').innerText = '-' + formatPrice(discINR);
-      } else {
-        document.getElementById('q-discount-row').classList.add('hidden');
-      }
+      } else { document.getElementById('q-discount-row').classList.add('hidden'); }
       document.getElementById('q-tax-lbl').innerText = `Tax / GST (${gstPct}%):`;
       document.getElementById('q-tax-val').innerText = formatPrice(taxINR);
       document.getElementById('q-grand-val').innerText = formatPrice(grandINR);
     }
 
-    /* ================= PDF PROPOSAL GENERATOR & WHATSAPP CLOSING ================= */
     async function handleQuoteSubmission(e) {
       e.preventDefault();
       if (cart.length === 0) { alert('Please select at least one service first!'); return; }
@@ -2552,13 +2182,7 @@
       const grandINR = afterDiscINR + taxINR;
 
       db.leads = db.leads || [];
-      db.leads.unshift({
-        id: quoteId, date: dateStr, client: name, brand, email, phone, country, notes,
-        referredBy: activeReferralCode || 'Direct',
-        signed: Boolean(sigData),
-        items: cart.map(i => i.name).join(', '),
-        totalFormatted: formatPrice(grandINR, true)
-      });
+      db.leads.unshift({ id: quoteId, date: dateStr, client: name, brand, email, phone, country, notes, referredBy: activeReferralCode || 'Direct', signed: Boolean(sigData), items: cart.map(i => i.name).join(', '), totalFormatted: formatPrice(grandINR, true) });
       db.analytics = db.analytics || { totalViews: 100, quoteClicks: 20, scannerRuns: 10 };
       db.analytics.quoteClicks = (db.analytics.quoteClicks || 0) + 1;
       await pushCloudDB(db);
@@ -2571,42 +2195,20 @@
       document.getElementById('pdf-client-line1').innerText = `${name} — ${brand} (${country})`;
       document.getElementById('pdf-client-line2').innerText = `${email} | ${phone}${notes ? ' | Note: ' + notes : ''}`;
 
-      document.getElementById('pdf-table-body').innerHTML = cart.map((item, idx) => `
-        <tr style="border-bottom: 1px solid #e4e4e7;">
-          <td style="padding: 11px;">${idx + 1}</td>
-          <td style="padding: 11px;"><strong>${item.name}</strong> (${item.billing})</td>
-          <td style="padding: 11px;">${item.categoryTitle}</td>
-          <td style="padding: 11px; text-align: right; font-weight: 700;">${formatPrice(item.priceINR, true)}</td>
-        </tr>
-      `).join('');
+      document.getElementById('pdf-table-body').innerHTML = cart.map((item, idx) => `<tr style="border-bottom: 1px solid #e4e4e7;"><td style="padding: 11px;">${idx + 1}</td><td style="padding: 11px;"><strong>${item.name}</strong> (${item.billing})</td><td style="padding: 11px;">${item.categoryTitle}</td><td style="padding: 11px; text-align: right; font-weight: 700;">${formatPrice(item.priceINR, true)}</td></tr>`).join('');
 
       document.getElementById('pdf-sub').innerText = formatPrice(subINR, true);
-      if (scratchUnlocked) {
-        document.getElementById('pdf-disc-wrap').style.display = 'flex';
-        document.getElementById('pdf-disc').innerText = '-' + formatPrice(discINR, true);
-      } else {
-        document.getElementById('pdf-disc-wrap').style.display = 'none';
-      }
+      if (scratchUnlocked) { document.getElementById('pdf-disc-wrap').style.display = 'flex'; document.getElementById('pdf-disc').innerText = '-' + formatPrice(discINR, true); }
+      else { document.getElementById('pdf-disc-wrap').style.display = 'none'; }
       document.getElementById('pdf-tax-label').innerText = `Tax / GST (${gstPct}%):`;
       document.getElementById('pdf-tax').innerText = formatPrice(taxINR, true);
       document.getElementById('pdf-grand').innerText = formatPrice(grandINR, true);
       document.getElementById('pdf-terms').innerText = db.brand.quoteTerms || '';
 
       const sigImg = document.getElementById('pdf-sig-img');
-      if (sigData) {
-        sigImg.src = sigData;
-        sigImg.style.display = 'block';
-      } else {
-        sigImg.style.display = 'none';
-      }
+      if (sigData) { sigImg.src = sigData; sigImg.style.display = 'block'; } else { sigImg.style.display = 'none'; }
 
-      html2pdf().set({
-        margin: 0.3,
-        filename: `${brand.replace(/\s+/g, '_')}_Official_Proposal_${quoteId}.pdf`,
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2 },
-        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
-      }).from(document.getElementById('pdf-proposal-sheet')).save();
+      html2pdf().set({ margin: 0.3, filename: `${brand.replace(/\s+/g, '_')}_Official_Proposal_${quoteId}.pdf`, image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2 }, jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' } }).from(document.getElementById('pdf-proposal-sheet')).save();
     }
 
     function sendQuoteViaWhatsApp() {
@@ -2630,9 +2232,7 @@
     }
 
     /* ================= PORTFOLIO BEFORE/AFTER & VIDEO MODAL ================= */
-    function slideBeforeAfter(val) {
-      document.getElementById('pmodal-before-box').style.width = val + '%';
-    }
+    function slideBeforeAfter(val) { document.getElementById('pmodal-before-box').style.width = val + '%'; }
 
     function openPortfolioModal(pfId) {
       const db = getDB();
@@ -2660,19 +2260,15 @@
       }
 
       const linkEl = document.getElementById('pmodal-link');
-      if (pf.liveUrl) { linkEl.href = pf.liveUrl; linkEl.classList.remove('hidden'); }
-      else { linkEl.classList.add('hidden'); }
+      if (pf.liveUrl) { linkEl.href = pf.liveUrl; linkEl.classList.remove('hidden'); } else { linkEl.classList.add('hidden'); }
 
       document.getElementById('portfolio-modal').classList.remove('hidden');
       document.getElementById('portfolio-modal').classList.add('flex');
     }
 
-    function closePortfolioModal() {
-      document.getElementById('portfolio-modal').classList.add('hidden');
-      document.getElementById('portfolio-modal').classList.remove('flex');
-    }
+    function closePortfolioModal() { document.getElementById('portfolio-modal').classList.add('hidden'); document.getElementById('portfolio-modal').classList.remove('flex'); }
 
-    /* ================= REVIEWS & CONTACT WITH VOICE BRIEF ================= */
+    /* ================= REVIEWS & CONTACT ================= */
     function openReviewModal() { document.getElementById('review-modal').classList.remove('hidden'); document.getElementById('review-modal').classList.add('flex'); }
     function closeReviewModal() { document.getElementById('review-modal').classList.add('hidden'); document.getElementById('review-modal').classList.remove('flex'); }
 
@@ -2680,14 +2276,7 @@
       e.preventDefault();
       const db = getDB();
       db.reviews = db.reviews || [];
-      db.reviews.unshift({
-        id: 'REV-' + Date.now(),
-        stars: Number(document.getElementById('rev-stars').value),
-        name: document.getElementById('rev-name').value.trim(),
-        brand: document.getElementById('rev-brand').value.trim(),
-        text: document.getElementById('rev-text').value.trim(),
-        approved: true
-      });
+      db.reviews.unshift({ id: 'REV-' + Date.now(), stars: Number(document.getElementById('rev-stars').value), name: document.getElementById('rev-name').value.trim(), brand: document.getElementById('rev-brand').value.trim(), text: document.getElementById('rev-text').value.trim(), approved: true });
       await pushCloudDB(db);
       e.target.reset();
       closeReviewModal();
@@ -2698,25 +2287,16 @@
       e.preventDefault();
       const db = getDB();
       db.inquiries = db.inquiries || [];
-      db.inquiries.unshift({
-        id: 'INQ-' + Date.now(),
-        date: new Date().toLocaleDateString(),
-        name: document.getElementById('cnt-name').value.trim(),
-        brand: document.getElementById('cnt-brand').value.trim(),
-        email: document.getElementById('cnt-email').value.trim(),
-        phone: document.getElementById('cnt-phone').value.trim(),
-        message: document.getElementById('cnt-msg').value.trim(),
-        voiceAudio: document.getElementById('voice-base64-data').value || ''
-      });
+      db.inquiries.unshift({ id: 'INQ-' + Date.now(), date: new Date().toLocaleDateString(), name: document.getElementById('cnt-name').value.trim(), brand: document.getElementById('cnt-brand').value.trim(), email: document.getElementById('cnt-email').value.trim(), phone: document.getElementById('cnt-phone').value.trim(), message: document.getElementById('cnt-msg').value.trim(), voiceAudio: document.getElementById('voice-base64-data').value || '' });
       await pushCloudDB(db);
       e.target.reset();
       document.getElementById('voice-base64-data').value = '';
       document.getElementById('voice-preview-player').classList.add('hidden');
       document.getElementById('rec-status').classList.add('hidden');
-      alert('✅ Your project brief (and voice note) has been sent directly to our studio CRM!');
+      alert('✅ Your project brief has been sent successfully!');
     }
 
-    /* ================= BOOTSTRAP & REAL-TIME SYNC LOOP ================= */
+    /* ================= BOOTSTRAP & REAL-TIME SYNC ================= */
     window.addEventListener('DOMContentLoaded', async () => {
       updateWorldClocks();
       setInterval(updateWorldClocks, 15000);
@@ -2724,94 +2304,9 @@
       renderAll();
       restorePageFromHash();
       await pullCloudDB();
-      setInterval(pullCloudDB, 2500);
+      setInterval(pullCloudDB, 3500);
     });
   </script>
 </body>
 </html>
 <!-- ==================== INDEX.HTML : PART 2 OF 2 (COMPLETE) ==================== -->
-<!-- ==================== INDEX.HTML : FINAL ENDING PATCH (PASTE AT VERY BOTTOM) ==================== -->
-<script>
-  (function () {
-    /* 1. Smart Geo-Currency Auto-Detection (First Visit) */
-    if (!localStorage.getItem(CURRENCY_STORAGE_KEY)) {
-      try {
-        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
-        if (tz.includes('Dubai') || tz.includes('Muscat') || tz.includes('Riyadh')) {
-          activeCurrency = 'AED';
-        } else if (tz.includes('Calcutta') || tz.includes('Kolkata') || tz.includes('Asia/Colombo')) {
-          activeCurrency = 'INR';
-        } else {
-          activeCurrency = 'USD';
-        }
-        localStorage.setItem(CURRENCY_STORAGE_KEY, activeCurrency);
-      } catch (e) {}
-    }
-
-    /* 2. Anywhere Custom Video / Image Section Renderer + JSON-LD Schema */
-    const originalRenderAll = window.renderAll;
-    window.renderAll = function () {
-      if (typeof originalRenderAll === 'function') originalRenderAll();
-      const db = getDB();
-
-      /* Dynamic JSON-LD Google Schema */
-      const schemaEl = document.getElementById('seo-schema');
-      if (schemaEl) {
-        schemaEl.textContent = JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "ProfessionalService",
-          "name": db.brand?.name || "The Blank Page",
-          "description": db.seo?.desc || db.brand?.tagline || "",
-          "url": window.location.origin,
-          "telephone": db.brand?.phone || "",
-          "email": db.brand?.email || "",
-          "sameAs": (db.brand?.socials || []).map(s => s.url)
-        });
-      }
-
-      /* Render Custom Anywhere Video / Image Blocks on Any Page */
-      document.querySelectorAll('.dynamic-media-injected').forEach(el => el.remove());
-      const blocks = db.customMediaBlocks || [];
-      blocks.forEach(blk => {
-        const targetSection = document.getElementById('view-' + (blk.page || 'home'));
-        if (!targetSection || !blk.mediaUrl) return;
-
-        const wrap = document.createElement('div');
-        wrap.className = 'dynamic-media-injected charcoal-card rounded-3xl p-4 sm:p-6 space-y-3 overflow-hidden my-6';
-        const isVid = blk.mediaUrl.startsWith('data:video') || /\.(mp4|webm|ogg)(\?.*)?$/i.test(blk.mediaUrl);
-
-        wrap.innerHTML = `
-          ${blk.title ? `<div class="flex items-center justify-between"><span class="text-xs font-extrabold uppercase accent-text">${blk.badge || 'Featured Media'}</span><h3 class="text-lg font-bold text-white">${blk.title}</h3></div>` : ''}
-          <div class="rounded-2xl overflow-hidden bg-black/60 border border-white/10">
-            ${isVid
-              ? `<video src="${blk.mediaUrl}" controls ${blk.autoplay ? 'autoplay muted loop playsinline' : ''} class="w-full max-h-[480px] object-cover"></video>`
-              : `<img src="${blk.mediaUrl}" alt="${blk.title || 'Media'}" class="w-full max-h-[480px] object-cover" />`
-            }
-          </div>
-          ${blk.caption ? `<p class="text-xs text-zinc-400">${blk.caption}</p>` : ''}
-        `;
-
-        if (blk.placement === 'top') {
-          targetSection.prepend(wrap);
-        } else {
-          targetSection.appendChild(wrap);
-        }
-      });
-    };
-
-    /* 3. Live Visitor Radar Auto-Increment (Once Per Browser Session) */
-    window.addEventListener('load', () => {
-      setTimeout(async () => {
-        if (!sessionStorage.getItem('OG_VISITOR_COUNTED_V5')) {
-          sessionStorage.setItem('OG_VISITOR_COUNTED_V5', '1');
-          const db = getDB();
-          db.analytics = db.analytics || { totalViews: 128, quoteClicks: 34, scannerRuns: 19 };
-          db.analytics.totalViews = Number(db.analytics.totalViews || 128) + 1;
-          await pushCloudDB(db);
-        }
-        window.renderAll();
-      }, 1200);
-    });
-  })();
-</script>
-<!-- ==================== INDEX.HTML : FINAL ENDING PATCH COMPLETE ==================== -->
