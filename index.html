@@ -2310,3 +2310,309 @@
 </body>
 </html>
 <!-- ==================== INDEX.HTML : PART 2 OF 2 (COMPLETE) ==================== -->
+<!-- ==================== INDEX.HTML : REFRESH & SERVICE CART PERMANENT FIX (PASTE AT VERY BOTTOM) ==================== -->
+<script>
+  const ACTIVE_PAGE_MEMORY_KEY = 'OG_DESK_LAST_ACTIVE_PAGE_V5';
+
+  /* 1. Restore Missing Service Modal, Quotation Cart, PDF & WhatsApp Functions */
+  window.openServiceModal = function (catId) {
+    if (typeof playUISound === 'function') playUISound(580, 0.04);
+    const db = getDB();
+    const cat = (db.services || []).find(c => c.id === catId);
+    if (!cat) return;
+
+    document.getElementById('smodal-badge').innerText = cat.badge || '';
+    document.getElementById('smodal-title').innerText = cat.title;
+    document.getElementById('smodal-desc').innerText = cat.description;
+
+    const mediaPreview = document.getElementById('smodal-media-preview');
+    if (cat.mediaUrl) {
+      mediaPreview.classList.remove('hidden');
+      mediaPreview.innerHTML = (cat.mediaUrl.startsWith('data:video') || cat.mediaUrl.endsWith('.mp4'))
+        ? `<video src="${cat.mediaUrl}" autoplay loop muted controls class="w-full h-48 object-cover"></video>`
+        : `<img src="${cat.mediaUrl}" class="w-full h-48 object-cover" />`;
+    } else {
+      mediaPreview.classList.add('hidden');
+    }
+
+    document.getElementById('smodal-add-all').onclick = () => {
+      (cat.subServices || []).forEach(sub => {
+        if (!cart.some(i => i.id === sub.id)) cart.push({ ...sub, categoryTitle: cat.title });
+      });
+      window.saveCart();
+      window.openServiceModal(catId);
+    };
+
+    document.getElementById('smodal-sublist').innerHTML = (cat.subServices || []).map(sub => {
+      const added = cart.some(i => i.id === sub.id);
+      return `
+        <div class="p-4 rounded-2xl bg-[#09090b]/90 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <div class="font-bold text-sm text-white">${sub.name}</div>
+            <div class="text-xs text-zinc-400 mt-0.5">${sub.billing} • <span class="secondary-text font-extrabold">${formatPrice(sub.priceINR)}</span></div>
+          </div>
+          <button onclick="toggleCartSubItem('${cat.id}', '${sub.id}')" class="px-4 py-2.5 rounded-xl font-extrabold text-xs shrink-0 transition ${added ? 'bg-emerald-500/25 border border-emerald-400 text-emerald-300' : 'accent-bg text-white'}">
+            ${added ? '✓ Added (Remove)' : '+ Add to Quotation'}
+          </button>
+        </div>
+      `;
+    }).join('');
+
+    document.getElementById('service-modal').classList.remove('hidden');
+    document.getElementById('service-modal').classList.add('flex');
+  };
+
+  window.closeServiceModal = function () {
+    document.getElementById('service-modal').classList.add('hidden');
+    document.getElementById('service-modal').classList.remove('flex');
+  };
+
+  window.toggleCartSubItem = function (catId, subId) {
+    if (typeof playUISound === 'function') playUISound(640, 0.04);
+    const db = getDB();
+    const cat = (db.services || []).find(c => c.id === catId);
+    if (!cat) return;
+    const sub = (cat.subServices || []).find(s => s.id === subId);
+    if (!sub) return;
+
+    const idx = cart.findIndex(i => i.id === subId);
+    if (idx > -1) cart.splice(idx, 1);
+    else cart.push({ ...sub, categoryTitle: cat.title });
+    window.saveCart();
+    window.openServiceModal(catId);
+  };
+
+  window.removeFromQuoteCart = function (subId) {
+    cart = cart.filter(i => i.id !== subId);
+    window.saveCart();
+  };
+
+  window.saveCart = function () {
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+    window.renderQuoteCartUI();
+  };
+
+  window.renderQuoteCartUI = function () {
+    const db = getDB();
+    const badgeEl = document.getElementById('nav-cart-badge');
+    const srvCounterEl = document.getElementById('srv-cart-counter');
+    if (badgeEl) badgeEl.innerText = cart.length;
+    if (srvCounterEl) srvCounterEl.innerText = cart.length;
+
+    const container = document.getElementById('quote-items-container');
+    if (!container) return;
+
+    if (cart.length === 0) {
+      container.innerHTML = `
+        <div class="p-8 rounded-2xl bg-[#09090b] border border-[#242429] text-center space-y-3">
+          <p class="text-sm text-zinc-400">Your quotation cart is empty. Click any service category to add deliverables.</p>
+          <button onclick="navigate('services')" class="px-5 py-2.5 rounded-xl accent-bg text-white text-xs font-extrabold">Explore Services →</button>
+        </div>
+      `;
+      document.getElementById('q-subtotal-val').innerText = formatPrice(0);
+      document.getElementById('q-tax-val').innerText = formatPrice(0);
+      document.getElementById('q-grand-val').innerText = formatPrice(0);
+      return;
+    }
+
+    const subINR = cart.reduce((s, i) => s + Number(i.priceINR || 0), 0);
+    const discPct = scratchUnlocked ? Number(db.visibility?.scratchDiscountPercent || 10) : 0;
+    const discINR = Math.round(subINR * (discPct / 100));
+    const afterDiscINR = subINR - discINR;
+    const gstPct = Number(db.brand.gstPercent || 0);
+    const taxINR = Math.round(afterDiscINR * (gstPct / 100));
+    const grandINR = afterDiscINR + taxINR;
+
+    container.innerHTML = cart.map(item => `
+      <div class="p-4 rounded-2xl bg-[#09090b] border border-[#242429] flex items-center justify-between gap-4">
+        <div>
+          <span class="text-[10px] font-bold uppercase accent-text">${item.categoryTitle} • ${item.billing}</span>
+          <div class="font-bold text-sm text-white">${item.name}</div>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="font-extrabold secondary-text text-sm">${formatPrice(item.priceINR)}</span>
+          <button onclick="removeFromQuoteCart('${item.id}')" class="text-xs font-bold text-rose-400 hover:underline">Remove</button>
+        </div>
+      </div>
+    `).join('');
+
+    document.getElementById('q-subtotal-val').innerText = formatPrice(subINR);
+    if (scratchUnlocked) {
+      document.getElementById('q-discount-row').classList.remove('hidden');
+      document.getElementById('q-discount-lbl').innerText = `VIP Founder Grant (${discPct}% OFF):`;
+      document.getElementById('q-discount-val').innerText = '-' + formatPrice(discINR);
+    } else {
+      document.getElementById('q-discount-row').classList.add('hidden');
+    }
+    document.getElementById('q-tax-lbl').innerText = `Tax / GST (${gstPct}%):`;
+    document.getElementById('q-tax-val').innerText = formatPrice(taxINR);
+    document.getElementById('q-grand-val').innerText = formatPrice(grandINR);
+  };
+
+  window.handleQuoteSubmission = async function (e) {
+    e.preventDefault();
+    if (cart.length === 0) { alert('Please select at least one service first!'); return; }
+    const db = getDB();
+    const name = document.getElementById('q-inp-name').value.trim();
+    const brand = document.getElementById('q-inp-brand').value.trim();
+    const email = document.getElementById('q-inp-email').value.trim();
+    const phone = document.getElementById('q-inp-phone').value.trim();
+    const country = document.getElementById('q-inp-country').value.trim() || 'Global';
+    const notes = document.getElementById('q-inp-notes').value.trim();
+    const sigData = document.getElementById('sig-data-input').value;
+
+    const quoteId = 'QT-' + Math.floor(100000 + Math.random() * 900000);
+    const dateStr = new Date().toLocaleDateString();
+
+    const subINR = cart.reduce((s, i) => s + Number(i.priceINR || 0), 0);
+    const discPct = scratchUnlocked ? Number(db.visibility?.scratchDiscountPercent || 10) : 0;
+    const discINR = Math.round(subINR * (discPct / 100));
+    const afterDiscINR = subINR - discINR;
+    const gstPct = Number(db.brand.gstPercent || 0);
+    const taxINR = Math.round(afterDiscINR * (gstPct / 100));
+    const grandINR = afterDiscINR + taxINR;
+
+    db.leads = db.leads || [];
+    db.leads.unshift({
+      id: quoteId, date: dateStr, client: name, brand, email, phone, country, notes,
+      referredBy: activeReferralCode || 'Direct',
+      signed: Boolean(sigData),
+      items: cart.map(i => i.name).join(', '),
+      totalFormatted: formatPrice(grandINR, true)
+    });
+    db.analytics = db.analytics || { totalViews: 128, quoteClicks: 34, scannerRuns: 19 };
+    db.analytics.quoteClicks = (db.analytics.quoteClicks || 0) + 1;
+    await pushCloudDB(db);
+
+    document.getElementById('pdf-agency-name').innerText = db.brand.name;
+    document.getElementById('pdf-agency-tagline').innerText = db.brand.tagline;
+    document.getElementById('pdf-agency-contact').innerText = `${db.brand.email} | ${db.brand.phone} | ${db.brand.domain}`;
+    document.getElementById('pdf-quote-id').innerText = `Proposal #: ${quoteId}`;
+    document.getElementById('pdf-quote-date').innerText = `Date: ${dateStr}`;
+    document.getElementById('pdf-client-line1').innerText = `${name} — ${brand} (${country})`;
+    document.getElementById('pdf-client-line2').innerText = `${email} | ${phone}${notes ? ' | Note: ' + notes : ''}`;
+
+    document.getElementById('pdf-table-body').innerHTML = cart.map((item, idx) => `
+      <tr style="border-bottom: 1px solid #e4e4e7;">
+        <td style="padding: 11px;">${idx + 1}</td>
+        <td style="padding: 11px;"><strong>${item.name}</strong> (${item.billing})</td>
+        <td style="padding: 11px;">${item.categoryTitle}</td>
+        <td style="padding: 11px; text-align: right; font-weight: 700;">${formatPrice(item.priceINR, true)}</td>
+      </tr>
+    `).join('');
+
+    document.getElementById('pdf-sub').innerText = formatPrice(subINR, true);
+    if (scratchUnlocked) {
+      document.getElementById('pdf-disc-wrap').style.display = 'flex';
+      document.getElementById('pdf-disc').innerText = '-' + formatPrice(discINR, true);
+    } else {
+      document.getElementById('pdf-disc-wrap').style.display = 'none';
+    }
+    document.getElementById('pdf-tax-label').innerText = `Tax / GST (${gstPct}%):`;
+    document.getElementById('pdf-tax').innerText = formatPrice(taxINR, true);
+    document.getElementById('pdf-grand').innerText = formatPrice(grandINR, true);
+    document.getElementById('pdf-terms').innerText = db.brand.quoteTerms || '';
+
+    const sigImg = document.getElementById('pdf-sig-img');
+    if (sigData) { sigImg.src = sigData; sigImg.style.display = 'block'; }
+    else { sigImg.style.display = 'none'; }
+
+    html2pdf().set({
+      margin: 0.3,
+      filename: `${brand.replace(/\s+/g, '_')}_Official_Proposal_${quoteId}.pdf`,
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+    }).from(document.getElementById('pdf-proposal-sheet')).save();
+  };
+
+  window.sendQuoteViaWhatsApp = function () {
+    if (cart.length === 0) { alert('Add at least one service first!'); return; }
+    const db = getDB();
+    const name = document.getElementById('q-inp-name').value.trim() || 'Client';
+    const brand = document.getElementById('q-inp-brand').value.trim() || 'Brand';
+    const subINR = cart.reduce((s, i) => s + Number(i.priceINR || 0), 0);
+    const discPct = scratchUnlocked ? Number(db.visibility?.scratchDiscountPercent || 10) : 0;
+    const grandINR = subINR - Math.round(subINR * (discPct / 100));
+    const itemsTxt = cart.map((i, idx) => `${idx + 1}. ${i.name} (${formatPrice(i.priceINR, true)})`).join('%0A');
+    const waNum = (db.brand.whatsapp || db.brand.phone || '').replace(/[^0-9]/g, '');
+    const text = `Hello *${db.brand.name}*,%0AI am *${name}* from *${brand}*.%0A%0A*Selected Services:*%0A${itemsTxt}%0A%0A*Estimated Total:* ${formatPrice(grandINR, true)}`;
+    window.open(`https://wa.me/${waNum}?text=${text}`, '_blank');
+  };
+
+  window.openDirectWhatsApp = function () {
+    const db = getDB();
+    const waNum = (db.brand.whatsapp || db.brand.phone || '').replace(/[^0-9]/g, '');
+    window.open(`https://wa.me/${waNum}?text=Hello%20${encodeURIComponent(db.brand.name)},%20I%20would%20like%20to%20discuss%20a%20project.`, '_blank');
+  };
+
+  /* 2. Upgrade Page Navigation & Refresh Persistence (Hash + LocalStorage Lock) */
+  function highlightActiveNavbarBtn(pageKey) {
+    document.querySelectorAll('.dnav-btn').forEach(btn => {
+      const active = btn.getAttribute('data-nav') === pageKey;
+      btn.className = `dnav-btn px-3 py-1.5 rounded-lg text-xs font-bold transition whitespace-nowrap ${active ? 'bg-white text-zinc-950 shadow' : 'text-zinc-300 hover:text-white'}`;
+    });
+  }
+
+  window.navigate = function (pageId, isInitialRestore = false) {
+    if (!isInitialRestore && typeof playUISound === 'function') playUISound(540, 0.04);
+    const db = getDB();
+    document.querySelectorAll('.spa-view').forEach(sec => sec.classList.add('hidden'));
+
+    let resolvedPage = pageId || 'home';
+    if (resolvedPage.startsWith('custom:')) {
+      const slug = resolvedPage.replace('custom:', '');
+      const cPage = (db.customPages || []).find(p => p.slug === slug || p.id === slug);
+      if (cPage) {
+        renderCustomPageView(cPage);
+        document.getElementById('view-custom-page').classList.remove('hidden');
+      } else {
+        document.getElementById('view-home').classList.remove('hidden');
+        resolvedPage = 'home';
+      }
+    } else {
+      const valid = corePages.includes(resolvedPage) ? resolvedPage : 'home';
+      resolvedPage = valid;
+      const el = document.getElementById('view-' + valid);
+      if (el) el.classList.remove('hidden');
+    }
+
+    /* Save active page in both localStorage and URL Hash so Refresh NEVER resets to Home */
+    localStorage.setItem(ACTIVE_PAGE_MEMORY_KEY, resolvedPage);
+    if (window.location.hash !== '#' + resolvedPage) {
+      try { history.replaceState(null, null, '#' + resolvedPage); } catch (e) { window.location.hash = resolvedPage; }
+    }
+
+    highlightActiveNavbarBtn(resolvedPage);
+    if (!isInitialRestore) window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  window.restorePageFromHash = function () {
+    const hashVal = (window.location.hash || '').replace('#', '').trim();
+    const savedPage = localStorage.getItem(ACTIVE_PAGE_MEMORY_KEY) || 'home';
+    const target = hashVal || savedPage || 'home';
+    window.navigate(target, true);
+  };
+
+  /* 3. Dynamic 26 Google Fonts Loader + Keep Active Page Highlighted on Cloud Re-Render */
+  const loadedFontsSet = new Set(['Space Grotesk', 'Plus Jakarta Sans', 'Inter', 'Outfit', 'Syne', 'Playfair Display']);
+  function loadGoogleFontIfNeeded(fontName) {
+    if (!fontName || loadedFontsSet.has(fontName)) return;
+    loadedFontsSet.add(fontName);
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css2?family=' + encodeURIComponent(fontName) + ':wght@400;500;600;700;800&display=swap';
+    document.head.appendChild(link);
+  }
+
+  const baseRenderAll = window.renderAll;
+  window.renderAll = function () {
+    if (typeof baseRenderAll === 'function') baseRenderAll();
+    const db = getDB();
+    loadGoogleFontIfNeeded(db.theme?.fontHeading);
+    loadGoogleFontIfNeeded(db.theme?.fontBody);
+    const currentActive = (window.location.hash || '').replace('#', '') || localStorage.getItem(ACTIVE_PAGE_MEMORY_KEY) || 'home';
+    highlightActiveNavbarBtn(currentActive);
+  };
+</script>
+<!-- ==================== INDEX.HTML : PERMANENT FIX COMPLETE ==================== -->
