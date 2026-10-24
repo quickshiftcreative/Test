@@ -3010,3 +3010,191 @@
   })();
 </script>
 <!-- ==================== INDEX.HTML : DYNAMIC LOADING SCREEN PATCH COMPLETE ==================== -->
+<!-- ==================== INDEX.HTML : UNTHINKABLE VIRAL FEATURES PATCH (PASTE AT VERY BOTTOM) ==================== -->
+<!-- 1. Smart Exit-Intent Founder's VIP Audit Popup -->
+<div id="exit-intent-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+  <div class="liquid-glass rounded-3xl max-w-lg w-full p-7 sm:p-8 text-center space-y-5 border border-indigo-500/40 shadow-2xl relative">
+    <button onclick="closeExitIntentModal()" class="absolute top-4 right-4 w-8 h-8 rounded-xl charcoal-card text-zinc-400 hover:text-white font-bold">✕</button>
+    <span class="px-3.5 py-1 rounded-full text-[10px] font-extrabold uppercase bg-amber-400/20 text-amber-300 border border-amber-400/40">⚡ Founder's Priority Grant</span>
+    <h3 id="exit-modal-heading" class="text-2xl sm:text-3xl font-bold text-white leading-tight">
+      Wait! Claim Your Free Marketplace & 3D Brand Audit Before You Leave
+    </h3>
+    <p class="text-xs sm:text-sm text-zinc-300 leading-relaxed">
+      Get a personalized 5-point teardown of your Amazon/Flipkart catalog, Quick-Commerce readiness, and 3D visual conversion gaps directly from our strategy desk.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-3 pt-2">
+      <button onclick="claimExitAuditOnWhatsApp()" class="flex-1 py-3.5 rounded-xl secondary-bg text-zinc-950 font-extrabold text-xs shadow-xl">
+        💬 Claim Free Brand Audit on WhatsApp →
+      </button>
+      <button onclick="closeExitIntentModal(); navigate('quotation');" class="px-5 py-3.5 rounded-xl charcoal-card text-white font-bold text-xs">
+        Build Instant Quote
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- 2. Real-Time Social Proof "FOMO Pulse" Notification Pill -->
+<div id="fomo-pulse-toast" class="fixed bottom-20 left-5 z-40 max-w-xs transform translate-y-12 opacity-0 pointer-events-none transition-all duration-500">
+  <div class="liquid-glass rounded-2xl p-3.5 flex items-center gap-3 border border-emerald-500/30 shadow-2xl">
+    <div class="w-9 h-9 rounded-xl secondary-bg text-zinc-950 flex items-center justify-center font-black text-sm shrink-0">⚡</div>
+    <div class="text-[11px] leading-snug">
+      <strong id="fomo-pulse-title" class="text-white block">D2C Electronics Brand • Mumbai</strong>
+      <span id="fomo-pulse-desc" class="text-zinc-300">Just unlocked a 10% VIP Grant & downloaded a PDF Proposal</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    /* 1. Inject Interactive Marketplace Profit vs. Organic SEO Margin Calculator into Home Viral Suite */
+    const viralSuite = document.getElementById('home-block-viral-suite');
+    if (viralSuite && !document.getElementById('organic-profit-calc-card')) {
+      const calcCard = document.createElement('div');
+      calcCard.id = 'organic-profit-calc-card';
+      calcCard.className = 'charcoal-card rounded-3xl p-6 sm:p-8 space-y-6 border border-indigo-500/30';
+      calcCard.innerHTML = `
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#242429] pb-4">
+          <div>
+            <span class="px-3 py-1 rounded-full text-[10px] font-extrabold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">🧮 D2C & MARKETPLACE UNIT ECONOMICS LAB</span>
+            <h3 class="text-xl sm:text-2xl font-bold text-white mt-2">Organic Ranking vs. Heavy PPC Profit Margin Calculator</h3>
+            <p class="text-xs text-zinc-400">See how much net profit you save every month by scaling organic A10/Flipkart search rank & A+ conversion vs. burning money on high ACOS ads.</p>
+          </div>
+          <div class="text-left sm:text-right shrink-0">
+            <span class="text-[10px] uppercase font-bold text-zinc-400 block">Extra Monthly Profit Unlocked</span>
+            <strong id="calc-extra-profit" class="text-2xl sm:text-3xl font-black text-emerald-400">+₹1,35,000 / mo</strong>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="p-4 rounded-2xl bg-[#09090b] border border-[#242429]">
+            <label class="text-[11px] font-bold text-zinc-400 block mb-1">Selling Price per Unit</label>
+            <input type="number" id="ec-price" value="1499" oninput="runMarginLab()" class="w-full px-3 py-2 rounded-xl matte-input text-sm font-extrabold" />
+          </div>
+          <div class="p-4 rounded-2xl bg-[#09090b] border border-[#242429]">
+            <label class="text-[11px] font-bold text-zinc-400 block mb-1">Product + Referral/FBA Cost</label>
+            <input type="number" id="ec-cost" value="650" oninput="runMarginLab()" class="w-full px-3 py-2 rounded-xl matte-input text-sm font-extrabold" />
+          </div>
+          <div class="p-4 rounded-2xl bg-[#09090b] border border-[#242429]">
+            <label class="text-[11px] font-bold text-zinc-400 block mb-1">Monthly Orders Volume</label>
+            <input type="number" id="ec-orders" value="1000" oninput="runMarginLab()" class="w-full px-3 py-2 rounded-xl matte-input text-sm font-extrabold" />
+          </div>
+          <div class="p-4 rounded-2xl bg-[#09090b] border border-[#242429]">
+            <label class="text-[11px] font-bold text-rose-400 block mb-1">Current Ad Spend (ACOS / TACOS %)</label>
+            <input type="number" id="ec-acos" value="22" min="1" max="80" oninput="runMarginLab()" class="w-full px-3 py-2 rounded-xl matte-input text-sm font-extrabold text-rose-400" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center p-4 rounded-2xl bg-[#09090b] border border-white/10 text-xs">
+          <div>
+            <span class="text-zinc-400 block">Current Net Profit (Heavy Ads):</span>
+            <strong id="ec-curr-profit" class="text-base font-bold text-zinc-200">₹5,19,220 / mo</strong>
+          </div>
+          <div>
+            <span class="text-emerald-300 block">Projected Net Profit (With Organic SEO + A+):</span>
+            <strong id="ec-org-profit" class="text-base font-extrabold text-emerald-400">₹6,54,130 / mo</strong>
+          </div>
+          <button onclick="navigate('quotation')" class="py-3 px-4 rounded-xl accent-bg text-white font-extrabold text-xs text-center shadow-lg">
+            Lock In Organic Scale Roadmap →
+          </button>
+        </div>
+      `;
+      viralSuite.appendChild(calcCard);
+    }
+
+    window.runMarginLab = function () {
+      const price = Number(document.getElementById('ec-price')?.value || 1499);
+      const cost = Number(document.getElementById('ec-cost')?.value || 650);
+      const orders = Number(document.getElementById('ec-orders')?.value || 1000);
+      const acos = Number(document.getElementById('ec-acos')?.value || 22);
+
+      const grossRev = price * orders;
+      const adSpendCurr = grossRev * (acos / 100);
+      const currNet = Math.max(0, (price - cost) * orders - adSpendCurr);
+
+      /* With Organic Listing SEO + High-CTR 3D Infographics: TACOS drops by ~40% and conversion lifts orders by 18% */
+      const newOrders = Math.round(orders * 1.18);
+      const newGross = price * newOrders;
+      const optimizedTacos = Math.max(5, acos * 0.58);
+      const newAdSpend = newGross * (optimizedTacos / 100);
+      const orgNet = Math.max(0, (price - cost) * newOrders - newAdSpend);
+      const diff = Math.max(0, Math.round(orgNet - currNet));
+
+      const elCurr = document.getElementById('ec-curr-profit');
+      const elOrg = document.getElementById('ec-org-profit');
+      const elDiff = document.getElementById('calc-extra-profit');
+      if (elCurr) elCurr.innerText = formatPrice(Math.round(currNet), true) + ' / mo';
+      if (elOrg) elOrg.innerText = formatPrice(Math.round(orgNet), true) + ' / mo';
+      if (elDiff) elDiff.innerText = '+' + formatPrice(diff, true) + ' / mo';
+    };
+
+    /* 2. Real-Time Social Proof "FOMO Pulse" Engine */
+    const fomoEvents = [
+      { t: 'D2C Mobile Accessories Brand • Mumbai', d: 'Just unlocked the 10% VIP Grant & downloaded a PDF Quote' },
+      { t: 'Consumer Electronics Founder • Delhi NCR', d: 'Ran the 10-Second AI Brand Revenue Leak Scanner' },
+      { t: 'Luxury Grooming Brand • Dubai, UAE', d: 'Requested Quick-Commerce & 3D Packaging Onboarding' },
+      { t: 'Amazon Global Seller • Surat, Gujarat', d: 'Approved A+ Cataloging & 3D Infographic Milestone' },
+      { t: 'D2C Lifestyle Brand • Bengaluru', d: 'Submitted a 30-Second Walkie-Talkie Voice Brief' }
+    ];
+    let fomoIdx = 0;
+
+    setInterval(() => {
+      const db = getDB();
+      if (db.boosters && db.boosters.fomoPulse === false) return;
+      const toast = document.getElementById('fomo-pulse-toast');
+      if (!toast) return;
+
+      const ev = fomoEvents[fomoIdx % fomoEvents.length];
+      fomoIdx++;
+      document.getElementById('fomo-pulse-title').innerText = ev.t;
+      document.getElementById('fomo-pulse-desc').innerText = ev.d;
+
+      toast.classList.remove('translate-y-12', 'opacity-0');
+      setTimeout(() => {
+        toast.classList.add('translate-y-12', 'opacity-0');
+      }, 4800);
+    }, 24000);
+
+    /* 3. Smart Exit-Intent VIP Popup (Once Per Session when mouse leaves top of window) */
+    window.closeExitIntentModal = function () {
+      document.getElementById('exit-intent-modal').classList.add('hidden');
+      document.getElementById('exit-intent-modal').classList.remove('flex');
+    };
+
+    window.claimExitAuditOnWhatsApp = function () {
+      const db = getDB();
+      const waNum = (db.brand.whatsapp || db.brand.phone || '').replace(/[^0-9]/g, '');
+      const msg = encodeURIComponent(`Hello *${db.brand.name}*, I would like to claim my *Free 5-Point Marketplace & 3D Brand Audit*!`);
+      window.open(`https://wa.me/${waNum}?text=${msg}`, '_blank');
+      window.closeExitIntentModal();
+    };
+
+    document.addEventListener('mouseleave', (e) => {
+      if (e.clientY <= 5 && !sessionStorage.getItem('OG_EXIT_SHOWN_V5')) {
+        const db = getDB();
+        if (db.boosters && db.boosters.exitIntent === false) return;
+        sessionStorage.setItem('OG_EXIT_SHOWN_V5', '1');
+        if (db.boosters?.exitTitle) {
+          document.getElementById('exit-modal-heading').innerText = db.boosters.exitTitle;
+        }
+        const m = document.getElementById('exit-intent-modal');
+        m.classList.remove('hidden');
+        m.classList.add('flex');
+      }
+    });
+
+    /* Sync Booster Visibility with RenderAll */
+    const prevRenderAll = window.renderAll;
+    window.renderAll = function () {
+      if (typeof prevRenderAll === 'function') prevRenderAll();
+      const db = getDB();
+      const calcEl = document.getElementById('organic-profit-calc-card');
+      if (calcEl) {
+        calcEl.classList.toggle('hidden', db.boosters?.profitCalc === false);
+      }
+      window.runMarginLab();
+    };
+
+    setTimeout(() => window.runMarginLab(), 600);
+  })();
+</script>
+<!-- ==================== INDEX.HTML : UNTHINKABLE VIRAL FEATURES PATCH COMPLETE ==================== -->
