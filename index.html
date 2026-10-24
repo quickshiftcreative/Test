@@ -2616,3 +2616,296 @@
   };
 </script>
 <!-- ==================== INDEX.HTML : PERMANENT FIX COMPLETE ==================== -->
+<!-- ==================== INDEX.HTML : MASTER RECOVERY PATCH (PASTE AT VERY BOTTOM) ==================== -->
+<script>
+  (function () {
+    const ACTIVE_PAGE_MEMORY_KEY = 'OG_DESK_LAST_ACTIVE_PAGE_V5';
+
+    /* 1. Smart Geo-Currency Detection on First Visit */
+    if (!localStorage.getItem(CURRENCY_STORAGE_KEY)) {
+      try {
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (tz.includes('Dubai') || tz.includes('Muscat') || tz.includes('Riyadh')) activeCurrency = 'AED';
+        else if (tz.includes('Calcutta') || tz.includes('Kolkata') || tz.includes('Asia/Colombo')) activeCurrency = 'INR';
+        else activeCurrency = 'USD';
+        localStorage.setItem(CURRENCY_STORAGE_KEY, activeCurrency);
+      } catch (e) {}
+    }
+
+    /* 2. Dynamic 26 Google Fonts Loader */
+    const loadedFontsSet = new Set(['Space Grotesk', 'Plus Jakarta Sans', 'Inter', 'Outfit', 'Syne', 'Playfair Display']);
+    function ensureFontLoaded(fontName) {
+      if (!fontName || loadedFontsSet.has(fontName)) return;
+      loadedFontsSet.add(fontName);
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://fonts.googleapis.com/css2?family=' + encodeURIComponent(fontName) + ':wght@400;500;600;700;800&display=swap';
+      document.head.appendChild(link);
+    }
+
+    /* 3. Complete Service Modal, Cart, PDF & WhatsApp Recovery */
+    window.openServiceModal = function (catId) {
+      if (typeof playUISound === 'function') playUISound(580, 0.04);
+      const db = getDB();
+      const cat = (db.services || []).find(c => c.id === catId);
+      if (!cat) return;
+
+      document.getElementById('smodal-badge').innerText = cat.badge || '';
+      document.getElementById('smodal-title').innerText = cat.title || '';
+      document.getElementById('smodal-desc').innerText = cat.description || '';
+
+      const mediaPreview = document.getElementById('smodal-media-preview');
+      if (cat.mediaUrl) {
+        mediaPreview.classList.remove('hidden');
+        mediaPreview.innerHTML = (cat.mediaUrl.startsWith('data:video') || cat.mediaUrl.endsWith('.mp4'))
+          ? `<video src="${cat.mediaUrl}" autoplay loop muted controls class="w-full h-48 object-cover"></video>`
+          : `<img src="${cat.mediaUrl}" class="w-full h-48 object-cover" />`;
+      } else {
+        mediaPreview.classList.add('hidden');
+      }
+
+      document.getElementById('smodal-add-all').onclick = () => {
+        (cat.subServices || []).forEach(sub => {
+          if (!cart.some(i => i.id === sub.id)) cart.push({ ...sub, categoryTitle: cat.title });
+        });
+        window.saveCart();
+        window.openServiceModal(catId);
+      };
+
+      document.getElementById('smodal-sublist').innerHTML = (cat.subServices || []).map(sub => {
+        const added = cart.some(i => i.id === sub.id);
+        return `
+          <div class="p-4 rounded-2xl bg-[#09090b]/90 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <div class="font-bold text-sm text-white">${sub.name}</div>
+              <div class="text-xs text-zinc-400 mt-0.5">${sub.billing} • <span class="secondary-text font-extrabold">${formatPrice(sub.priceINR)}</span></div>
+            </div>
+            <button onclick="toggleCartSubItem('${cat.id}', '${sub.id}')" class="px-4 py-2.5 rounded-xl font-extrabold text-xs shrink-0 transition ${added ? 'bg-emerald-500/25 border border-emerald-400 text-emerald-300' : 'accent-bg text-white'}">
+              ${added ? '✓ Added (Remove)' : '+ Add to Quotation'}
+            </button>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('service-modal').classList.remove('hidden');
+      document.getElementById('service-modal').classList.add('flex');
+    };
+
+    window.closeServiceModal = function () {
+      document.getElementById('service-modal').classList.add('hidden');
+      document.getElementById('service-modal').classList.remove('flex');
+    };
+
+    window.toggleCartSubItem = function (catId, subId) {
+      if (typeof playUISound === 'function') playUISound(640, 0.04);
+      const db = getDB();
+      const cat = (db.services || []).find(c => c.id === catId);
+      if (!cat) return;
+      const sub = (cat.subServices || []).find(s => s.id === subId);
+      if (!sub) return;
+
+      const idx = cart.findIndex(i => i.id === subId);
+      if (idx > -1) cart.splice(idx, 1);
+      else cart.push({ ...sub, categoryTitle: cat.title });
+      window.saveCart();
+      window.openServiceModal(catId);
+    };
+
+    window.removeFromQuoteCart = function (subId) {
+      cart = cart.filter(i => i.id !== subId);
+      window.saveCart();
+    };
+
+    window.saveCart = function () {
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+      window.renderQuoteCartUI();
+    };
+
+    window.renderQuoteCartUI = function () {
+      const db = getDB();
+      const badgeEl = document.getElementById('nav-cart-badge');
+      const srvCounterEl = document.getElementById('srv-cart-counter');
+      if (badgeEl) badgeEl.innerText = cart.length;
+      if (srvCounterEl) srvCounterEl.innerText = cart.length;
+
+      const container = document.getElementById('quote-items-container');
+      if (!container) return;
+
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="p-8 rounded-2xl bg-[#09090b] border border-[#242429] text-center space-y-3">
+            <p class="text-sm text-zinc-400">Your quotation cart is empty. Click any service category to add deliverables.</p>
+            <button onclick="navigate('services')" class="px-5 py-2.5 rounded-xl accent-bg text-white text-xs font-extrabold">Explore Services →</button>
+          </div>
+        `;
+        document.getElementById('q-subtotal-val').innerText = formatPrice(0);
+        document.getElementById('q-tax-val').innerText = formatPrice(0);
+        document.getElementById('q-grand-val').innerText = formatPrice(0);
+        return;
+      }
+
+      const subINR = cart.reduce((s, i) => s + Number(i.priceINR || 0), 0);
+      const discPct = scratchUnlocked ? Number(db.visibility?.scratchDiscountPercent || 10) : 0;
+      const discINR = Math.round(subINR * (discPct / 100));
+      const afterDiscINR = subINR - discINR;
+      const gstPct = Number(db.brand.gstPercent || 0);
+      const taxINR = Math.round(afterDiscINR * (gstPct / 100));
+      const grandINR = afterDiscINR + taxINR;
+
+      container.innerHTML = cart.map(item => `
+        <div class="p-4 rounded-2xl bg-[#09090b] border border-[#242429] flex items-center justify-between gap-4">
+          <div>
+            <span class="text-[10px] font-bold uppercase accent-text">${item.categoryTitle} • ${item.billing}</span>
+            <div class="font-bold text-sm text-white">${item.name}</div>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="font-extrabold secondary-text text-sm">${formatPrice(item.priceINR)}</span>
+            <button onclick="removeFromQuoteCart('${item.id}')" class="text-xs font-bold text-rose-400 hover:underline">Remove</button>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('q-subtotal-val').innerText = formatPrice(subINR);
+      if (scratchUnlocked) {
+        document.getElementById('q-discount-row').classList.remove('hidden');
+        document.getElementById('q-discount-lbl').innerText = `VIP Founder Grant (${discPct}% OFF):`;
+        document.getElementById('q-discount-val').innerText = '-' + formatPrice(discINR);
+      } else {
+        document.getElementById('q-discount-row').classList.add('hidden');
+      }
+      document.getElementById('q-tax-lbl').innerText = `Tax / GST (${gstPct}%):`;
+      document.getElementById('q-tax-val').innerText = formatPrice(taxINR);
+      document.getElementById('q-grand-val').innerText = formatPrice(grandINR);
+    };
+
+    window.sendQuoteViaWhatsApp = function () {
+      if (cart.length === 0) { alert('Add at least one service first!'); return; }
+      const db = getDB();
+      const name = document.getElementById('q-inp-name').value.trim() || 'Client';
+      const brand = document.getElementById('q-inp-brand').value.trim() || 'Brand';
+      const subINR = cart.reduce((s, i) => s + Number(i.priceINR || 0), 0);
+      const discPct = scratchUnlocked ? Number(db.visibility?.scratchDiscountPercent || 10) : 0;
+      const grandINR = subINR - Math.round(subINR * (discPct / 100));
+      const itemsTxt = cart.map((i, idx) => `${idx + 1}. ${i.name} (${formatPrice(i.priceINR, true)})`).join('%0A');
+      const waNum = (db.brand.whatsapp || db.brand.phone || '').replace(/[^0-9]/g, '');
+      const text = `Hello *${db.brand.name}*,%0AI am *${name}* from *${brand}*.%0A%0A*Selected Services:*%0A${itemsTxt}%0A%0A*Estimated Total:* ${formatPrice(grandINR, true)}`;
+      window.open(`https://wa.me/${waNum}?text=${text}`, '_blank');
+    };
+
+    window.openDirectWhatsApp = function () {
+      const db = getDB();
+      const waNum = (db.brand.whatsapp || db.brand.phone || '').replace(/[^0-9]/g, '');
+      window.open(`https://wa.me/${waNum}?text=Hello%20${encodeURIComponent(db.brand.name)},%20I%20would%20like%20to%20discuss%20a%20project.`, '_blank');
+    };
+
+    /* 4. Fix Logo Image/Text, Agency Phone/WhatsApp/Email Sync in Footer & Contact Page */
+    function highlightActiveNavbarBtn(pageKey) {
+      document.querySelectorAll('.dnav-btn').forEach(btn => {
+        const active = btn.getAttribute('data-nav') === pageKey;
+        btn.className = `dnav-btn px-3 py-1.5 rounded-lg text-xs font-bold transition whitespace-nowrap ${active ? 'bg-white text-zinc-950 shadow' : 'text-zinc-300 hover:text-white'}`;
+      });
+    }
+
+    const baseRender = window.renderAll;
+    window.renderAll = function () {
+      if (typeof baseRender === 'function') baseRender();
+      const db = getDB();
+
+      ensureFontLoaded(db.theme?.fontHeading);
+      ensureFontLoaded(db.theme?.fontBody);
+
+      /* Fix Logo Box (Supports Image Logo OR Custom Logo Text OR Brand Initials + Custom Size) */
+      const logoBox = document.getElementById('nav-logo-box');
+      if (logoBox) {
+        const sz = Number(db.brand.logoSize || 40);
+        logoBox.style.width = sz + 'px';
+        logoBox.style.height = sz + 'px';
+        if (db.brand.logo && db.brand.logo.trim() !== '') {
+          logoBox.innerHTML = `<img src="${db.brand.logo}" alt="Logo" class="w-full h-full object-cover" />`;
+        } else {
+          const txt = (db.brand.logoText || db.brand.name || 'BP').trim().substring(0, 3).toUpperCase();
+          logoBox.innerHTML = `<span>${txt}</span>`;
+        }
+      }
+
+      /* Sync Agency Phone, WhatsApp & Email into Footer & Contact Page */
+      const ftDomainEl = document.getElementById('ft-brand-domain');
+      if (ftDomainEl) {
+        ftDomainEl.innerHTML = `
+          <span class="block text-zinc-400">${db.brand.domain || ''}</span>
+          <span class="block text-emerald-400 font-bold mt-1">📞 ${db.brand.phone || ''} &nbsp;|&nbsp; ✉️ ${db.brand.email || ''}</span>
+        `;
+      }
+
+      /* Also show Primary Agency Contact Bar on Contact Page */
+      const studiosGrid = document.getElementById('studios-hub-grid');
+      if (studiosGrid && (db.studios || []).length > 0) {
+        /* Keep studio #1 phone/email synced if user updated main brand phone/email */
+        const stList = db.studios.map((st, i) => {
+          const phoneToShow = (i === 0 && db.brand.phone) ? db.brand.phone : st.phone;
+          const emailToShow = (i === 0 && db.brand.email) ? db.brand.email : st.email;
+          return `
+            <div class="liquid-glass rounded-3xl p-6 space-y-3 flex flex-col justify-between">
+              <div>
+                <span class="text-[11px] font-extrabold uppercase tracking-widest secondary-text">(0${i + 1}) ${st.country}</span>
+                <h3 class="text-xl font-bold text-white mt-1">${st.city}</h3>
+                <p class="text-xs text-zinc-400 mt-2">${st.address}</p>
+              </div>
+              <div class="pt-4 border-t border-white/10 space-y-1 text-xs">
+                <a href="tel:${phoneToShow}" class="font-bold text-white block hover:text-emerald-400">📞 ${phoneToShow}</a>
+                <a href="mailto:${emailToShow}" class="text-zinc-300 block hover:text-white">✉️ ${emailToShow}</a>
+              </div>
+            </div>
+          `;
+        });
+        studiosGrid.innerHTML = stList.join('');
+      }
+
+      const currentActive = (window.location.hash || '').replace('#', '') || localStorage.getItem(ACTIVE_PAGE_MEMORY_KEY) || 'home';
+      highlightActiveNavbarBtn(currentActive);
+    };
+
+    /* 5. Lock Active Page on Refresh */
+    window.navigate = function (pageId, isInitialRestore = false) {
+      if (!isInitialRestore && typeof playUISound === 'function') playUISound(540, 0.04);
+      const db = getDB();
+      document.querySelectorAll('.spa-view').forEach(sec => sec.classList.add('hidden'));
+
+      let resolvedPage = pageId || 'home';
+      if (resolvedPage.startsWith('custom:')) {
+        const slug = resolvedPage.replace('custom:', '');
+        const cPage = (db.customPages || []).find(p => p.slug === slug || p.id === slug);
+        if (cPage) {
+          renderCustomPageView(cPage);
+          document.getElementById('view-custom-page').classList.remove('hidden');
+        } else {
+          document.getElementById('view-home').classList.remove('hidden');
+          resolvedPage = 'home';
+        }
+      } else {
+        const valid = corePages.includes(resolvedPage) ? resolvedPage : 'home';
+        resolvedPage = valid;
+        const el = document.getElementById('view-' + valid);
+        if (el) el.classList.remove('hidden');
+      }
+
+      localStorage.setItem(ACTIVE_PAGE_MEMORY_KEY, resolvedPage);
+      if (window.location.hash !== '#' + resolvedPage) {
+        try { history.replaceState(null, null, '#' + resolvedPage); } catch (e) { window.location.hash = resolvedPage; }
+      }
+      highlightActiveNavbarBtn(resolvedPage);
+      if (!isInitialRestore) window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    window.restorePageFromHash = function () {
+      const hashVal = (window.location.hash || '').replace('#', '').trim();
+      const savedPage = localStorage.getItem(ACTIVE_PAGE_MEMORY_KEY) || 'home';
+      window.navigate(hashVal || savedPage || 'home', true);
+    };
+
+    /* Re-run initialization cleanly */
+    window.renderAll();
+    window.restorePageFromHash();
+  })();
+</script>
+<!-- ==================== INDEX.HTML : MASTER RECOVERY PATCH COMPLETE ==================== -->
