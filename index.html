@@ -4021,3 +4021,271 @@
   })();
 </script>
 <!-- ==================== INDEX.HTML : MASTER RESPONSIVE & FULL-STACK TOOLS PATCH COMPLETE ==================== -->
+<!-- ==================== INDEX.HTML : PC + TABLET + MOBILE UI RECOVERY & MENU FIX PATCH (PASTE AT VERY BOTTOM) ==================== -->
+<script>
+  /* 1. Automatically Remove the Previous Broken CSS Patches */
+  ['master-centered-luxury-ui', 'master-responsive-luxury-fix'].forEach(function (badId) {
+    const badEl = document.getElementById(badId);
+    if (badEl) badEl.remove();
+  });
+</script>
+
+<style id="clean-multi-device-ui-v6">
+  /* ================= 1. GLOBAL RESET & ZERO OVERLAP ================= */
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Center Main Section Titles & Subtitles Cleanly on PC, Tablet & Phone */
+  #home-srv-eyebrow, #home-srv-heading,
+  #home-work-eyebrow, #home-work-heading,
+  #process-main-heading, #awards-main-heading,
+  #srv-page-eyebrow, #srv-page-heading, #srv-page-sub,
+  #quote-page-heading, #quote-page-sub,
+  #pf-page-heading, #pf-page-sub,
+  #tr-page-heading, #tr-page-sub,
+  #faq-main-heading,
+  #contact-main-heading, #contact-main-sub {
+    text-align: center !important;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  #home-block-services > div:first-child,
+  #home-block-work > div:first-child,
+  #home-block-process > div:first-child,
+  #home-block-awards > div:first-child,
+  #view-services > .border-b,
+  #view-quotation > .border-b,
+  #view-portfolio > .border-b,
+  #view-reviews > .border-b,
+  #view-contact > .border-b {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 0.75rem !important;
+  }
+
+  #service-filter-bar {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+  }
+
+  /* ================= 2. HERO SECTION: TEXT FIRST, IMAGE BELOW (MOBILE/TABLET) & RIGHT (PC) ================= */
+  #hero-text-col {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  #hero-main-heading {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    line-height: 1.12 !important;
+  }
+  #hero-sub-text {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 640px !important;
+  }
+  #hero-pills-container {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+  }
+  #hero-text-col > div:last-child {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 0.75rem !important;
+    width: 100% !important;
+  }
+
+  /* ================= 3. PC / DESKTOP UI (1024px and above) ================= */
+  @media (min-width: 1024px) {
+    #hero-layout-grid {
+      display: grid !important;
+      grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+      gap: 2.5rem !important;
+      align-items: center !important;
+    }
+    #hero-text-col {
+      grid-column: span 7 / span 7 !important;
+      order: 1 !important;
+    }
+    #hero-3d-wrapper {
+      grid-column: span 5 / span 5 !important;
+      order: 2 !important;
+    }
+    #mobile-tablet-menu-bar {
+      display: none !important;
+    }
+    #desktop-nav-links {
+      display: flex !important;
+    }
+  }
+
+  /* ================= 4. TABLET (iPad) & PHONE UI (Below 1024px) ================= */
+  @media (max-width: 1023px) {
+    /* Hero Text on TOP (order 1), Hero Image BELOW (order 2) - Just Like Before! */
+    #hero-layout-grid {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 2rem !important;
+      align-items: center !important;
+    }
+    #hero-text-col {
+      order: 1 !important;
+      width: 100% !important;
+    }
+    #hero-3d-wrapper {
+      order: 2 !important;
+      width: 100% !important;
+      min-height: 320px !important;
+    }
+
+    /* Hide Hamburger Button & Show Direct Horizontal Menu Bar on Phone & Tablet */
+    button[onclick="toggleHamburgerDrawer()"] {
+      display: none !important;
+    }
+    #desktop-nav-links {
+      display: none !important;
+    }
+    #mobile-tablet-menu-bar {
+      display: flex !important;
+      align-items: center !important;
+      gap: 0.45rem !important;
+      overflow-x: auto !important;
+      white-space: nowrap !important;
+      padding: 0.55rem 0.75rem !important;
+      margin-top: 0.45rem !important;
+      border-radius: 1rem !important;
+      scrollbar-width: none !important;
+      -ms-overflow-style: none !important;
+    }
+    #mobile-tablet-menu-bar::-webkit-scrollbar {
+      display: none !important;
+    }
+  }
+
+  /* ================= 5. PHONE SCREEN COMPACT HEADER (Keep Cart & Buttons 100% Visible) ================= */
+  @media (max-width: 639px) {
+    #navbar-shell {
+      padding: 0.6rem 0.75rem !important;
+      gap: 0.4rem !important;
+    }
+    #nav-logo-box {
+      width: 34px !important;
+      height: 34px !important;
+      font-size: 0.75rem !important;
+    }
+    #nav-brand-name {
+      font-size: 0.85rem !important;
+      max-width: 125px !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      white-space: nowrap !important;
+    }
+    #nav-brand-tagline {
+      display: none !important;
+    }
+    #currency-switcher {
+      padding: 0.35rem 0.45rem !important;
+      font-size: 0.7rem !important;
+    }
+    #hero-main-heading {
+      font-size: 2rem !important;
+    }
+    #hero-btn-primary, #hero-btn-secondary {
+      width: 100% !important;
+      padding-top: 0.85rem !important;
+      padding-bottom: 0.85rem !important;
+    }
+    /* Keep bottom floating buttons neat so they don't cover content */
+    body {
+      padding-bottom: 80px !important;
+    }
+    .fixed.bottom-5.right-5 {
+      bottom: 12px !important;
+      right: 12px !important;
+      left: 12px !important;
+      justify-content: center !important;
+    }
+  }
+
+  /* Center Stats & Process Cards Content Cleanly */
+  #home-block-stats .charcoal-card,
+  #process-steps-grid .charcoal-card {
+    text-align: center !important;
+  }
+</style>
+
+<script>
+  (function () {
+    /* Create Direct Visible Menu Bar for Phone & Tablet (No Hamburger Needed) */
+    const headerEl = document.querySelector('header.sticky');
+    const navShell = document.getElementById('navbar-shell');
+    if (headerEl && navShell && !document.getElementById('mobile-tablet-menu-bar')) {
+      const mobileBar = document.createElement('nav');
+      mobileBar.id = 'mobile-tablet-menu-bar';
+      mobileBar.className = 'max-w-7xl mx-auto liquid-glass';
+      navShell.insertAdjacentElement('afterend', mobileBar);
+    }
+
+    function syncMobileTabletMenuBar() {
+      const mobileBar = document.getElementById('mobile-tablet-menu-bar');
+      const desktopNav = document.getElementById('desktop-nav-links');
+      if (!mobileBar || !desktopNav) return;
+
+      const currentActive = (window.location.hash || '').replace('#', '') || localStorage.getItem('OG_DESK_LAST_ACTIVE_PAGE_V5') || 'home';
+      const db = getDB();
+      const navItems = [
+        { id: 'home', label: '🏠 Home' },
+        { id: 'services', label: '⚡ Services' },
+        { id: 'quotation', label: '🛒 Quote (' + (cart ? cart.length : 0) + ')' },
+        { id: 'portfolio', label: '🎬 Work' },
+        { id: 'tracker', label: '📊 Client Tracker' },
+        { id: 'about', label: '👥 About' },
+        { id: 'reviews', label: '★ Reviews' },
+        { id: 'contact', label: '📞 Contact' },
+        ...(db.customPages || []).map(cp => ({ id: 'custom:' + cp.slug, label: '📄 ' + (cp.navLabel || cp.title) }))
+      ];
+
+      mobileBar.innerHTML = navItems.map(item => {
+        const isAct = item.id === currentActive;
+        return `<button onclick="navigate('${item.id}')" data-mnav="${item.id}" class="px-3.5 py-1.5 rounded-xl text-xs font-extrabold transition shrink-0 ${isAct ? 'bg-white text-zinc-950 shadow-md' : 'bg-black/50 text-zinc-200 border border-white/10 hover:text-white'}">${item.label}</button>`;
+      }).join('');
+    }
+
+    /* Hook into renderAll & navigate so Phone/Tablet Menu and Cart Badge stay 100% synced */
+    const oldRender = window.renderAll;
+    window.renderAll = function () {
+      if (typeof oldRender === 'function') oldRender();
+      syncMobileTabletMenuBar();
+    };
+
+    const oldNav = window.navigate;
+    window.navigate = function (pageId, isInitial) {
+      if (typeof oldNav === 'function') oldNav(pageId, isInitial);
+      syncMobileTabletMenuBar();
+    };
+
+    const oldSaveCart = window.saveCart;
+    window.saveCart = function () {
+      if (typeof oldSaveCart === 'function') oldSaveCart();
+      syncMobileTabletMenuBar();
+    };
+
+    syncMobileTabletMenuBar();
+  })();
+</script>
+<!-- ==================== INDEX.HTML : PC + TABLET + MOBILE UI RECOVERY COMPLETE ==================== -->
