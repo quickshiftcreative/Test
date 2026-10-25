@@ -4544,3 +4544,274 @@
   })();
 </script>
 <!-- ==================== INDEX.HTML : PC/TABLET PILL MENU + PHONE HAMBURGER PATCH COMPLETE ==================== -->
+<!-- ==================== INDEX.HTML : SINGLE-COLUMN TINTED LIQUID-GLASS HAMBURGER & AUTO-CLOSE ANIMATION PATCH (PASTE AT VERY BOTTOM) ==================== -->
+<style id="tinted-liquid-hamburger-v8">
+  :root {
+    --hb-tint-rgb: 14, 14, 20;
+    --hb-tint-alpha: 0.52;
+    --hb-blur-px: 28px;
+    --hb-border-glow: rgba(255, 255, 255, 0.22);
+  }
+
+  /* True Semi-Transparent Tinted Liquid Glass Drawer (Shows Blurred Website Behind It) */
+  #hamburger-drawer {
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.14) 0%,
+      rgba(var(--hb-tint-rgb), var(--hb-tint-alpha)) 45%,
+      rgba(var(--hb-tint-rgb), calc(var(--hb-tint-alpha) + 0.12)) 100%
+    ) !important;
+    backdrop-filter: blur(var(--hb-blur-px)) saturate(190%) !important;
+    -webkit-backdrop-filter: blur(var(--hb-blur-px)) saturate(190%) !important;
+    border: 1px solid var(--hb-border-glow) !important;
+    box-shadow:
+      0 30px 60px -12px rgba(0, 0, 0, 0.75),
+      inset 0 1px 1px 0 rgba(255, 255, 255, 0.32) !important;
+    transform-origin: top center;
+  }
+
+  /* Single-Column Tinted Glass Row Item */
+  .hb-single-row-item {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hb-single-row-item:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateX(4px);
+  }
+  .hb-single-row-active {
+    background: rgba(255, 255, 255, 0.92) !important;
+    color: #09090b !important;
+    border-color: #ffffff !important;
+    box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.35);
+  }
+
+  /* ================= 4 SELECTABLE HAMBURGER & PAGE ANIMATION STYLES ================= */
+  /* Style 1: Apple Liquid Slide & Scale */
+  @keyframes hbOpenSlideScale {
+    0% { opacity: 0; transform: translateY(-14px) scale(0.96); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  /* Style 2: 3D Perspective Glass Flip */
+  @keyframes hbOpen3DFlip {
+    0% { opacity: 0; transform: perspective(900px) rotateX(-18deg) translateY(-10px); }
+    100% { opacity: 1; transform: perspective(900px) rotateX(0deg) translateY(0); }
+  }
+  /* Style 3: Frosted Elastic Cascade */
+  @keyframes hbOpenElastic {
+    0% { opacity: 0; transform: translateY(-24px) scale(0.92); }
+    70% { opacity: 1; transform: translateY(4px) scale(1.01); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  /* Style 4: Cinema Blur Dissolve */
+  @keyframes hbOpenBlurDissolve {
+    0% { opacity: 0; filter: blur(16px); transform: scale(1.03); }
+    100% { opacity: 1; filter: blur(0px); transform: scale(1); }
+  }
+
+  .hb-anim-slide_scale { animation: hbOpenSlideScale 0.34s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  .hb-anim-flip_3d { animation: hbOpen3DFlip 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  .hb-anim-elastic { animation: hbOpenElastic 0.42s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+  .hb-anim-blur_dissolve { animation: hbOpenBlurDissolve 0.36s ease-out forwards; }
+
+  /* Staggered Row Entrance Inside Hamburger */
+  @keyframes hbRowFadeIn {
+    0% { opacity: 0; transform: translateY(8px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .hb-row-stagger {
+    opacity: 0;
+    animation: hbRowFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+</style>
+
+<script>
+  (function () {
+    /* 1. Helper to Convert Tint Preset to RGB & Glow */
+    const TINT_PRESETS = {
+      obsidian: { rgb: '12, 12, 18', border: 'rgba(255, 255, 255, 0.22)' },
+      gold:     { rgb: '28, 22, 10', border: 'rgba(245, 158, 11, 0.45)' },
+      indigo:   { rgb: '16, 18, 42', border: 'rgba(99, 102, 241, 0.45)' },
+      emerald:  { rgb: '8, 28, 22',  border: 'rgba(16, 185, 129, 0.45)' }
+    };
+
+    function applyHamburgerGlassVariables(cfg) {
+      const root = document.documentElement;
+      const tone = TINT_PRESETS[cfg.tintTone || 'obsidian'] || TINT_PRESETS.obsidian;
+      const alpha = Number(cfg.tintOpacity ?? 52) / 100;
+      const blur = Number(cfg.glassBlur ?? 28);
+
+      root.style.setProperty('--hb-tint-rgb', tone.rgb);
+      root.style.setProperty('--hb-tint-alpha', String(alpha));
+      root.style.setProperty('--hb-blur-px', blur + 'px');
+      root.style.setProperty('--hb-border-glow', tone.border);
+    }
+
+    /* 2. Explicit Close & Open Functions (100% Fixes Double-Toggle Bug) */
+    window.closeHamburgerDrawer = function () {
+      const drw = document.getElementById('hamburger-drawer');
+      const btn = document.getElementById('phone-hamburger-btn');
+      if (drw) drw.classList.add('hidden');
+      if (btn) btn.classList.remove('hb-open');
+    };
+
+    window.toggleHamburgerDrawer = function () {
+      const drw = document.getElementById('hamburger-drawer');
+      const btn = document.getElementById('phone-hamburger-btn');
+      if (!drw) return;
+
+      const db = getDB();
+      const cfg = window.getNavMenuConfig ? window.getNavMenuConfig(db) : {};
+      applyHamburgerGlassVariables(cfg);
+
+      const willOpen = drw.classList.contains('hidden');
+      if (willOpen) {
+        drw.classList.remove('hidden', 'hb-anim-slide_scale', 'hb-anim-flip_3d', 'hb-anim-elastic', 'hb-anim-blur_dissolve');
+        const animCls = 'hb-anim-' + (cfg.animStyle || 'slide_scale');
+        void drw.offsetWidth; // trigger reflow for fresh animation
+        drw.classList.add(animCls);
+        if (btn) btn.classList.add('hb-open');
+      } else {
+        window.closeHamburgerDrawer();
+      }
+      if (typeof playUISound === 'function') playUISound(540, 0.04);
+    };
+
+    /* 3. Smooth Page Redirect When Clicking Any Item in Hamburger Menu */
+    window.selectHamburgerPage = function (targetId) {
+      /* Step A: Immediately Close Hamburger Drawer */
+      window.closeHamburgerDrawer();
+
+      /* Step B: Open External Link OR Navigate & Animate Target Page */
+      if (targetId.startsWith('http')) {
+        window.open(targetId, '_blank');
+        return;
+      }
+
+      window.navigate(targetId);
+
+      /* Step C: Play Smooth Entrance Animation on the Opened Page Section */
+      const db = getDB();
+      const cfg = window.getNavMenuConfig ? window.getNavMenuConfig(db) : {};
+      const animCls = 'hb-anim-' + (cfg.animStyle || 'slide_scale');
+      const activeSection = targetId.startsWith('custom:')
+        ? document.getElementById('view-custom-page')
+        : document.getElementById('view-' + targetId);
+
+      if (activeSection) {
+        activeSection.classList.remove('hb-anim-slide_scale', 'hb-anim-flip_3d', 'hb-anim-elastic', 'hb-anim-blur_dissolve');
+        void activeSection.offsetWidth;
+        activeSection.classList.add(animCls);
+      }
+    };
+
+    /* 4. Render Single-Column Tinted Liquid-Glass Hamburger Menu + PC/Tablet Bar */
+    window.renderMasterNavigationUI = function () {
+      const db = getDB();
+      const cfg = window.getNavMenuConfig ? window.getNavMenuConfig(db) : {};
+      applyHamburgerGlassVariables(cfg);
+
+      const currentActive = (window.location.hash || '').replace('#', '') || localStorage.getItem('OG_DESK_LAST_ACTIVE_PAGE_V5') || 'home';
+
+      const hbBtn = document.getElementById('phone-hamburger-btn');
+      if (hbBtn) {
+        hbBtn.classList.toggle('two-line-mode', cfg.iconStyle === 'two_line');
+      }
+
+      const visibleItems = (cfg.items || []).filter(i => i.visible !== false);
+      const customPageItems = (db.customPages || []).map(cp => ({
+        id: 'custom:' + cp.slug,
+        label: cp.navLabel || cp.title,
+        icon: '📄',
+        visible: true
+      }));
+      const allMenuItems = [...visibleItems];
+      customPageItems.forEach(cpItem => {
+        if (!allMenuItems.some(x => x.id === cpItem.id)) allMenuItems.push(cpItem);
+      });
+
+      /* A. PC & Tablet Horizontal Pill Bar */
+      const pillBar = document.getElementById('mobile-tablet-menu-bar');
+      if (pillBar) {
+        pillBar.innerHTML = allMenuItems.map(item => {
+          const isAct = item.id === currentActive;
+          const badgeTxt = item.id === 'quotation' ? ` (${cart ? cart.length : 0})` : '';
+          return `
+            <button onclick="selectHamburgerPage('${item.id}')" class="px-4 py-2 rounded-xl text-xs font-extrabold transition shrink-0 flex items-center gap-1.5 ${isAct ? 'bg-white text-zinc-950 shadow-lg scale-[1.02]' : 'bg-black/50 text-zinc-200 border border-white/10 hover:border-white/30 hover:text-white'}">
+              <span>${item.icon || ''}</span>
+              <span>${item.label}${badgeTxt}</span>
+            </button>
+          `;
+        }).join('');
+      }
+
+      /* B. Phone Single-Column Original Liquid-Glass Hamburger Drawer */
+      const drawer = document.getElementById('hamburger-drawer');
+      if (drawer) {
+        drawer.innerHTML = `
+          <div class="flex items-center justify-between border-b border-white/15 pb-3.5 mb-3.5">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full secondary-bg animate-ping"></span>
+              <span class="text-xs font-extrabold uppercase tracking-widest text-white/90">${cfg.drawerTitle || 'Menu & Quick Access'}</span>
+            </div>
+            <button onclick="closeHamburgerDrawer()" class="px-3 py-1 rounded-xl bg-white/15 hover:bg-white/25 text-xs font-bold text-white border border-white/15">✕ Close</button>
+          </div>
+
+          <!-- Single-Column Stacked List -->
+          <div class="flex flex-col gap-2">
+            ${allMenuItems.map((item, idx) => {
+              const isAct = item.id === currentActive;
+              const numStr = `(0${idx + 1})`;
+              const badgeTxt = item.id === 'quotation' ? ` • ${cart ? cart.length : 0} Items` : '';
+              return `
+                <button onclick="selectHamburgerPage('${item.id}')" style="animation-delay: ${idx * 35}ms" class="hb-row-stagger w-full px-4 py-3.5 rounded-2xl text-left flex items-center justify-between ${isAct ? 'hb-single-row-active' : 'hb-single-row-item text-white'}">
+                  <div class="flex items-center gap-3">
+                    <span class="text-[11px] font-mono font-bold ${isAct ? 'text-zinc-600' : 'text-zinc-400'}">${numStr}</span>
+                    <span class="text-base">${item.icon || '✦'}</span>
+                    <span class="text-sm font-extrabold tracking-tight">${item.label}${badgeTxt}</span>
+                  </div>
+                  <span class="text-xs font-black ${isAct ? 'text-zinc-950' : 'text-zinc-300'}">→</span>
+                </button>
+              `;
+            }).join('')}
+          </div>
+
+          <div class="mt-4 pt-3.5 border-t border-white/15 flex flex-col gap-2">
+            <div class="grid grid-cols-2 gap-2">
+              ${cfg.showSearchInDrawer !== false ? `
+                <button onclick="closeHamburgerDrawer(); openCommandPalette();" class="py-2.5 px-3 rounded-xl hb-single-row-item text-xs font-bold text-white flex items-center justify-center gap-1.5">
+                  🔍 Quick Search
+                </button>
+              ` : ''}
+              ${cfg.showVipPassInDrawer !== false ? `
+                <button onclick="closeHamburgerDrawer(); openVIPPassModal();" class="py-2.5 px-3 rounded-xl bg-amber-400/20 border border-amber-400/40 text-amber-200 text-xs font-extrabold flex items-center justify-center gap-1">
+                  ${cfg.vipPassText || '💳 VIP Partner Pass'}
+                </button>
+              ` : ''}
+            </div>
+            ${cfg.bottomCtaText ? `
+              <button onclick="closeHamburgerDrawer(); openDirectWhatsApp();" class="w-full py-3 rounded-xl secondary-bg text-zinc-950 font-extrabold text-xs shadow-lg">
+                ${cfg.bottomCtaText}
+              </button>
+            ` : ''}
+          </div>
+        `;
+      }
+    };
+
+    /* Ensure navigate() always closes the drawer cleanly */
+    const baseNav = window.navigate;
+    window.navigate = function (pageId, isInitial) {
+      window.closeHamburgerDrawer();
+      if (typeof baseNav === 'function') baseNav(pageId, isInitial);
+      window.renderMasterNavigationUI();
+    };
+
+    setTimeout(() => window.renderMasterNavigationUI(), 120);
+  })();
+</script>
+<!-- ==================== INDEX.HTML : SINGLE-COLUMN TINTED LIQUID-GLASS HAMBURGER PATCH COMPLETE ==================== -->
