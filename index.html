@@ -5412,3 +5412,74 @@
   })();
 </script>
 <!-- ==================== INDEX.HTML : ZERO WHITE-BOX & SERVICE FILTER PATCH COMPLETE ==================== -->
+<!-- ==================== INDEX.HTML : AUTO-CLEANER, DEDUPLICATOR & SPEED OPTIMIZER PATCH (PASTE AT VERY BOTTOM) ==================== -->
+<script id="frontend-master-optimizer-v10">
+  (function () {
+    let cleanedStylesCount = 0;
+    let cleanedDupesCount = 0;
+
+    /* 1. Remove Obsolete / Superseded Style Blocks (Keeps Only the Latest Active UI Styles) */
+    const obsoleteStyleIds = [
+      'master-centered-luxury-ui',
+      'master-responsive-luxury-fix',
+      'luxury-active-tab-and-hamburger-fix'
+    ];
+    obsoleteStyleIds.forEach(function (id) {
+      const nodes = document.querySelectorAll('#' + id);
+      nodes.forEach(function (n) {
+        n.remove();
+        cleanedStylesCount++;
+      });
+    });
+
+    /* 2. Deduplicate Any Repeated DOM IDs (Keeps the Active Element, Removes Accidental Clones) */
+    function deduplicateDOMByIds() {
+      const seenIds = new Set();
+      document.querySelectorAll('[id]').forEach(function (el) {
+        const id = el.getAttribute('id');
+        if (!id) return;
+        if (seenIds.has(id)) {
+          el.remove();
+          cleanedDupesCount++;
+        } else {
+          seenIds.add(id);
+        }
+      });
+    }
+
+    /* 3. Clean Up Empty or Orphaned Style/Script Tags & Force Strictly Zero White Box on Menus */
+    function enforceCleanNavigationState() {
+      const currentActive = (window.location.hash || '').replace('#', '') || localStorage.getItem('OG_DESK_LAST_ACTIVE_PAGE_V5') || 'home';
+      document.querySelectorAll('#hamburger-drawer button, #mobile-tablet-menu-bar button, #service-filter-bar button').forEach(function (btn) {
+        btn.classList.remove('bg-white', 'text-zinc-950', 'hb-single-row-active', 'shadow-md', 'shadow-lg');
+      });
+      if (typeof window.highlightActiveNavbarBtn === 'function') {
+        window.highlightActiveNavbarBtn(currentActive);
+      }
+    }
+
+    /* 4. Anti-Lag Render coalescing (Prevents 7 Stacked Patch Wrappers from Firing Multiple Times at Once) */
+    const rawRenderAll = window.renderAll;
+    let renderFrameId = null;
+    window.renderAll = function () {
+      if (renderFrameId) cancelAnimationFrame(renderFrameId);
+      renderFrameId = requestAnimationFrame(function () {
+        if (typeof rawRenderAll === 'function') rawRenderAll();
+        deduplicateDOMByIds();
+        enforceCleanNavigationState();
+      });
+    };
+
+    /* 5. Run Initial Cleanup Pass */
+    deduplicateDOMByIds();
+    enforceCleanNavigationState();
+
+    /* Save optimization metrics so Admin Panel can inspect them */
+    localStorage.setItem('OG_FRONTEND_OPT_REPORT_V10', JSON.stringify({
+      cleanedStyles: cleanedStylesCount,
+      cleanedDupes: cleanedDupesCount,
+      timestamp: new Date().toLocaleTimeString()
+    }));
+  })();
+</script>
+<!-- ==================== INDEX.HTML : AUTO-CLEANER & SPEED OPTIMIZER COMPLETE ==================== -->
