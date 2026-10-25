@@ -3596,3 +3596,217 @@
   })();
 </script>
 <!-- ==================== INDEX.HTML : FULL-STACK AGENCY MASTER PATCH COMPLETE ==================== -->
+<!-- ==================== INDEX.HTML : APPLE-STYLE CENTERED & MOBILE-DESKTOP LUXURY UI PATCH (PASTE AT VERY BOTTOM) ==================== -->
+<style id="master-centered-luxury-ui">
+  /* 1. Global Container & Balanced Breathing Room */
+  main {
+    max-width: 1240px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: clamp(1rem, 4vw, 2.5rem) !important;
+    padding-right: clamp(1rem, 4vw, 2.5rem) !important;
+  }
+
+  /* 2. Center All Section Headers, Eyebrows & Subtitles (Desktop + Mobile) */
+  #home-block-services > div:first-child,
+  #home-block-work > div:first-child,
+  #home-block-process > div:first-child,
+  #home-block-awards > div:first-child,
+  #view-services > div:nth-child(2),
+  #view-quotation > div:nth-child(2),
+  #view-portfolio > div:nth-child(2),
+  #view-tracker .charcoal-card > div:first-child,
+  #view-reviews > div:nth-child(2),
+  #view-contact > div:nth-child(2),
+  #faq-section-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 0.85rem !important;
+  }
+
+  #view-services > div:nth-child(2) p,
+  #view-quotation > div:nth-child(2) p,
+  #view-portfolio > div:nth-child(2) p,
+  #view-tracker .charcoal-card > div:first-child p,
+  #view-reviews > div:nth-child(2) p,
+  #view-contact > div:nth-child(2) p {
+    max-width: 640px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* 3. Center Service Filter Pills & Action Buttons */
+  #service-filter-bar {
+    justify-content: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* 4. Hero Section: Balanced Center on Mobile/Tablet & Harmonious Split on Desktop */
+  #hero-text-col {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  #hero-main-heading {
+    font-size: clamp(2.25rem, 5.2vw, 4.35rem) !important;
+    line-height: 1.07 !important;
+    letter-spacing: -0.03em !important;
+    max-width: 18ch !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  #hero-sub-text {
+    max-width: 58ch !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+  #hero-pills-container {
+    justify-content: center !important;
+  }
+  #hero-text-col > div:last-child {
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
+  /* 5. Center 4 Key Metrics Bento Cards & Process Cards */
+  #home-block-stats .charcoal-card,
+  #process-steps-grid .charcoal-card,
+  #studios-hub-grid .liquid-glass {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  /* 6. Service Cards & Portfolio Cards: Balanced Symmetry */
+  #home-services-grid > div,
+  #services-catalog-grid > div {
+    text-align: center !important;
+    align-items: center !important;
+  }
+  #home-services-grid > div > div:first-child,
+  #services-catalog-grid > div > div:first-child {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  #home-services-grid > div > div:first-child > div:first-child,
+  #services-catalog-grid > div > div:first-child > div:first-child {
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+  #home-services-grid > div > div:last-child,
+  #services-catalog-grid > div > div:last-child {
+    width: 100% !important;
+  }
+
+  #home-portfolio-grid .charcoal-card > div:last-child,
+  #portfolio-catalog-grid .charcoal-card > div:last-child {
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  /* 7. About Page Story & Team Cards Centered Symmetry */
+  #view-about .charcoal-card > div:first-child {
+    text-align: center !important;
+  }
+  #about-main-heading,
+  #about-main-story {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+  #view-about .pt-8 {
+    text-align: center !important;
+  }
+  #about-partners-list,
+  #about-staff-list {
+    justify-content: center !important;
+  }
+  #about-partners-list > div,
+  #about-staff-list > div {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  /* 8. Reviews & Footer Centering */
+  #reviews-cards-grid .charcoal-card {
+    text-align: center !important;
+    align-items: center !important;
+  }
+  footer > div {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 1.5rem !important;
+  }
+  footer > div > div {
+    justify-content: center !important;
+  }
+
+  /* 9. Mobile-Friendly Polish (Prevent Cramped Buttons & Floating Dock Overlap) */
+  @media (max-width: 640px) {
+    body {
+      padding-bottom: 84px !important;
+    }
+    #hero-btn-primary,
+    #hero-btn-secondary {
+      width: 100% !important;
+      text-align: center !important;
+      justify-content: center !important;
+    }
+    #hero-3d-stage {
+      height: 320px !important;
+    }
+    /* Center the bottom floating action dock neatly on mobile */
+    .fixed.bottom-5.right-5 {
+      left: 50% !important;
+      right: auto !important;
+      transform: translateX(-50%) !important;
+      bottom: 14px !important;
+      width: max-content !important;
+      max-width: 94vw !important;
+      justify-content: center !important;
+      background: rgba(9, 9, 11, 0.85) !important;
+      backdrop-filter: blur(20px) !important;
+      padding: 6px !important;
+      border-radius: 20px !important;
+      border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    /* Keep Team Photos & Hero Stage Centered & Balanced on Every Render */
+    const prevRender = window.renderAll;
+    window.renderAll = function () {
+      const db = getDB();
+      /* Default team photo alignment to 'center' so photos never hug the left side */
+      if (db.aboutPhotoStudio && (!db.aboutPhotoStudio.alignment || db.aboutPhotoStudio.alignment === 'left')) {
+        db.aboutPhotoStudio.alignment = 'center';
+      }
+      if (typeof prevRender === 'function') prevRender();
+
+      /* Ensure Hero 3D Stage & Text stay vertically & horizontally balanced */
+      const grid = document.getElementById('hero-layout-grid');
+      const wrapper = document.getElementById('hero-3d-wrapper');
+      if (grid && wrapper && !wrapper.classList.contains('hidden')) {
+        grid.classList.add('items-center', 'justify-items-center');
+        wrapper.classList.add('w-full', 'flex', 'items-center', 'justify-center');
+      }
+    };
+
+    setTimeout(() => window.renderAll(), 200);
+  })();
+</script>
+<!-- ==================== INDEX.HTML : CENTERED LUXURY UI PATCH COMPLETE ==================== -->
