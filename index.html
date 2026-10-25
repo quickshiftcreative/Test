@@ -5123,3 +5123,292 @@
   })();
 </script>
 <!-- ==================== INDEX.HTML : LUXURY ACTIVE TAB & UNIQUE HAMBURGER PATCH COMPLETE ==================== -->
+<!-- ==================== INDEX.HTML : ZERO WHITE-BOX NAV, WORKING SERVICE FILTER & SEARCH PATCH (PASTE AT VERY BOTTOM) ==================== -->
+<style id="zero-white-box-master-v9">
+  /* 1. Strictly Ban Solid White Selected Boxes in Hamburger, Navbar & Service Filters */
+  #hamburger-drawer button,
+  #hamburger-drawer .hb-single-row-active,
+  #mobile-tablet-menu-bar button,
+  #desktop-nav-links button,
+  #service-filter-bar button {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    color: #f4f4f5 !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+
+  #hamburger-drawer button:hover,
+  #mobile-tablet-menu-bar button:hover,
+  #service-filter-bar button:hover {
+    background-color: rgba(255, 255, 255, 0.11) !important;
+    border-color: rgba(255, 255, 255, 0.28) !important;
+  }
+
+  /* Subtle Tinted Glass Active State (No White Box, No Golden Focus Ring) */
+  #hamburger-drawer button.nav-glass-active,
+  #mobile-tablet-menu-bar button.nav-glass-active,
+  #service-filter-bar button.filter-glass-active {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.22) 0%, rgba(16, 185, 129, 0.14) 100%) !important;
+    border: 1px solid rgba(16, 185, 129, 0.55) !important;
+    color: #ffffff !important;
+    box-shadow: 0 8px 24px -8px rgba(16, 185, 129, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.25) !important;
+  }
+
+  /* Zero-Highlight Mode (If toggled in Backend: looks 100% identical to other glass buttons) */
+  body.nav-zero-highlight #hamburger-drawer button.nav-glass-active,
+  body.nav-zero-highlight #mobile-tablet-menu-bar button.nav-glass-active {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    box-shadow: none !important;
+  }
+</style>
+
+<script>
+  (function () {
+    /* 1. Global State for Service Category Filter & Live Search */
+    window.currentServiceCategory = 'ALL';
+    window.currentServiceSearchQuery = '';
+
+    /* One-Time Seed for Full-Stack Services (Never Overwrites User Deletions in Backend!) */
+    const SEED_FLAG = 'OG_FULLSTACK_SEED_DONE_V9';
+    if (!localStorage.getItem(SEED_FLAG)) {
+      localStorage.setItem(SEED_FLAG, '1');
+    }
+
+    /* 2. Inject Live Service Search & Custom Service Adder on Services Page */
+    const filterBar = document.getElementById('service-filter-bar');
+    if (filterBar && !document.getElementById('srv-search-and-custom-bar')) {
+      const toolRow = document.createElement('div');
+      toolRow.id = 'srv-search-and-custom-bar';
+      toolRow.className = 'w-full max-w-3xl mx-auto flex flex-col sm:flex-row items-center gap-3 pt-2';
+      toolRow.innerHTML = `
+        <div class="relative flex-1 w-full">
+          <input type="text" id="srv-live-search-inp" oninput="window.handleServiceSearch(this.value)" placeholder="🔍 Search any service (e.g. Amazon, Meta Ads, 3D CGI, Trademark, GS1 Barcode)..." class="w-full px-4 py-3 rounded-2xl matte-input text-xs font-bold" />
+        </div>
+        <button type="button" onclick="window.promptCustomServiceToQuote()" class="w-full sm:w-auto px-4 py-3 rounded-2xl liquid-glass text-xs font-extrabold text-emerald-300 hover:border-emerald-400/50 shrink-0">
+          ✨ + Add Custom Requirement
+        </button>
+      `;
+      filterBar.insertAdjacentElement('afterend', toolRow);
+    }
+
+    window.handleServiceSearch = function (val) {
+      window.currentServiceSearchQuery = (val || '').trim().toLowerCase();
+      window.renderServicesAndFiltersClean();
+    };
+
+    window.promptCustomServiceToQuote = function () {
+      const reqName = prompt('Describe the custom service or requirement you want to add to your quotation:');
+      if (!reqName || !reqName.trim()) return;
+      const budgetINR = Number(prompt('Estimated budget in INR (or leave 0 for Custom Quote):', '10000') || 0);
+      cart.push({
+        id: 'CUST-' + Date.now(),
+        name: reqName.trim(),
+        priceINR: isNaN(budgetINR) ? 0 : budgetINR,
+        billing: 'Custom Scope',
+        categoryTitle: 'Custom Requirement'
+      });
+      if (typeof window.saveCart === 'function') window.saveCart();
+      alert('✅ Added to your Quotation Cart!');
+      window.navigate('quotation');
+    };
+
+    /* 3. Clean Category Filter Click Handler (Fixes "ALL" Stuck White Box Bug) */
+    window.setServiceCategoryFilter = function (categoryName) {
+      window.currentServiceCategory = categoryName || 'ALL';
+      activeServiceFilter = window.currentServiceCategory;
+      if (typeof playUISound === 'function') playUISound(560, 0.04);
+      window.renderServicesAndFiltersClean();
+    };
+
+    /* 4. Render Service Filter Buttons & Cards Without Any White Box */
+    window.renderServicesAndFiltersClean = function () {
+      const db = getDB();
+      const services = db.services || [];
+      const categories = ['ALL', ...new Set(services.map(s => (s.badge || '').trim()).filter(Boolean))];
+
+      /* If selected category was deleted from backend, reset to ALL */
+      if (window.currentServiceCategory !== 'ALL' && !categories.includes(window.currentServiceCategory)) {
+        window.currentServiceCategory = 'ALL';
+      }
+
+      const fBar = document.getElementById('service-filter-bar');
+      if (fBar) {
+        fBar.innerHTML = categories.map((cat, idx) => {
+          const isSelected = window.currentServiceCategory === cat;
+          const safeCat = cat.replace(/'/g, "\\'");
+          return `
+            <button type="button" onclick="window.setServiceCategoryFilter('${safeCat}')" class="px-4 py-2 rounded-xl text-xs font-extrabold transition flex items-center gap-2 ${isSelected ? 'filter-glass-active' : ''}">
+              ${isSelected ? '<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>' : ''}
+              <span>${cat === 'ALL' ? 'All Services (' + services.length + ')' : cat}</span>
+            </button>
+          `;
+        }).join('');
+      }
+
+      const q = window.currentServiceSearchQuery || '';
+      const filteredServices = services.filter(s => {
+        const matchCat = window.currentServiceCategory === 'ALL' || (s.badge || '').trim() === window.currentServiceCategory;
+        if (!matchCat) return false;
+        if (!q) return true;
+        const hay = `${s.title} ${s.badge} ${s.description} ${(s.subServices || []).map(x => x.name).join(' ')}`.toLowerCase();
+        return hay.includes(q);
+      });
+
+      const buildCardHTML = (cat, idx) => {
+        const subs = cat.subServices || [];
+        const minINR = subs.length > 0 ? Math.min(...subs.map(x => Number(x.priceINR || 0))) : 0;
+        return `
+          <div onclick="openServiceModal('${cat.id}')" class="liquid-glass rounded-3xl p-7 flex flex-col justify-between cursor-pointer hover:border-white/40 transition group">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-5 w-full">
+                <span class="editorial-font text-sm font-bold text-zinc-400">${cat.index || '(0' + (idx + 1) + ')'}</span>
+                <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-white/10 text-white border border-white/15">${cat.badge || 'Service'}</span>
+              </div>
+              <h3 class="text-2xl font-bold text-white group-hover:text-indigo-300 transition">${cat.title}</h3>
+              <p class="text-xs sm:text-sm text-zinc-300 mt-3 leading-relaxed">${cat.description}</p>
+            </div>
+            <div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between w-full">
+              <div class="text-left">
+                <span class="text-[10px] uppercase tracking-wider text-zinc-400 block">${subs.length} Deliverables</span>
+                <span class="text-base font-extrabold secondary-text">${formatPrice(minINR)}</span>
+              </div>
+              <span class="px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white font-extrabold text-xs group-hover:bg-indigo-600 group-hover:border-indigo-400 transition">Inspect & Add ↗</span>
+            </div>
+          </div>
+        `;
+      };
+
+      const homeGrid = document.getElementById('home-services-grid');
+      const catGrid = document.getElementById('services-catalog-grid');
+      if (homeGrid) homeGrid.innerHTML = services.map(buildCardHTML).join('');
+      if (catGrid) {
+        catGrid.innerHTML = filteredServices.length > 0
+          ? filteredServices.map(buildCardHTML).join('')
+          : `<div class="col-span-full p-8 rounded-3xl charcoal-card text-center space-y-3"><p class="text-sm text-zinc-400">No matching services found for "${q}".</p><button onclick="window.setServiceCategoryFilter('ALL'); document.getElementById('srv-live-search-inp').value=''; window.handleServiceSearch('');" class="px-4 py-2 rounded-xl accent-bg text-white text-xs font-extrabold">Show All Services</button></div>`;
+      }
+    };
+
+    /* 5. Override Navigation & Hamburger Renderer (Zero White Box!) */
+    window.renderMasterNavigationUI = function () {
+      const db = getDB();
+      const cfg = window.getNavMenuConfig ? window.getNavMenuConfig(db) : {};
+      const currentActive = (window.location.hash || '').replace('#', '') || localStorage.getItem('OG_DESK_LAST_ACTIVE_PAGE_V5') || 'home';
+
+      const zeroHighlight = cfg.activeIndicatorStyle === 'none';
+      document.body.classList.toggle('nav-zero-highlight', zeroHighlight);
+
+      const hbBtn = document.getElementById('phone-hamburger-btn');
+      if (hbBtn) hbBtn.classList.toggle('two-line-mode', cfg.iconStyle === 'two_line');
+
+      const visibleItems = (cfg.items || []).filter(i => i.visible !== false);
+      const customPageItems = (db.customPages || []).map(cp => ({
+        id: 'custom:' + cp.slug,
+        label: cp.navLabel || cp.title,
+        icon: '📄',
+        visible: true
+      }));
+      const allMenuItems = [...visibleItems];
+      customPageItems.forEach(cpItem => {
+        if (!allMenuItems.some(x => x.id === cpItem.id)) allMenuItems.push(cpItem);
+      });
+
+      /* A. PC & Tablet Pill Menu Bar (Tinted Glass — No White Box) */
+      const pillBar = document.getElementById('mobile-tablet-menu-bar');
+      if (pillBar) {
+        pillBar.innerHTML = allMenuItems.map(item => {
+          const isAct = item.id === currentActive;
+          const badgeTxt = item.id === 'quotation' ? ` (${cart ? cart.length : 0})` : '';
+          return `
+            <button type="button" onclick="selectHamburgerPage('${item.id}')" class="px-4 py-2 rounded-xl text-xs font-extrabold transition shrink-0 flex items-center gap-1.5 ${isAct ? 'nav-glass-active' : ''}">
+              ${isAct && !zeroHighlight ? '<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>' : ''}
+              <span>${item.icon || ''}</span>
+              <span>${item.label}${badgeTxt}</span>
+            </button>
+          `;
+        }).join('');
+      }
+
+      /* B. Phone Single-Column Tinted Glass Hamburger Menu (No White Box) */
+      const drawer = document.getElementById('hamburger-drawer');
+      if (drawer) {
+        const availabilityText = cfg.availabilityText || '🟢 Available for New Brand Launches & Scale';
+        const showAvail = cfg.showAvailabilityBadge !== false;
+        const showVoice = cfg.showVoiceBriefBtn !== false;
+
+        drawer.innerHTML = `
+          <div class="flex items-center justify-between border-b border-white/15 pb-3.5 mb-3">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full secondary-bg animate-ping"></span>
+              <span class="text-xs font-extrabold uppercase tracking-widest text-white/90">${cfg.drawerTitle || 'Menu & Quick Access'}</span>
+            </div>
+            <button type="button" onclick="closeHamburgerDrawer()" class="px-3 py-1 rounded-xl text-xs font-bold text-white">✕ Close</button>
+          </div>
+
+          ${showAvail ? `
+            <div class="mb-3 px-3 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-[11px] font-extrabold text-emerald-300 flex items-center justify-between">
+              <span>${availabilityText}</span>
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            </div>
+          ` : ''}
+
+          <div class="flex flex-col gap-2 max-h-[50vh] overflow-y-auto pr-1">
+            ${allMenuItems.map((item, idx) => {
+              const isAct = item.id === currentActive;
+              const numStr = `(0${idx + 1})`;
+              const badgeTxt = item.id === 'quotation' ? ` • ${cart ? cart.length : 0} Items` : '';
+              return `
+                <button type="button" onclick="selectHamburgerPage('${item.id}')" style="animation-delay: ${idx * 25}ms" class="hb-row-stagger w-full px-4 py-3 rounded-2xl text-left flex items-center justify-between ${isAct ? 'nav-glass-active' : 'hb-single-row-item'}">
+                  <div class="flex items-center gap-3">
+                    <span class="text-[11px] font-mono font-bold text-zinc-400">${numStr}</span>
+                    <span class="text-base">${item.icon || '✦'}</span>
+                    <span class="text-sm font-extrabold tracking-tight text-white">${item.label}${badgeTxt}</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    ${isAct && !zeroHighlight ? '<span class="text-[10px] font-extrabold text-emerald-300 uppercase">Current</span>' : ''}
+                    <span class="text-xs font-black text-zinc-300">→</span>
+                  </div>
+                </button>
+              `;
+            }).join('')}
+          </div>
+
+          <div class="mt-3 pt-3 border-t border-white/15 flex flex-col gap-2">
+            ${showVoice ? `
+              <button type="button" onclick="closeHamburgerDrawer(); navigate('contact');" class="py-2.5 px-3 rounded-xl text-indigo-200 text-xs font-extrabold flex items-center justify-center gap-1.5">
+                🎙️ Send Quick Voice Brief to Studio
+              </button>
+            ` : ''}
+            <div class="grid grid-cols-2 gap-2">
+              ${cfg.showSearchInDrawer !== false ? `
+                <button type="button" onclick="closeHamburgerDrawer(); openCommandPalette();" class="py-2 px-3 rounded-xl text-xs font-bold text-white flex items-center justify-center gap-1.5">
+                  🔍 Quick Search
+                </button>
+              ` : ''}
+              ${cfg.showVipPassInDrawer !== false ? `
+                <button type="button" onclick="closeHamburgerDrawer(); openVIPPassModal();" class="py-2 px-3 rounded-xl text-amber-200 text-xs font-extrabold flex items-center justify-center gap-1">
+                  ${cfg.vipPassText || '💳 VIP Partner Pass'}
+                </button>
+              ` : ''}
+            </div>
+          </div>
+        `;
+      }
+    };
+
+    /* 6. Hook Clean Renderers into Master renderAll */
+    const oldRenderAll = window.renderAll;
+    window.renderAll = function () {
+      if (typeof oldRenderAll === 'function') oldRenderAll();
+      window.renderServicesAndFiltersClean();
+      window.renderMasterNavigationUI();
+    };
+
+    setTimeout(() => {
+      window.renderServicesAndFiltersClean();
+      window.renderMasterNavigationUI();
+    }, 150);
+  })();
+</script>
+<!-- ==================== INDEX.HTML : ZERO WHITE-BOX & SERVICE FILTER PATCH COMPLETE ==================== -->
