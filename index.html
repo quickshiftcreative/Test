@@ -5483,3 +5483,426 @@
   })();
 </script>
 <!-- ==================== INDEX.HTML : AUTO-CLEANER & SPEED OPTIMIZER COMPLETE ==================== -->
+<!-- ==================== INDEX.HTML : A-TO-Z CUSTOM HAMBURGER ICON, IMAGE & MULTI-STYLE MENU ENGINE (PASTE AT VERY BOTTOM) ==================== -->
+<style id="master-menu-engine-v11">
+  :root {
+    --hb-tint-rgb: 12, 12, 18;
+    --hb-tint-alpha: 0.52;
+    --hb-blur-px: 28px;
+    --hb-border-glow: rgba(255, 255, 255, 0.22);
+    --hb-btn-size: 40px;
+    --hb-btn-radius: 12px;
+  }
+
+  /* Hamburger Button Custom Sizing & Shape */
+  #phone-hamburger-btn {
+    min-width: var(--hb-btn-size) !important;
+    height: var(--hb-btn-size) !important;
+    border-radius: var(--hb-btn-radius) !important;
+    padding: 0 10px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  #phone-hamburger-btn:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: rgba(255, 255, 255, 0.35) !important;
+  }
+
+  /* Desktop / Tablet Mode Rules */
+  @media (min-width: 768px) {
+    body.desktop-menu-hamburger #mobile-tablet-menu-bar {
+      display: none !important;
+    }
+    body.desktop-menu-hamburger #phone-hamburger-btn {
+      display: flex !important;
+    }
+    body.desktop-menu-hamburger #hamburger-drawer:not(.hidden) {
+      display: block !important;
+    }
+    body.desktop-menu-island #mobile-tablet-menu-bar {
+      width: max-content !important;
+      max-width: 92vw !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      border-radius: 9999px !important;
+      padding: 0.45rem 0.85rem !important;
+      background: rgba(9, 9, 11, 0.78) !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+      box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.7) !important;
+    }
+    body.desktop-menu-minimal #mobile-tablet-menu-bar {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+      padding-top: 0.35rem !important;
+      padding-bottom: 0.15rem !important;
+    }
+  }
+
+  /* Drawer Layout Variations */
+  #hamburger-drawer.drawer-layout-fullscreen_glass {
+    position: fixed !important;
+    inset: 12px !important;
+    max-height: calc(100vh - 24px) !important;
+    z-index: 9999 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.5rem !important;
+  }
+  #hamburger-drawer.drawer-layout-right_drawer {
+    position: fixed !important;
+    top: 10px !important;
+    bottom: 10px !important;
+    right: 10px !important;
+    left: auto !important;
+    width: min(360px, 92vw) !important;
+    z-index: 9999 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  #hamburger-drawer.drawer-layout-left_drawer {
+    position: fixed !important;
+    top: 10px !important;
+    bottom: 10px !important;
+    left: 10px !important;
+    right: auto !important;
+    width: min(360px, 92vw) !important;
+    z-index: 9999 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  #hamburger-drawer.drawer-layout-bottom_sheet {
+    position: fixed !important;
+    bottom: 10px !important;
+    left: 10px !important;
+    right: 10px !important;
+    top: auto !important;
+    z-index: 9999 !important;
+    border-radius: 28px !important;
+  }
+  #hamburger-drawer.hidden {
+    display: none !important;
+  }
+
+  /* Staggered Asymmetric Icon Lines */
+  .hb-stagger-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+  }
+  .hb-stagger-1 { width: 20px; height: 2px; background: #fff; border-radius: 99px; transition: 0.25s; }
+  .hb-stagger-2 { width: 14px; height: 2px; background: #10b981; border-radius: 99px; transition: 0.25s; }
+  .hb-stagger-3 { width: 18px; height: 2px; background: #fff; border-radius: 99px; transition: 0.25s; }
+  #phone-hamburger-btn.hb-open .hb-stagger-1 { transform: translateY(6px) rotate(45deg); width: 18px; }
+  #phone-hamburger-btn.hb-open .hb-stagger-2 { opacity: 0; }
+  #phone-hamburger-btn.hb-open .hb-stagger-3 { transform: translateY(-6px) rotate(-45deg); width: 18px; }
+</style>
+
+<script>
+  (function () {
+    const TINT_PRESETS = {
+      obsidian: { rgb: '12, 12, 18', border: 'rgba(255, 255, 255, 0.22)' },
+      gold:     { rgb: '28, 22, 10', border: 'rgba(245, 158, 11, 0.45)' },
+      indigo:   { rgb: '16, 18, 42', border: 'rgba(99, 102, 241, 0.45)' },
+      emerald:  { rgb: '8, 28, 22',  border: 'rgba(16, 185, 129, 0.45)' },
+      crimson:  { rgb: '34, 10, 18', border: 'rgba(244, 63, 94, 0.45)' }
+    };
+
+    /* 1. Build Inner HTML for Hamburger Button Based on Selected Style or Uploaded Image */
+    window.buildHamburgerButtonHTML = function (cfg, isOpen) {
+      const style = cfg.iconStyle || 'three_line';
+      const labelTxt = (cfg.btnLabel || '').trim();
+      const labelSpan = labelTxt ? `<span class="text-[11px] font-extrabold tracking-wider uppercase text-white">${labelTxt}</span>` : '';
+
+      if (style === 'custom_image' && cfg.customBtnImg) {
+        const imgSrc = (isOpen && cfg.customCloseImg) ? cfg.customCloseImg : cfg.customBtnImg;
+        if (isOpen && !cfg.customCloseImg) {
+          return `${labelSpan}<span class="text-sm font-black text-white">✕</span>`;
+        }
+        return `${labelSpan}<img src="${imgSrc}" alt="Menu" class="w-6 h-6 object-contain rounded" />`;
+      }
+
+      if (style === 'staggered') {
+        return `${labelSpan}<div class="hb-stagger-wrap"><span class="hb-stagger-1"></span><span class="hb-stagger-2"></span><span class="hb-stagger-3"></span></div>`;
+      }
+
+      if (style === 'bento_dots') {
+        if (isOpen) return `${labelSpan}<span class="text-sm font-black text-white leading-none">✕</span>`;
+        return `${labelSpan}<div class="grid grid-cols-3 gap-[3px]"><span class="w-1 h-1 rounded-full bg-white"></span><span class="w-1 h-1 rounded-full bg-emerald-400"></span><span class="w-1 h-1 rounded-full bg-white"></span><span class="w-1 h-1 rounded-full bg-white"></span><span class="w-1 h-1 rounded-full bg-white"></span><span class="w-1 h-1 rounded-full bg-white"></span><span class="w-1 h-1 rounded-full bg-white"></span><span class="w-1 h-1 rounded-full bg-emerald-400"></span><span class="w-1 h-1 rounded-full bg-white"></span></div>`;
+      }
+
+      if (style === 'four_dots') {
+        if (isOpen) return `${labelSpan}<span class="text-sm font-black text-white leading-none">✕</span>`;
+        return `${labelSpan}<div class="grid grid-cols-2 gap-[4px]"><span class="w-1.5 h-1.5 rounded-full bg-white"></span><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span><span class="w-1.5 h-1.5 rounded-full bg-white"></span></div>`;
+      }
+
+      if (style === 'pill_text') {
+        return `<span class="text-[11px] font-extrabold uppercase tracking-wider text-white">${labelTxt || 'MENU'}</span><span class="text-xs text-emerald-400 font-black">${isOpen ? '✕' : '☰'}</span>`;
+      }
+
+      /* Default: three_line or two_line */
+      return `
+        ${labelSpan}
+        <div class="flex flex-col items-center justify-center gap-[3.5px]">
+          <span class="hb-line hb-line-1"></span>
+          <span class="hb-line hb-line-2"></span>
+          <span class="hb-line hb-line-3"></span>
+        </div>
+      `;
+    };
+
+    /* 2. Apply CSS Variables & Classes for Button, Desktop Bar & Drawer Layout */
+    function applyMenuVisualConfig(cfg) {
+      const root = document.documentElement;
+      const tone = TINT_PRESETS[cfg.tintTone || 'obsidian'] || TINT_PRESETS.obsidian;
+      const alpha = Number(cfg.tintOpacity ?? 52) / 100;
+      const blur = Number(cfg.glassBlur ?? 28);
+      const btnSize = Number(cfg.btnSize ?? 40);
+      const shapeMap = { rounded: '12px', circle: '9999px', square: '6px', pill: '9999px' };
+
+      root.style.setProperty('--hb-tint-rgb', tone.rgb);
+      root.style.setProperty('--hb-tint-alpha', String(alpha));
+      root.style.setProperty('--hb-blur-px', blur + 'px');
+      root.style.setProperty('--hb-border-glow', tone.border);
+      root.style.setProperty('--hb-btn-size', btnSize + 'px');
+      root.style.setProperty('--hb-btn-radius', shapeMap[cfg.btnShape || 'rounded'] || '12px');
+
+      /* Desktop Menu Mode */
+      document.body.classList.remove('desktop-menu-pill', 'desktop-menu-island', 'desktop-menu-minimal', 'desktop-menu-hamburger');
+      document.body.classList.add('desktop-menu-' + (cfg.desktopMenuStyle || 'pill'));
+
+      /* Zero Highlight Mode */
+      document.body.classList.toggle('nav-zero-highlight', cfg.activeIndicatorStyle === 'none');
+
+      /* Drawer Layout Class */
+      const drw = document.getElementById('hamburger-drawer');
+      if (drw) {
+        drw.classList.remove(
+          'drawer-layout-single_dropdown',
+          'drawer-layout-fullscreen_glass',
+          'drawer-layout-right_drawer',
+          'drawer-layout-left_drawer',
+          'drawer-layout-bottom_sheet',
+          'drawer-layout-bento_grid'
+        );
+        drw.classList.add('drawer-layout-' + (cfg.drawerLayoutStyle || 'single_dropdown'));
+      }
+    }
+
+    /* 3. Execute Menu Item Click Action (Page, External URL, WhatsApp, Call Modal, VIP Pass, Search) */
+    window.triggerMenuItemAction = function (itemId) {
+      window.closeHamburgerDrawer();
+      if (!itemId) return;
+
+      if (itemId === 'action:book_call' && typeof window.openCallBookerModal === 'function') {
+        window.openCallBookerModal();
+        return;
+      }
+      if (itemId === 'action:vip_pass' && typeof window.openVIPPassModal === 'function') {
+        window.openVIPPassModal();
+        return;
+      }
+      if (itemId === 'action:search' && typeof window.openCommandPalette === 'function') {
+        window.openCommandPalette();
+        return;
+      }
+      if (itemId === 'action:whatsapp' && typeof window.openDirectWhatsApp === 'function') {
+        window.openDirectWhatsApp();
+        return;
+      }
+      if (itemId.startsWith('http://') || itemId.startsWith('https://') || itemId.startsWith('tel:') || itemId.startsWith('mailto:')) {
+        window.open(itemId, '_blank');
+        return;
+      }
+      window.selectHamburgerPage(itemId);
+    };
+
+    /* 4. Open / Close Hamburger Drawer with Updated Button Icon State */
+    window.closeHamburgerDrawer = function () {
+      const drw = document.getElementById('hamburger-drawer');
+      const btn = document.getElementById('phone-hamburger-btn');
+      const db = getDB();
+      const cfg = window.getNavMenuConfig ? window.getNavMenuConfig(db) : {};
+      if (drw) drw.classList.add('hidden');
+      if (btn) {
+        btn.classList.remove('hb-open');
+        btn.innerHTML = window.buildHamburgerButtonHTML(cfg, false);
+      }
+    };
+
+    window.toggleHamburgerDrawer = function () {
+      const drw = document.getElementById('hamburger-drawer');
+      const btn = document.getElementById('phone-hamburger-btn');
+      if (!drw) return;
+
+      const db = getDB();
+      const cfg = window.getNavMenuConfig ? window.getNavMenuConfig(db) : {};
+      applyMenuVisualConfig(cfg);
+
+      const willOpen = drw.classList.contains('hidden');
+      if (willOpen) {
+        drw.classList.remove('hidden', 'hb-anim-slide_scale', 'hb-anim-flip_3d', 'hb-anim-elastic', 'hb-anim-blur_dissolve');
+        const animCls = 'hb-anim-' + (cfg.animStyle || 'slide_scale');
+        void drw.offsetWidth;
+        drw.classList.add(animCls);
+        if (btn) {
+          btn.classList.add('hb-open');
+          btn.innerHTML = window.buildHamburgerButtonHTML(cfg, true);
+        }
+      } else {
+        window.closeHamburgerDrawer();
+      }
+      if (typeof playUISound === 'function') playUISound(540, 0.04);
+    };
+
+    /* 5. Master Navigation Renderer (Supports Custom Icons, Badges & All Layouts) */
+    window.renderMasterNavigationUI = function () {
+      const db = getDB();
+      const cfg = window.getNavMenuConfig ? window.getNavMenuConfig(db) : {};
+      applyMenuVisualConfig(cfg);
+
+      const currentActive = (window.location.hash || '').replace('#', '') || localStorage.getItem('OG_DESK_LAST_ACTIVE_PAGE_V5') || 'home';
+      const zeroHighlight = cfg.activeIndicatorStyle === 'none';
+
+      const hbBtn = document.getElementById('phone-hamburger-btn');
+      const drw = document.getElementById('hamburger-drawer');
+      const isOpen = drw && !drw.classList.contains('hidden');
+      if (hbBtn) {
+        hbBtn.classList.toggle('two-line-mode', cfg.iconStyle === 'two_line');
+        hbBtn.innerHTML = window.buildHamburgerButtonHTML(cfg, isOpen);
+      }
+
+      const visibleItems = (cfg.items || []).filter(i => i.visible !== false);
+      const customPageItems = (db.customPages || []).map(cp => ({
+        id: 'custom:' + cp.slug,
+        label: cp.navLabel || cp.title,
+        icon: '📄',
+        visible: true
+      }));
+      const allMenuItems = [...visibleItems];
+      customPageItems.forEach(cpItem => {
+        if (!allMenuItems.some(x => x.id === cpItem.id)) allMenuItems.push(cpItem);
+      });
+
+      const renderItemIcon = (item) => {
+        if (item.customIconImg) {
+          return `<img src="${item.customIconImg}" class="w-4 h-4 object-contain rounded shrink-0" />`;
+        }
+        return `<span>${item.icon || ''}</span>`;
+      };
+
+      const renderItemBadge = (item) => {
+        if (!item.badge) return '';
+        return `<span class="px-1.5 py-0.5 rounded-md bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-[9px] font-black uppercase tracking-wider">${item.badge}</span>`;
+      };
+
+      /* A. PC & Tablet Bar */
+      const pillBar = document.getElementById('mobile-tablet-menu-bar');
+      if (pillBar) {
+        pillBar.innerHTML = allMenuItems.map(item => {
+          const isAct = item.id === currentActive;
+          const badgeTxt = item.id === 'quotation' ? ` (${cart ? cart.length : 0})` : '';
+          const safeId = (item.id || 'home').replace(/'/g, "\\'");
+          return `
+            <button type="button" onclick="window.triggerMenuItemAction('${safeId}')" class="px-4 py-2 rounded-xl text-xs font-extrabold transition shrink-0 flex items-center gap-1.5 ${isAct ? 'nav-glass-active' : ''}">
+              ${isAct && !zeroHighlight ? '<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>' : ''}
+              ${renderItemIcon(item)}
+              <span>${item.label}${badgeTxt}</span>
+              ${renderItemBadge(item)}
+            </button>
+          `;
+        }).join('');
+      }
+
+      /* B. Hamburger Drawer */
+      if (drw) {
+        const availabilityText = cfg.availabilityText || '🟢 Available for New Brand Launches & Scale';
+        const showAvail = cfg.showAvailabilityBadge !== false;
+        const showVoice = cfg.showVoiceBriefBtn !== false;
+        const isBento = cfg.drawerLayoutStyle === 'bento_grid';
+
+        drw.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between border-b border-white/15 pb-3.5 mb-3">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full secondary-bg animate-ping"></span>
+                <span class="text-xs font-extrabold uppercase tracking-widest text-white/90">${cfg.drawerTitle || 'Menu & Quick Access'}</span>
+              </div>
+              <button type="button" onclick="closeHamburgerDrawer()" class="px-3 py-1 rounded-xl text-xs font-bold text-white">✕ Close</button>
+            </div>
+
+            ${showAvail ? `
+              <div class="mb-3 px-3 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-[11px] font-extrabold text-emerald-300 flex items-center justify-between">
+                <span>${availabilityText}</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              </div>
+            ` : ''}
+
+            <div class="${isBento ? 'grid grid-cols-2 gap-2.5' : 'flex flex-col gap-2'} max-h-[55vh] overflow-y-auto pr-1">
+              ${allMenuItems.map((item, idx) => {
+                const isAct = item.id === currentActive;
+                const numStr = `(0${idx + 1})`;
+                const badgeTxt = item.id === 'quotation' ? ` • ${cart ? cart.length : 0}` : '';
+                const safeId = (item.id || 'home').replace(/'/g, "\\'");
+                return `
+                  <button type="button" onclick="window.triggerMenuItemAction('${safeId}')" style="animation-delay: ${idx * 25}ms" class="hb-row-stagger w-full px-4 py-3 rounded-2xl text-left flex items-center justify-between ${isAct ? 'nav-glass-active' : 'hb-single-row-item'}">
+                    <div class="flex items-center gap-2.5 truncate">
+                      <span class="text-[10px] font-mono font-bold text-zinc-400">${numStr}</span>
+                      ${renderItemIcon(item)}
+                      <span class="text-sm font-extrabold tracking-tight text-white truncate">${item.label}${badgeTxt}</span>
+                      ${renderItemBadge(item)}
+                    </div>
+                    <div class="flex items-center gap-1.5 shrink-0">
+                      ${isAct && !zeroHighlight ? '<span class="w-2 h-2 rounded-full bg-emerald-400"></span>' : ''}
+                      <span class="text-xs font-black text-zinc-300">→</span>
+                    </div>
+                  </button>
+                `;
+              }).join('')}
+            </div>
+          </div>
+
+          <div class="mt-3 pt-3 border-t border-white/15 flex flex-col gap-2">
+            ${showVoice ? `
+              <button type="button" onclick="closeHamburgerDrawer(); navigate('contact');" class="py-2.5 px-3 rounded-xl text-indigo-200 text-xs font-extrabold flex items-center justify-center gap-1.5">
+                🎙️ Send Quick Voice Brief to Studio
+              </button>
+            ` : ''}
+            <div class="grid grid-cols-2 gap-2">
+              ${cfg.showSearchInDrawer !== false ? `
+                <button type="button" onclick="closeHamburgerDrawer(); openCommandPalette();" class="py-2 px-3 rounded-xl text-xs font-bold text-white flex items-center justify-center gap-1.5">
+                  🔍 Quick Search
+                </button>
+              ` : ''}
+              ${cfg.showVipPassInDrawer !== false ? `
+                <button type="button" onclick="closeHamburgerDrawer(); openVIPPassModal();" class="py-2 px-3 rounded-xl text-amber-200 text-xs font-extrabold flex items-center justify-center gap-1">
+                  ${cfg.vipPassText || '💳 VIP Partner Pass'}
+                </button>
+              ` : ''}
+            </div>
+            ${cfg.bottomCtaText ? `
+              <button type="button" onclick="closeHamburgerDrawer(); openDirectWhatsApp();" class="w-full py-2.5 rounded-xl secondary-bg text-zinc-950 font-extrabold text-xs shadow-lg">
+                ${cfg.bottomCtaText}
+              </button>
+            ` : ''}
+          </div>
+        `;
+      }
+    };
+
+    setTimeout(() => window.renderMasterNavigationUI(), 180);
+  })();
+</script>
+<!-- ==================== INDEX.HTML : A-TO-Z MENU ENGINE COMPLETE ==================== -->
