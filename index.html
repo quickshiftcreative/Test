@@ -5906,3 +5906,372 @@
   })();
 </script>
 <!-- ==================== INDEX.HTML : A-TO-Z MENU ENGINE COMPLETE ==================== -->
+<!-- ==================== INDEX.HTML : APPLE 3D LOGO PORTAL LOADER & HOME ENTRANCE ENGINE (PASTE AT VERY BOTTOM) ==================== -->
+<style id="apple-3d-loader-engine-v12">
+  :root {
+    --ldr-bg-1: #09090b;
+    --ldr-bg-2: #121218;
+    --ldr-accent: #f59e0b;
+    --ldr-logo-size: 96px;
+    --ldr-logo-radius: 26px;
+  }
+
+  #agency-loader-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 999999 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    perspective: 1200px !important;
+    overflow: hidden !important;
+    background: radial-gradient(circle at 50% 42%, var(--ldr-bg-2) 0%, var(--ldr-bg-1) 75%) !important;
+    transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.65s ease, transform 0.75s cubic-bezier(0.7, 0, 0.2, 1), clip-path 0.8s cubic-bezier(0.7, 0, 0.2, 1), filter 0.65s ease !important;
+  }
+
+  #agency-loader-overlay.ldr-glass-backdrop {
+    background: rgba(9, 9, 11, 0.76) !important;
+    backdrop-filter: blur(34px) saturate(190%) !important;
+    -webkit-backdrop-filter: blur(34px) saturate(190%) !important;
+  }
+
+  #agency-loader-overlay.ldr-hidden-done {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  /* 3D Orbiting Halo Rings Around Uploaded Logo */
+  .ldr-logo-stage {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-style: preserve-3d;
+    transition: transform 0.75s cubic-bezier(0.7, 0, 0.2, 1), opacity 0.6s ease, filter 0.6s ease;
+  }
+
+  .ldr-orbit-ring-1 {
+    position: absolute;
+    width: calc(var(--ldr-logo-size) + 34px);
+    height: calc(var(--ldr-logo-size) + 34px);
+    border-radius: 9999px;
+    border: 1.5px solid transparent;
+    border-top-color: var(--ldr-accent);
+    border-right-color: rgba(255, 255, 255, 0.28);
+    animation: ldrSpin3D 2.4s linear infinite;
+    pointer-events: none;
+  }
+
+  .ldr-orbit-ring-2 {
+    position: absolute;
+    width: calc(var(--ldr-logo-size) + 54px);
+    height: calc(var(--ldr-logo-size) + 54px);
+    border-radius: 9999px;
+    border: 1px dashed rgba(255, 255, 255, 0.16);
+    animation: ldrSpinReverse 5s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes ldrSpin3D {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.04); }
+    100% { transform: rotate(360deg) scale(1); }
+  }
+  @keyframes ldrSpinReverse {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+  }
+
+  .ldr-logo-emblem {
+    width: var(--ldr-logo-size) !important;
+    height: var(--ldr-logo-size) !important;
+    border-radius: var(--ldr-logo-radius) !important;
+    background: linear-gradient(145deg, rgba(255,255,255,0.16), rgba(255,255,255,0.04));
+    border: 1px solid rgba(255, 255, 255, 0.26);
+    box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.85), 0 0 40px -8px var(--ldr-accent), inset 0 1px 1px rgba(255, 255, 255, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    animation: ldrFloatBreath 2.2s ease-in-out infinite;
+  }
+
+  @keyframes ldrFloatBreath {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-5px) scale(1.03); }
+  }
+
+  /* ================= 6 FAMOUS LOADER EXIT / REVEAL ANIMATIONS ================= */
+  /* 1. 3D Logo Fly-Through Zoom Portal (Apple Keynote Style) */
+  #agency-loader-overlay.exit-zoom_portal .ldr-logo-stage {
+    transform: translateZ(920px) scale(18) !important;
+    opacity: 0 !important;
+  }
+  #agency-loader-overlay.exit-zoom_portal .ldr-meta-info {
+    opacity: 0 !important;
+    transform: translateY(20px) scale(0.9) !important;
+    transition: all 0.3s ease !important;
+  }
+  #agency-loader-overlay.exit-zoom_portal {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition-delay: 0.18s !important;
+  }
+
+  /* 2. 3D Flip & Expand Burst */
+  #agency-loader-overlay.exit-flip_3d_burst .ldr-logo-stage {
+    transform: rotateY(540deg) scale(10) !important;
+    opacity: 0 !important;
+  }
+  #agency-loader-overlay.exit-flip_3d_burst {
+    opacity: 0 !important;
+    filter: blur(18px) !important;
+    visibility: hidden !important;
+  }
+
+  /* 3. Cinema Curtain Split Reveal */
+  #agency-loader-overlay.exit-curtain_split {
+    clip-path: inset(50% 0 50% 0) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+
+  /* 4. VisionOS Iris Circle Portal Collapse/Expand */
+  #agency-loader-overlay.exit-iris_portal {
+    clip-path: circle(0% at 50% 45%) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+
+  /* 5. Liquid Glass Melt & Blur Dissolve */
+  #agency-loader-overlay.exit-glass_melt {
+    filter: blur(36px) brightness(1.35) !important;
+    transform: scale(1.12) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+
+  /* 6. Cyber Upward Shutter Lift */
+  #agency-loader-overlay.exit-shutter_up {
+    transform: translateY(-102%) !important;
+    visibility: hidden !important;
+  }
+
+  /* ================= 4 HOME PAGE ENTRANCE ANIMATIONS (AFTER LOADER) ================= */
+  @keyframes homeEnterCascade {
+    0% { opacity: 0; transform: translateY(34px) scale(0.98); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes homeEnter3DZoom {
+    0% { opacity: 0; transform: perspective(1000px) translateZ(-120px) rotateX(8deg); }
+    100% { opacity: 1; transform: perspective(1000px) translateZ(0) rotateX(0deg); }
+  }
+  @keyframes homeEnterBlurFocus {
+    0% { opacity: 0; filter: blur(22px); transform: scale(1.04); }
+    100% { opacity: 1; filter: blur(0px); transform: scale(1); }
+  }
+  @keyframes homeEnterElastic {
+    0% { opacity: 0; transform: translateY(45px) scale(0.92); }
+    70% { opacity: 1; transform: translateY(-6px) scale(1.01); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .home-entrance-cascade { animation: homeEnterCascade 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  .home-entrance-zoom_3d { animation: homeEnter3DZoom 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  .home-entrance-blur_focus { animation: homeEnterBlurFocus 0.85s ease-out forwards; }
+  .home-entrance-elastic { animation: homeEnterElastic 0.95s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+</style>
+
+<script>
+  (function () {
+    const DEFAULT_LOADER_CFG = {
+      enabled: true,
+      frequency: 'always', // 'always' or 'once_per_session'
+      exitAnim: 'zoom_portal', // 'zoom_portal', 'flip_3d_burst', 'curtain_split', 'iris_portal', 'glass_melt', 'shutter_up'
+      homeEntrance: 'cascade', // 'cascade', 'zoom_3d', 'blur_focus', 'elastic'
+      bgTheme: 'obsidian_gold', // 'obsidian_gold', 'cyber_indigo', 'emerald_matrix', 'tinted_glass'
+      progressStyle: 'laser_bar', // 'laser_bar', 'minimal_pct', 'pulse_dots'
+      logoShape: 'rounded', // 'rounded', 'circle', 'raw_png'
+      logoSize: 96,
+      showOrbitRings: true,
+      durationMs: 1450,
+      customLoaderLogo: '',
+      headlineText: '', // empty = auto use db.brand.name
+      taglineText: 'Initializing Global Brand & E-Commerce Studio...',
+      statusSteps: 'Loading 3D Visual Engine..., Syncing Live Pricing & Catalog..., Ready for Launch'
+    };
+
+    const BG_THEME_MAP = {
+      obsidian_gold:  { bg1: '#070709', bg2: '#1d170b', accent: '#f59e0b', glass: false },
+      cyber_indigo:   { bg1: '#070810', bg2: '#131638', accent: '#6366f1', glass: false },
+      emerald_matrix: { bg1: '#060c0a', bg2: '#0b2920', accent: '#10b981', glass: false },
+      tinted_glass:   { bg1: '#09090b', bg2: '#18181b', accent: '#f59e0b', glass: true }
+    };
+
+    window.getLoaderConfig = function (db) {
+      return { ...DEFAULT_LOADER_CFG, ...(db?.loaderConfig || {}) };
+    };
+
+    /* 1. Rebuild #agency-loader-overlay with 3D Logo Stage, Uploaded Logo & Dynamic Progress */
+    function upgradeLoaderDOM() {
+      let overlay = document.getElementById('agency-loader-overlay');
+      if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'agency-loader-overlay';
+        document.body.prepend(overlay);
+      }
+
+      const db = getDB();
+      const cfg = window.getLoaderConfig(db);
+
+      /* Check if disabled or once_per_session already shown */
+      if (cfg.enabled === false || (cfg.frequency === 'once_per_session' && sessionStorage.getItem('OG_LOADER_SHOWN_V12'))) {
+        overlay.classList.add('ldr-hidden-done');
+        return;
+      }
+      sessionStorage.setItem('OG_LOADER_SHOWN_V12', '1');
+
+      /* Apply Theme CSS Variables */
+      const th = BG_THEME_MAP[cfg.bgTheme || 'obsidian_gold'] || BG_THEME_MAP.obsidian_gold;
+      const root = document.documentElement;
+      root.style.setProperty('--ldr-bg-1', th.bg1);
+      root.style.setProperty('--ldr-bg-2', th.bg2);
+      root.style.setProperty('--ldr-accent', th.accent);
+      root.style.setProperty('--ldr-logo-size', (cfg.logoSize || 96) + 'px');
+      const radMap = { rounded: '26px', circle: '9999px', raw_png: '0px' };
+      root.style.setProperty('--ldr-logo-radius', radMap[cfg.logoShape || 'rounded'] || '26px');
+
+      overlay.classList.toggle('ldr-glass-backdrop', Boolean(th.glass));
+      overlay.className = overlay.className.replace(/\bexit-\S+/g, '').replace('fade-out', '').replace('ldr-hidden-done', '');
+
+      /* Determine Logo Source: Custom Loader Logo -> Uploaded Brand Logo -> Brand Initials */
+      const logoImgUrl = (cfg.customLoaderLogo || db.brand?.logo || '').trim();
+      const fallbackTxt = (db.brand?.logoText || db.brand?.name || 'BP').trim().substring(0, 3).toUpperCase();
+      const rawMode = cfg.logoShape === 'raw_png' && logoImgUrl;
+
+      const logoInnerHTML = logoImgUrl
+        ? `<img src="${logoImgUrl}" alt="Brand Logo" class="w-full h-full object-contain ${rawMode ? '' : 'p-2'}" />`
+        : `<span class="text-3xl font-black text-white tracking-wider">${fallbackTxt}</span>`;
+
+      const brandHeading = (cfg.headlineText || db.brand?.name || 'THE BLANK PAGE').trim();
+      const stepsArr = (cfg.statusSteps || DEFAULT_LOADER_CFG.statusSteps).split(',').map(s => s.trim()).filter(Boolean);
+
+      overlay.innerHTML = `
+        <div class="max-w-md w-full px-6 flex flex-col items-center text-center space-y-8 select-none">
+          <!-- 3D Logo Stage (Zooms in 3D on 100%) -->
+          <div class="ldr-logo-stage my-2">
+            ${cfg.showOrbitRings !== false ? '<div class="ldr-orbit-ring-1"></div><div class="ldr-orbit-ring-2"></div>' : ''}
+            <div class="ldr-logo-emblem" style="${rawMode ? 'background:transparent;border:none;box-shadow:none;' : ''}">
+              ${logoInnerHTML}
+            </div>
+          </div>
+
+          <!-- Brand Title, Status Step & Progress Indicator -->
+          <div class="ldr-meta-info w-full space-y-4 transition-all duration-300">
+            <div class="space-y-1.5">
+              <h2 id="ldr-live-brand-title" class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">${brandHeading}</h2>
+              <p id="ldr-live-status-txt" class="text-[11px] font-mono uppercase tracking-widest text-zinc-400">${stepsArr[0] || cfg.taglineText}</p>
+            </div>
+
+            ${cfg.progressStyle === 'minimal_pct' ? `
+              <div class="text-3xl font-black font-mono" style="color: var(--ldr-accent);" id="loader-pct-text">0%</div>
+            ` : cfg.progressStyle === 'pulse_dots' ? `
+              <div class="flex items-center justify-center gap-2 pt-1">
+                <span class="w-2.5 h-2.5 rounded-full animate-bounce" style="background:var(--ldr-accent);"></span>
+                <span class="w-2.5 h-2.5 rounded-full animate-bounce" style="background:var(--ldr-accent);animation-delay:0.15s"></span>
+                <span class="w-2.5 h-2.5 rounded-full animate-bounce" style="background:var(--ldr-accent);animation-delay:0.3s"></span>
+                <span id="loader-pct-text" class="text-xs font-mono font-bold text-zinc-300 ml-2">0%</span>
+              </div>
+            ` : `
+              <div class="w-full max-w-xs mx-auto space-y-2">
+                <div class="flex justify-between text-[11px] font-bold font-mono">
+                  <span class="text-zinc-400">STUDIO SYNC</span>
+                  <span id="loader-pct-text" style="color: var(--ldr-accent);">0%</span>
+                </div>
+                <div class="w-full h-1.5 rounded-full bg-white/10 overflow-hidden p-[1px]">
+                  <div id="loader-progress-fill" class="h-full rounded-full transition-all duration-150" style="width: 4%; background: linear-gradient(90deg, #6366f1, var(--ldr-accent), #10b981); box-shadow: 0 0 16px var(--ldr-accent);"></div>
+                </div>
+              </div>
+            `}
+          </div>
+        </div>
+      `;
+
+      /* Run Smooth Progress Counter & Trigger 3D Exit + Home Entrance at 100% */
+      let pct = 4;
+      const totalDur = Math.max(600, Number(cfg.durationMs || 1450));
+      const intervalMs = Math.round(totalDur / 18);
+      const pctEl = document.getElementById('loader-pct-text');
+      const fillEl = document.getElementById('loader-progress-fill');
+      const statusEl = document.getElementById('ldr-live-status-txt');
+
+      const timer = setInterval(() => {
+        pct += Math.floor(Math.random() * 9) + 5;
+        if (pct >= 100) {
+          pct = 100;
+          clearInterval(timer);
+          if (pctEl) pctEl.innerText = '100%';
+          if (fillEl) fillEl.style.width = '100%';
+          if (statusEl && stepsArr.length > 0) statusEl.innerText = stepsArr[stepsArr.length - 1];
+
+          setTimeout(() => {
+            triggerLoader3DExitAndHomeEntrance(cfg);
+          }, 180);
+          return;
+        }
+        if (pctEl) pctEl.innerText = pct + '%';
+        if (fillEl) fillEl.style.width = pct + '%';
+        if (statusEl && stepsArr.length > 1) {
+          const stepIdx = Math.min(stepsArr.length - 1, Math.floor((pct / 100) * stepsArr.length));
+          statusEl.innerText = stepsArr[stepIdx];
+        }
+      }, intervalMs);
+    }
+
+    window.triggerLoader3DExitAndHomeEntrance = function (cfg) {
+      const overlay = document.getElementById('agency-loader-overlay');
+      if (!overlay) return;
+      const exitClass = 'exit-' + (cfg?.exitAnim || 'zoom_portal');
+      overlay.classList.add(exitClass);
+
+      /* Trigger Home Page Entrance Animation simultaneously */
+      const homeView = document.getElementById('view-home');
+      const entStyle = 'home-entrance-' + (cfg?.homeEntrance || 'cascade');
+      if (homeView) {
+        homeView.classList.remove('home-entrance-cascade', 'home-entrance-zoom_3d', 'home-entrance-blur_focus', 'home-entrance-elastic');
+        void homeView.offsetWidth;
+        homeView.classList.add(entStyle);
+      }
+
+      setTimeout(() => {
+        overlay.classList.add('ldr-hidden-done');
+      }, 780);
+    };
+
+    /* Keep Loader Logo & Brand Name Synced Whenever Cloud DB Finishes Pulling */
+    const prevRender = window.renderAll;
+    window.renderAll = function () {
+      if (typeof prevRender === 'function') prevRender();
+      const db = getDB();
+      const cfg = window.getLoaderConfig(db);
+      const overlay = document.getElementById('agency-loader-overlay');
+      if (overlay && !overlay.classList.contains('ldr-hidden-done')) {
+        const emblem = overlay.querySelector('.ldr-logo-emblem');
+        const logoUrl = (cfg.customLoaderLogo || db.brand?.logo || '').trim();
+        if (emblem && logoUrl) {
+          emblem.innerHTML = `<img src="${logoUrl}" alt="Logo" class="w-full h-full object-contain ${cfg.logoShape === 'raw_png' ? '' : 'p-2'}" />`;
+        }
+        const tEl = document.getElementById('ldr-live-brand-title');
+        if (tEl) tEl.innerText = (cfg.headlineText || db.brand?.name || 'THE BLANK PAGE').trim();
+      }
+    };
+
+    /* Run immediately */
+    upgradeLoaderDOM();
+  })();
+</script>
+<!-- ==================== INDEX.HTML : APPLE 3D LOGO PORTAL LOADER COMPLETE ==================== -->
