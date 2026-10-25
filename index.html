@@ -3460,3 +3460,139 @@
   })();
 </script>
 <!-- ==================== INDEX.HTML : LUXURY UI & CALL BOOKER PATCH COMPLETE ==================== -->
+<!-- ==================== INDEX.HTML : FULL-STACK AGENCY & 8 UNIQUE FEATURES MASTER PATCH (PASTE AT VERY BOTTOM) ==================== -->
+<script>
+  (function () {
+    /* 1. Expand Default Services to Full-Stack Agency Offerings */
+    const db = getDB();
+    if (db && db.services && db.services.length < 5) {
+      db.services = [
+        {
+          id: 'CAT-1', index: '(01)', title: 'E-Commerce & Quick Commerce Scale', badge: 'Marketplaces', mediaUrl: '',
+          description: 'Dominating Amazon Global, Amazon India, Flipkart, Blinkit, Zepto, and Swiggy Instamart with organic keyword SEO and A+ content.',
+          subServices: [
+            { id: 'SUB-101', name: 'Amazon Global & India Complete Management', priceINR: 20000, billing: 'Monthly' },
+            { id: 'SUB-102', name: 'Flipkart & Quick-Commerce Dark Store Setup', priceINR: 15000, billing: 'Monthly' }
+          ]
+        },
+        {
+          id: 'CAT-2', index: '(02)', title: 'Performance Marketing & Paid Ads (Meta, Google, TikTok)', badge: 'Paid Ads', mediaUrl: '',
+          description: 'High-ROAS paid acquisition campaigns across Meta (Instagram/FB), Google Shopping/Search, and TikTok Ads.',
+          subServices: [
+            { id: 'SUB-201', name: 'Meta & Google Ads Full Management (ROAS Focus)', priceINR: 25000, billing: 'Monthly' },
+            { id: 'SUB-202', name: 'TikTok & Global Paid Media Scaling', priceINR: 22000, billing: 'Monthly' }
+          ]
+        },
+        {
+          id: 'CAT-3', index: '(03)', title: 'Commercial Photography, Videography & CGI', badge: 'Production', mediaUrl: '',
+          description: 'High-end commercial product photography, videography, CGI 3D product renders, and commercial video direction.',
+          subServices: [
+            { id: 'SUB-301', name: 'Commercial Product Photography & Styling (10 SKUs)', priceINR: 18000, billing: 'One-Time' },
+            { id: 'SUB-302', name: 'CGI 3D Product Videos & Commercial Reels', priceINR: 25000, billing: 'One-Time' }
+          ]
+        },
+        {
+          id: 'CAT-4', index: '(04)', title: 'Brand Identity, Graphic Design & Social Media', badge: 'Creative', mediaUrl: '',
+          description: 'Complete brand guidelines, packaging die-lines, all graphic design assets, and full social media management & growth planning.',
+          subServices: [
+            { id: 'SUB-401', name: 'Social Media Growth Planning & Content Management', priceINR: 15000, billing: 'Monthly' },
+            { id: 'SUB-402', name: 'Brand Identity & Packaging Die-Line Design System', priceINR: 20000, billing: 'One-Time' }
+          ]
+        },
+        {
+          id: 'CAT-5', index: '(05)', title: 'Legal, Trademarks, GS1 Barcodes & Documentation', badge: 'Compliance', mediaUrl: '',
+          description: 'Indian and international trademark registration, licensing, GS1 barcode registration, QR code generation, and official compliance documentation.',
+          subServices: [
+            { id: 'SUB-501', name: 'Indian Trademark Registration & Legal Filing', priceINR: 8500, billing: 'One-Time' },
+            { id: 'SUB-502', name: 'Official GS1 Barcode Registration & QR Code Generation', priceINR: 6000, billing: 'One-Time' }
+          ]
+        }
+      ];
+      localStorage.setItem(LOCAL_CACHE_KEY, JSON.stringify(db));
+    }
+
+    /* 2. Smart Tab-Switch Attention Magnet */
+    const origTitle = document.title;
+    window.addEventListener('blur', () => {
+      document.title = '⚡ Your Custom Growth Plan Awaits! | ' + getDB().brand.name;
+    });
+    window.addEventListener('focus', () => {
+      document.title = origTitle;
+    });
+
+    /* 3. Inject 1-Click Instant Mutual NDA Generator into Quotation Page */
+    const quoteSec = document.getElementById('view-quotation');
+    if (quoteSec && !document.getElementById('instant-nda-card')) {
+      const ndaBox = document.createElement('div');
+      ndaBox.id = 'instant-nda-card';
+      ndaBox.className = 'charcoal-card rounded-3xl p-6 sm:p-7 space-y-3 border border-indigo-500/40 my-6';
+      ndaBox.innerHTML = `
+        <div class="flex items-center justify-between">
+          <div>
+            <span class="text-[10px] font-extrabold uppercase text-indigo-400">🔒 Legal Confidentiality</span>
+            <h4 class="text-base font-bold text-white">Generate Instant Mutual Non-Disclosure Agreement (NDA)</h4>
+          </div>
+          <button onclick="generateInstantNDA()" class="px-4 py-2.5 rounded-xl bg-indigo-600 text-white font-extrabold text-xs">
+            📄 Generate Signed NDA PDF →
+          </button>
+        </div>
+      `;
+      quoteSec.insertBefore(ndaBox, quoteSec.children[2]);
+    }
+
+    window.generateInstantNDA = function () {
+      const name = document.getElementById('q-inp-name')?.value || 'Brand Founder';
+      const brand = document.getElementById('q-inp-brand')?.value || 'Client Brand';
+      const db = getDB();
+
+      const ndaHtml = `
+        <div style="padding: 45px; font-family: 'Plus Jakarta Sans', sans-serif; color: #09090b; background: #fff;">
+          <h1 style="font-size: 22px; font-weight: 800;">MUTUAL NON-DISCLOSURE AGREEMENT (NDA)</h1>
+          <p style="font-size: 11px; color: #52525b; margin-top: 4px;">This agreement is executed between <strong>${db.brand.name}</strong> and <strong>${name} (${brand})</strong>.</p>
+          <hr style="border: 0; border-top: 1px solid #e4e4e7; margin: 20px 0;" />
+          <p style="font-size: 12px; line-height: 1.6; color: #27272a;">
+            Both parties agree to protect and keep confidential all proprietary product sheets, marketplace credentials, design assets, and financial metrics shared during the engagement.
+          </p>
+          <div style="margin-top: 40px; display: flex; justify-content: space-between; font-size: 11px;">
+            <div><strong>For ${db.brand.name}</strong><br/>Authorized Signatory</div>
+            <div><strong>For ${brand}</strong><br/>${name} (Digitally Verified)</div>
+          </div>
+        </div>
+      `;
+      const wrapper = document.createElement('div');
+      wrapper.innerHTML = ndaHtml;
+      html2pdf().set({ margin: 0.4, filename: `${brand.replace(/\s+/g, '_')}_Mutual_NDA.pdf`, html2canvas: { scale: 2 }, jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' } }).from(wrapper).save();
+    };
+
+    /* 4. Inject Dedicated Growth Pod Visualizer into Quotation Page */
+    if (quoteSec && !document.getElementById('growth-pod-card')) {
+      const podBox = document.createElement('div');
+      podBox.id = 'growth-pod-card';
+      podBox.className = 'liquid-glass rounded-3xl p-6 space-y-3 my-6';
+      podBox.innerHTML = `
+        <span class="text-[10px] font-extrabold uppercase secondary-text">👥 Your Dedicated Execution Pod</span>
+        <h4 class="text-base font-bold text-white">Your Assigned Specialists Across Creative, Ads & Compliance</h4>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 text-xs">
+          <div class="p-3 rounded-2xl bg-black/60 border border-white/10"><strong class="text-white block">1x Lead Strategist</strong><span class="text-zinc-400 text-[11px]">Marketplace & Growth</span></div>
+          <div class="p-3 rounded-2xl bg-black/60 border border-white/10"><strong class="text-white block">1x Paid Ads Expert</strong><span class="text-zinc-400 text-[11px]">Meta, Google & TikTok</span></div>
+          <div class="p-3 rounded-2xl bg-black/60 border border-white/10"><strong class="text-white block">1x 3D CGI & Graphic Lead</strong><span class="text-zinc-400 text-[11px]">Visuals & Photography</span></div>
+          <div class="p-3 rounded-2xl bg-black/60 border border-white/10"><strong class="text-white block">1x Legal & Compliance Mgr</strong><span class="text-zinc-400 text-[11px]">Trademarks & Barcodes</span></div>
+        </div>
+      `;
+      quoteSec.insertBefore(podBox, quoteSec.children[3]);
+    }
+
+    /* 5. Handle VIP Pitch Parameter (?pitch=BrandName) */
+    const pitchBrand = new URLSearchParams(window.location.search).get('pitch');
+    if (pitchBrand) {
+      setTimeout(() => {
+        const ban = document.getElementById('vip-personal-banner');
+        if (ban) {
+          ban.classList.remove('hidden');
+          document.getElementById('vip-personal-text').innerText = `⚡ VIP Executive Pitch Prepared Exclusively For ${decodeURIComponent(pitchBrand)}`;
+        }
+      }, 700);
+    }
+  })();
+</script>
+<!-- ==================== INDEX.HTML : FULL-STACK AGENCY MASTER PATCH COMPLETE ==================== -->
