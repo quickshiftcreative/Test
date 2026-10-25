@@ -4815,3 +4815,157 @@
   })();
 </script>
 <!-- ==================== INDEX.HTML : SINGLE-COLUMN TINTED LIQUID-GLASS HAMBURGER PATCH COMPLETE ==================== -->
+<!-- ==================== INDEX.HTML : LUXURY ACTIVE TAB STYLE & UNIQUE HAMBURGER FEATURES PATCH (PASTE AT VERY BOTTOM) ==================== -->
+<style id="luxury-active-tab-and-hamburger-fix">
+  /* 1. Replace Harsh Solid White Active Box with Sleek Luxury Glass Pill & Glowing Dot */
+  .dnav-btn.active-nav-luxury,
+  #mobile-tablet-menu-bar button.active-nav-luxury {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.08) 100%) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.4) !important;
+    position: relative;
+  }
+  .dnav-btn.active-nav-luxury::after,
+  #mobile-tablet-menu-bar button.active-nav-luxury::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 3px;
+    background: var(--accent-primary, #6366f1);
+    border-radius: 9999px;
+    box-shadow: 0 0 10px var(--accent-primary, #6366f1);
+  }
+
+  /* Secondary Active Style: Minimal Underline */
+  .active-nav-minimal {
+    color: #ffffff !important;
+    border-bottom: 2px solid var(--accent-primary, #6366f1) !important;
+    border-radius: 0 !important;
+  }
+</style>
+
+<script>
+  (function () {
+    /* 1. Override Active Nav Highlighter with Luxury Style */
+    window.highlightActiveNavbarBtn = function (pageKey) {
+      const db = getDB();
+      const styleMode = db.navMenuConfig?.activeIndicatorStyle || 'glass_pill';
+
+      document.querySelectorAll('.dnav-btn, #mobile-tablet-menu-bar button').forEach(btn => {
+        const target = btn.getAttribute('data-nav') || btn.getAttribute('onclick')?.match(/'([^']+)'/)?.[1];
+        const active = target === pageKey;
+
+        btn.classList.remove('active-nav-luxury', 'active-nav-minimal', 'bg-white', 'text-zinc-950', 'shadow');
+        if (active) {
+          if (styleMode === 'minimal_underline') {
+            btn.classList.add('active-nav-minimal');
+          } else {
+            btn.classList.add('active-nav-luxury');
+          }
+        } else {
+          btn.className = btn.className.includes('dnav-btn')
+            ? 'dnav-btn px-3 py-1.5 rounded-lg text-xs font-bold text-zinc-300 hover:text-white transition whitespace-nowrap'
+            : 'px-4 py-2 rounded-xl text-xs font-extrabold transition shrink-0 flex items-center gap-1.5 bg-black/50 text-zinc-200 border border-white/10 hover:border-white/30 hover:text-white';
+        }
+      });
+    };
+
+    /* 2. Upgrade Phone Hamburger Drawer with Unique Growth Widgets */
+    const origRenderNav = window.renderMasterNavigationUI;
+    window.renderMasterNavigationUI = function () {
+      if (typeof origRenderNav === 'function') origRenderNav();
+      const db = getDB();
+      const cfg = window.getNavMenuConfig ? window.getNavMenuConfig(db) : {};
+      const currentActive = (window.location.hash || '').replace('#', '') || localStorage.getItem('OG_DESK_LAST_ACTIVE_PAGE_V5') || 'home';
+
+      window.highlightActiveNavbarBtn(currentActive);
+
+      const drawer = document.getElementById('hamburger-drawer');
+      if (!drawer) return;
+
+      const visibleItems = (cfg.items || []).filter(i => i.visible !== false);
+      const customPageItems = (db.customPages || []).map(cp => ({
+        id: 'custom:' + cp.slug,
+        label: cp.navLabel || cp.title,
+        icon: '📄',
+        visible: true
+      }));
+      const allMenuItems = [...visibleItems];
+      customPageItems.forEach(cpItem => {
+        if (!allMenuItems.some(x => x.id === cpItem.id)) allMenuItems.push(cpItem);
+      });
+
+      const availabilityText = cfg.availabilityText || '🟢 Available for Q3 Sprints • Fast Onboarding';
+      const showAvail = cfg.showAvailabilityBadge !== false;
+      const showVoice = cfg.showVoiceBriefBtn !== false;
+
+      drawer.innerHTML = `
+        <div class="flex items-center justify-between border-b border-white/15 pb-3.5 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full secondary-bg animate-ping"></span>
+            <span class="text-xs font-extrabold uppercase tracking-widest text-white/90">${cfg.drawerTitle || 'Menu & Quick Access'}</span>
+          </div>
+          <button onclick="closeHamburgerDrawer()" class="px-3 py-1 rounded-xl bg-white/15 hover:bg-white/25 text-xs font-bold text-white border border-white/15">✕ Close</button>
+        </div>
+
+        ${showAvail ? `
+          <div class="mb-3 px-3 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-[11px] font-extrabold text-emerald-300 flex items-center justify-between">
+            <span>${availabilityText}</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          </div>
+        ` : ''}
+
+        <!-- Single-Column Stacked List -->
+        <div class="flex flex-col gap-2 max-h-[48vh] overflow-y-auto pr-1">
+          ${allMenuItems.map((item, idx) => {
+            const isAct = item.id === currentActive;
+            const numStr = `(0${idx + 1})`;
+            const badgeTxt = item.id === 'quotation' ? ` • ${cart ? cart.length : 0} Items` : '';
+            return `
+              <button onclick="selectHamburgerPage('${item.id}')" style="animation-delay: ${idx * 30}ms" class="hb-row-stagger w-full px-4 py-3 rounded-2xl text-left flex items-center justify-between ${isAct ? 'hb-single-row-active' : 'hb-single-row-item text-white'}">
+                <div class="flex items-center gap-3">
+                  <span class="text-[11px] font-mono font-bold ${isAct ? 'text-zinc-600' : 'text-zinc-400'}">${numStr}</span>
+                  <span class="text-base">${item.icon || '✦'}</span>
+                  <span class="text-sm font-extrabold tracking-tight">${item.label}${badgeTxt}</span>
+                </div>
+                <span class="text-xs font-black ${isAct ? 'text-zinc-950' : 'text-zinc-300'}">→</span>
+              </button>
+            `;
+          }).join('')}
+        </div>
+
+        <div class="mt-3 pt-3 border-t border-white/15 flex flex-col gap-2">
+          ${showVoice ? `
+            <button onclick="closeHamburgerDrawer(); navigate('contact');" class="py-2.5 px-3 rounded-xl bg-indigo-600/25 border border-indigo-500/40 text-indigo-200 text-xs font-extrabold flex items-center justify-center gap-1.5">
+              🎙️ Send Quick Voice Brief to Studio
+            </button>
+          ` : ''}
+          <div class="grid grid-cols-2 gap-2">
+            ${cfg.showSearchInDrawer !== false ? `
+              <button onclick="closeHamburgerDrawer(); openCommandPalette();" class="py-2 px-3 rounded-xl hb-single-row-item text-xs font-bold text-white flex items-center justify-center gap-1.5">
+                🔍 Quick Search
+              </button>
+            ` : ''}
+            ${cfg.showVipPassInDrawer !== false ? `
+              <button onclick="closeHamburgerDrawer(); openVIPPassModal();" class="py-2 px-3 rounded-xl bg-amber-400/20 border border-amber-400/40 text-amber-200 text-xs font-extrabold flex items-center justify-center gap-1">
+                ${cfg.vipPassText || '💳 VIP Partner Pass'}
+              </button>
+            ` : ''}
+          </div>
+          ${cfg.bottomCtaText ? `
+            <button onclick="closeHamburgerDrawer(); openDirectWhatsApp();" class="w-full py-2.5 rounded-xl secondary-bg text-zinc-950 font-extrabold text-xs shadow-lg">
+              ${cfg.bottomCtaText}
+            </button>
+          ` : ''}
+        </div>
+      `;
+    };
+  })();
+</script>
+<!-- ==================== INDEX.HTML : LUXURY ACTIVE TAB & UNIQUE HAMBURGER PATCH COMPLETE ==================== -->
