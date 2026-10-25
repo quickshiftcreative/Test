@@ -4289,3 +4289,258 @@
   })();
 </script>
 <!-- ==================== INDEX.HTML : PC + TABLET + MOBILE UI RECOVERY COMPLETE ==================== -->
+<!-- ==================== INDEX.HTML : PC/TABLET PILL MENU + PHONE HAMBURGER NEXT TO CART PATCH (PASTE AT VERY BOTTOM) ==================== -->
+<style id="responsive-menu-hamburger-v7">
+  /* 1. Hide Old Default Desktop Nav Links so There is Zero Duplicate Menu */
+  #desktop-nav-links {
+    display: none !important;
+  }
+
+  /* 2. PC & TABLET (768px and above): Show the Sleek Horizontal Pill Menu Bar, Hide Hamburger */
+  @media (min-width: 768px) {
+    #mobile-tablet-menu-bar {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      flex-wrap: wrap !important;
+      gap: 0.5rem !important;
+      padding: 0.65rem 1rem !important;
+      margin-top: 0.55rem !important;
+      border-radius: 1.15rem !important;
+    }
+    #phone-hamburger-btn,
+    #hamburger-drawer {
+      display: none !important;
+    }
+  }
+
+  /* 3. PHONE (< 768px): Hide Horizontal Pill Bar, Show Sleek Hamburger Right Next to Cart */
+  @media (max-width: 767px) {
+    #mobile-tablet-menu-bar {
+      display: none !important;
+    }
+    /* Hide secondary header icons on phone so Cart & Hamburger fit cleanly */
+    button[onclick="openCommandPalette()"],
+    #xray-btn,
+    #sound-toggle-btn {
+      display: none !important;
+    }
+    #phone-hamburger-btn {
+      display: flex !important;
+    }
+  }
+
+  /* Sleek Animated 2-Line / 3-Line Hamburger Icon Styling */
+  .hb-line {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background-color: #ffffff;
+    border-radius: 9999px;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  #phone-hamburger-btn.hb-open .hb-line-1 {
+    transform: translateY(5px) rotate(45deg);
+  }
+  #phone-hamburger-btn.hb-open .hb-line-2 {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  #phone-hamburger-btn.hb-open .hb-line-3 {
+    transform: translateY(-5px) rotate(-45deg);
+  }
+  /* 2-Line Mode Adjustments */
+  #phone-hamburger-btn.two-line-mode .hb-line-2 {
+    display: none !important;
+  }
+  #phone-hamburger-btn.two-line-mode.hb-open .hb-line-1 {
+    transform: translateY(3.5px) rotate(45deg);
+  }
+  #phone-hamburger-btn.two-line-mode.hb-open .hb-line-3 {
+    transform: translateY(-3.5px) rotate(-45deg);
+  }
+</style>
+
+<script>
+  (function () {
+    /* 1. Default Navigation & Hamburger Configuration */
+    const DEFAULT_NAV_CONFIG = {
+      iconStyle: 'three_line', // 'three_line' or 'two_line'
+      drawerTitle: 'Menu & Quick Access',
+      showSearchInDrawer: true,
+      showVipPassInDrawer: true,
+      vipPassText: '💳 Get 3D VIP Partner Pass',
+      bottomCtaText: '💬 Chat on WhatsApp Desk',
+      items: [
+        { id: 'home', label: 'Home', icon: '🏠', visible: true },
+        { id: 'services', label: 'Services', icon: '⚡', visible: true },
+        { id: 'quotation', label: 'Instant Quote', icon: '🛒', visible: true },
+        { id: 'portfolio', label: 'Work', icon: '🎬', visible: true },
+        { id: 'tracker', label: 'Client Tracker', icon: '📊', visible: true },
+        { id: 'about', label: 'About', icon: '👥', visible: true },
+        { id: 'reviews', label: 'Reviews', icon: '★', visible: true },
+        { id: 'contact', label: 'Contact', icon: '📞', visible: true }
+      ]
+    };
+
+    window.getNavMenuConfig = function (db) {
+      const cfg = db?.navMenuConfig || {};
+      return {
+        ...DEFAULT_NAV_CONFIG,
+        ...cfg,
+        items: Array.isArray(cfg.items) && cfg.items.length > 0 ? cfg.items : DEFAULT_NAV_CONFIG.items
+      };
+    };
+
+    /* 2. Upgrade Hamburger Button Right Next to Quote Cart Button */
+    const origHbBtn = document.querySelector('button[onclick="toggleHamburgerDrawer()"]');
+    if (origHbBtn) {
+      origHbBtn.id = 'phone-hamburger-btn';
+      origHbBtn.className = 'w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 flex flex-col items-center justify-center gap-[3.5px] text-white transition shrink-0';
+      origHbBtn.innerHTML = `
+        <span class="hb-line hb-line-1"></span>
+        <span class="hb-line hb-line-2"></span>
+        <span class="hb-line hb-line-3"></span>
+      `;
+    }
+
+    /* Ensure Pill Bar exists for PC & Tablet */
+    const navShell = document.getElementById('navbar-shell');
+    if (navShell && !document.getElementById('mobile-tablet-menu-bar')) {
+      const bar = document.createElement('nav');
+      bar.id = 'mobile-tablet-menu-bar';
+      bar.className = 'max-w-7xl mx-auto liquid-glass';
+      navShell.insertAdjacentElement('afterend', bar);
+    }
+
+    /* 3. Toggle Phone Hamburger Drawer Smoothly */
+    window.toggleHamburgerDrawer = function () {
+      const drw = document.getElementById('hamburger-drawer');
+      const btn = document.getElementById('phone-hamburger-btn');
+      if (!drw) return;
+      const isHidden = drw.classList.toggle('hidden');
+      if (btn) btn.classList.toggle('hb-open', !isHidden);
+      if (typeof playUISound === 'function') playUISound(520, 0.04);
+    };
+
+    /* 4. Render Both PC/Tablet Pill Bar & Phone Hamburger Drawer from Backend Config */
+    window.renderMasterNavigationUI = function () {
+      const db = getDB();
+      const cfg = window.getNavMenuConfig(db);
+      const currentActive = (window.location.hash || '').replace('#', '') || localStorage.getItem('OG_DESK_LAST_ACTIVE_PAGE_V5') || 'home';
+
+      /* Apply 2-Line or 3-Line Hamburger Icon Style */
+      const hbBtn = document.getElementById('phone-hamburger-btn');
+      if (hbBtn) {
+        hbBtn.classList.toggle('two-line-mode', cfg.iconStyle === 'two_line');
+      }
+
+      /* Build Combined Active Menu List (Configured Items + Custom Pages) */
+      const visibleItems = (cfg.items || []).filter(i => i.visible !== false);
+      const customPageItems = (db.customPages || []).map(cp => ({
+        id: 'custom:' + cp.slug,
+        label: cp.navLabel || cp.title,
+        icon: '📄',
+        visible: true
+      }));
+      const allMenuItems = [...visibleItems];
+      customPageItems.forEach(cpItem => {
+        if (!allMenuItems.some(x => x.id === cpItem.id)) allMenuItems.push(cpItem);
+      });
+
+      /* A. Render PC & Tablet Horizontal Pill Menu Bar */
+      const pillBar = document.getElementById('mobile-tablet-menu-bar');
+      if (pillBar) {
+        pillBar.innerHTML = allMenuItems.map(item => {
+          const isAct = item.id === currentActive;
+          const badgeTxt = item.id === 'quotation' ? ` (${cart ? cart.length : 0})` : '';
+          const clickAction = item.id.startsWith('http')
+            ? `window.open('${item.id}', '_blank')`
+            : `navigate('${item.id}')`;
+          return `
+            <button onclick="${clickAction}" class="px-4 py-2 rounded-xl text-xs font-extrabold transition shrink-0 flex items-center gap-1.5 ${isAct ? 'bg-white text-zinc-950 shadow-lg scale-[1.02]' : 'bg-black/50 text-zinc-200 border border-white/10 hover:border-white/30 hover:text-white'}">
+              <span>${item.icon || ''}</span>
+              <span>${item.label}${badgeTxt}</span>
+            </button>
+          `;
+        }).join('');
+      }
+
+      /* B. Render Phone Hamburger Drawer */
+      const drawer = document.getElementById('hamburger-drawer');
+      if (drawer) {
+        drawer.innerHTML = `
+          <div class="flex items-center justify-between border-b border-white/10 pb-3.5 mb-4">
+            <span class="text-xs font-extrabold uppercase tracking-widest text-indigo-300">${cfg.drawerTitle || 'Navigation Menu'}</span>
+            <button onclick="toggleHamburgerDrawer()" class="px-3 py-1 rounded-xl bg-white/10 text-xs font-bold text-white">✕ Close</button>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2.5">
+            ${allMenuItems.map(item => {
+              const isAct = item.id === currentActive;
+              const badgeTxt = item.id === 'quotation' ? ` (${cart ? cart.length : 0})` : '';
+              const clickAction = item.id.startsWith('http')
+                ? `window.open('${item.id}', '_blank'); toggleHamburgerDrawer();`
+                : `navigate('${item.id}'); toggleHamburgerDrawer();`;
+              return `
+                <button onclick="${clickAction}" class="p-3.5 rounded-2xl text-left flex items-center justify-between transition ${isAct ? 'bg-white text-zinc-950 font-black shadow-lg' : 'charcoal-card text-white hover:border-white/30'}">
+                  <div class="flex items-center gap-2 truncate">
+                    <span class="text-sm">${item.icon || '•'}</span>
+                    <span class="text-xs font-extrabold truncate">${item.label}${badgeTxt}</span>
+                  </div>
+                  <span class="text-[10px] opacity-60">→</span>
+                </button>
+              `;
+            }).join('')}
+          </div>
+
+          <div class="mt-4 pt-3.5 border-t border-white/10 flex flex-col gap-2.5">
+            <div class="grid grid-cols-2 gap-2">
+              ${cfg.showSearchInDrawer !== false ? `
+                <button onclick="toggleHamburgerDrawer(); openCommandPalette();" class="py-2.5 px-3 rounded-xl bg-white/5 border border-white/10 text-xs font-bold text-zinc-200 flex items-center justify-center gap-1.5">
+                  🔍 Quick Search
+                </button>
+              ` : ''}
+              ${cfg.showVipPassInDrawer !== false ? `
+                <button onclick="toggleHamburgerDrawer(); openVIPPassModal();" class="py-2.5 px-3 rounded-xl bg-amber-400/20 border border-amber-400/40 text-amber-300 text-xs font-extrabold flex items-center justify-center gap-1">
+                  ${cfg.vipPassText || '💳 VIP Partner Pass'}
+                </button>
+              ` : ''}
+            </div>
+            ${cfg.bottomCtaText ? `
+              <button onclick="toggleHamburgerDrawer(); openDirectWhatsApp();" class="w-full py-3 rounded-xl secondary-bg text-zinc-950 font-extrabold text-xs shadow-lg">
+                ${cfg.bottomCtaText}
+              </button>
+            ` : ''}
+          </div>
+        `;
+      }
+    };
+
+    /* Hook into renderAll, navigate, and saveCart */
+    const prevRender = window.renderAll;
+    window.renderAll = function () {
+      if (typeof prevRender === 'function') prevRender();
+      window.renderMasterNavigationUI();
+    };
+
+    const prevNav = window.navigate;
+    window.navigate = function (pageId, isInitial) {
+      if (typeof prevNav === 'function') prevNav(pageId, isInitial);
+      const drw = document.getElementById('hamburger-drawer');
+      const hbBtn = document.getElementById('phone-hamburger-btn');
+      if (drw && !drw.classList.contains('hidden')) drw.classList.add('hidden');
+      if (hbBtn) hbBtn.classList.remove('hb-open');
+      window.renderMasterNavigationUI();
+    };
+
+    const prevSaveCart = window.saveCart;
+    window.saveCart = function () {
+      if (typeof prevSaveCart === 'function') prevSaveCart();
+      window.renderMasterNavigationUI();
+    };
+
+    setTimeout(() => window.renderMasterNavigationUI(), 150);
+  })();
+</script>
+<!-- ==================== INDEX.HTML : PC/TABLET PILL MENU + PHONE HAMBURGER PATCH COMPLETE ==================== -->
