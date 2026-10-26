@@ -7147,3 +7147,107 @@
   })();
 </script>
 <!-- ==================== INDEX.HTML : ZERO-OVERLAP & 16 HAMBURGER STYLES COMPLETE ==================== -->
+<!-- ==================== INDEX.HTML : 100% BULLETPROOF HAMBRAUGER ICON PERSISTENCE PATCH (PASTE AT VERY BOTTOM) ==================== -->
+<script id="frontend-bulletproof-hamburger-v16">
+  (function () {
+    /* 1. Bulletproof Config Reader */
+    window.getHamburgerIconConfig = function (dbObj) {
+      const d = dbObj || (typeof window.getDB === 'function' ? window.getDB() : {});
+      let rawHb = {};
+      try {
+        const cached = localStorage.getItem(LOCAL_CACHE_KEY);
+        if (cached) {
+          const parsed = JSON.parse(cached);
+          if (parsed.hamburgerIconConfig) rawHb = parsed.hamburgerIconConfig;
+          else if (parsed.navMenuConfig) rawHb = parsed.navMenuConfig;
+        }
+      } catch (e) {}
+
+      const fallback = {
+        iconStyle: 'three_line',
+        pcShowTopBar: true, pcShowHamburger: false,
+        tabletShowTopBar: true, tabletShowHamburger: false,
+        btnLabel: '', labelPos: 'left', customEmoji: '✦',
+        boxSize: 40, cornerRadius: 12, lineWidth: 18, lineThick: 2, lineGap: 4.5,
+        lineColor: '#ffffff', accentColor: '#10b981', bgColor: '#18181b', bgOpacity: 70,
+        borderColor: '#ffffff', borderOpacity: 22, glowEnabled: true, openMorph: 'morph_x',
+        customBtnImg: '', customCloseImg: ''
+      };
+
+      return { ...fallback, ...(d?.hamburgerIconConfig || {}), ...rawHb };
+    };
+
+    function hexToRgba(hex, alphaPct) {
+      let c = (hex || '#ffffff').replace('#', '').trim();
+      if (c.length === 3) c = c[0]+c[0]+c[1]+c[1]+c[2]+c[2];
+      const num = parseInt(c, 16);
+      return `rgba(${(num>>16)&255}, ${(num>>8)&255}, ${num&255}, ${(Number(alphaPct??65)/100).toFixed(2)})`;
+    }
+
+    /* 2. Absolute Authority Hamburger Icon Applier */
+    window.applyAuthoritativeHamburgerIcon = function () {
+      const ic = window.getHamburgerIconConfig();
+      const root = document.documentElement;
+
+      root.style.setProperty('--hb-custom-box-size', (ic.boxSize || 40) + 'px');
+      root.style.setProperty('--hb-custom-radius', (ic.cornerRadius ?? 12) + 'px');
+      root.style.setProperty('--hb-line-width', (ic.lineWidth || 18) + 'px');
+      root.style.setProperty('--hb-line-thick', (ic.lineThick || 2) + 'px');
+      root.style.setProperty('--hb-line-gap', (ic.lineGap ?? 4.5) + 'px');
+      root.style.setProperty('--hb-line-color', ic.lineColor || '#ffffff');
+      root.style.setProperty('--hb-custom-accent', ic.accentColor || '#10b981');
+      root.style.setProperty('--hb-custom-bg', hexToRgba(ic.bgColor || '#18181b', ic.bgOpacity ?? 70));
+      root.style.setProperty('--hb-custom-border', hexToRgba(ic.borderColor || '#ffffff', ic.borderOpacity ?? 22));
+      root.style.setProperty('--hb-custom-shadow', ic.glowEnabled !== false ? `0 8px 24px -6px ${hexToRgba(ic.accentColor || '#10b981', 50)}` : 'none');
+
+      document.body.classList.toggle('pc-hb-on', Boolean(ic.pcShowHamburger));
+      document.body.classList.toggle('pc-topbar-off', ic.pcShowTopBar === false);
+      document.body.classList.toggle('tablet-hb-on', Boolean(ic.tabletShowHamburger));
+      document.body.classList.toggle('tablet-topbar-off', ic.tabletShowTopBar === false);
+
+      const btn = document.getElementById('phone-hamburger-btn') || document.querySelector('button[onclick="toggleHamburgerDrawer()"]');
+      const drw = document.getElementById('hamburger-drawer');
+      const isOpen = Boolean(drw && !drw.classList.contains('hidden'));
+
+      if (btn) {
+        btn.id = 'phone-hamburger-btn';
+        btn.className = `w-10 h-10 flex items-center justify-center shrink-0 transition ${isOpen ? 'hb-open' : ''}`;
+        btn.setAttribute('style', `
+          min-width: var(--hb-custom-box-size);
+          height: var(--hb-custom-box-size);
+          border-radius: var(--hb-custom-radius);
+          background: var(--hb-custom-bg);
+          border: 1px solid var(--hb-custom-border);
+          box-shadow: var(--hb-custom-shadow);
+          padding: 0 10px;
+          cursor: pointer;
+        `);
+        if (typeof window.generateHamburgerIconMarkup === 'function') {
+          btn.innerHTML = window.generateHamburgerIconMarkup(ic, isOpen);
+        }
+      }
+    };
+
+    /* 3. Continuous Mutation Observer & Interval to Lock Icon against any external re-renders */
+    window.addEventListener('storage', function (e) {
+      if (e.key === LOCAL_CACHE_KEY || !e.key) {
+        window.applyAuthoritativeHamburgerIcon();
+      }
+    });
+
+    try {
+      const bc = new BroadcastChannel('OG_AGENCY_LIVE_SYNC_V13');
+      bc.onmessage = function (ev) {
+        if (ev.data && (ev.data.type === 'DB_UPDATED' || ev.data.type === 'HAMBURGER_UPDATED')) {
+          if (ev.data.db) localStorage.setItem(LOCAL_CACHE_KEY, JSON.stringify(ev.data.db));
+          window.applyAuthoritativeHamburgerIcon();
+        }
+      };
+    } catch (e) {}
+
+    setInterval(window.applyAuthoritativeHamburgerIcon, 500);
+    window.addEventListener('DOMContentLoaded', window.applyAuthoritativeHamburgerIcon);
+    setTimeout(window.applyAuthoritativeHamburgerIcon, 200);
+  })();
+</script>
+<!-- ==================== INDEX.HTML : BULLETPROOF HAMBURGER PATCH COMPLETE ==================== -->
