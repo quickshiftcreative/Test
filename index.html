@@ -7416,3 +7416,79 @@
 })();
 </script>
 <!-- ==================== MASTER FINAL CLEAN ENGINE: FRONTEND COMPLETE ==================== -->
+<!-- ==================== INDEX.HTML : 1-SECOND LIVE SERVICES, CATEGORIES & CONTENT SYNC PATCH (PASTE AT VERY BOTTOM OF index.html) ==================== -->
+<script id="frontend-live-services-sync-v17">
+(function () {
+  /* 1. Mark One-Time Seed Done so Frontend NEVER Overwrites Backend Service Deletions or Edits */
+  localStorage.setItem('OG_USER_EDITED_SERVICES_V17', '1');
+
+  /* 2. Always Read the Latest Database from LocalStorage / Cloud Cache */
+  window.getDB = function () {
+    try {
+      const raw = localStorage.getItem(LOCAL_CACHE_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        return {
+          ...defaultMasterDB,
+          ...parsed,
+          brand: { ...defaultMasterDB.brand, ...(parsed.brand || {}) },
+          about: { ...defaultMasterDB.about, ...(parsed.about || {}) },
+          policies: { ...defaultMasterDB.policies, ...(parsed.policies || {}) },
+          headings: { ...defaultMasterDB.headings, ...(parsed.headings || {}) },
+          services: Array.isArray(parsed.services) ? parsed.services : defaultMasterDB.services
+        };
+      }
+    } catch (e) {}
+    return defaultMasterDB;
+  };
+
+  /* 3. Listen to Instant Broadcasts from Admin Panel (0.1s Local Sync + 1s Cloud Sync) */
+  try {
+    const bc = new BroadcastChannel('OG_AGENCY_LIVE_SYNC_V13');
+    bc.onmessage = function (ev) {
+      if (ev.data && ev.data.db) {
+        localStorage.setItem(LOCAL_CACHE_KEY, JSON.stringify(ev.data.db));
+        if (typeof window.renderAll === 'function') window.renderAll();
+        if (typeof window.renderServicesAndFiltersClean === 'function') window.renderServicesAndFiltersClean();
+        if (typeof window.applyAuthoritativeHamburgerIcon === 'function') window.applyAuthoritativeHamburgerIcon();
+      }
+    };
+  } catch (e) {}
+
+  window.addEventListener('storage', function (e) {
+    if (e.key === LOCAL_CACHE_KEY || !e.key) {
+      if (typeof window.renderAll === 'function') window.renderAll();
+      if (typeof window.renderServicesAndFiltersClean === 'function') window.renderServicesAndFiltersClean();
+      if (typeof window.applyAuthoritativeHamburgerIcon === 'function') window.applyAuthoritativeHamburgerIcon();
+    }
+  });
+
+  /* 4. 1-Second Cloud Sync Poller so Global Visitors See Admin Changes Within 1 Second */
+  let lastCloudHash = '';
+  setInterval(async function () {
+    try {
+      const res = await fetch(FIREBASE_DB_URL + '?t=' + Date.now(), { cache: 'no-store' });
+      if (res.ok) {
+        const cloudData = await res.json();
+        if (cloudData && cloudData.brand) {
+          const nextStr = JSON.stringify(cloudData);
+          if (nextStr !== lastCloudHash) {
+            lastCloudHash = nextStr;
+            localStorage.setItem(LOCAL_CACHE_KEY, nextStr);
+            if (document.activeElement?.tagName !== 'INPUT' && document.activeElement?.tagName !== 'TEXTAREA') {
+              if (typeof window.renderAll === 'function') window.renderAll();
+              if (typeof window.renderServicesAndFiltersClean === 'function') window.renderServicesAndFiltersClean();
+              if (typeof window.applyAuthoritativeHamburgerIcon === 'function') window.applyAuthoritativeHamburgerIcon();
+            }
+          }
+        }
+      }
+    } catch (e) {}
+  }, 1200);
+
+  setTimeout(function () {
+    if (typeof window.renderServicesAndFiltersClean === 'function') window.renderServicesAndFiltersClean();
+  }, 200);
+})();
+</script>
+<!-- ==================== INDEX.HTML : 1-SECOND LIVE SERVICES SYNC COMPLETE ==================== -->
