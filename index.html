@@ -7667,3 +7667,236 @@
 })();
 </script>
 <!-- ==================== INDEX.HTML : 100% DYNAMIC CONTACT PAGE PATCH COMPLETE ==================== -->
+<!-- ==================== INDEX.HTML : BUTTER-SMOOTH APPLE 120HZ ANIMATION, ZERO-FLICKER SYNC & HAMBURGER ICON RESTORE PATCH (PASTE AT VERY BOTTOM OF index.html) ==================== -->
+<style id="apple-120hz-butter-smooth-v19">
+  :root {
+    --apple-ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --apple-dur: 650ms;
+    --hb-custom-box-size: 40px;
+    --hb-custom-radius: 12px;
+    --hb-line-width: 18px;
+    --hb-line-thick: 2px;
+    --hb-line-gap: 4.5px;
+    --hb-line-color: #ffffff;
+    --hb-custom-accent: #10b981;
+  }
+
+  /* 1. Hardware-Accelerated Butter-Smooth Page & Card Transitions (Zero Lag) */
+  .spa-view:not(.hidden) {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    transform: translate3d(0, 0, 0);
+  }
+
+  @keyframes appleSpringIn {
+    0% { opacity: 0; transform: translate3d(0, 18px, 0) scale(0.985); }
+    100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+  }
+  @keyframes visionGlideIn {
+    0% { opacity: 0; transform: perspective(900px) translate3d(0, 22px, -30px) rotateX(4deg); }
+    100% { opacity: 1; transform: perspective(900px) translate3d(0, 0, 0) rotateX(0deg); }
+  }
+  @keyframes butterFadeIn {
+    0% { opacity: 0; filter: blur(10px); transform: translate3d(0, 10px, 0); }
+    100% { opacity: 1; filter: blur(0px); transform: translate3d(0, 0, 0); }
+  }
+
+  body.motion-apple_spring .spa-view:not(.hidden) {
+    animation: appleSpringIn var(--apple-dur, 650ms) var(--apple-ease) forwards;
+  }
+  body.motion-vision_glide .spa-view:not(.hidden) {
+    animation: visionGlideIn var(--apple-dur, 650ms) var(--apple-ease) forwards;
+  }
+  body.motion-butter_fade .spa-view:not(.hidden) {
+    animation: butterFadeIn var(--apple-dur, 650ms) var(--apple-ease) forwards;
+  }
+
+  .liquid-glass, .charcoal-card {
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+    transition: transform 0.38s var(--apple-ease), border-color 0.3s ease, box-shadow 0.38s var(--apple-ease) !important;
+  }
+
+  /* 2. Restore Crisp Visible Hamburger Icon Bars (Fixes Empty Box Next to Cart in Screenshot 1) */
+  html body #navbar-shell #phone-hamburger-btn {
+    min-width: var(--hb-custom-box-size, 40px) !important;
+    height: var(--hb-custom-box-size, 40px) !important;
+    border-radius: var(--hb-custom-radius, 12px) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    padding: 0 10px !important;
+  }
+  .hb14-bars-box {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: var(--hb-line-gap, 4.5px) !important;
+    width: var(--hb-line-width, 18px) !important;
+  }
+  .hb14-bar {
+    display: block !important;
+    width: var(--hb-line-width, 18px) !important;
+    height: var(--hb-line-thick, 2px) !important;
+    border-radius: 9999px !important;
+    transition: all 0.28s var(--apple-ease) !important;
+  }
+  .hb14-bar-1, .hb14-bar-3 {
+    background-color: var(--hb-line-color, #ffffff) !important;
+  }
+  .hb14-bar-2 {
+    background-color: var(--hb-custom-accent, #10b981) !important;
+  }
+  #phone-hamburger-btn.hb-open .hb14-bar-1 {
+    transform: translateY(6.5px) rotate(45deg) !important;
+  }
+  #phone-hamburger-btn.hb-open .hb14-bar-2 {
+    opacity: 0 !important;
+    transform: scaleX(0) !important;
+  }
+  #phone-hamburger-btn.hb-open .hb14-bar-3 {
+    transform: translateY(-6.5px) rotate(-45deg) !important;
+  }
+
+  /* 3. Fix Mobile Bottom FOMO Toast & Dock Overlap (Seen in Screenshot 1) */
+  @media (max-width: 767px) {
+    #fomo-pulse-toast {
+      bottom: 78px !important;
+      left: 12px !important;
+      right: 12px !important;
+      max-width: calc(100vw - 24px) !important;
+      z-index: 35 !important;
+    }
+    main {
+      padding-bottom: 110px !important;
+    }
+  }
+</style>
+
+<script id="frontend-zero-flicker-and-smooth-engine-v19">
+(function () {
+  /* 1. Clear All Old Duplicate SetInterval Loops That Caused Constant Refreshing & Lag */
+  const highestIntervalId = window.setInterval(function () {}, 99999);
+  for (let i = 1; i <= highestIntervalId; i++) {
+    window.clearInterval(i);
+  }
+
+  /* Restart ONLY the Lightweight World Clock (Every 30s) */
+  if (typeof updateWorldClocks === 'function') {
+    updateWorldClocks();
+    window.setInterval(updateWorldClocks, 30000);
+  }
+
+  /* 2. Apply Apple Motion Settings Controlled From Backend */
+  window.applySmoothMotionSettings = function (dbObj) {
+    const d = dbObj || window.getDB();
+    const m = d?.smoothMotionConfig || { preset: 'apple_spring', durationMs: 650, staggerMs: 45, gpuBoost: true };
+    document.documentElement.style.setProperty('--apple-dur', (m.durationMs || 650) + 'ms');
+
+    document.body.classList.remove('motion-apple_spring', 'motion-vision_glide', 'motion-butter_fade', 'motion-ultra_fast');
+    document.body.classList.add('motion-' + (m.preset || 'apple_spring'));
+  };
+
+  /* 3. Guarantee Crisp Hamburger Button Markup Next to Cart */
+  window.ensureCrispHamburgerButton = function () {
+    const btn = document.getElementById('phone-hamburger-btn') || document.querySelector('button[onclick="toggleHamburgerDrawer()"]');
+    if (!btn) return;
+    btn.id = 'phone-hamburger-btn';
+
+    const db = window.getDB();
+    const ic = typeof window.getHamburgerIconConfig === 'function' ? window.getHamburgerIconConfig(db) : (db.hamburgerIconConfig || {});
+    const drw = document.getElementById('hamburger-drawer');
+    const isOpen = Boolean(drw && !drw.classList.contains('hidden'));
+
+    if (typeof window.generateHamburgerIconMarkup === 'function') {
+      const markup = window.generateHamburgerIconMarkup(ic, isOpen);
+      if (markup && markup.trim() !== '') {
+        btn.innerHTML = markup;
+        return;
+      }
+    }
+
+    /* Fallback 3-Line Crisp Bars if custom generator was stripped */
+    btn.innerHTML = `
+      <div class="hb14-bars-box">
+        <span class="hb14-bar hb14-bar-1"></span>
+        <span class="hb14-bar hb14-bar-2"></span>
+        <span class="hb14-bar hb14-bar-3"></span>
+      </div>
+    `;
+  };
+
+  /* 4. Single Coalesced Master Render (Zero Flicker, Zero Scroll Jump) */
+  let lastRenderedSignature = '';
+  let rafId = null;
+
+  window.smoothSyncAndRender = function (forceRender) {
+    const raw = localStorage.getItem(LOCAL_CACHE_KEY) || '';
+    /* Strip volatile auditLogs/timestamp before comparing so background logs don't trigger full DOM refresh */
+    let cleanSig = raw;
+    try {
+      const parsed = JSON.parse(raw);
+      delete parsed.auditLogs;
+      cleanSig = JSON.stringify(parsed);
+    } catch (e) {}
+
+    if (!forceRender && cleanSig === lastRenderedSignature) {
+      return; // Nothing changed! Do not touch DOM or interrupt animations!
+    }
+    lastRenderedSignature = cleanSig;
+
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(function () {
+      const db = window.getDB();
+      window.applySmoothMotionSettings(db);
+      if (typeof window.renderAll === 'function') window.renderAll();
+      if (typeof window.renderContactPageComplete === 'function') window.renderContactPageComplete();
+      if (typeof window.renderServicesAndFiltersClean === 'function') window.renderServicesAndFiltersClean();
+      if (typeof window.renderMasterNavigationUI === 'function') window.renderMasterNavigationUI();
+      window.ensureCrispHamburgerButton();
+    });
+  };
+
+  /* 5. Listen to Instant BroadcastChannel & Storage Events (Zero Polling Lag) */
+  try {
+    const bc = new BroadcastChannel('OG_AGENCY_LIVE_SYNC_V13');
+    bc.onmessage = function (ev) {
+      if (ev.data && ev.data.db) {
+        localStorage.setItem(LOCAL_CACHE_KEY, JSON.stringify(ev.data.db));
+        window.smoothSyncAndRender(false);
+      }
+    };
+  } catch (e) {}
+
+  window.addEventListener('storage', function (e) {
+    if (e.key === LOCAL_CACHE_KEY || !e.key) {
+      window.smoothSyncAndRender(false);
+    }
+  });
+
+  /* 6. Single Gentle Cloud Sync Check Every 2.5 Seconds (Only Renders If Data Actually Changed) */
+  window.setInterval(async function () {
+    if (document.hidden) return;
+    if (document.activeElement && (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA')) return;
+    try {
+      const res = await fetch(FIREBASE_DB_URL + '?t=' + Date.now(), { cache: 'no-store' });
+      if (res.ok) {
+        const cloudData = await res.json();
+        if (cloudData && cloudData.brand) {
+          localStorage.setItem(LOCAL_CACHE_KEY, JSON.stringify(cloudData));
+          window.smoothSyncAndRender(false);
+        }
+      }
+    } catch (e) {}
+  }, 2500);
+
+  /* Initial Smooth Boot */
+  window.smoothSyncAndRender(true);
+  setTimeout(window.ensureCrispHamburgerButton, 200);
+})();
+</script>
+<!-- ==================== INDEX.HTML : BUTTER-SMOOTH 120HZ & ZERO-FLICKER PATCH COMPLETE ==================== -->
