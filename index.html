@@ -6403,3 +6403,333 @@
   })();
 </script>
 <!-- ==================== INDEX.HTML : MENU STUDIO & LOADER CLOUD SYNC FIX COMPLETE ==================== -->
+<!-- ==================== INDEX.HTML : 100% AUTHORITATIVE HAMBURGER ICON RENDERER & SYNC PATCH (PASTE AT VERY BOTTOM) ==================== -->
+<style id="authoritative-hamburger-icon-v14">
+  /* 1. Override All Previous Hardcoded Hamburger Button Rules */
+  html body #navbar-shell #phone-hamburger-btn {
+    min-width: var(--hb-custom-box-size, 42px) !important;
+    height: var(--hb-custom-box-size, 42px) !important;
+    border-radius: var(--hb-custom-radius, 12px) !important;
+    background: var(--hb-custom-bg, rgba(255, 255, 255, 0.10)) !important;
+    border: 1px solid var(--hb-custom-border, rgba(255, 255, 255, 0.22)) !important;
+    box-shadow: var(--hb-custom-shadow, none) !important;
+    padding: 0 11px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 7px !important;
+    cursor: pointer !important;
+    transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  html body #navbar-shell #phone-hamburger-btn:hover {
+    transform: translateY(-1px) scale(1.03) !important;
+    border-color: var(--hb-custom-accent, #10b981) !important;
+  }
+
+  /* 2. Device Visibility Modes Controlled from Backend */
+  @media (min-width: 768px) {
+    html body.hb-vis-mobile_only #navbar-shell #phone-hamburger-btn {
+      display: none !important;
+    }
+  }
+  @media (min-width: 1024px) {
+    html body.hb-vis-mobile_tablet #navbar-shell #phone-hamburger-btn {
+      display: none !important;
+    }
+  }
+  html body.hb-vis-all_devices #navbar-shell #phone-hamburger-btn {
+    display: flex !important;
+  }
+  html body.hb-vis-all_devices #hamburger-drawer:not(.hidden),
+  html body.hb-vis-mobile_tablet #hamburger-drawer:not(.hidden) {
+    display: block !important;
+  }
+
+  /* 3. Custom Dynamic Bars & Morph Animations */
+  .hb14-bars-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--hb-line-gap, 4px);
+    transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hb14-bar {
+    display: block;
+    height: var(--hb-line-thick, 2px);
+    border-radius: 9999px;
+    transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: center;
+  }
+  .hb14-bar-1, .hb14-bar-3 {
+    width: var(--hb-line-width, 18px);
+    background-color: var(--hb-line-color, #ffffff);
+  }
+  .hb14-bar-2 {
+    width: var(--hb-line-width, 18px);
+    background-color: var(--hb-custom-accent, #10b981);
+  }
+
+  /* Open State Morphs */
+  #phone-hamburger-btn.hb-open.morph-spin_180 .hb14-bars-box {
+    transform: rotate(180deg);
+  }
+  #phone-hamburger-btn.hb-open.morph-spin_360 .hb14-bars-box {
+    transform: rotate(360deg);
+  }
+  #phone-hamburger-btn.hb-open.morph-pulse_scale {
+    transform: scale(1.08) !important;
+  }
+
+  #phone-hamburger-btn.hb-open .hb14-bar-1 {
+    transform: translateY(calc(var(--hb-line-gap, 4px) + var(--hb-line-thick, 2px))) rotate(45deg) !important;
+    width: var(--hb-line-width, 18px) !important;
+  }
+  #phone-hamburger-btn.hb-open .hb14-bar-2 {
+    opacity: 0 !important;
+    transform: scaleX(0) !important;
+  }
+  #phone-hamburger-btn.hb-open .hb14-bar-3 {
+    transform: translateY(calc(-1 * (var(--hb-line-gap, 4px) + var(--hb-line-thick, 2px)))) rotate(-45deg) !important;
+    width: var(--hb-line-width, 18px) !important;
+  }
+
+  /* 2-Line Open Morph Adjustment */
+  #phone-hamburger-btn.hb-is-2line.hb-open .hb14-bar-1 {
+    transform: translateY(calc((var(--hb-line-gap, 4px) + var(--hb-line-thick, 2px)) / 2)) rotate(45deg) !important;
+  }
+  #phone-hamburger-btn.hb-is-2line.hb-open .hb14-bar-3 {
+    transform: translateY(calc(-1 * (var(--hb-line-gap, 4px) + var(--hb-line-thick, 2px)) / 2)) rotate(-45deg) !important;
+  }
+</style>
+
+<script id="frontend-hamburger-engine-v14">
+  (function () {
+    const DEFAULT_HB_ICON_CFG = {
+      iconStyle: 'three_line',
+      visibilityMode: 'all_devices', // 'all_devices', 'mobile_tablet', 'mobile_only'
+      btnLabel: '',
+      labelPos: 'left', // 'left' or 'right'
+      boxSize: 42,
+      cornerRadius: 12,
+      lineWidth: 18,
+      lineThick: 2,
+      lineGap: 4.5,
+      lineColor: '#ffffff',
+      accentColor: '#10b981',
+      bgColor: '#18181b',
+      bgOpacity: 65,
+      borderColor: '#ffffff',
+      borderOpacity: 22,
+      glowEnabled: true,
+      openMorph: 'morph_x',
+      customBtnImg: '',
+      customCloseImg: ''
+    };
+
+    function hexToRgba(hex, alphaPct) {
+      let c = (hex || '#ffffff').replace('#', '').trim();
+      if (c.length === 3) c = c[0]+c[0]+c[1]+c[1]+c[2]+c[2];
+      const num = parseInt(c, 16);
+      const r = (num >> 16) & 255;
+      const g = (num >> 8) & 255;
+      const b = num & 255;
+      return `rgba(${r}, ${g}, ${b}, ${(Number(alphaPct ?? 50) / 100).toFixed(2)})`;
+    }
+
+    window.getHamburgerIconConfig = function (dbObj) {
+      const d = dbObj || window.getDB();
+      const rawHb = d?.hamburgerIconConfig || {};
+      const legacyNav = d?.navMenuConfig || {};
+      return {
+        ...DEFAULT_HB_ICON_CFG,
+        iconStyle: rawHb.iconStyle || legacyNav.iconStyle || 'three_line',
+        btnLabel: rawHb.btnLabel !== undefined ? rawHb.btnLabel : (legacyNav.btnLabel || ''),
+        boxSize: Number(rawHb.boxSize ?? legacyNav.btnSize ?? 42),
+        customBtnImg: rawHb.customBtnImg !== undefined ? rawHb.customBtnImg : (legacyNav.customBtnImg || ''),
+        customCloseImg: rawHb.customCloseImg !== undefined ? rawHb.customCloseImg : (legacyNav.customCloseImg || ''),
+        ...rawHb
+      };
+    };
+
+    /* Generate Exact Inner HTML for Any of the 12 Hamburger Icon Styles */
+    window.generateHamburgerIconMarkup = function (ic, isOpen) {
+      const style = ic.iconStyle || 'three_line';
+      const w = Number(ic.lineWidth || 18);
+      const t = Number(ic.lineThick || 2);
+      const g = Number(ic.lineGap || 4.5);
+      const col1 = ic.lineColor || '#ffffff';
+      const col2 = ic.accentColor || '#10b981';
+
+      const lblText = (ic.btnLabel || '').trim();
+      const lblHTML = lblText
+        ? `<span style="color:${col1};font-size:11px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;line-height:1;">${lblText}</span>`
+        : '';
+
+      let iconGraphic = '';
+
+      if (style === 'custom_image' && ic.customBtnImg) {
+        if (isOpen && ic.customCloseImg) {
+          iconGraphic = `<img src="${ic.customCloseImg}" alt="Close" style="width:${w + 6}px;height:${w + 6}px;object-fit:contain;border-radius:4px;" />`;
+        } else if (isOpen) {
+          iconGraphic = `<span style="color:${col2};font-size:${w}px;font-weight:900;line-height:1;">✕</span>`;
+        } else {
+          iconGraphic = `<img src="${ic.customBtnImg}" alt="Menu" style="width:${w + 6}px;height:${w + 6}px;object-fit:contain;border-radius:4px;" />`;
+        }
+      } else if (style === 'bento_dots') {
+        if (isOpen) {
+          iconGraphic = `<span style="color:${col2};font-size:${w}px;font-weight:900;line-height:1;">✕</span>`;
+        } else {
+          const dotSz = Math.max(3, Math.round(t * 1.6));
+          iconGraphic = `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:${Math.max(2, Math.round(g * 0.7))}px;">
+            <span style="width:${dotSz}px;height:${dotSz}px;border-radius:99px;background:${col1};"></span>
+            <span style="width:${dotSz}px;height:${dotSz}px;border-radius:99px;background:${col2};"></span>
+            <span style="width:${dotSz}px;height:${dotSz}px;border-radius:99px;background:${col1};"></span>
+            <span style="width:${dotSz}px;height:${dotSz}px;border-radius:99px;background:${col1};"></span>
+            <span style="width:${dotSz}px;height:${dotSz}px;border-radius:99px;background:${col2};"></span>
+            <span style="width:${dotSz}px;height:${dotSz}px;border-radius:99px;background:${col1};"></span>
+            <span style="width:${dotSz}px;height:${dotSz}px;border-radius:99px;background:${col1};"></span>
+            <span style="width:${dotSz}px;height:${dotSz}px;border-radius:99px;background:${col2};"></span>
+            <span style="width:${dotSz}px;height:${dotSz}px;border-radius:99px;background:${col1};"></span>
+          </div>`;
+        }
+      } else if (style === 'four_dots') {
+        if (isOpen) {
+          iconGraphic = `<span style="color:${col2};font-size:${w}px;font-weight:900;line-height:1;">✕</span>`;
+        } else {
+          const dotSz = Math.max(4, Math.round(t * 2.1));
+          iconGraphic = `<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:${Math.max(3, Math.round(g))}px;">
+            <span style="width:${dotSz}px;height:${dotSz}px;border-radius:99px;background:${col1};"></span>
+            <span style="width:${dotSz}px;height:${dotSz}px;border-radius:99px;background:${col2};"></span>
+            <span style="width:${dotSz}px;height:${dotSz}px;border-radius:99px;background:${col2};"></span>
+            <span style="width:${dotSz}px;height:${dotSz}px;border-radius:99px;background:${col1};"></span>
+          </div>`;
+        }
+      } else if (style === 'plus_cross') {
+        iconGraphic = `<span style="display:inline-block;color:${isOpen ? col2 : col1};font-size:${w + 4}px;font-weight:800;line-height:1;transition:transform 0.3s ease;transform:rotate(${isOpen ? '45deg' : '0deg'});">＋</span>`;
+      } else if (style === 'two_line') {
+        iconGraphic = `
+          <div class="hb14-bars-box" style="align-items:center;">
+            <span class="hb14-bar hb14-bar-1"></span>
+            <span class="hb14-bar hb14-bar-3" style="background-color:${col2};"></span>
+          </div>
+        `;
+      } else if (style === 'staggered' || style === 'staggered_right') {
+        iconGraphic = `
+          <div class="hb14-bars-box" style="align-items:flex-end;">
+            <span class="hb14-bar hb14-bar-1" style="width:${w}px;"></span>
+            <span class="hb14-bar hb14-bar-2" style="width:${Math.round(w * 0.68)}px;"></span>
+            <span class="hb14-bar hb14-bar-3" style="width:${Math.round(w * 0.85)}px;"></span>
+          </div>
+        `;
+      } else if (style === 'staggered_left') {
+        iconGraphic = `
+          <div class="hb14-bars-box" style="align-items:flex-start;">
+            <span class="hb14-bar hb14-bar-1" style="width:${Math.round(w * 0.68)}px;"></span>
+            <span class="hb14-bar hb14-bar-2" style="width:${w}px;"></span>
+            <span class="hb14-bar hb14-bar-3" style="width:${Math.round(w * 0.82)}px;"></span>
+          </div>
+        `;
+      } else if (style === 'center_diamond') {
+        iconGraphic = `
+          <div class="hb14-bars-box" style="align-items:center;">
+            <span class="hb14-bar hb14-bar-1" style="width:${Math.round(w * 0.68)}px;"></span>
+            <span class="hb14-bar hb14-bar-2" style="width:${w + 2}px;"></span>
+            <span class="hb14-bar hb14-bar-3" style="width:${Math.round(w * 0.68)}px;"></span>
+          </div>
+        `;
+      } else {
+        /* Default three_line or pill_text */
+        iconGraphic = `
+          <div class="hb14-bars-box" style="align-items:center;">
+            <span class="hb14-bar hb14-bar-1"></span>
+            <span class="hb14-bar hb14-bar-2"></span>
+            <span class="hb14-bar hb14-bar-3"></span>
+          </div>
+        `;
+      }
+
+      if (style === 'pill_text' && !lblText) {
+        const pillLbl = `<span style="color:${col1};font-size:11px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;line-height:1;">MENU</span>`;
+        return ic.labelPos === 'right' ? `${iconGraphic}${pillLbl}` : `${pillLbl}${iconGraphic}`;
+      }
+
+      return ic.labelPos === 'right' ? `${iconGraphic}${lblHTML}` : `${lblHTML}${iconGraphic}`;
+    };
+
+    /* Apply All Hamburger Icon Styles & Variables to the Actual Frontend Button */
+    window.applyAuthoritativeHamburgerIcon = function () {
+      const db = window.getDB();
+      if (localStorage.getItem(LOCAL_CACHE_KEY)) {
+        try {
+          const raw = JSON.parse(localStorage.getItem(LOCAL_CACHE_KEY));
+          if (raw.hamburgerIconConfig) db.hamburgerIconConfig = raw.hamburgerIconConfig;
+          if (raw.navMenuConfig) db.navMenuConfig = raw.navMenuConfig;
+        } catch (e) {}
+      }
+
+      const ic = window.getHamburgerIconConfig(db);
+      const root = document.documentElement;
+
+      root.style.setProperty('--hb-custom-box-size', (ic.boxSize || 42) + 'px');
+      root.style.setProperty('--hb-custom-radius', (ic.cornerRadius ?? 12) + 'px');
+      root.style.setProperty('--hb-line-width', (ic.lineWidth || 18) + 'px');
+      root.style.setProperty('--hb-line-thick', (ic.lineThick || 2) + 'px');
+      root.style.setProperty('--hb-line-gap', (ic.lineGap ?? 4.5) + 'px');
+      root.style.setProperty('--hb-line-color', ic.lineColor || '#ffffff');
+      root.style.setProperty('--hb-custom-accent', ic.accentColor || '#10b981');
+      root.style.setProperty('--hb-custom-bg', hexToRgba(ic.bgColor || '#18181b', ic.bgOpacity ?? 65));
+      root.style.setProperty('--hb-custom-border', hexToRgba(ic.borderColor || '#ffffff', ic.borderOpacity ?? 22));
+      root.style.setProperty('--hb-custom-shadow', ic.glowEnabled !== false ? `0 8px 24px -6px ${hexToRgba(ic.accentColor || '#10b981', 45)}` : 'none');
+
+      /* Visibility across devices */
+      document.body.classList.remove('hb-vis-mobile_only', 'hb-vis-mobile_tablet', 'hb-vis-all_devices');
+      document.body.classList.add('hb-vis-' + (ic.visibilityMode || 'all_devices'));
+
+      const btn = document.getElementById('phone-hamburger-btn') || document.querySelector('button[onclick="toggleHamburgerDrawer()"]');
+      const drw = document.getElementById('hamburger-drawer');
+      const isOpen = Boolean(drw && !drw.classList.contains('hidden'));
+
+      if (btn) {
+        btn.id = 'phone-hamburger-btn';
+        btn.classList.toggle('hb-open', isOpen);
+        btn.classList.toggle('hb-is-2line', ic.iconStyle === 'two_line');
+        btn.classList.remove('morph-morph_x', 'morph-spin_180', 'morph-spin_360', 'morph-pulse_scale');
+        btn.classList.add('morph-' + (ic.openMorph || 'morph_x'));
+        btn.innerHTML = window.generateHamburgerIconMarkup(ic, isOpen);
+      }
+    };
+
+    /* Hook into toggle, close, renderMasterNavigationUI & renderAll */
+    const prevToggle = window.toggleHamburgerDrawer;
+    window.toggleHamburgerDrawer = function () {
+      if (typeof prevToggle === 'function') prevToggle();
+      window.applyAuthoritativeHamburgerIcon();
+    };
+
+    const prevClose = window.closeHamburgerDrawer;
+    window.closeHamburgerDrawer = function () {
+      if (typeof prevClose === 'function') prevClose();
+      window.applyAuthoritativeHamburgerIcon();
+    };
+
+    const prevMasterNav = window.renderMasterNavigationUI;
+    window.renderMasterNavigationUI = function () {
+      if (typeof prevMasterNav === 'function') prevMasterNav();
+      window.applyAuthoritativeHamburgerIcon();
+    };
+
+    /* Ensure Async rAF from v10 Never Overwrites Our Hamburger Button */
+    const prevRenderAll = window.renderAll;
+    window.renderAll = function () {
+      if (typeof prevRenderAll === 'function') prevRenderAll();
+      window.applyAuthoritativeHamburgerIcon();
+      setTimeout(window.applyAuthoritativeHamburgerIcon, 60);
+    };
+
+    window.applyAuthoritativeHamburgerIcon();
+    setTimeout(window.applyAuthoritativeHamburgerIcon, 250);
+  })();
+</script>
+<!-- ==================== INDEX.HTML : AUTHORITATIVE HAMBURGER ICON PATCH COMPLETE ==================== -->
