@@ -7251,3 +7251,168 @@
   })();
 </script>
 <!-- ==================== INDEX.HTML : BULLETPROOF HAMBURGER PATCH COMPLETE ==================== -->
+<!-- ==================== MASTER FINAL CLEAN ENGINE: FRONTEND (PASTE AT VERY BOTTOM OF index.html) ==================== -->
+<script id="frontend-master-unified-clean-engine">
+(function () {
+  const DB_CACHE_KEY = 'OG_DESK_GLOBAL_V5_CACHE';
+  const DB_URL = 'https://backend-f4e0c-default-rtdb.firebaseio.com/agency_os_v5.json';
+
+  // 1. Purane Sabhi Conflicting Script IDs aur Styles ko disable karo
+  const oldPatches = [
+    'frontend-master-optimizer-v10',
+    'master-menu-engine-v11',
+    'apple-3d-loader-engine-v12',
+    'frontend-menu-sync-fix-v13',
+    'authoritative-hamburger-icon-v14',
+    'master-device-menu-v15',
+    'frontend-bulletproof-hamburger-v16'
+  ];
+  oldPatches.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.remove();
+  });
+
+  // 2. Pure Database Reader (Never hardcodes or overwrites services)
+  window.getDB = function () {
+    try {
+      const cached = localStorage.getItem(DB_CACHE_KEY);
+      if (cached) {
+        return JSON.parse(cached);
+      }
+    } catch (e) {}
+    return typeof defaultMasterDB !== 'undefined' ? defaultMasterDB : {};
+  };
+
+  // 3. Perfect Services & Category Dynamic Renderer
+  window.renderServicesAndFiltersClean = function () {
+    const db = window.getDB();
+    const services = Array.isArray(db.services) ? db.services : [];
+    
+    // Auto-detect dynamic categories directly from active services
+    const categorySet = new Set();
+    services.forEach(s => {
+      if (s.badge && s.badge.trim() !== '') categorySet.add(s.badge.trim());
+    });
+    const categories = ['ALL', ...Array.from(categorySet)];
+
+    if (!categories.includes(window.currentServiceCategory)) {
+      window.currentServiceCategory = 'ALL';
+    }
+
+    const fBar = document.getElementById('service-filter-bar');
+    if (fBar) {
+      fBar.innerHTML = categories.map(cat => {
+        const isSelected = (window.currentServiceCategory || 'ALL') === cat;
+        return `
+          <button type="button" onclick="window.currentServiceCategory='${cat}'; window.renderServicesAndFiltersClean();" class="px-4 py-2 rounded-xl text-xs font-extrabold transition flex items-center gap-2 ${isSelected ? 'bg-white text-zinc-950 shadow-md' : 'bg-white/5 border border-white/10 text-zinc-300 hover:text-white'}">
+            ${isSelected ? '<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>' : ''}
+            <span>${cat === 'ALL' ? 'All Services (' + services.length + ')' : cat}</span>
+          </button>
+        `;
+      }).join('');
+    }
+
+    const query = (window.currentServiceSearchQuery || '').toLowerCase();
+    const filtered = services.filter(s => {
+      const matchCat = (window.currentServiceCategory === 'ALL') || (s.badge && s.badge.trim() === window.currentServiceCategory);
+      if (!matchCat) return false;
+      if (!query) return true;
+      const hay = `${s.title || ''} ${s.badge || ''} ${s.description || ''} ${(s.subServices || []).map(x => x.name).join(' ')}`.toLowerCase();
+      return hay.includes(query);
+    });
+
+    const buildCard = (s, idx) => {
+      const subs = Array.isArray(s.subServices) ? s.subServices : [];
+      const minINR = subs.length > 0 ? Math.min(...subs.map(x => Number(x.priceINR || 0))) : 0;
+      return `
+        <div onclick="openServiceModal('${s.id}')" class="liquid-glass rounded-3xl p-7 flex flex-col justify-between cursor-pointer hover:border-white/40 transition group">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-5">
+              <span class="editorial-font text-sm font-bold text-zinc-400">${s.index || '(0' + (idx + 1) + ')'}</span>
+              <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-white/10 text-white border border-white/15">${s.badge || 'Service'}</span>
+            </div>
+            <h3 class="text-2xl font-bold text-white group-hover:text-indigo-300 transition">${s.title}</h3>
+            <p class="text-xs sm:text-sm text-zinc-300 mt-3 leading-relaxed">${s.description || ''}</p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] uppercase tracking-wider text-zinc-400 block">${subs.length} Deliverables</span>
+              <span class="text-base font-extrabold secondary-text">${typeof formatPrice === 'function' ? formatPrice(minINR) : '₹' + minINR}</span>
+            </div>
+            <span class="px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white font-extrabold text-xs group-hover:bg-indigo-600 transition">Inspect & Add ↗</span>
+          </div>
+        </div>
+      `;
+    };
+
+    const homeGrid = document.getElementById('home-services-grid');
+    const catGrid = document.getElementById('services-catalog-grid');
+    if (homeGrid) homeGrid.innerHTML = services.map(buildCard).join('');
+    if (catGrid) {
+      catGrid.innerHTML = filtered.length > 0 
+        ? filtered.map(buildCard).join('')
+        : `<div class="col-span-full p-8 rounded-3xl charcoal-card text-center text-zinc-400 text-sm">No services found in this category.</div>`;
+    }
+  };
+
+  // 4. Clean Master Re-render Integration
+  window.renderAll = function () {
+    const db = window.getDB();
+    if (!db || !db.brand) return;
+
+    // Headings, Brand, Policies
+    if (document.getElementById('nav-brand-name')) document.getElementById('nav-brand-name').innerText = db.brand.name || '';
+    if (document.getElementById('nav-brand-tagline')) document.getElementById('nav-brand-tagline').innerText = db.brand.tagline || '';
+    if (document.getElementById('pol-privacy-text')) document.getElementById('pol-privacy-text').innerText = db.policies?.privacy || '';
+    if (document.getElementById('pol-terms-text')) document.getElementById('pol-terms-text').innerText = db.policies?.terms || '';
+    if (document.getElementById('pol-refund-text')) document.getElementById('pol-refund-text').innerText = db.policies?.refund || '';
+    if (document.getElementById('about-main-heading')) document.getElementById('about-main-heading').innerText = db.about?.heading || '';
+    if (document.getElementById('about-main-story')) document.getElementById('about-main-story').innerText = db.about?.story || '';
+
+    window.renderServicesAndFiltersClean();
+
+    if (typeof window.applyAuthoritativeHamburgerIcon === 'function') {
+      window.applyAuthoritativeHamburgerIcon();
+    }
+  };
+
+  // 5. Instant 1-Second Global Sync Listener (BroadcastChannel + Fast Storage)
+  try {
+    const channel = new BroadcastChannel('OG_AGENCY_LIVE_SYNC_V13');
+    channel.onmessage = function (ev) {
+      if (ev.data && ev.data.db) {
+        localStorage.setItem(DB_CACHE_KEY, JSON.stringify(ev.data.db));
+        window.renderAll();
+      }
+    };
+  } catch (e) {}
+
+  window.addEventListener('storage', function (e) {
+    if (e.key === DB_CACHE_KEY) {
+      window.renderAll();
+    }
+  });
+
+  // Rapid Polling for Instant Global Sync
+  setInterval(async function () {
+    try {
+      const res = await fetch(DB_URL + '?t=' + Date.now(), { cache: 'no-store' });
+      if (res.ok) {
+        const cloud = await res.json();
+        if (cloud && cloud.brand) {
+          const current = localStorage.getItem(DB_CACHE_KEY);
+          const next = JSON.stringify(cloud);
+          if (current !== next) {
+            localStorage.setItem(DB_CACHE_KEY, next);
+            window.renderAll();
+          }
+        }
+      }
+    } catch (e) {}
+  }, 1000);
+
+  // Initialize Clean
+  window.renderAll();
+})();
+</script>
+<!-- ==================== MASTER FINAL CLEAN ENGINE: FRONTEND COMPLETE ==================== -->
