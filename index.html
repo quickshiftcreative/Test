@@ -6275,3 +6275,131 @@
   })();
 </script>
 <!-- ==================== INDEX.HTML : APPLE 3D LOGO PORTAL LOADER COMPLETE ==================== -->
+<!-- ==================== INDEX.HTML : MENU STUDIO & LOADER CLOUD SYNC FIX PATCH (PASTE AT VERY BOTTOM) ==================== -->
+<script id="frontend-menu-sync-fix-v13">
+  (function () {
+    /* 1. Ensure getDB() Always Preserves navMenuConfig, loaderConfig & luxuryUI from Cache */
+    const origGetDB = window.getDB;
+    window.getDB = function () {
+      const base = typeof origGetDB === 'function' ? origGetDB() : {};
+      try {
+        const raw = localStorage.getItem(LOCAL_CACHE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (parsed.navMenuConfig) base.navMenuConfig = parsed.navMenuConfig;
+          if (parsed.loaderConfig) base.loaderConfig = parsed.loaderConfig;
+          if (parsed.luxuryUI) base.luxuryUI = parsed.luxuryUI;
+          if (parsed.boosters) base.boosters = parsed.boosters;
+          if (parsed.services) base.services = parsed.services;
+          if (parsed.brand) base.brand = { ...base.brand, ...parsed.brand };
+        }
+      } catch (e) {}
+      return base;
+    };
+
+    /* 2. Ensure getNavMenuConfig Always Reads Latest Saved Items & Styles */
+    window.getNavMenuConfig = function (dbObj) {
+      const d = dbObj || window.getDB();
+      const cfg = d?.navMenuConfig || {};
+      const defaultItems = [
+        { id: 'home', label: 'Home', icon: '🏠', badge: '', customIconImg: '', visible: true },
+        { id: 'services', label: 'Services', icon: '⚡', badge: '', customIconImg: '', visible: true },
+        { id: 'quotation', label: 'Instant Quote', icon: '🛒', badge: '', customIconImg: '', visible: true },
+        { id: 'portfolio', label: 'Work', icon: '🎬', badge: '', customIconImg: '', visible: true },
+        { id: 'tracker', label: 'Client Tracker', icon: '📊', badge: '', customIconImg: '', visible: true },
+        { id: 'about', label: 'About', icon: '👥', badge: '', customIconImg: '', visible: true },
+        { id: 'reviews', label: 'Reviews', icon: '★', badge: '', customIconImg: '', visible: true },
+        { id: 'contact', label: 'Contact', icon: '📞', badge: '', customIconImg: '', visible: true }
+      ];
+      return {
+        iconStyle: cfg.iconStyle || 'three_line',
+        btnLabel: cfg.btnLabel ?? '',
+        btnShape: cfg.btnShape || 'rounded',
+        btnSize: Number(cfg.btnSize ?? 40),
+        customBtnImg: cfg.customBtnImg || '',
+        customCloseImg: cfg.customCloseImg || '',
+        desktopMenuStyle: cfg.desktopMenuStyle || 'pill',
+        drawerLayoutStyle: cfg.drawerLayoutStyle || 'single_dropdown',
+        activeIndicatorStyle: cfg.activeIndicatorStyle || 'glass_pill',
+        tintTone: cfg.tintTone || 'obsidian',
+        tintOpacity: Number(cfg.tintOpacity ?? 52),
+        glassBlur: Number(cfg.glassBlur ?? 28),
+        animStyle: cfg.animStyle || 'slide_scale',
+        drawerTitle: cfg.drawerTitle || 'Menu & Quick Access',
+        availabilityText: cfg.availabilityText || '🟢 Available for New Brand Launches & Scale',
+        showAvailabilityBadge: cfg.showAvailabilityBadge !== false,
+        showVoiceBriefBtn: cfg.showVoiceBriefBtn !== false,
+        showSearchInDrawer: cfg.showSearchInDrawer !== false,
+        showVipPassInDrawer: cfg.showVipPassInDrawer !== false,
+        vipPassText: cfg.vipPassText || '💳 VIP Partner Pass',
+        bottomCtaText: cfg.bottomCtaText ?? '💬 Chat on WhatsApp Desk',
+        items: Array.isArray(cfg.items) && cfg.items.length > 0 ? cfg.items : defaultItems
+      };
+    };
+
+    /* 3. Stop Old highlightActiveNavbarBtn from Overwriting Custom Menu Classes */
+    window.highlightActiveNavbarBtn = function (pageKey) {
+      const db = window.getDB();
+      const cfg = window.getNavMenuConfig(db);
+      const zeroHighlight = cfg.activeIndicatorStyle === 'none';
+      document.body.classList.toggle('nav-zero-highlight', zeroHighlight);
+
+      document.querySelectorAll('#mobile-tablet-menu-bar button').forEach(function (btn) {
+        const onclickAttr = btn.getAttribute('onclick') || '';
+        const m = onclickAttr.match(/'([^']+)'/);
+        const target = m ? m[1] : '';
+        const isAct = target === pageKey;
+        btn.classList.toggle('nav-glass-active', isAct && !zeroHighlight);
+      });
+    };
+
+    /* 4. Force Pull Latest Cloud Data & Re-Render Menu + Page */
+    window.pullLatestMenuFromCloudAndCache = async function () {
+      try {
+        const res = await fetch(FIREBASE_DB_URL + '?t=' + Date.now(), { cache: 'no-store' });
+        if (res.ok) {
+          const cloudData = await res.json();
+          if (cloudData && cloudData.brand) {
+            localStorage.setItem(LOCAL_CACHE_KEY, JSON.stringify(cloudData));
+          }
+        }
+      } catch (e) {}
+      if (typeof window.renderMasterNavigationUI === 'function') window.renderMasterNavigationUI();
+      if (typeof window.renderServicesAndFiltersClean === 'function') window.renderServicesAndFiltersClean();
+    };
+
+    /* 5. Real-Time Listener: Updates Frontend Immediately When Admin Saves in Another Tab or Split Preview */
+    window.addEventListener('storage', function (e) {
+      if (e.key === LOCAL_CACHE_KEY || !e.key) {
+        if (typeof window.renderAll === 'function') window.renderAll();
+        if (typeof window.renderMasterNavigationUI === 'function') window.renderMasterNavigationUI();
+      }
+    });
+
+    try {
+      const bc = new BroadcastChannel('OG_AGENCY_LIVE_SYNC_V13');
+      bc.onmessage = function (ev) {
+        if (ev.data && ev.data.type === 'DB_UPDATED') {
+          if (ev.data.db) {
+            localStorage.setItem(LOCAL_CACHE_KEY, JSON.stringify(ev.data.db));
+          }
+          if (typeof window.renderAll === 'function') window.renderAll();
+          if (typeof window.renderMasterNavigationUI === 'function') window.renderMasterNavigationUI();
+        }
+      };
+    } catch (e) {}
+
+    /* 6. Hook into renderAll so Menu Always Stays Synced */
+    const prevRenderAll = window.renderAll;
+    window.renderAll = function () {
+      if (typeof prevRenderAll === 'function') prevRenderAll();
+      setTimeout(function () {
+        if (typeof window.renderMasterNavigationUI === 'function') window.renderMasterNavigationUI();
+      }, 30);
+    };
+
+    /* Initial Sync on Page Load */
+    window.pullLatestMenuFromCloudAndCache();
+  })();
+</script>
+<!-- ==================== INDEX.HTML : MENU STUDIO & LOADER CLOUD SYNC FIX COMPLETE ==================== -->
