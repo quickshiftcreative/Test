@@ -7492,3 +7492,178 @@
 })();
 </script>
 <!-- ==================== INDEX.HTML : 1-SECOND LIVE SERVICES SYNC COMPLETE ==================== -->
+<!-- ==================== INDEX.HTML : 100% DYNAMIC CONTACT PAGE RENDERER (EVERY LINE & LINK EDITABLE) PATCH (PASTE AT VERY BOTTOM OF index.html) ==================== -->
+<script id="frontend-contact-page-dynamic-v18">
+(function () {
+  /* 1. Assign Dynamic IDs to Previously Hardcoded Elements inside #view-contact */
+  function tagHardcodedContactElements() {
+    const viewContact = document.getElementById('view-contact');
+    if (!viewContact) return;
+
+    /* Top Eyebrow ("Global Presence") */
+    const mainHd = document.getElementById('contact-main-heading');
+    if (mainHd && mainHd.previousElementSibling && !mainHd.previousElementSibling.id) {
+      mainHd.previousElementSibling.id = 'contact-eyebrow-text';
+    }
+
+    /* Quick Links Bar Container (Injected right below top header) */
+    const topHeaderBox = mainHd?.parentElement;
+    if (topHeaderBox && !document.getElementById('contact-quick-links-bar')) {
+      const qBar = document.createElement('div');
+      qBar.id = 'contact-quick-links-bar';
+      qBar.className = 'flex flex-wrap items-center justify-center gap-2.5 pt-2 empty:hidden';
+      topHeaderBox.appendChild(qBar);
+    }
+
+    /* Form Card Heading ("Send a Direct Project Brief or 30s Voice Note") */
+    const formCard = viewContact.querySelector('.charcoal-card');
+    if (formCard) {
+      const h3 = formCard.querySelector('h3');
+      if (h3 && !h3.id) h3.id = 'contact-form-card-heading';
+
+      const recBtn = document.getElementById('rec-btn');
+      const voiceBox = recBtn?.closest('.p-4');
+      if (voiceBox) {
+        voiceBox.id = 'contact-voice-recorder-box';
+        const textDiv = voiceBox.firstElementChild;
+        if (textDiv) {
+          const sp = textDiv.querySelector('span');
+          const p = textDiv.querySelector('p');
+          if (sp) sp.id = 'contact-voice-badge-text';
+          if (p) p.id = 'contact-voice-sub-text';
+        }
+      }
+
+      const submitBtn = formCard.querySelector('form button[type="submit"]');
+      if (submitBtn && !submitBtn.id) submitBtn.id = 'contact-submit-btn';
+    }
+  }
+
+  /* 2. Render Every Single Line, Placeholder, Button & Studio Hub Card on Contact Page */
+  window.renderContactPageComplete = function () {
+    tagHardcodedContactElements();
+    const db = window.getDB();
+    if (!db) return;
+
+    const cfg = db.contactPageConfig || {};
+    const h = db.headings || {};
+
+    const eyebrowEl = document.getElementById('contact-eyebrow-text');
+    if (eyebrowEl) eyebrowEl.innerText = cfg.eyebrow ?? 'Global Presence';
+
+    const mainHdEl = document.getElementById('contact-main-heading');
+    if (mainHdEl) mainHdEl.innerText = cfg.heading || h.contactHeading || 'Connect With Our Global Studios';
+
+    const mainSubEl = document.getElementById('contact-main-sub');
+    if (mainSubEl) mainSubEl.innerText = cfg.sub || h.contactSub || 'Reach out directly to our regional hubs or record a 30-second voice brief below.';
+
+    /* Render Quick-Connect Action Links Bar */
+    const qBar = document.getElementById('contact-quick-links-bar');
+    if (qBar) {
+      const qLinks = Array.isArray(cfg.quickLinks) ? cfg.quickLinks.filter(x => x && x.label) : [];
+      qBar.innerHTML = qLinks.map(function (ql) {
+        const href = ql.url || '#';
+        const isExternal = href.startsWith('http');
+        return `<a href="${href}" ${isExternal ? 'target="_blank" rel="noopener"' : ''} class="px-4 py-2 rounded-xl liquid-glass text-xs font-extrabold text-emerald-300 hover:border-emerald-400/50 hover:text-white transition flex items-center gap-1.5">${ql.label}</a>`;
+      }).join('');
+    }
+
+    /* Render Global Studio Hub Cards (100% Respecting Individual Studio Edits & Custom Links) */
+    const studiosGrid = document.getElementById('studios-hub-grid');
+    if (studiosGrid) {
+      const studios = Array.isArray(db.studios) ? db.studios : [];
+      studiosGrid.innerHTML = studios.map(function (st, i) {
+        const phoneVal = st.phone !== undefined ? st.phone : (db.brand?.phone || '');
+        const emailVal = st.email !== undefined ? st.email : (db.brand?.email || '');
+        const cleanTel = phoneVal.replace(/[^0-9+]/g, '');
+
+        return `
+          <div class="liquid-glass rounded-3xl p-6 space-y-3 flex flex-col justify-between">
+            <div>
+              <span class="text-[11px] font-extrabold uppercase tracking-widest secondary-text">(0${i + 1}) ${st.country || ''}</span>
+              <h3 class="text-xl font-bold text-white mt-1">${st.city || ''}</h3>
+              <p class="text-xs text-zinc-400 mt-2 leading-relaxed">${st.address || ''}</p>
+            </div>
+            <div class="pt-4 border-t border-white/10 space-y-1.5 text-xs">
+              ${phoneVal ? `<a href="tel:${cleanTel}" class="font-bold text-white block hover:text-emerald-400 transition">📞 ${phoneVal}</a>` : ''}
+              ${emailVal ? `<a href="mailto:${emailVal}" class="text-zinc-300 block hover:text-white transition">✉️ ${emailVal}</a>` : ''}
+              ${st.btnLabel && st.btnUrl ? `
+                <div class="pt-2">
+                  <a href="${st.btnUrl}" target="_blank" rel="noopener" class="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-[11px] font-extrabold text-emerald-300 transition">
+                    ${st.btnLabel}
+                  </a>
+                </div>
+              ` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    /* Render Voice Brief Box & Form Placeholders */
+    const formHd = document.getElementById('contact-form-card-heading');
+    if (formHd) formHd.innerText = cfg.formCardHeading ?? 'Send a Direct Project Brief or 30s Voice Note';
+
+    const voiceBox = document.getElementById('contact-voice-recorder-box');
+    if (voiceBox) voiceBox.classList.toggle('hidden', cfg.showVoiceBox === false);
+
+    const vBadge = document.getElementById('contact-voice-badge-text');
+    if (vBadge) vBadge.innerText = cfg.voiceBadge ?? '🎙️ Walkie-Talkie 30-Second Voice Brief';
+
+    const vSub = document.getElementById('contact-voice-sub-text');
+    if (vSub) vSub.innerText = cfg.voiceSub ?? 'No time to type? Record your voice note and it will be sent directly to our Admin CRM.';
+
+    const recBtn = document.getElementById('rec-btn');
+    if (recBtn && (!mediaRecorder || mediaRecorder.state === 'inactive')) {
+      recBtn.innerText = cfg.voiceBtnStart ?? '🔴 Start Recording';
+    }
+
+    const setPh = function (id, text) {
+      const el = document.getElementById(id);
+      if (el && text !== undefined) el.setAttribute('placeholder', text);
+    };
+    setPh('cnt-name', cfg.phName ?? 'Your Full Name *');
+    setPh('cnt-brand', cfg.phBrand ?? 'Brand / Company Name *');
+    setPh('cnt-email', cfg.phEmail ?? 'Official Email Address *');
+    setPh('cnt-phone', cfg.phPhone ?? 'WhatsApp / Mobile Number *');
+    setPh('cnt-msg', cfg.phMsg ?? 'Tell us about your brand, target marketplaces, or creative requirements...');
+
+    const subBtn = document.getElementById('contact-submit-btn');
+    if (subBtn) subBtn.innerText = cfg.submitBtnText ?? 'Submit Project Inquiry & Voice Brief →';
+  };
+
+  /* 3. Upgrade Contact Form Submission to Use Custom Success Message */
+  window.handleContactSubmission = async function (e) {
+    e.preventDefault();
+    const db = window.getDB();
+    db.inquiries = db.inquiries || [];
+    db.inquiries.unshift({
+      id: 'INQ-' + Date.now(),
+      date: new Date().toLocaleDateString(),
+      name: document.getElementById('cnt-name').value.trim(),
+      brand: document.getElementById('cnt-brand').value.trim(),
+      email: document.getElementById('cnt-email').value.trim(),
+      phone: document.getElementById('cnt-phone').value.trim(),
+      message: document.getElementById('cnt-msg').value.trim(),
+      voiceAudio: document.getElementById('voice-base64-data').value || ''
+    });
+    await pushCloudDB(db);
+    e.target.reset();
+    document.getElementById('voice-base64-data').value = '';
+    document.getElementById('voice-preview-player').classList.add('hidden');
+    document.getElementById('rec-status').classList.add('hidden');
+    alert(db.contactPageConfig?.successMsg || '✅ Your project brief has been sent successfully!');
+  };
+
+  /* 4. Hook into Master renderAll so Contact Page Updates Live in < 1 Second */
+  const prevRenderAll = window.renderAll;
+  window.renderAll = function () {
+    if (typeof prevRenderAll === 'function') prevRenderAll();
+    window.renderContactPageComplete();
+  };
+
+  window.renderContactPageComplete();
+  setTimeout(window.renderContactPageComplete, 250);
+})();
+</script>
+<!-- ==================== INDEX.HTML : 100% DYNAMIC CONTACT PAGE PATCH COMPLETE ==================== -->
