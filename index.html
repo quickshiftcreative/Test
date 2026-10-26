@@ -6733,3 +6733,417 @@
   })();
 </script>
 <!-- ==================== INDEX.HTML : AUTHORITATIVE HAMBURGER ICON PATCH COMPLETE ==================== -->
+<!-- ==================== INDEX.HTML : ZERO-OVERLAP MOBILE UI, SWIPEABLE TABLET/PC BAR & 16 INSTANT HAMBURGER STYLES (PASTE AT VERY BOTTOM) ==================== -->
+<style id="master-device-menu-v15">
+  /* ================= 1. MOBILE ZERO-OVERLAP HEADER & DRAWER FIX (< 768px) ================= */
+  @media (max-width: 767px) {
+    header.sticky {
+      padding: 0.45rem 0.6rem !important;
+    }
+    #navbar-shell {
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 0.5rem 0.65rem !important;
+      gap: 0.35rem !important;
+      border-radius: 1rem !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    /* Keep Logo + Brand Name Compact So Right Controls Never Overlap */
+    #navbar-shell > div:first-child {
+      min-width: 0 !important;
+      flex: 1 1 auto !important;
+      gap: 0.45rem !important;
+      overflow: hidden !important;
+    }
+    #nav-logo-box {
+      width: 34px !important;
+      height: 34px !important;
+      min-width: 34px !important;
+      font-size: 0.72rem !important;
+      border-radius: 0.65rem !important;
+    }
+    #nav-brand-name {
+      font-size: 0.82rem !important;
+      line-height: 1.15 !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      max-width: 118px !important;
+      display: block !important;
+    }
+    #nav-brand-tagline {
+      display: none !important;
+    }
+
+    /* Right Side Controls on Mobile: Compact & Non-Overlapping */
+    #navbar-shell > div:last-child {
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      align-items: center !important;
+      gap: 0.35rem !important;
+      flex-shrink: 0 !important;
+    }
+    /* Hide Extra Desktop Buttons on Mobile Header */
+    button[onclick="openCommandPalette()"],
+    #xray-btn,
+    #sound-toggle-btn,
+    button[onclick="navigate('contact')"] {
+      display: none !important;
+    }
+    #currency-switcher {
+      padding: 0.35rem 0.4rem !important;
+      font-size: 0.68rem !important;
+      border-radius: 0.6rem !important;
+      max-width: 68px !important;
+    }
+    /* Make Quote Cart Button Compact on Mobile (Hide long word "Quotations") */
+    button[onclick="navigate('quotation')"] {
+      padding: 0.4rem 0.55rem !important;
+      border-radius: 0.7rem !important;
+      font-size: 0.72rem !important;
+      gap: 0.25rem !important;
+    }
+    button[onclick="navigate('quotation')"] span:nth-child(2) {
+      display: none !important;
+    }
+
+    /* Mobile Mandatory Rules: Hamburger Always ON, Top Pill Bar Always OFF */
+    #mobile-tablet-menu-bar {
+      display: none !important;
+    }
+    html body #navbar-shell #phone-hamburger-btn {
+      display: flex !important;
+      flex-shrink: 0 !important;
+    }
+  }
+
+  /* ================= 2. TABLET (768px - 1023px) & PC (1024px+) SWIPEABLE MENU & HAMBURGER TOGGLES ================= */
+  #mobile-tablet-menu-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    padding: 0.55rem 0.85rem !important;
+    margin-top: 0.45rem !important;
+    border-radius: 1.1rem !important;
+  }
+  #mobile-tablet-menu-bar::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  /* Tablet Rules (768px to 1023px) */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    html body:not(.tablet-hb-on) #navbar-shell #phone-hamburger-btn {
+      display: none !important;
+    }
+    html body.tablet-hb-on #navbar-shell #phone-hamburger-btn {
+      display: flex !important;
+    }
+    html body.tablet-topbar-off #mobile-tablet-menu-bar {
+      display: none !important;
+    }
+    html body:not(.tablet-topbar-off) #mobile-tablet-menu-bar {
+      display: flex !important;
+      justify-content: flex-start !important;
+    }
+  }
+
+  /* PC / Desktop Rules (1024px and above) */
+  @media (min-width: 1024px) {
+    html body:not(.pc-hb-on) #navbar-shell #phone-hamburger-btn {
+      display: none !important;
+    }
+    html body.pc-hb-on #navbar-shell #phone-hamburger-btn {
+      display: flex !important;
+    }
+    html body.pc-topbar-off #mobile-tablet-menu-bar {
+      display: none !important;
+    }
+    html body:not(.pc-topbar-off) #mobile-tablet-menu-bar {
+      display: flex !important;
+      justify-content: center !important;
+    }
+  }
+
+  /* ================= 3. FIXED FLOATING HAMBURGER DRAWER (NEVER OVERLAPS PAGE CONTENT) ================= */
+  #hamburger-drawer:not(.hidden) {
+    display: block !important;
+    position: fixed !important;
+    top: 72px !important;
+    right: 12px !important;
+    left: 12px !important;
+    max-width: 420px !important;
+    margin-left: auto !important;
+    max-height: calc(100vh - 92px) !important;
+    overflow-y: auto !important;
+    z-index: 99990 !important;
+    border-radius: 1.5rem !important;
+    padding: 1.15rem !important;
+  }
+</style>
+
+<script id="frontend-instant-hamburger-v15">
+  (function () {
+    const DEFAULT_HB_V15 = {
+      iconStyle: 'three_line',
+      /* Device Toggles: Mobile is Mandatory ON; Tablet & PC default to Top Swipe Bar ON & Hamburger OFF */
+      pcShowTopBar: true,
+      pcShowHamburger: false,
+      tabletShowTopBar: true,
+      tabletShowHamburger: false,
+      btnLabel: '',
+      labelPos: 'left',
+      customEmoji: '✦',
+      boxSize: 40,
+      cornerRadius: 12,
+      lineWidth: 18,
+      lineThick: 2,
+      lineGap: 4.5,
+      lineColor: '#ffffff',
+      accentColor: '#10b981',
+      bgColor: '#18181b',
+      bgOpacity: 70,
+      borderColor: '#ffffff',
+      borderOpacity: 22,
+      glowEnabled: true,
+      openMorph: 'morph_x',
+      customBtnImg: '',
+      customCloseImg: ''
+    };
+
+    function hexToRgba(hex, alphaPct) {
+      let c = (hex || '#ffffff').replace('#', '').trim();
+      if (c.length === 3) c = c[0]+c[0]+c[1]+c[1]+c[2]+c[2];
+      const num = parseInt(c, 16);
+      const r = (num >> 16) & 255;
+      const g = (num >> 8) & 255;
+      const b = num & 255;
+      return `rgba(${r}, ${g}, ${b}, ${(Number(alphaPct ?? 65) / 100).toFixed(2)})`;
+    }
+
+    window.getHamburgerIconConfig = function (dbObj) {
+      const d = dbObj || window.getDB();
+      const rawHb = d?.hamburgerIconConfig || {};
+      const legacyNav = d?.navMenuConfig || {};
+      return {
+        ...DEFAULT_HB_V15,
+        iconStyle: rawHb.iconStyle || legacyNav.iconStyle || 'three_line',
+        btnLabel: rawHb.btnLabel !== undefined ? rawHb.btnLabel : (legacyNav.btnLabel || ''),
+        boxSize: Number(rawHb.boxSize ?? legacyNav.btnSize ?? 40),
+        customBtnImg: rawHb.customBtnImg !== undefined ? rawHb.customBtnImg : (legacyNav.customBtnImg || ''),
+        customCloseImg: rawHb.customCloseImg !== undefined ? rawHb.customCloseImg : (legacyNav.customCloseImg || ''),
+        ...rawHb
+      };
+    };
+
+    /* Master Renderer for All 16 Internet Hamburger Icon Styles */
+    window.generateHamburgerIconMarkup = function (ic, isOpen) {
+      const style = ic.iconStyle || 'three_line';
+      const w = Number(ic.lineWidth || 18);
+      const t = Number(ic.lineThick || 2);
+      const g = Number(ic.lineGap || 4.5);
+      const col1 = ic.lineColor || '#ffffff';
+      const col2 = ic.accentColor || '#10b981';
+
+      const lblText = (ic.btnLabel || '').trim();
+      const lblHTML = lblText
+        ? `<span style="color:${col1};font-size:10px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;line-height:1;">${lblText}</span>`
+        : '';
+
+      /* Universal Open Close X Graphic (for dot/slider/emoji modes when open) */
+      const closeXGraphic = `
+        <div style="position:relative;width:${w}px;height:${w}px;display:flex;align-items:center;justify-content:center;">
+          <span style="position:absolute;width:${w}px;height:${t}px;background:${col1};border-radius:99px;transform:rotate(45deg);"></span>
+          <span style="position:absolute;width:${w}px;height:${t}px;background:${col2};border-radius:99px;transform:rotate(-45deg);"></span>
+        </div>
+      `;
+
+      let graphic = '';
+
+      if (style === 'custom_image' && ic.customBtnImg) {
+        if (isOpen && ic.customCloseImg) {
+          graphic = `<img src="${ic.customCloseImg}" alt="Close" style="width:${w + 6}px;height:${w + 6}px;object-fit:contain;border-radius:4px;" />`;
+        } else if (isOpen) {
+          graphic = closeXGraphic;
+        } else {
+          graphic = `<img src="${ic.customBtnImg}" alt="Menu" style="width:${w + 6}px;height:${w + 6}px;object-fit:contain;border-radius:4px;" />`;
+        }
+      } else if (style === 'custom_emoji') {
+        graphic = isOpen
+          ? closeXGraphic
+          : `<span style="font-size:${w}px;line-height:1;color:${col2};">${ic.customEmoji || '✦'}</span>`;
+      } else if (style === 'bento_dots') {
+        if (isOpen) {
+          graphic = closeXGraphic;
+        } else {
+          const d = Math.max(3, Math.round(t * 1.55));
+          graphic = `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:${Math.max(2, Math.round(g * 0.65))}px;">
+            ${[0,1,2,3,4,5,6,7,8].map(i => `<span style="width:${d}px;height:${d}px;border-radius:99px;background:${i % 2 === 1 ? col2 : col1};"></span>`).join('')}
+          </div>`;
+        }
+      } else if (style === 'ten_dots') {
+        if (isOpen) {
+          graphic = closeXGraphic;
+        } else {
+          const d = Math.max(2.5, Math.round(t * 1.4));
+          graphic = `<div style="display:flex;flex-direction:column;align-items:center;gap:2.5px;">
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2.5px;">
+              ${[0,1,2,3,4,5,6,7,8].map(i => `<span style="width:${d}px;height:${d}px;border-radius:99px;background:${i === 4 ? col2 : col1};"></span>`).join('')}
+            </div>
+            <span style="width:${d * 2.2}px;height:${d}px;border-radius:99px;background:${col2};"></span>
+          </div>`;
+        }
+      } else if (style === 'four_dots') {
+        if (isOpen) {
+          graphic = closeXGraphic;
+        } else {
+          const d = Math.max(4, Math.round(t * 2));
+          graphic = `<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:${Math.max(3, Math.round(g))}px;">
+            <span style="width:${d}px;height:${d}px;border-radius:99px;background:${col1};"></span>
+            <span style="width:${d}px;height:${d}px;border-radius:99px;background:${col2};"></span>
+            <span style="width:${d}px;height:${d}px;border-radius:99px;background:${col2};"></span>
+            <span style="width:${d}px;height:${d}px;border-radius:99px;background:${col1};"></span>
+          </div>`;
+        }
+      } else if (style === 'dots_vertical') {
+        if (isOpen) {
+          graphic = closeXGraphic;
+        } else {
+          const d = Math.max(3.5, Math.round(t * 1.8));
+          graphic = `<div style="display:flex;flex-direction:column;align-items:center;gap:${Math.max(2.5, Math.round(g * 0.75))}px;">
+            <span style="width:${d}px;height:${d}px;border-radius:99px;background:${col1};"></span>
+            <span style="width:${d}px;height:${d}px;border-radius:99px;background:${col2};"></span>
+            <span style="width:${d}px;height:${d}px;border-radius:99px;background:${col1};"></span>
+          </div>`;
+        }
+      } else if (style === 'dots_horizontal') {
+        if (isOpen) {
+          graphic = closeXGraphic;
+        } else {
+          const d = Math.max(3.5, Math.round(t * 1.8));
+          graphic = `<div style="display:flex;flex-direction:row;align-items:center;gap:${Math.max(2.5, Math.round(g * 0.75))}px;">
+            <span style="width:${d}px;height:${d}px;border-radius:99px;background:${col1};"></span>
+            <span style="width:${d}px;height:${d}px;border-radius:99px;background:${col2};"></span>
+            <span style="width:${d}px;height:${d}px;border-radius:99px;background:${col1};"></span>
+          </div>`;
+        }
+      } else if (style === 'ios_sliders') {
+        if (isOpen) {
+          graphic = closeXGraphic;
+        } else {
+          graphic = `<div style="display:flex;flex-direction:column;gap:${g}px;width:${w}px;">
+            <div style="position:relative;width:100%;height:${t}px;background:${col1};border-radius:99px;">
+              <span style="position:absolute;top:50%;left:25%;transform:translate(-50%,-50%);width:${t * 2.4}px;height:${t * 2.4}px;border-radius:99px;background:${col2};"></span>
+            </div>
+            <div style="position:relative;width:100%;height:${t}px;background:${col1};border-radius:99px;">
+              <span style="position:absolute;top:50%;left:72%;transform:translate(-50%,-50%);width:${t * 2.4}px;height:${t * 2.4}px;border-radius:99px;background:${col2};"></span>
+            </div>
+          </div>`;
+        }
+      } else if (style === 'circle_ring') {
+        if (isOpen) {
+          graphic = closeXGraphic;
+        } else {
+          graphic = `<div style="width:${w + 8}px;height:${w + 8}px;border-radius:999px;border:1.5px solid ${col2};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;">
+            <span style="width:${Math.round(w * 0.6)}px;height:${t}px;background:${col1};border-radius:99px;"></span>
+            <span style="width:${Math.round(w * 0.6)}px;height:${t}px;background:${col2};border-radius:99px;"></span>
+          </div>`;
+        }
+      } else if (style === 'plus_cross') {
+        graphic = `<span style="display:inline-block;color:${isOpen ? col2 : col1};font-size:${w + 4}px;font-weight:800;line-height:1;transition:transform 0.3s;transform:rotate(${isOpen ? '45deg' : '0deg'});">＋</span>`;
+      } else if (style === 'two_line') {
+        graphic = `
+          <div class="hb14-bars-box" style="align-items:center;">
+            <span class="hb14-bar hb14-bar-1"></span>
+            <span class="hb14-bar hb14-bar-3" style="background-color:${col2};"></span>
+          </div>
+        `;
+      } else if (style === 'staggered' || style === 'staggered_right') {
+        graphic = `
+          <div class="hb14-bars-box" style="align-items:flex-end;">
+            <span class="hb14-bar hb14-bar-1" style="width:${w}px;"></span>
+            <span class="hb14-bar hb14-bar-2" style="width:${Math.round(w * 0.65)}px;"></span>
+            <span class="hb14-bar hb14-bar-3" style="width:${Math.round(w * 0.84)}px;"></span>
+          </div>
+        `;
+      } else if (style === 'staggered_left') {
+        graphic = `
+          <div class="hb14-bars-box" style="align-items:flex-start;">
+            <span class="hb14-bar hb14-bar-1" style="width:${Math.round(w * 0.65)}px;"></span>
+            <span class="hb14-bar hb14-bar-2" style="width:${w}px;"></span>
+            <span class="hb14-bar hb14-bar-3" style="width:${Math.round(w * 0.84)}px;"></span>
+          </div>
+        `;
+      } else if (style === 'center_diamond') {
+        graphic = `
+          <div class="hb14-bars-box" style="align-items:center;">
+            <span class="hb14-bar hb14-bar-1" style="width:${Math.round(w * 0.65)}px;"></span>
+            <span class="hb14-bar hb14-bar-2" style="width:${w + 2}px;"></span>
+            <span class="hb14-bar hb14-bar-3" style="width:${Math.round(w * 0.65)}px;"></span>
+          </div>
+        `;
+      } else {
+        graphic = `
+          <div class="hb14-bars-box" style="align-items:center;">
+            <span class="hb14-bar hb14-bar-1"></span>
+            <span class="hb14-bar hb14-bar-2"></span>
+            <span class="hb14-bar hb14-bar-3"></span>
+          </div>
+        `;
+      }
+
+      if (style === 'pill_text' && !lblText) {
+        const pillLbl = `<span style="color:${col1};font-size:10px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;line-height:1;">MENU</span>`;
+        return ic.labelPos === 'right' ? `${graphic}${pillLbl}` : `${pillLbl}${graphic}`;
+      }
+
+      return ic.labelPos === 'right' ? `${graphic}${lblHTML}` : `${lblHTML}${graphic}`;
+    };
+
+    /* Apply Device Matrix & Hamburger Styles to Live Frontend */
+    const baseApply = window.applyAuthoritativeHamburgerIcon;
+    window.applyAuthoritativeHamburgerIcon = function () {
+      if (typeof baseApply === 'function') baseApply();
+      const db = window.getDB();
+      const ic = window.getHamburgerIconConfig(db);
+
+      /* Apply Independent PC & Tablet Toggles (Mobile always has Hamburger ON) */
+      document.body.classList.toggle('pc-hb-on', Boolean(ic.pcShowHamburger));
+      document.body.classList.toggle('pc-topbar-off', ic.pcShowTopBar === false);
+      document.body.classList.toggle('tablet-hb-on', Boolean(ic.tabletShowHamburger));
+      document.body.classList.toggle('tablet-topbar-off', ic.tabletShowTopBar === false);
+
+      /* Remove old conflicting visibility classes so our new matrix rules cleanly win */
+      document.body.classList.remove('hb-vis-mobile_only', 'hb-vis-mobile_tablet', 'hb-vis-all_devices', 'desktop-menu-hamburger');
+
+      const btn = document.getElementById('phone-hamburger-btn');
+      const drw = document.getElementById('hamburger-drawer');
+      const isOpen = Boolean(drw && !drw.classList.contains('hidden'));
+      if (btn) {
+        btn.innerHTML = window.generateHamburgerIconMarkup(ic, isOpen);
+      }
+    };
+
+    /* Polling Fallback Every 1.2s for Local File Mode so Backend Edits Appear Even Across Separate Windows */
+    let lastRawSignature = '';
+    setInterval(function () {
+      const raw = localStorage.getItem(LOCAL_CACHE_KEY) || '';
+      if (raw && raw.length !== lastRawSignature) {
+        lastRawSignature = raw.length;
+        window.applyAuthoritativeHamburgerIcon();
+        if (typeof window.renderMasterNavigationUI === 'function') {
+          window.renderMasterNavigationUI();
+        }
+      }
+    }, 800);
+
+    window.applyAuthoritativeHamburgerIcon();
+  })();
+</script>
+<!-- ==================== INDEX.HTML : ZERO-OVERLAP & 16 HAMBURGER STYLES COMPLETE ==================== -->
