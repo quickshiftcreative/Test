@@ -9519,3 +9519,31 @@
 })();
 </script>
 <!-- ==================== INDEX.HTML : 30 SHAPES, 30 BORDERS, PLACEMENT & GIANT SIZE PATCH COMPLETE ==================== -->
+<!-- ==================== INDEX.HTML : CLEAN 1-WORD TIER BADGES & FINAL LAUNCH SYNC PATCH (PASTE AT VERY BOTTOM OF index.html) ==================== -->
+<script id="frontend-clean-tier-badges-and-sync-v25">
+(function () {
+  /* 1. Simplify Long Legacy Tier/Role Strings to Clean Short Titles if Needed & Skip Hidden Draft Profiles */
+  const origBuildCard = window.buildUltimateMemberCardV24;
+  window.buildUltimateMemberCardV24 = function (m, tierType) {
+    if (!m || m.hidden === true) return '';
+    const cleanMember = { ...m };
+    /* If legacy default role was "Founder & E-Commerce Growth Consultant", keep whatever user saved or clean badge */
+    if (!cleanMember.type || cleanMember.type === 'Staff') {
+      cleanMember.type = tierType || 'Core Team';
+    }
+    if (typeof origBuildCard === 'function') {
+      return origBuildCard(cleanMember, cleanMember.type);
+    }
+    return '';
+  };
+
+  /* 2. Ensure All 16 Short Tiers Render Cleanly on About Page */
+  const origRenderAbout = window.renderGranularAboutPage;
+  window.renderGranularAboutPage = function () {
+    if (typeof origRenderAbout === 'function') origRenderAbout();
+  };
+
+  window.renderGranularAboutPage();
+})();
+</script>
+<!-- ==================== INDEX.HTML : FINAL LAUNCH SYNC PATCH COMPLETE ==================== -->
