@@ -9020,3 +9020,502 @@
 })();
 </script>
 <!-- ==================== INDEX.HTML : 3-TIER TEAM & LIQUID PROFILE MODAL COMPLETE ==================== -->
+<!-- ==================== INDEX.HTML : 30 PHOTO CROP SHAPES, 30 BORDER FRAMES, 6 PLACEMENTS, GIANT SIZE & 16 TIERS RENDERER PATCH (PASTE AT VERY BOTTOM OF index.html) ==================== -->
+<style id="frontend-30-shapes-30-borders-v24">
+  /* ================= 30 PHOTO CROP SHAPES ================= */
+  .crop-s01_circle         { border-radius: 9999px !important; }
+  .crop-s02_squircle       { border-radius: 26% !important; }
+  .crop-s03_round_soft     { border-radius: 16px !important; }
+  .crop-s04_round_deep     { border-radius: 34px !important; }
+  .crop-s05_sharp_square   { border-radius: 0px !important; }
+  .crop-s06_capsule_pill   { border-radius: 9999px !important; aspect-ratio: 3/4 !important; }
+  .crop-s07_roman_arch     { border-radius: 999px 999px 16px 16px !important; }
+  .crop-s08_cathedral_arch { border-radius: 70% 70% 12px 12px / 90% 90% 12px 12px !important; }
+  .crop-s09_inverted_arch  { border-radius: 16px 16px 999px 999px !important; }
+  .crop-s10_hexagon        { clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%) !important; }
+  .crop-s11_hex_vertical   { clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%) !important; }
+  .crop-s12_octagon        { clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%) !important; }
+  .crop-s13_diamond        { clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%) !important; }
+  .crop-s14_soft_diamond   { clip-path: polygon(50% 3%, 97% 50%, 50% 97%, 3% 50%) !important; border-radius: 24px !important; }
+  .crop-s15_pentagon       { clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%) !important; }
+  .crop-s16_heptagon       { clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%) !important; }
+  .crop-s17_decagon        { clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%) !important; }
+  .crop-s18_royal_shield   { clip-path: polygon(0% 0%, 100% 0%, 100% 65%, 50% 100%, 0% 65%) !important; }
+  .crop-s19_teardrop_left  { border-radius: 8px 50% 50% 50% !important; }
+  .crop-s20_teardrop_right { border-radius: 50% 8px 50% 50% !important; }
+  .crop-s21_botanical_leaf { border-radius: 0px 65% 0px 65% !important; }
+  .crop-s22_cyber_bevel_4  { clip-path: polygon(16% 0%, 84% 0%, 100% 16%, 100% 84%, 84% 100%, 16% 100%, 0% 84%, 0% 16%) !important; }
+  .crop-s23_cyber_cut_trbl { clip-path: polygon(0% 0%, 78% 0%, 100% 22%, 100% 100%, 22% 100%, 0% 78%) !important; }
+  .crop-s24_cyber_cut_tlbr { clip-path: polygon(22% 0%, 100% 0%, 100% 78%, 78% 100%, 0% 100%, 0% 22%) !important; }
+  .crop-s25_ticket_notch   { clip-path: polygon(0% 12%, 12% 0%, 88% 0%, 100% 12%, 100% 88%, 88% 100%, 12% 100%, 0% 88%) !important; }
+  .crop-s26_parallelogram  { clip-path: polygon(14% 0%, 100% 0%, 86% 100%, 0% 100%) !important; }
+  .crop-s27_trapezoid      { clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%) !important; }
+  .crop-s28_starburst_12   { clip-path: polygon(50% 0%, 63% 11%, 79% 6%, 83% 22%, 98% 28%, 92% 44%, 100% 59%, 87% 70%, 86% 86%, 70% 88%, 59% 100%, 45% 91%, 30% 97%, 24% 81%, 8% 79%, 12% 63%, 1% 50%, 13% 37%, 10% 21%, 26% 19%, 34% 4%, 49% 11%) !important; }
+  .crop-s29_modern_pebble  { border-radius: 62% 38% 46% 54% / 60% 44% 56% 40% !important; }
+  .crop-s30_full_portrait  { border-radius: 20px !important; aspect-ratio: 4/5 !important; }
+
+  /* ================= 30 BORDER & FRAME DESIGNS ================= */
+  .bframe-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .bframe-b01_gold_halo       { border: var(--bw, 3px) solid var(--bc, #f59e0b); box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.18), 0 0 28px rgba(245, 158, 11, 0.45); }
+  .bframe-b02_gold_spin_orbit { border: var(--bw, 3px) solid var(--bc, #f59e0b); box-shadow: 0 0 25px rgba(245, 158, 11, 0.4); outline: 2px dashed rgba(245, 158, 11, 0.65); outline-offset: 5px; }
+  .bframe-b03_apple_titanium  { border: var(--bw, 3px) solid #d4d4d8; box-shadow: inset 0 0 0 2px #27272a, 0 14px 30px rgba(0,0,0,0.75); }
+  .bframe-b04_liquid_glass    { border: var(--bw, 2px) solid rgba(255,255,255,0.45); background: rgba(255,255,255,0.1); padding: 5px; box-shadow: 0 18px 36px rgba(0,0,0,0.65), inset 0 1px 2px rgba(255,255,255,0.5); }
+  .bframe-b05_emerald_neon    { border: var(--bw, 3px) solid #10b981; box-shadow: 0 0 26px rgba(16, 185, 129, 0.6), inset 0 0 12px rgba(16, 185, 129, 0.3); }
+  .bframe-b06_indigo_electric { border: var(--bw, 3px) solid #6366f1; box-shadow: 0 0 28px rgba(99, 102, 241, 0.65), 0 0 0 4px rgba(99, 102, 241, 0.2); }
+  .bframe-b07_sunset_grad     { padding: var(--bw, 3px); background: linear-gradient(135deg, #f59e0b, #ec4899, #6366f1); box-shadow: 0 12px 30px rgba(236, 72, 153, 0.35); }
+  .bframe-b08_hologram_prism  { padding: var(--bw, 3px); background: linear-gradient(45deg, #06b6d4, #10b981, #f59e0b, #ec4899, #8b5cf6); box-shadow: 0 0 25px rgba(139, 92, 246, 0.45); }
+  .bframe-b09_dashed_radar    { border: var(--bw, 2px) dashed var(--bc, #10b981); padding: 4px; box-shadow: 0 0 20px rgba(16, 185, 129, 0.25); }
+  .bframe-b10_dotted_matrix   { border: var(--bw, 3px) dotted var(--bc, #f59e0b); padding: 4px; }
+  .bframe-b11_double_offset   { border: var(--bw, 2px) solid var(--bc, #ffffff); outline: 2px solid var(--bc, #f59e0b); outline-offset: 5px; }
+  .bframe-b12_triple_halo     { border: 2px solid var(--bc, #f59e0b); box-shadow: 0 0 0 4px #09090b, 0 0 0 6px rgba(245,158,11,0.5), 0 0 0 10px #09090b, 0 0 0 11px rgba(245,158,11,0.25); }
+  .bframe-b13_silver_chrome   { border: var(--bw, 3px) solid #f4f4f5; box-shadow: 0 0 20px rgba(255,255,255,0.35), inset 0 0 8px rgba(255,255,255,0.5); }
+  .bframe-b14_rose_gold       { border: var(--bw, 3px) solid #fb7185; box-shadow: 0 0 24px rgba(251, 113, 133, 0.45); }
+  .bframe-b15_crimson_velvet  { border: var(--bw, 3px) solid #e11d48; box-shadow: 0 0 28px rgba(225, 29, 72, 0.55); }
+  .bframe-b16_cyan_laser      { border: var(--bw, 3px) solid #06b6d4; box-shadow: 0 0 28px rgba(6, 182, 212, 0.6); }
+  .bframe-b17_amber_solar     { border: var(--bw, 3px) solid #fbbf24; box-shadow: 0 0 36px rgba(251, 191, 36, 0.65); }
+  .bframe-b18_obsidian_matte  { border: var(--bw, 4px) solid #27272a; box-shadow: 0 20px 40px rgba(0,0,0,0.9); }
+  .bframe-b19_white_gallery   { border: var(--bw, 4px) solid #ffffff; padding: 3px; background: #09090b; box-shadow: 0 15px 35px rgba(0,0,0,0.7); }
+  .bframe-b20_museum_gold     { border: var(--bw, 5px) double #f59e0b; box-shadow: 0 12px 30px rgba(245, 158, 11, 0.3); }
+  .bframe-b21_hud_brackets    { border: 1px solid rgba(255,255,255,0.2); box-shadow: -4px -4px 0 -1px var(--bc, #10b981), 4px 4px 0 -1px var(--bc, #10b981), -4px 4px 0 -1px var(--bc, #10b981), 4px -4px 0 -1px var(--bc, #10b981); }
+  .bframe-b22_top_bot_arc     { border-top: var(--bw, 4px) solid var(--bc, #f59e0b); border-bottom: var(--bw, 4px) solid var(--bc, #f59e0b); box-shadow: 0 10px 25px rgba(0,0,0,0.6); }
+  .bframe-b23_left_right_neon { border-left: var(--bw, 4px) solid var(--bc, #10b981); border-right: var(--bw, 4px) solid var(--bc, #6366f1); }
+  .bframe-b24_deep_levitate   { border: 1px solid rgba(255,255,255,0.22); box-shadow: 0 30px 60px -10px rgba(0,0,0,0.95), 0 0 25px rgba(99,102,241,0.25); }
+  .bframe-b25_pearl_lumina    { border: var(--bw, 2px) solid #fef3c7; box-shadow: 0 0 24px rgba(254, 243, 199, 0.45); }
+  .bframe-b26_gold_emerald    { border: var(--bw, 3px) solid #f59e0b; outline: 2px solid #10b981; outline-offset: 4px; }
+  .bframe-b27_indigo_pink     { border: var(--bw, 3px) solid #6366f1; outline: 2px solid #ec4899; outline-offset: 4px; }
+  .bframe-b28_heavy_armor     { border: 6px solid var(--bc, #f59e0b); box-shadow: 0 15px 35px rgba(0,0,0,0.85); }
+  .bframe-b29_hairline_minimal{ border: 1px solid rgba(255,255,255,0.35); }
+  .bframe-b30_frameless_clean { border: none !important; box-shadow: none !important; }
+</style>
+
+<script id="frontend-ultimate-about-team-renderer-v24">
+(function () {
+  const SOCIAL_SVGS = {
+    linkedin: `<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>`,
+    instagram: `<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>`,
+    twitter: `<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`,
+    behance: `<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-4.225 0-6.625-2.889-6.625-6.938 0-4.085 2.508-7.062 6.551-7.062 4.093 0 6.075 2.871 6.075 6.452 0 .615-.078 1.21-.131 1.548h-9.52c.074 2.128 1.636 3.738 3.864 3.738 1.835 0 2.979-.824 3.498-1.738h1.389zm-5.197-7.445c-2.115 0-3.414 1.348-3.69 3.23h7.241c-.139-1.884-1.436-3.23-3.551-3.23zm-13.529 1.445h-3v-7h3c1.654 0 3 1.346 3 3s-1.346 4-3 4zm-3 2h3.5c1.93 0 3.5 1.57 3.5 3.5s-1.57 3.5-3.5 3.5h-3.5v-10.5zm3-7.5h-1.5v3.5h1.5c.965 0 1.75-.785 1.75-1.75s-.785-1.75-1.75-1.75zm.5 5.5h-2v3.5h2c1.103 0 2-.897 2-2s-.897-1.5-2-1.5z"/></svg>`,
+    youtube: `<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>`,
+    website: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>`,
+    whatsapp: `<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>`,
+    email: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>`
+  };
+
+  /* 1. Download vCard Contact Helper inside Profile Modal */
+  window.downloadMemberVCard = function (memberId) {
+    const db = window.getDB();
+    const m = (db.team || []).find(x => x.id === memberId);
+    if (!m) return;
+    const soc = m.socials || {};
+    const tel = soc.whatsapp || db.brand?.phone || '';
+    const mail = soc.email || db.brand?.email || '';
+    const vcf = [
+      'BEGIN:VCARD',
+      'VERSION:3.0',
+      'FN:' + (m.name || 'Specialist'),
+      'ORG:' + (db.brand?.name || 'The Blank Page'),
+      'TITLE:' + (m.role || ''),
+      tel ? 'TEL;TYPE=CELL:' + tel : '',
+      mail ? 'EMAIL:' + mail : '',
+      'END:VCARD'
+    ].filter(Boolean).join('\n');
+
+    const blob = new Blob([vcf], { type: 'text/vcard' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = (m.name || 'Contact').replace(/\s+/g, '_') + '.vcf';
+    a.click();
+  };
+
+  /* 2. Upgrade Open Profile Modal with 30 Shapes, 30 Borders, 8 Socials & vCard Download */
+  window.openTeamProfileModal = function (memberId) {
+    const db = window.getDB();
+    const m = (db.team || []).find(x => x.id === memberId);
+    if (!m) return;
+
+    const modal = document.getElementById('team-profile-dossier-modal');
+    const photoImg = document.getElementById('dossier-photo-img');
+    const photoWrap = document.getElementById('dossier-photo-wrap');
+    const tierBadge = document.getElementById('dossier-tier-badge');
+    const nameEl = document.getElementById('dossier-name-text');
+    const roleEl = document.getElementById('dossier-role-text');
+    const briefEl = document.getElementById('dossier-brief-text');
+    const bioEl = document.getElementById('dossier-detailed-bio');
+    const skillsWrap = document.getElementById('dossier-skills-box');
+    const skillsPills = document.getElementById('dossier-skills-pills');
+    const socialsBox = document.getElementById('dossier-social-links');
+
+    const avatar = m.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(m.name || 'Member')}&background=6366f1&color=fff&size=400`;
+    const shapeCls = 'crop-' + (m.cropShape || 's01_circle');
+    const borderCls = 'bframe-' + (m.borderFrame || 'b01_gold_halo');
+
+    photoWrap.className = `shrink-0 overflow-hidden bframe-wrap ${shapeCls} ${borderCls}`;
+    photoWrap.style.width = '148px';
+    photoWrap.style.height = '148px';
+    photoWrap.style.setProperty('--bc', m.borderColor || '#f59e0b');
+    photoWrap.style.setProperty('--bw', (m.borderWidth ?? 3) + 'px');
+
+    photoImg.src = avatar;
+    photoImg.className = `w-full h-full object-cover ${shapeCls}`;
+    photoImg.style.objectPosition = `50% ${m.photoPosY ?? 20}%`;
+    photoImg.style.transform = `scale(${(m.photoZoom || 100) / 100})`;
+
+    tierBadge.innerText = `${m.type || 'Leadership'}${m.locationBadge ? '  •  ' + m.locationBadge : ''}`;
+    nameEl.innerHTML = `${m.name || ''} ${m.verifiedBadge !== false ? '<span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-500 text-zinc-950 text-xs font-black align-middle ml-1">✓</span>' : ''}`;
+    roleEl.innerText = m.role || '';
+    briefEl.innerText = m.cardBrief ? `“${m.cardBrief}”` : '';
+    bioEl.innerText = m.detailedBio || m.bio || 'Dedicated growth and creative execution specialist.';
+
+    const skillsArr = Array.isArray(m.skills) ? m.skills : (m.skills ? String(m.skills).split(',').map(s => s.trim()).filter(Boolean) : []);
+    if (skillsArr.length > 0) {
+      skillsWrap.classList.remove('hidden');
+      skillsPills.innerHTML = skillsArr.map(sk => `<span class="px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-extrabold text-white">${sk}</span>`).join('');
+    } else {
+      skillsWrap.classList.add('hidden');
+    }
+
+    const soc = m.socials || {};
+    const links = [];
+    if (soc.linkedin)  links.push(`<a href="${soc.linkedin}" target="_blank" class="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition" title="LinkedIn">${SOCIAL_SVGS.linkedin}</a>`);
+    if (soc.instagram) links.push(`<a href="${soc.instagram}" target="_blank" class="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-pink-400 transition" title="Instagram">${SOCIAL_SVGS.instagram}</a>`);
+    if (soc.twitter)   links.push(`<a href="${soc.twitter}" target="_blank" class="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-sky-400 transition" title="X / Twitter">${SOCIAL_SVGS.twitter}</a>`);
+    if (soc.behance)   links.push(`<a href="${soc.behance}" target="_blank" class="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-indigo-300 transition" title="Behance">${SOCIAL_SVGS.behance}</a>`);
+    if (soc.youtube)   links.push(`<a href="${soc.youtube}" target="_blank" class="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-rose-400 transition" title="YouTube">${SOCIAL_SVGS.youtube}</a>`);
+    if (soc.website)   links.push(`<a href="${soc.website}" target="_blank" class="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-emerald-300 transition" title="Website">${SOCIAL_SVGS.website}</a>`);
+    if (soc.email)     links.push(`<a href="mailto:${soc.email}" class="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition" title="Email">${SOCIAL_SVGS.email}</a>`);
+    if (soc.whatsapp) {
+      const cleanWa = soc.whatsapp.replace(/[^0-9]/g, '');
+      links.push(`<a href="https://wa.me/${cleanWa}" target="_blank" class="px-4 py-2 rounded-xl bg-emerald-500 text-zinc-950 text-xs font-black flex items-center gap-1.5 shadow-lg">${SOCIAL_SVGS.whatsapp}<span>Chat on WhatsApp</span></a>`);
+    }
+    links.push(`<button type="button" onclick="window.downloadMemberVCard('${m.id}')" class="px-3.5 py-2 rounded-xl bg-amber-400/20 border border-amber-400/40 text-amber-300 text-xs font-extrabold">📇 Save Contact</button>`);
+
+    socialsBox.innerHTML = links.join('');
+    modal.classList.add('dossier-open');
+    if (typeof playUISound === 'function') playUISound(580, 0.04);
+  };
+
+  /* 3. Build Member Card HTML Supporting All 6 Placements, Custom Size (64px–420px), 30 Shapes & 30 Borders */
+  window.buildUltimateMemberCardV24 = function (m, tierType) {
+    const db = window.getDB();
+    const ps = db.aboutPhotoStudio || {};
+    const isFounder = tierType === 'Founder' || tierType === 'Co-Founder';
+
+    const placement = m.placement || (isFounder ? 'center' : (ps.placement || 'center'));
+    const sz = Number(m.photoSize || (isFounder ? (ps.founderSizePx || 185) : (ps.sizePx || 140)));
+    const shapeCls = 'crop-' + (m.cropShape || ps.shape || (isFounder ? 's01_circle' : 's02_squircle'));
+    const borderCls = 'bframe-' + (m.borderFrame || ps.borderFrame || (isFounder ? 'b01_gold_halo' : 'b04_liquid_glass'));
+    const bCol = m.borderColor || ps.borderColor || (isFounder ? '#f59e0b' : '#6366f1');
+    const bWid = m.borderWidth !== undefined ? m.borderWidth : 3;
+    const zoom = (Number(m.photoZoom || 100) / 100).toFixed(2);
+    const posY = m.photoPosY !== undefined ? m.photoPosY : 20;
+
+    const avatar = m.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(m.name || 'Member')}&background=6366f1&color=fff&size=400`;
+    const soc = m.socials || {};
+
+    const socIcons = [];
+    if (soc.linkedin)  socIcons.push(`<a href="${soc.linkedin}" target="_blank" onclick="event.stopPropagation()" class="w-8 h-8 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 flex items-center justify-center text-zinc-300 hover:text-white transition">${SOCIAL_SVGS.linkedin}</a>`);
+    if (soc.instagram) socIcons.push(`<a href="${soc.instagram}" target="_blank" onclick="event.stopPropagation()" class="w-8 h-8 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 flex items-center justify-center text-zinc-300 hover:text-pink-400 transition">${SOCIAL_SVGS.instagram}</a>`);
+    if (soc.twitter)   socIcons.push(`<a href="${soc.twitter}" target="_blank" onclick="event.stopPropagation()" class="w-8 h-8 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 flex items-center justify-center text-zinc-300 hover:text-sky-400 transition">${SOCIAL_SVGS.twitter}</a>`);
+    if (soc.behance)   socIcons.push(`<a href="${soc.behance}" target="_blank" onclick="event.stopPropagation()" class="w-8 h-8 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 flex items-center justify-center text-zinc-300 hover:text-indigo-300 transition">${SOCIAL_SVGS.behance}</a>`);
+    if (soc.youtube)   socIcons.push(`<a href="${soc.youtube}" target="_blank" onclick="event.stopPropagation()" class="w-8 h-8 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 flex items-center justify-center text-zinc-300 hover:text-rose-400 transition">${SOCIAL_SVGS.youtube}</a>`);
+    if (soc.whatsapp) {
+      const cleanWa = soc.whatsapp.replace(/[^0-9]/g, '');
+      socIcons.push(`<a href="https://wa.me/${cleanWa}" target="_blank" onclick="event.stopPropagation()" class="w-8 h-8 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/30 border border-emerald-500/30 flex items-center justify-center text-emerald-300 transition">${SOCIAL_SVGS.whatsapp}</a>`);
+    }
+
+    const verifiedTick = m.verifiedBadge !== false
+      ? `<span class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-emerald-500 text-zinc-950 text-[10px] font-black ml-1 align-middle" title="Verified">✓</span>`
+      : '';
+
+    const locBadge = m.locationBadge
+      ? `<span class="px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-[10px] font-bold text-zinc-300">${m.locationBadge}</span>`
+      : '';
+
+    const photoStyleVars = `--bc:${bCol}; --bw:${bWid}px;`;
+
+    /* MODE A: FULL-WIDTH COVER BANNER (MAXIMIZED PHOTO) */
+    if (placement === 'full_banner') {
+      const bannerH = Math.max(220, sz);
+      return `
+        <div onclick="window.openTeamProfileModal('${m.id}')" class="member-clean-card ${isFounder ? 'liquid-glass' : 'charcoal-card'} rounded-3xl overflow-hidden flex flex-col justify-between cursor-pointer group select-none">
+          <div class="w-full overflow-hidden relative bframe-wrap ${borderCls}" style="height:${bannerH}px; ${photoStyleVars}">
+            <img src="${avatar}" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" style="object-position:50% ${posY}%; transform:scale(${zoom});" />
+            <div class="absolute top-3.5 left-3.5 flex flex-wrap gap-1.5">
+              <span class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-black/75 backdrop-blur-md text-amber-300 border border-amber-400/40">${m.type || tierType}</span>
+              ${locBadge}
+            </div>
+          </div>
+          <div class="p-6 sm:p-7 space-y-3 text-center flex-1 flex flex-col justify-between">
+            <div>
+              <h4 class="text-xl sm:text-2xl font-extrabold text-white group-hover:text-amber-300 transition">${m.name}${verifiedTick}</h4>
+              <p class="text-xs sm:text-sm font-bold text-emerald-400 mt-1">${m.role || ''}</p>
+              <p class="text-xs text-zinc-300 leading-relaxed mt-3 line-clamp-2">${m.cardBrief || m.bio || ''}</p>
+            </div>
+            <div class="pt-4 border-t border-white/10 flex items-center justify-between gap-2">
+              <div class="flex items-center gap-1.5">${socIcons.join('')}</div>
+              <span class="text-xs font-black text-amber-400 group-hover:underline">${m.ctaText || 'View Profile ↗'}</span>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    /* MODE B: 50/50 EDITORIAL MAGAZINE SPLIT */
+    if (placement === 'split_magazine') {
+      return `
+        <div onclick="window.openTeamProfileModal('${m.id}')" class="member-clean-card ${isFounder ? 'liquid-glass' : 'charcoal-card'} rounded-3xl overflow-hidden grid grid-cols-1 sm:grid-cols-12 cursor-pointer group select-none">
+          <div class="sm:col-span-5 min-h-[240px] overflow-hidden relative bframe-wrap ${borderCls}" style="${photoStyleVars}">
+            <img src="${avatar}" class="w-full h-full object-cover" style="object-position:50% ${posY}%; transform:scale(${zoom});" />
+          </div>
+          <div class="sm:col-span-7 p-6 sm:p-7 flex flex-col justify-between text-left space-y-4">
+            <div class="space-y-2">
+              <div class="flex flex-wrap items-center gap-1.5">
+                <span class="px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider bg-amber-400/20 text-amber-300">${m.type || tierType}</span>
+                ${locBadge}
+              </div>
+              <h4 class="text-xl sm:text-2xl font-extrabold text-white group-hover:text-amber-300 transition">${m.name}${verifiedTick}</h4>
+              <p class="text-xs sm:text-sm font-bold text-emerald-400">${m.role || ''}</p>
+              <p class="text-xs text-zinc-300 leading-relaxed pt-1 line-clamp-3">${m.cardBrief || m.bio || ''}</p>
+            </div>
+            <div class="pt-3.5 border-t border-white/10 flex items-center justify-between gap-2">
+              <div class="flex items-center gap-1.5">${socIcons.join('')}</div>
+              <span class="text-xs font-black text-amber-400 group-hover:underline">${m.ctaText || 'View Profile ↗'}</span>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    /* MODE C: LEFT OR RIGHT HORIZONTAL ALIGNMENT */
+    if (placement === 'left' || placement === 'right') {
+      const rowDir = placement === 'right' ? 'flex-col sm:flex-row-reverse text-center sm:text-right' : 'flex-col sm:flex-row text-center sm:text-left';
+      return `
+        <div onclick="window.openTeamProfileModal('${m.id}')" class="member-clean-card ${isFounder ? 'liquid-glass' : 'charcoal-card'} rounded-3xl p-6 sm:p-7 flex flex-col justify-between cursor-pointer group select-none">
+          <div class="flex ${rowDir} items-center gap-5">
+            <div class="shrink-0 overflow-hidden bframe-wrap ${shapeCls} ${borderCls}" style="width:${sz}px; height:${sz}px; ${photoStyleVars}">
+              <img src="${avatar}" class="w-full h-full object-cover ${shapeCls}" style="object-position:50% ${posY}%; transform:scale(${zoom});" />
+            </div>
+            <div class="space-y-1.5 min-w-0 flex-1">
+              <div class="flex flex-wrap items-center ${placement === 'right' ? 'justify-center sm:justify-end' : 'justify-center sm:justify-start'} gap-1.5">
+                <span class="px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider ${isFounder ? 'bg-amber-400/20 text-amber-300' : 'bg-white/10 text-zinc-300'}">${m.type || tierType}</span>
+                ${locBadge}
+              </div>
+              <h4 class="text-lg sm:text-xl font-extrabold text-white group-hover:text-amber-300 transition">${m.name}${verifiedTick}</h4>
+              <p class="text-xs sm:text-sm font-bold text-emerald-400">${m.role || ''}</p>
+              <p class="text-xs text-zinc-300 leading-relaxed pt-1 line-clamp-2">${m.cardBrief || m.bio || ''}</p>
+            </div>
+          </div>
+          <div class="mt-5 pt-3.5 border-t border-white/10 flex items-center justify-between gap-2">
+            <div class="flex items-center gap-1.5">${socIcons.join('')}</div>
+            <span class="text-xs font-black text-amber-400 group-hover:underline">${m.ctaText || 'View Profile ↗'}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    /* MODE D (DEFAULT): CENTER SPOTLIGHT (PHOTO CENTERED ON TOP, TEXT CENTERED BELOW) */
+    return `
+      <div onclick="window.openTeamProfileModal('${m.id}')" class="member-clean-card ${isFounder ? 'liquid-glass' : 'charcoal-card'} rounded-3xl p-7 sm:p-8 flex flex-col items-center text-center justify-between cursor-pointer group select-none">
+        <div class="flex flex-col items-center w-full">
+          <!-- Top Badges -->
+          <div class="flex flex-wrap items-center justify-center gap-1.5 mb-5">
+            <span class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ${isFounder ? 'bg-amber-400/20 text-amber-300 border border-amber-400/30' : 'bg-white/10 text-zinc-300'}">${m.type || tierType}</span>
+            ${locBadge}
+          </div>
+
+          <!-- Centered Framed Portrait -->
+          <div class="shrink-0 overflow-hidden bframe-wrap ${shapeCls} ${borderCls} my-1" style="width:${sz}px; height:${sz}px; max-width:100%; ${photoStyleVars}">
+            <img src="${avatar}" class="w-full h-full object-cover ${shapeCls}" style="object-position:50% ${posY}%; transform:scale(${zoom});" />
+          </div>
+
+          <!-- Centered Name, Designation & Clean 1-Line Brief -->
+          <h4 class="text-xl sm:text-2xl font-extrabold text-white group-hover:text-amber-300 transition mt-5">${m.name}${verifiedTick}</h4>
+          <p class="text-xs sm:text-sm font-bold text-emerald-400 mt-1">${m.role || ''}</p>
+          <p class="text-xs text-zinc-300 leading-relaxed mt-3 max-w-md line-clamp-2">${m.cardBrief || m.bio || ''}</p>
+        </div>
+
+        <!-- Centered Social Bar & Action Link -->
+        <div class="w-full mt-6 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-1.5">${socIcons.join('')}</div>
+          <span class="text-xs font-black text-amber-400 group-hover:underline">${m.ctaText || 'View Profile ↗'}</span>
+        </div>
+      </div>
+    `;
+  };
+
+  /* 4. Override `renderGranularAboutPage` to Render All Active Tiers & Custom Column Layouts */
+  window.renderGranularAboutPage = function () {
+    const viewAbout = document.getElementById('view-about');
+    if (!viewAbout) return;
+
+    const db = window.getDB();
+    const ac = db.aboutConfig || {};
+    const ps = db.aboutPhotoStudio || {};
+    const team = Array.isArray(db.team) ? db.team : [];
+
+    const colClassMap = {
+      1: 'grid-cols-1 max-w-2xl mx-auto',
+      2: 'grid-cols-1 md:grid-cols-2 max-w-5xl mx-auto',
+      3: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
+      4: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'
+    };
+
+    const founderCols = colClassMap[ps.columnsFounder || 2] || colClassMap[2];
+    const partnerCols = colClassMap[ps.columnsPartner || 3] || colClassMap[3];
+    const teamCols    = colClassMap[ps.columnsTeam || 3] || colClassMap[3];
+
+    /* Group members dynamically by their Tier */
+    const founders = team.filter(m => m.type === 'Founder');
+    const partners = team.filter(m => m.type === 'Partner');
+    const coreTeam = team.filter(m => m.type === 'Core Team' || m.type === 'Staff' || !m.type);
+    const customTiers = [...new Set(team.map(m => m.type).filter(t => t && !['Founder', 'Partner', 'Core Team', 'Staff'].includes(t)))];
+
+    const showStory = ac.showStory !== false;
+    const showMission = ac.showMissionVision !== false;
+    const showNote = ac.showFounderNote !== false;
+    const showDna = ac.showDnaPillars !== false;
+
+    viewAbout.innerHTML = `
+      <div id="wp-blocks-top-about" class="space-y-8 empty:hidden"></div>
+
+      <!-- STORY, MISSION, VISION & FOUNDER'S NOTE -->
+      <div class="charcoal-card rounded-3xl p-6 sm:p-12 space-y-10">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+          <div class="lg:col-span-2 space-y-4 text-center lg:text-left">
+            <span class="text-xs font-extrabold uppercase tracking-widest text-amber-400">${ac.eyebrow || 'Our Story & DNA'}</span>
+            <h1 class="text-3xl sm:text-5xl font-bold text-white leading-tight">${ac.heading || db.about?.heading || ''}</h1>
+            ${showStory ? `<p class="text-zinc-300 text-sm sm:text-base leading-relaxed whitespace-pre-line">${ac.story || db.about?.story || ''}</p>` : ''}
+          </div>
+          ${showMission ? `
+            <div class="space-y-4">
+              <div class="liquid-glass rounded-2xl p-6 space-y-2 text-center lg:text-left">
+                <div class="text-xs font-extrabold uppercase text-emerald-400">${ac.missionTitle || 'Our Mission'}</div>
+                <p class="text-xs sm:text-sm text-zinc-300 leading-relaxed">${ac.mission || db.about?.mission || ''}</p>
+              </div>
+              <div class="liquid-glass rounded-2xl p-6 space-y-2 text-center lg:text-left">
+                <div class="text-xs font-extrabold uppercase text-indigo-400">${ac.visionTitle || 'Our Vision'}</div>
+                <p class="text-xs sm:text-sm text-zinc-300 leading-relaxed">${ac.vision || db.about?.vision || ''}</p>
+              </div>
+            </div>
+          ` : ''}
+        </div>
+
+        ${showNote ? `
+          <div class="p-6 sm:p-8 rounded-3xl liquid-glass border border-amber-500/35 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="space-y-2 max-w-xl text-center md:text-left">
+              <span class="text-[10px] font-black uppercase tracking-widest text-amber-400">FOUNDER’S CREDO</span>
+              <p class="text-base sm:text-lg font-bold text-white italic leading-relaxed">${ac.founderNoteQuote || '“In e-commerce, pretty designs without conversion architecture are just expensive art. We engineer both.”'}</p>
+            </div>
+            <div class="text-center md:text-right shrink-0">
+              <strong class="text-base font-extrabold text-white block">${ac.founderNoteAuthor || 'Jenish Kamli'}</strong>
+              <span class="text-xs text-amber-300 font-bold">${ac.founderNoteRole || 'Founder & E-Commerce Growth Consultant'}</span>
+            </div>
+          </div>
+        ` : ''}
+      </div>
+
+      <!-- 4 DNA PILLARS -->
+      ${showDna && Array.isArray(ac.dnaPillars) ? `
+        <div class="space-y-4">
+          <div class="text-center">
+            <span class="text-xs font-extrabold uppercase tracking-widest text-indigo-400">Core Architecture</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Our 4 DNA Pillars</h2>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            ${ac.dnaPillars.map(p => `
+              <div class="charcoal-card rounded-3xl p-6 space-y-2 text-center">
+                <span class="text-xs font-mono font-black text-indigo-400">${p.num}</span>
+                <h4 class="text-base font-bold text-white">${p.title}</h4>
+                <p class="text-xs text-zinc-400 leading-relaxed">${p.desc}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      ` : ''}
+
+      <!-- TIER 1: FOUNDERS -->
+      ${ac.showFoundersTier !== false && founders.length > 0 ? `
+        <div class="space-y-6 pt-6">
+          <div class="text-center">
+            <span class="text-xs font-extrabold uppercase tracking-widest text-amber-400">Executive Vision</span>
+            <h2 class="text-3xl sm:text-4xl font-bold text-white mt-1">${ac.foundersHeading || 'Founders & Visionary Leadership'}</h2>
+            <p class="text-xs sm:text-sm text-zinc-400 mt-1">${ac.foundersSub || ''}</p>
+          </div>
+          <div class="grid ${founders.length === 1 ? 'grid-cols-1 max-w-xl mx-auto' : founderCols} gap-6">
+            ${founders.map(m => window.buildUltimateMemberCardV24(m, 'Founder')).join('')}
+          </div>
+        </div>
+      ` : ''}
+
+      <!-- TIER 2: PARTNERS -->
+      ${ac.showPartnersTier !== false && partners.length > 0 ? `
+        <div class="space-y-6 pt-6">
+          <div class="text-center">
+            <span class="text-xs font-extrabold uppercase tracking-widest text-indigo-400">Regional Leadership</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">${ac.partnersHeading || 'Managing & Strategic Partners'}</h2>
+            <p class="text-xs sm:text-sm text-zinc-400 mt-1">${ac.partnersSub || ''}</p>
+          </div>
+          <div class="grid ${partners.length === 1 ? 'grid-cols-1 max-w-xl mx-auto' : partnerCols} gap-6">
+            ${partners.map(m => window.buildUltimateMemberCardV24(m, 'Partner')).join('')}
+          </div>
+        </div>
+      ` : ''}
+
+      <!-- EXTRA SPECIALIZED / CUSTOM TIERS (FROM THE 16 TIERS) -->
+      ${customTiers.map(tName => {
+        const safeKey = tName.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
+        const tMembers = team.filter(m => m.type === tName);
+        if (ac[`show${safeKey.charAt(0).toUpperCase() + safeKey.slice(1)}Tier`] === false) return '';
+        return `
+          <div class="space-y-6 pt-6">
+            <div class="text-center">
+              <span class="text-xs font-extrabold uppercase tracking-widest text-purple-400">${tName}</span>
+              <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">${ac[safeKey + 'Heading'] || tName}</h2>
+              <p class="text-xs sm:text-sm text-zinc-400 mt-1">${ac[safeKey + 'Sub'] || ''}</p>
+            </div>
+            <div class="grid ${tMembers.length === 1 ? 'grid-cols-1 max-w-xl mx-auto' : teamCols} gap-6">
+              ${tMembers.map(m => window.buildUltimateMemberCardV24(m, tName)).join('')}
+            </div>
+          </div>
+        `;
+      }).join('')}
+
+      <!-- TIER 3: CORE TEAM -->
+      ${ac.showTeamTier !== false && coreTeam.length > 0 ? `
+        <div class="space-y-6 pt-6">
+          <div class="text-center">
+            <span class="text-xs font-extrabold uppercase tracking-widest text-emerald-400">Execution Pod</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">${ac.teamHeading || 'The Execution Desk & Core Team'}</h2>
+            <p class="text-xs sm:text-sm text-zinc-400 mt-1">${ac.teamSub || ''}</p>
+          </div>
+          <div class="grid ${coreTeam.length === 1 ? 'grid-cols-1 max-w-xl mx-auto' : teamCols} gap-6">
+            ${coreTeam.map(m => window.buildUltimateMemberCardV24(m, 'Core Team')).join('')}
+          </div>
+        </div>
+      ` : ''}
+
+      <!-- BOTTOM CTA -->
+      ${ac.showBottomCta !== false ? `
+        <div class="liquid-glass rounded-3xl p-7 text-center space-y-3.5 border border-amber-500/35">
+          <h3 class="text-xl sm:text-2xl font-bold text-white">${ac.bottomCtaText || 'Want to scale your brand or join our growth desk?'}</h3>
+          <a href="${ac.bottomCtaUrl || 'https://wa.me/919876543210'}" target="_blank" class="inline-block px-7 py-3.5 rounded-2xl bg-gradient-to-r from-amber-500 to-yellow-400 text-zinc-950 font-black text-xs shadow-xl hover:opacity-95 transition">
+            ${ac.bottomCtaBtn || 'Start Conversation on WhatsApp →'}
+          </a>
+        </div>
+      ` : ''}
+
+      <div id="wp-blocks-bottom-about" class="space-y-8 empty:hidden"></div>
+    `;
+  };
+
+  window.renderGranularAboutPage();
+  setTimeout(window.renderGranularAboutPage, 250);
+})();
+</script>
+<!-- ==================== INDEX.HTML : 30 SHAPES, 30 BORDERS, PLACEMENT & GIANT SIZE PATCH COMPLETE ==================== -->
