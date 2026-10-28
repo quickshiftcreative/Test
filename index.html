@@ -8270,3 +8270,393 @@
 })();
 </script>
 <!-- ==================== INDEX.HTML : 100% HARD-LOCK VISIBILITY ENFORCER COMPLETE ==================== -->
+<!-- ==================== INDEX.HTML : ZERO-FLICKER MENU LOCK, BIG-SCREEN HAMBURGER HIDER, 120FPS SMOOTH LOADER & BUTTON STUDIO PATCH (PASTE AT VERY BOTTOM OF index.html) ==================== -->
+<style id="frontend-master-polish-v22">
+  /* 1. STRICTLY HIDE HAMBURGER ICON ON PC & TABLET (BIG SCREENS >= 768px) BY DEFAULT */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    html body:not(.tablet-hb-on) #navbar-shell #phone-hamburger-btn,
+    html body:not(.tablet-hb-on) header button[onclick*="toggleHamburgerDrawer"] {
+      display: none !important;
+      visibility: hidden !important;
+      width: 0 !important;
+      min-width: 0 !important;
+      height: 0 !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      border: 0 !important;
+      overflow: hidden !important;
+      pointer-events: none !important;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    html body:not(.pc-hb-on) #navbar-shell #phone-hamburger-btn,
+    html body:not(.pc-hb-on) header button[onclick*="toggleHamburgerDrawer"] {
+      display: none !important;
+      visibility: hidden !important;
+      width: 0 !important;
+      min-width: 0 !important;
+      height: 0 !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      border: 0 !important;
+      overflow: hidden !important;
+      pointer-events: none !important;
+    }
+  }
+
+  /* 2. STOP MENU ROW FLICKER WHEN HAMBURGER DRAWER IS OPEN */
+  #hamburger-drawer.drawer-settled .hb-row-stagger {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* 3. EXTRA DESKTOP MENU BAR & MOBILE DRAWER STYLES */
+  @media (min-width: 768px) {
+    body.desktop-menu-macos_dock #mobile-tablet-menu-bar {
+      width: max-content !important;
+      max-width: 94vw !important;
+      margin: 0.55rem auto 0 auto !important;
+      padding: 0.5rem 0.9rem !important;
+      border-radius: 1.5rem !important;
+      background: linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(12,12,18,0.82) 100%) !important;
+      border: 1px solid rgba(255,255,255,0.28) !important;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.85), inset 0 1px 1px rgba(255,255,255,0.35) !important;
+    }
+    body.desktop-menu-vision_bar #mobile-tablet-menu-bar {
+      background: rgba(255, 255, 255, 0.08) !important;
+      backdrop-filter: blur(36px) saturate(200%) !important;
+      -webkit-backdrop-filter: blur(36px) saturate(200%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+      border-radius: 9999px !important;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 0 18px rgba(255,255,255,0.12) !important;
+    }
+    body.desktop-menu-cyber_neon #mobile-tablet-menu-bar {
+      background: rgba(9, 9, 11, 0.9) !important;
+      border: 1px solid rgba(16, 185, 129, 0.55) !important;
+      box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.35) !important;
+      border-radius: 0.85rem !important;
+    }
+  }
+
+  #hamburger-drawer.drawer-layout-compact_card {
+    max-width: 320px !important;
+    right: 14px !important;
+    left: auto !important;
+    border-radius: 1.75rem !important;
+  }
+  #hamburger-drawer.drawer-layout-split_deck {
+    max-width: 460px !important;
+  }
+
+  /* 4. GLOBAL BUTTON HOVER EFFECTS */
+  body.btn-hover-scale_pop button:hover {
+    transform: scale(1.035);
+  }
+  body.btn-hover-gold_border button:hover {
+    border-color: rgba(245, 158, 11, 0.7) !important;
+    box-shadow: 0 10px 25px -6px rgba(245, 158, 11, 0.35) !important;
+  }
+</style>
+
+<style id="frontend-dynamic-button-studio-css-v22"></style>
+
+<script id="frontend-zero-flicker-and-smooth-loader-v22">
+(function () {
+  /* ============================================================================
+     1. BUTTER-SMOOTH 120FPS APPLE GPU LOADING SCREEN (FIXES COMPETING TIMERS LAG)
+     ============================================================================ */
+  function runButterSmoothAppleLoader() {
+    const overlay = document.getElementById('agency-loader-overlay');
+    if (!overlay) return;
+
+    const db = typeof window.getDB === 'function' ? window.getDB() : {};
+    const sb = db?.masterSwitchboard || {};
+    const cfg = typeof window.getLoaderConfig === 'function' ? window.getLoaderConfig(db) : (db?.loaderConfig || {});
+
+    /* If loader is turned OFF in Switchboard or Loader Studio, hide immediately */
+    if (sb.popup_loader_screen === false || cfg.enabled === false || (cfg.frequency === 'once_per_session' && sessionStorage.getItem('OG_LOADER_SHOWN_V22'))) {
+      overlay.classList.add('ldr-hidden-done');
+      overlay.style.display = 'none';
+      return;
+    }
+    sessionStorage.setItem('OG_LOADER_SHOWN_V22', '1');
+
+    /* Clone and replace `#loader-pct-text` & `#loader-progress-fill` so old competing setIntervals lose their DOM references! */
+    const oldPct = document.getElementById('loader-pct-text');
+    const oldFill = document.getElementById('loader-progress-fill');
+    if (oldPct && oldPct.parentNode) {
+      const cleanPct = oldPct.cloneNode(true);
+      oldPct.parentNode.replaceChild(cleanPct, oldPct);
+    }
+    if (oldFill && oldFill.parentNode) {
+      const cleanFill = oldFill.cloneNode(true);
+      oldFill.parentNode.replaceChild(cleanFill, oldFill);
+    }
+
+    const pctEl = document.getElementById('loader-pct-text');
+    const fillEl = document.getElementById('loader-progress-fill');
+    const statusEl = document.getElementById('ldr-live-status-txt');
+    const stepsArr = (cfg.statusSteps || 'Loading 3D Visual Engine..., Syncing Live Catalog..., Ready for Launch').split(',').map(s => s.trim()).filter(Boolean);
+
+    if (fillEl) {
+      fillEl.style.transition = 'none';
+      fillEl.style.willChange = 'width';
+    }
+
+    const duration = Math.max(650, Number(cfg.durationMs || 1250));
+    const startTime = performance.now();
+
+    function stepLoaderFrame(now) {
+      const elapsed = now - startTime;
+      const rawProgress = Math.min(1, elapsed / duration);
+      /* Apple cubic ease-out curve for silky-smooth progress */
+      const eased = 1 - Math.pow(1 - rawProgress, 3);
+      const pct = Math.min(100, Math.max(1, Math.round(eased * 100)));
+
+      if (pctEl) pctEl.innerText = pct + '%';
+      if (fillEl) fillEl.style.width = (eased * 100).toFixed(1) + '%';
+      if (statusEl && stepsArr.length > 0) {
+        const sIdx = Math.min(stepsArr.length - 1, Math.floor(eased * stepsArr.length));
+        if (statusEl.innerText !== stepsArr[sIdx]) statusEl.innerText = stepsArr[sIdx];
+      }
+
+      if (rawProgress < 1) {
+        requestAnimationFrame(stepLoaderFrame);
+      } else {
+        if (pctEl) pctEl.innerText = '100%';
+        if (fillEl) fillEl.style.width = '100%';
+        setTimeout(function () {
+          if (typeof window.triggerLoader3DExitAndHomeEntrance === 'function') {
+            window.triggerLoader3DExitAndHomeEntrance(cfg);
+          } else {
+            overlay.classList.add('ldr-hidden-done');
+          }
+        }, 120);
+      }
+    }
+
+    requestAnimationFrame(stepLoaderFrame);
+  }
+
+  runButterSmoothAppleLoader();
+
+  /* ============================================================================
+     2. STOP MENU & HAMBURGER FLICKER FOREVER (SMART SIGNATURE LOCK)
+     ============================================================================ */
+  let lastNavRenderSig = '';
+  let lastHbIconSig = '';
+
+  const rawRenderMasterNav = window.renderMasterNavigationUI;
+  window.renderMasterNavigationUI = function (forceRebuild) {
+    const db = window.getDB();
+    const cfg = typeof window.getNavMenuConfig === 'function' ? window.getNavMenuConfig(db) : (db.navMenuConfig || {});
+    const currentActive = (window.location.hash || '').replace('#', '') || localStorage.getItem('OG_DESK_LAST_ACTIVE_PAGE_V5') || 'home';
+    const cartCount = typeof cart !== 'undefined' && Array.isArray(cart) ? cart.length : 0;
+
+    const drw = document.getElementById('hamburger-drawer');
+    const isDrawerOpen = Boolean(drw && !drw.classList.contains('hidden'));
+
+    const nextNavSig = JSON.stringify({
+      cfg: cfg,
+      customPages: (db.customPages || []).map(p => p.slug + p.navLabel),
+      sb: db.masterSwitchboard || {},
+      active: currentActive,
+      cart: cartCount
+    });
+
+    /* If Hamburger Drawer is currently open and nothing in menu config changed, DO NOT rebuild its DOM! */
+    if (!forceRebuild && nextNavSig === lastNavRenderSig) {
+      return;
+    }
+    lastNavRenderSig = nextNavSig;
+
+    if (typeof rawRenderMasterNav === 'function') {
+      rawRenderMasterNav();
+    }
+
+    /* If drawer was already open during a live update, lock `.drawer-settled` so rows don't replay fade-in animation */
+    if (drw && isDrawerOpen) {
+      drw.classList.add('drawer-settled');
+    }
+  };
+
+  /* When opening Hamburger Drawer, remove `.drawer-settled` for the initial 380ms entrance, then lock it so it never flickers */
+  const rawToggleHb = window.toggleHamburgerDrawer;
+  window.toggleHamburgerDrawer = function () {
+    const drw = document.getElementById('hamburger-drawer');
+    if (drw) drw.classList.remove('drawer-settled');
+    if (typeof rawToggleHb === 'function') rawToggleHb();
+    setTimeout(function () {
+      if (drw && !drw.classList.contains('hidden')) {
+        drw.classList.add('drawer-settled');
+      }
+    }, 420);
+  };
+
+  /* Lock Hamburger Button Icon so it never flickers in background */
+  const rawApplyHbIcon = window.applyAuthoritativeHamburgerIcon;
+  window.applyAuthoritativeHamburgerIcon = function () {
+    const db = window.getDB();
+    const ic = typeof window.getHamburgerIconConfig === 'function' ? window.getHamburgerIconConfig(db) : (db.hamburgerIconConfig || {});
+    const drw = document.getElementById('hamburger-drawer');
+    const isOpen = Boolean(drw && !drw.classList.contains('hidden'));
+
+    /* Strictly Enforce PC & Tablet Default OFF unless explicitly enabled */
+    const pcOn = Boolean(ic.pcShowHamburger === true);
+    const tabOn = Boolean(ic.tabletShowHamburger === true);
+    document.body.classList.toggle('pc-hb-on', pcOn);
+    document.body.classList.toggle('tablet-hb-on', tabOn);
+    document.body.classList.toggle('pc-topbar-off', ic.pcShowTopBar === false);
+    document.body.classList.toggle('tablet-topbar-off', ic.tabletShowTopBar === false);
+
+    const nextIconSig = JSON.stringify({ ic: ic, open: isOpen });
+    if (nextIconSig === lastHbIconSig) {
+      return; // Icon unchanged — do not touch button DOM!
+    }
+    lastHbIconSig = nextIconSig;
+
+    if (typeof rawApplyHbIcon === 'function') {
+      rawApplyHbIcon();
+    }
+  };
+
+  /* ============================================================================
+     3. APPLY GLOBAL & INDIVIDUAL BUTTON VISIBILITY, SHAPE, COLOR & TEXT
+     ============================================================================ */
+  window.applyButtonStudioCustomizations = function () {
+    const db = window.getDB();
+    const sb = db?.masterSwitchboard || {};
+    const bCfg = db?.buttonStudioConfig || {};
+    const perBtn = bCfg.perButton || {};
+
+    const isOff = function (key) { return sb[key] === false; };
+    const hideRule = 'display: none !important; visibility: hidden !important; opacity: 0 !important; pointer-events: none !important;';
+    const css = [];
+
+    /* A. Global Button Shape */
+    const shapeMap = { pill: '9999px', rounded: '12px', square: '4px' };
+    if (bCfg.globalShape && bCfg.globalShape !== 'default' && shapeMap[bCfg.globalShape]) {
+      const r = shapeMap[bCfg.globalShape];
+      css.push(`
+        html body main button,
+        html body #navbar-shell button[onclick="navigate('quotation')"],
+        html body #home-services-grid span.px-4,
+        html body #services-catalog-grid span.px-4 {
+          border-radius: ${r} !important;
+        }
+      `);
+    }
+
+    /* B. Global Button Colors */
+    if (bCfg.primaryBg) {
+      const isLight = bCfg.primaryBg.toLowerCase() === '#ffffff' || bCfg.primaryBg.toLowerCase() === '#f4f4f5' || bCfg.globalTheme === 'white' || bCfg.globalTheme === 'gold' || bCfg.globalTheme === 'emerald';
+      const txtCol = bCfg.primaryText || (isLight ? '#09090b' : '#ffffff');
+      css.push(`
+        html body #hero-btn-primary,
+        html body .accent-bg,
+        html body #view-quotation button[type="submit"],
+        html body #contact-submit-btn {
+          background: ${bCfg.primaryBg} !important;
+          color: ${txtCol} !important;
+        }
+      `);
+    }
+
+    if (bCfg.cardBtnBg) {
+      const isLightCard = bCfg.cardBtnBg.toLowerCase() === '#ffffff' || bCfg.globalTheme === 'white' || bCfg.globalTheme === 'gold' || bCfg.globalTheme === 'emerald';
+      const cTxt = bCfg.cardBtnText || (isLightCard ? '#09090b' : '#ffffff');
+      css.push(`
+        html body #home-services-grid span.px-4,
+        html body #services-catalog-grid span.px-4 {
+          background: ${bCfg.cardBtnBg} !important;
+          color: ${cTxt} !important;
+          border-color: transparent !important;
+        }
+      `);
+    }
+
+    /* C. Global Button Hover Style */
+    document.body.classList.remove('btn-hover-lift_glow', 'btn-hover-scale_pop', 'btn-hover-gold_border');
+    if (bCfg.hoverEffect) {
+      document.body.classList.add('btn-hover-' + bCfg.hoverEffect);
+    }
+
+    /* D. 18 Individual Action Buttons ON/OFF Visibility */
+    if (isOff('btn_srv_inspect'))      css.push(`html body #home-services-grid span.px-4, html body #services-catalog-grid span.px-4 { ${hideRule} }`);
+    if (isOff('btn_srv_open_cart'))    css.push(`html body #view-services button[onclick="navigate('quotation')"] { ${hideRule} }`);
+    if (isOff('btn_srv_filter_bar'))   css.push(`html body #service-filter-bar { ${hideRule} }`);
+    if (isOff('btn_srv_search_box'))   css.push(`html body #srv-live-search-inp { ${hideRule} }`);
+    if (isOff('btn_srv_custom_req'))   css.push(`html body button[onclick*="promptCustomServiceToQuote"] { ${hideRule} }`);
+    if (isOff('btn_smodal_sel_all'))   css.push(`html body #smodal-add-all { ${hideRule} }`);
+    if (isOff('btn_smodal_proceed'))   css.push(`html body #service-modal button[onclick*="navigate('quotation')"] { ${hideRule} }`);
+    if (isOff('btn_home_explore_srv')) css.push(`html body #home-block-services button[onclick="navigate('services')"] { ${hideRule} }`);
+    if (isOff('btn_hero_primary'))     css.push(`html body #hero-btn-primary { ${hideRule} }`);
+    if (isOff('btn_hero_secondary'))   css.push(`html body #hero-btn-secondary { ${hideRule} }`);
+    if (isOff('btn_hero_pills'))       css.push(`html body #hero-pills-container { ${hideRule} }`);
+    if (isOff('btn_pf_inspect'))       css.push(`html body #home-portfolio-grid span.text-white.group-hover\\:underline, html body #portfolio-catalog-grid span.text-white.group-hover\\:underline { ${hideRule} }`);
+    if (isOff('btn_qt_add_more'))      css.push(`html body #view-quotation > div.border-b button[onclick="navigate('services')"] { ${hideRule} }`);
+    if (isOff('btn_qt_pdf_download'))  css.push(`html body #view-quotation form button[type="submit"] { ${hideRule} }`);
+    if (isOff('btn_qt_wa_send'))       css.push(`html body button[onclick="sendQuoteViaWhatsApp()"] { ${hideRule} }`);
+    if (isOff('btn_tr_demo_login'))    css.push(`html body button[onclick="fillDemoClientLogin()"] { ${hideRule} }`);
+    if (isOff('btn_rev_write'))        css.push(`html body button[onclick="openReviewModal()"] { ${hideRule} }`);
+    if (isOff('btn_cnt_quick_links'))  css.push(`html body #contact-quick-links-bar { ${hideRule} }`);
+
+    /* E. Apply Per-Button Custom Text, Shape & Color Overrides */
+    const selectorMap = {
+      btn_srv_inspect:      '#home-services-grid span.px-4, #services-catalog-grid span.px-4',
+      btn_srv_open_cart:    '#view-services > div.border-b button[onclick="navigate(\'quotation\')"]',
+      btn_srv_custom_req:   'button[onclick*="promptCustomServiceToQuote"]',
+      btn_smodal_sel_all:   '#smodal-add-all',
+      btn_smodal_proceed:   '#service-modal button[onclick*="navigate(\'quotation\')"]',
+      btn_home_explore_srv: '#home-block-services > div:first-child button[onclick="navigate(\'services\')"]',
+      btn_hero_primary:     '#hero-btn-primary',
+      btn_hero_secondary:   '#hero-btn-secondary',
+      btn_pf_inspect:       '#home-portfolio-grid span.text-white.group-hover\\:underline, #portfolio-catalog-grid span.text-white.group-hover\\:underline',
+      btn_qt_add_more:      '#view-quotation > div.border-b button[onclick="navigate(\'services\')"]',
+      btn_qt_pdf_download:  '#view-quotation form button[type="submit"]',
+      btn_qt_wa_send:       'button[onclick="sendQuoteViaWhatsApp()"]',
+      btn_tr_demo_login:    'button[onclick="fillDemoClientLogin()"]',
+      btn_rev_write:        'button[onclick="openReviewModal()"]'
+    };
+
+    Object.keys(perBtn).forEach(function (bKey) {
+      const custom = perBtn[bKey];
+      const sel = selectorMap[bKey];
+      if (!custom || !sel) return;
+
+      const fullSel = sel.split(',').map(s => 'html body ' + s.trim()).join(', ');
+      const rules = [];
+      if (custom.bg) rules.push(`background: ${custom.bg} !important; border-color: transparent !important;`);
+      if (custom.textColor) rules.push(`color: ${custom.textColor} !important;`);
+      if (custom.shape && shapeMap[custom.shape]) rules.push(`border-radius: ${shapeMap[custom.shape]} !important;`);
+      if (rules.length > 0) {
+        css.push(`${fullSel} { ${rules.join(' ')} }`);
+      }
+
+      if (custom.text) {
+        document.querySelectorAll(sel).forEach(function (el) {
+          if (bKey === 'btn_srv_open_cart') return; // preserve live cart counter span
+          if (el.innerText !== custom.text) el.innerText = custom.text;
+        });
+      }
+    });
+
+    const styleEl = document.getElementById('frontend-dynamic-button-studio-css-v22');
+    if (styleEl) styleEl.innerHTML = css.join('\n');
+  };
+
+  /* Hook into enforceHardLockVisibility & smoothSyncAndRender */
+  const origEnforce = window.enforceHardLockVisibility;
+  window.enforceHardLockVisibility = function () {
+    if (typeof origEnforce === 'function') origEnforce();
+    window.applyButtonStudioCustomizations();
+    window.applyAuthoritativeHamburgerIcon();
+  };
+
+  window.enforceHardLockVisibility();
+  setTimeout(window.enforceHardLockVisibility, 200);
+})();
+</script>
+<!-- ==================== INDEX.HTML : ZERO-FLICKER MENU, SMOOTH LOADER & BUTTON STUDIO PATCH COMPLETE ==================== -->
