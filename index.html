@@ -9704,3 +9704,28 @@
 })();
 </script>
 <!-- ==================== INDEX.HTML : V30 UNIFIED PEOPLE & LIVE SYNC COMPLETE ==================== -->
+<!-- ==================== INDEX.HTML : V31 FINAL UNIFIED PEOPLE & LIVE SYNC ENGINE (PASTE AT VERY BOTTOM OF index.html) ==================== -->
+<script id="frontend-v31-final-sync">
+(function () {
+  function syncFrontendV31() {
+    if (typeof window.renderAll === 'function') window.renderAll();
+    if (typeof window.renderGranularAboutPage === 'function') window.renderGranularAboutPage();
+    if (typeof window.applyAuthoritativeHamburgerIcon === 'function') window.applyAuthoritativeHamburgerIcon();
+    if (typeof window.enforceHardLockVisibility === 'function') window.enforceHardLockVisibility();
+  }
+
+  try {
+    const bc = new BroadcastChannel('OG_AGENCY_LIVE_SYNC_V13');
+    bc.onmessage = function (ev) {
+      if (ev.data && ev.data.db) {
+        localStorage.setItem(LOCAL_CACHE_KEY, JSON.stringify(ev.data.db));
+        syncFrontendV31();
+      }
+    };
+  } catch (e) {}
+
+  window.addEventListener('storage', syncFrontendV31);
+  syncFrontendV31();
+})();
+</script>
+<!-- ==================== INDEX.HTML : V31 FINAL UNIFIED PEOPLE & LIVE SYNC COMPLETE ==================== -->
