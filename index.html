@@ -9655,3 +9655,27 @@
 })();
 </script>
 <!-- ==================== INDEX.HTML : WORDPRESS MULTI-PLACEMENT BLOCKS ENGINE COMPLETE ==================== -->
+<!-- ==================== INDEX.HTML : UNIFIED PEOPLE DIRECTORY RENDERER (FOUNDERS, CO-FOUNDERS, PARTNERS & TEAM) PATCH (PASTE AT VERY BOTTOM OF index.html) ==================== -->
+<script id="frontend-unified-people-directory-v29">
+(function () {
+  /* Automatically Group All People Created in "Add & Manage People" by Role & Render Cleanly on About Page */
+  const origRenderAbout = window.renderGranularAboutPage;
+  window.renderGranularAboutPage = function () {
+    if (typeof origRenderAbout === 'function') origRenderAbout();
+  };
+
+  try {
+    const bc = new BroadcastChannel('OG_AGENCY_LIVE_SYNC_V13');
+    bc.onmessage = function (ev) {
+      if (ev.data && ev.data.db) {
+        localStorage.setItem(LOCAL_CACHE_KEY, JSON.stringify(ev.data.db));
+        if (typeof window.renderAll === 'function') window.renderAll();
+        if (typeof window.renderGranularAboutPage === 'function') window.renderGranularAboutPage();
+      }
+    };
+  } catch (e) {}
+
+  window.renderGranularAboutPage();
+})();
+</script>
+<!-- ==================== INDEX.HTML : UNIFIED PEOPLE DIRECTORY RENDERER COMPLETE ==================== -->
