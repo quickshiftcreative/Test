@@ -9547,3 +9547,111 @@
 })();
 </script>
 <!-- ==================== INDEX.HTML : FINAL LAUNCH SYNC PATCH COMPLETE ==================== -->
+<!-- ==================== INDEX.HTML : WORDPRESS MULTI-PLACEMENT VIDEO/PHOTO BLOCKS ENGINE (LEFT, RIGHT, CENTER, FULL-BANNER, BACKGROUND) PATCH (PASTE AT VERY BOTTOM OF index.html) ==================== -->
+<script id="frontend-wp-placement-engine-v28">
+(function () {
+  /* Create Dedicated Slot Right Below Hero Section on Home Page (`home_hero`) & Middle of Home Page (`home_middle`) */
+  function ensureExtraHomeWpSlotsV28() {
+    const heroBlock = document.getElementById('home-block-hero');
+    if (heroBlock && !document.getElementById('wp-blocks-hero-home')) {
+      const heroSlot = document.createElement('div');
+      heroSlot.id = 'wp-blocks-hero-home';
+      heroSlot.className = 'space-y-8 empty:hidden';
+      heroSlot.style.order = '1';
+      heroBlock.insertAdjacentElement('afterend', heroSlot);
+    }
+
+    const srvBlock = document.getElementById('home-block-services');
+    if (srvBlock && !document.getElementById('wp-blocks-middle-home')) {
+      const midSlot = document.createElement('div');
+      midSlot.id = 'wp-blocks-middle-home';
+      midSlot.className = 'space-y-8 empty:hidden';
+      midSlot.style.order = '4';
+      srvBlock.insertAdjacentElement('afterend', midSlot);
+    }
+  }
+
+  /* Upgrade `renderUniversalWordPressBlocks` to Support Left, Right, Center, Full-Banner, Background & Custom Width/Height */
+  window.renderUniversalWordPressBlocks = function (pageKey, containerEl) {
+    if (!containerEl) return;
+    containerEl.innerHTML = '';
+    const db = typeof window.getDB === 'function' ? window.getDB() : {};
+    const blocks = (db.customMediaBlocks || []).filter(b => (b.page || 'home_bottom') === pageKey);
+
+    blocks.forEach(function (blk) {
+      const wrap = document.createElement('div');
+      const layout = blk.layout || 'center';
+      const widthPct = Number(blk.widthPct || 100);
+      const heightPx = Number(blk.heightPx || 420);
+      const isVid = blk.mediaUrl && (blk.mediaUrl.startsWith('data:video') || /\.(mp4|webm|ogg)(\?.*)?$/i.test(blk.mediaUrl));
+
+      wrap.style.width = widthPct + '%';
+      wrap.style.marginLeft = 'auto';
+      wrap.style.marginRight = 'auto';
+
+      const mediaTag = blk.mediaUrl
+        ? (isVid
+            ? `<video src="${blk.mediaUrl}" ${blk.autoplay !== false ? 'autoplay muted loop playsinline' : ''} controls style="height:${heightPx}px;" class="w-full object-cover rounded-2xl"></video>`
+            : `<img src="${blk.mediaUrl}" style="height:${heightPx}px;" class="w-full object-cover rounded-2xl" />`)
+        : '';
+
+      const btnHTML = blk.btnText
+        ? `<div class="pt-2">
+             <button type="button" onclick="${(blk.btnUrl || '').startsWith('http') ? `window.open('${blk.btnUrl}', '_blank')` : `navigate('${blk.btnUrl || 'quotation'}')`}" class="px-6 py-3 rounded-xl accent-bg text-white font-extrabold text-xs shadow-lg hover:opacity-95 transition">
+               ${blk.btnText}
+             </button>
+           </div>`
+        : '';
+
+      const textHTML = (blk.badge || blk.title || blk.content || blk.btnText)
+        ? `<div class="space-y-3 ${layout === 'center' || layout === 'full_banner' ? 'text-center max-w-3xl mx-auto' : 'text-left'}">
+             ${blk.badge ? `<span class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 inline-block">${blk.badge}</span>` : ''}
+             ${blk.title ? `<h3 class="text-2xl sm:text-3xl font-bold text-white leading-tight">${blk.title}</h3>` : ''}
+             ${blk.content ? `<p class="text-xs sm:text-sm text-zinc-300 leading-relaxed whitespace-pre-line">${blk.content}</p>` : ''}
+             ${btnHTML}
+           </div>`
+        : '';
+
+      if (layout === 'left' || layout === 'right') {
+        wrap.className = 'charcoal-card rounded-3xl p-6 sm:p-8 my-6';
+        wrap.innerHTML = `
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-6 ${layout === 'right' ? 'lg:order-2' : 'lg:order-1'}">${mediaTag}</div>
+            <div class="lg:col-span-6 ${layout === 'right' ? 'lg:order-1' : 'lg:order-2'}">${textHTML}</div>
+          </div>
+        `;
+      } else if (layout === 'background') {
+        wrap.className = 'relative rounded-3xl overflow-hidden my-6 border border-white/15 flex items-center justify-center p-8 sm:p-14';
+        wrap.style.minHeight = heightPx + 'px';
+        wrap.innerHTML = `
+          <div class="absolute inset-0 -z-10 opacity-45">
+            ${blk.mediaUrl ? (isVid ? `<video src="${blk.mediaUrl}" autoplay muted loop playsinline class="w-full h-full object-cover"></video>` : `<img src="${blk.mediaUrl}" class="w-full h-full object-cover" />`) : ''}
+          </div>
+          <div class="relative z-10 text-center max-w-3xl mx-auto">${textHTML}</div>
+        `;
+      } else if (layout === 'full_banner') {
+        wrap.className = 'liquid-glass rounded-3xl overflow-hidden p-4 sm:p-6 space-y-5 my-6';
+        wrap.innerHTML = `${mediaTag}${textHTML ? `<div class="p-2">${textHTML}</div>` : ''}`;
+      } else {
+        wrap.className = 'charcoal-card rounded-3xl p-6 sm:p-8 space-y-5 my-6 text-center';
+        wrap.innerHTML = `${textHTML}${mediaTag}`;
+      }
+
+      containerEl.appendChild(wrap);
+    });
+  };
+
+  /* Hook into `renderAll` so `home_hero` and `home_middle` slots also render */
+  const origRenderAll = window.renderAll;
+  window.renderAll = function () {
+    ensureExtraHomeWpSlotsV28();
+    if (typeof origRenderAll === 'function') origRenderAll();
+    window.renderUniversalWordPressBlocks('home_hero', document.getElementById('wp-blocks-hero-home'));
+    window.renderUniversalWordPressBlocks('home_middle', document.getElementById('wp-blocks-middle-home'));
+  };
+
+  ensureExtraHomeWpSlotsV28();
+  window.renderAll();
+})();
+</script>
+<!-- ==================== INDEX.HTML : WORDPRESS MULTI-PLACEMENT BLOCKS ENGINE COMPLETE ==================== -->
