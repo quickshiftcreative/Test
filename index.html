@@ -9729,3 +9729,114 @@
 })();
 </script>
 <!-- ==================== INDEX.HTML : V31 FINAL UNIFIED PEOPLE & LIVE SYNC COMPLETE ==================== -->
+<!-- ==================== INDEX.HTML : V33 UNLIMITED BRAND NAME, TITLES & FULL-TEXT DISPLAY ENGINE (PASTE AT VERY BOTTOM OF index.html) ==================== -->
+<style id="frontend-v33-full-text-display-styles">
+  /* 1. Never Cut Off or Truncate Brand Name, Tagline, Titles, Roles or Descriptions on Frontend */
+  #nav-brand-name,
+  #nav-brand-tagline,
+  #footer-brand-name,
+  #hero-title,
+  #hero-badge-text,
+  .member-clean-card h4,
+  .member-clean-card p,
+  #home-services-grid h3,
+  #services-catalog-grid h3,
+  #home-portfolio-grid h3,
+  #portfolio-catalog-grid h3 {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    display: block !important;
+    -webkit-line-clamp: unset !important;
+    line-clamp: unset !important;
+    word-break: break-word !important;
+  }
+
+  /* 2. Allow Navbar Brand Container & Logo Emblem to Expand Naturally for Long Brand Names */
+  #navbar-shell > div:first-child {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+  }
+  #nav-logo-box {
+    width: auto !important;
+    min-width: 2.5rem !important;
+    padding-left: 0.6rem !important;
+    padding-right: 0.6rem !important;
+    white-space: nowrap !important;
+  }
+</style>
+
+<script id="frontend-v33-unlimited-text-enforcer">
+(function () {
+  /* 1. Strip Any `maxlength` Attributes on Frontend Forms (Contact, Quote, Scanner, Reviews) */
+  function stripFrontendMaxLengthsV33() {
+    document.querySelectorAll('input[maxlength], textarea[maxlength]').forEach(function (el) {
+      el.removeAttribute('maxlength');
+    });
+  }
+
+  document.addEventListener('focusin', function (e) {
+    if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) {
+      e.target.removeAttribute('maxlength');
+    }
+  }, true);
+
+  /* 2. Enforce Full Un-Sliced Brand Name & Logo Text Across Navbar, Loader & Footer */
+  window.enforceFullBrandAndTextDisplayV33 = function () {
+    stripFrontendMaxLengthsV33();
+    const db = typeof window.getDB === 'function' ? window.getDB() : {};
+    if (!db || !db.brand) return;
+
+    const fullBrandName = db.brand.name || '';
+    const fullTagline = db.brand.tagline || '';
+    const fullLogoText = (db.brand.logoText || '').trim();
+    const logoImgUrl = (db.brand.logo || '').trim();
+
+    /* Navbar Brand Name & Tagline */
+    const navNameEl = document.getElementById('nav-brand-name');
+    if (navNameEl && fullBrandName) navNameEl.innerText = fullBrandName;
+
+    const navTagEl = document.getElementById('nav-brand-tagline');
+    if (navTagEl && fullTagline) navTagEl.innerText = fullTagline;
+
+    /* Navbar Logo Box: Show Full Logo Text if No Image is Uploaded */
+    const navLogoBox = document.getElementById('nav-logo-box');
+    if (navLogoBox && !logoImgUrl) {
+      navLogoBox.innerText = fullLogoText || fullBrandName;
+    }
+
+    /* Footer Brand Name */
+    const ftrNameEl = document.getElementById('footer-brand-name');
+    if (ftrNameEl && fullBrandName) ftrNameEl.innerText = fullBrandName;
+
+    /* Loader Brand Title & Logo Text */
+    const ldrTitleEl = document.getElementById('ldr-brand-heading');
+    if (ldrTitleEl && fullBrandName) ldrTitleEl.innerText = fullBrandName;
+
+    const ldrLogoBox = document.getElementById('loader-logo-box');
+    const customLdrLogo = (db.loaderConfig?.customLoaderLogo || logoImgUrl).trim();
+    if (ldrLogoBox && !customLdrLogo && fullLogoText) {
+      ldrLogoBox.style.width = 'auto';
+      ldrLogoBox.style.padding = '0 16px';
+      ldrLogoBox.innerHTML = `<span class="text-lg font-black text-white">${fullLogoText}</span>`;
+    }
+  };
+
+  /* Hook into `renderAll` and `smoothSyncAndRender` */
+  const origRenderAll = window.renderAll;
+  window.renderAll = function () {
+    if (typeof origRenderAll === 'function') origRenderAll();
+    window.enforceFullBrandAndTextDisplayV33();
+  };
+
+  const origSmooth = window.smoothSyncAndRender;
+  window.smoothSyncAndRender = function (force) {
+    if (typeof origSmooth === 'function') origSmooth(force);
+    window.enforceFullBrandAndTextDisplayV33();
+  };
+
+  window.enforceFullBrandAndTextDisplayV33();
+  setTimeout(window.enforceFullBrandAndTextDisplayV33, 200);
+})();
+</script>
+<!-- ==================== INDEX.HTML : V33 UNLIMITED BRAND NAME & FULL-TEXT DISPLAY COMPLETE ==================== -->
