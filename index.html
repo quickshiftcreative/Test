@@ -9840,3 +9840,251 @@
 })();
 </script>
 <!-- ==================== INDEX.HTML : V33 UNLIMITED BRAND NAME & FULL-TEXT DISPLAY COMPLETE ==================== -->
+<!-- ==================== INDEX.HTML : V34 REALTIME BRAND, LOGO, UNLIMITED TEXT & ALL-FEATURES LIVE SYNC ENGINE (PASTE AT VERY BOTTOM OF index.html) ==================== -->
+<style id="frontend-v34-unlimited-display-styles">
+  /* 1. Never Truncate or Cut Off Brand Name, Tagline, Logo Text, Titles or Descriptions */
+  #nav-brand-name,
+  #nav-brand-tagline,
+  #footer-brand-name,
+  #hero-title,
+  #hero-badge-text,
+  .member-clean-card h4,
+  .member-clean-card p,
+  #home-services-grid h3,
+  #services-catalog-grid h3,
+  #home-portfolio-grid h3,
+  #portfolio-catalog-grid h3 {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    display: block !important;
+    -webkit-line-clamp: unset !important;
+    line-clamp: unset !important;
+    word-break: break-word !important;
+  }
+
+  #navbar-shell > div:first-child {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+  }
+  #nav-logo-box {
+    width: auto !important;
+    min-width: 2.5rem !important;
+    padding-left: 0.65rem !important;
+    padding-right: 0.65rem !important;
+    white-space: nowrap !important;
+  }
+</style>
+
+<script id="frontend-v34-master-live-reflector">
+(function () {
+  const CLOUD_DB_URL_V34 = 'https://backend-f4e0c-default-rtdb.firebaseio.com/agency_os_v5.json';
+  const CACHE_KEY_V34 = typeof LOCAL_CACHE_KEY !== 'undefined' ? LOCAL_CACHE_KEY : 'OG_DESK_GLOBAL_V5_CACHE';
+  let lastAppliedSigV34 = '';
+
+  /* 1. Remove `maxlength` Limits on All Frontend Form Inputs */
+  function stripFrontendLimitsV34() {
+    document.querySelectorAll('input[maxlength], textarea[maxlength]').forEach(function (el) {
+      el.removeAttribute('maxlength');
+    });
+  }
+  document.addEventListener('focusin', function (e) {
+    if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) {
+      e.target.removeAttribute('maxlength');
+    }
+  }, true);
+
+  /* 2. Ensure `window.getDB()` ALWAYS Reads Latest LocalStorage Cache */
+  window.getDB = function () {
+    const fallback = typeof defaultMasterDB !== 'undefined' ? defaultMasterDB : {};
+    try {
+      const raw = localStorage.getItem(CACHE_KEY_V34);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        return {
+          ...fallback,
+          ...parsed,
+          brand: { ...(fallback.brand || {}), ...(parsed.brand || {}) },
+          theme: { ...(fallback.theme || {}), ...(parsed.theme || {}) },
+          visibility: { ...(fallback.visibility || {}), ...(parsed.visibility || {}) },
+          hero3D: { ...(fallback.hero3D || {}), ...(parsed.hero3D || {}) },
+          headings: { ...(fallback.headings || {}), ...(parsed.headings || {}) },
+          about: { ...(fallback.about || {}), ...(parsed.about || {}) },
+          aboutConfig: { ...(fallback.aboutConfig || {}), ...(parsed.aboutConfig || {}) },
+          aboutPhotoStudio: { ...(fallback.aboutPhotoStudio || {}), ...(parsed.aboutPhotoStudio || {}) },
+          trackerConfig: { ...(fallback.trackerConfig || {}), ...(parsed.trackerConfig || {}) },
+          contactPageConfig: { ...(fallback.contactPageConfig || {}), ...(parsed.contactPageConfig || {}) },
+          navMenuConfig: { ...(fallback.navMenuConfig || {}), ...(parsed.navMenuConfig || {}) },
+          hamburgerIconConfig: { ...(fallback.hamburgerIconConfig || {}), ...(parsed.hamburgerIconConfig || {}) },
+          loaderConfig: { ...(fallback.loaderConfig || {}), ...(parsed.loaderConfig || {}) },
+          masterSwitchboard: { ...(fallback.masterSwitchboard || {}), ...(parsed.masterSwitchboard || {}) },
+          buttonStudioConfig: { ...(fallback.buttonStudioConfig || {}), ...(parsed.buttonStudioConfig || {}) },
+          microTexts: { ...(fallback.microTexts || {}), ...(parsed.microTexts || {}) }
+        };
+      }
+    } catch (e) {}
+    return fallback;
+  };
+
+  /* 3. Authoritative Brand, Logo, Hero, Headings & Micro-Text Reflector */
+  window.reflectAllBrandAndContentV34 = function () {
+    stripFrontendLimitsV34();
+    const db = window.getDB();
+    if (!db || !db.brand) return;
+
+    const b = db.brand;
+    const h = db.headings || {};
+    const vis = db.visibility || {};
+    const mt = db.microTexts || {};
+
+    const brandName = (b.name || 'THE BLANK PAGE').trim();
+    const brandTag = (b.tagline || '').trim();
+    const logoUrl = (b.logo || '').trim();
+    const logoText = (b.logoText || '').trim() || brandName;
+    const logoSize = Number(b.logoSize || 40);
+
+    /* A. Navbar Brand Name, Tagline & Logo Box */
+    const navName = document.getElementById('nav-brand-name');
+    if (navName) navName.innerText = brandName;
+
+    const navTag = document.getElementById('nav-brand-tagline');
+    if (navTag) navTag.innerText = brandTag;
+
+    const navLogo = document.getElementById('nav-logo-box');
+    if (navLogo) {
+      navLogo.style.height = logoSize + 'px';
+      navLogo.style.minWidth = logoSize + 'px';
+      if (logoUrl) {
+        navLogo.innerHTML = `<img src="${logoUrl}" class="w-full h-full object-contain rounded-xl" />`;
+      } else {
+        navLogo.innerHTML = `<span class="font-black text-white text-xs sm:text-sm px-1">${logoText}</span>`;
+      }
+    }
+
+    /* B. Footer Brand Name, Kinetic Banner & Copyright */
+    const ftrName = document.getElementById('footer-brand-name');
+    if (ftrName) ftrName.innerText = brandName;
+
+    const ftrCopy = document.getElementById('footer-copyright');
+    if (ftrCopy && b.copyright) ftrCopy.innerText = b.copyright;
+
+    const ftrKin = document.getElementById('footer-kinetic-marquee');
+    if (ftrKin && b.kineticFooterText) {
+      ftrKin.innerText = (b.kineticFooterText + '   ').repeat(6);
+    }
+
+    /* C. Loader Brand Title & Logo */
+    const ldrTitle = document.getElementById('ldr-brand-heading');
+    if (ldrTitle) ldrTitle.innerText = brandName;
+
+    const ldrLogo = document.getElementById('loader-logo-box');
+    const customLdrUrl = (db.loaderConfig?.customLoaderLogo || logoUrl).trim();
+    if (ldrLogo) {
+      if (customLdrUrl) {
+        ldrLogo.innerHTML = `<img src="${customLdrUrl}" class="w-full h-full object-contain p-1.5" />`;
+      } else {
+        ldrLogo.style.width = 'auto';
+        ldrLogo.style.padding = '0 16px';
+        ldrLogo.innerHTML = `<span class="text-lg font-black text-white">${logoText}</span>`;
+      }
+    }
+
+    /* D. Hero Section Texts, Buttons, Pills & Top Announcement */
+    const topAnn = document.getElementById('top-announcement-text');
+    if (topAnn && b.announcement !== undefined) topAnn.innerText = b.announcement;
+
+    const heroBadge = document.getElementById('hero-badge-text');
+    if (heroBadge && b.heroBadge !== undefined) heroBadge.innerText = b.heroBadge;
+
+    const heroTitle = document.getElementById('hero-title');
+    if (heroTitle && b.heroTitle !== undefined) heroTitle.innerText = b.heroTitle;
+
+    const heroSub = document.getElementById('hero-sub');
+    if (heroSub && b.heroSub !== undefined) heroSub.innerText = b.heroSub;
+
+    const btn1 = document.getElementById('hero-btn-primary');
+    if (btn1 && b.heroBtn1 && !db.buttonStudioConfig?.perButton?.btn_hero_primary?.text) {
+      btn1.innerText = b.heroBtn1;
+    }
+
+    const btn2 = document.getElementById('hero-btn-secondary');
+    if (btn2 && b.heroBtn2 && !db.buttonStudioConfig?.perButton?.btn_hero_secondary?.text) {
+      btn2.innerText = b.heroBtn2;
+    }
+
+    /* E. 4 Key Metrics Values & Labels */
+    const setTxt = function (id, v) { const el = document.getElementById(id); if (el && v !== undefined) el.innerText = v; };
+    setTxt('stat-1-val', b.stat1Val);
+    setTxt('stat-1-lbl', b.stat1Lbl);
+    setTxt('stat-2-val', b.stat2Val);
+    setTxt('stat-2-lbl', b.stat2Lbl);
+    setTxt('stat-3-lbl', b.stat3Lbl);
+    setTxt('stat-4-val', b.stat4Val);
+    setTxt('stat-4-lbl', b.stat4Lbl);
+
+    /* F. Page Headings & SEO Title */
+    if (db.seo?.title) document.title = db.seo.title;
+    setTxt('srv-page-eyebrow', h.srvPageEyebrow);
+    setTxt('srv-page-heading', h.srvPageHeading);
+    setTxt('srv-page-sub', h.srvPageSub);
+
+    /* G. Apply Micro-Texts, Switchboard Visibility & Customizations */
+    if (typeof window.applyMicroTextsToFrontendV27 === 'function') window.applyMicroTextsToFrontendV27();
+    if (typeof window.enforceHardLockVisibility === 'function') window.enforceHardLockVisibility();
+    if (typeof window.applyButtonStudioCustomizations === 'function') window.applyButtonStudioCustomizations();
+  };
+
+  /* 4. Full Master Re-Render Pipeline When DB Updates */
+  window.triggerFullFrontendSyncV34 = function (incomingDB) {
+    if (incomingDB && incomingDB.brand) {
+      localStorage.setItem(CACHE_KEY_V34, JSON.stringify(incomingDB));
+    }
+    if (typeof window.renderAll === 'function') {
+      try { window.renderAll(); } catch (e) {}
+    }
+    if (typeof window.renderGranularAboutPage === 'function') {
+      try { window.renderGranularAboutPage(); } catch (e) {}
+    }
+    window.reflectAllBrandAndContentV34();
+  };
+
+  /* 5. Listen to Instant BroadcastChannel, Storage Events & Cloud Polling */
+  try {
+    const bc = new BroadcastChannel('OG_AGENCY_LIVE_SYNC_V13');
+    bc.onmessage = function (ev) {
+      if (ev.data && ev.data.db) {
+        window.triggerFullFrontendSyncV34(ev.data.db);
+      }
+    };
+  } catch (e) {}
+
+  window.addEventListener('storage', function () {
+    window.triggerFullFrontendSyncV34();
+  });
+
+  async function pullFreshCloudDBForFrontendV34() {
+    try {
+      const res = await fetch(CLOUD_DB_URL_V34 + '?t=' + Date.now(), { cache: 'no-store' });
+      if (!res.ok) return;
+      const cloud = await res.json();
+      if (cloud && cloud.brand) {
+        const sig = JSON.stringify({ b: cloud.brand, v: cloud.visibility, s: cloud.masterSwitchboard, t: cloud.team?.length });
+        if (sig !== lastAppliedSigV34) {
+          lastAppliedSigV34 = sig;
+          window.triggerFullFrontendSyncV34(cloud);
+        }
+      }
+    } catch (e) {}
+  }
+
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden) pullFreshCloudDBForFrontendV34();
+  });
+
+  /* Initial Execution + Periodic Cloud Sync Check */
+  window.triggerFullFrontendSyncV34();
+  pullFreshCloudDBForFrontendV34();
+  setInterval(pullFreshCloudDBForFrontendV34, 4000);
+})();
+</script>
+<!-- ==================== INDEX.HTML : V34 REALTIME BRAND & ALL-FEATURES LIVE SYNC COMPLETE ==================== -->
